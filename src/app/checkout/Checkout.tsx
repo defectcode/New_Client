@@ -240,8 +240,8 @@ export function Checkout() {
                       <li className="mb-2 font-Heebo-reg-14">
                         <span className='font-Heebo-14-bolt'>Signature: </span>You may need to sign for your delivery.
                       </li>
-                      <li className="font-Heebo-reg-14">
-                        <span className='font-Heebo-14-bolt'>Change delivery: </span>
+                      <li className="font-Heebo-reg-14 text-[#1E1E1E]">
+                        <span className='font-Heebo-14-bolt text-[#1E1E1E]'>Change delivery: </span>
                         Once shipped, you can track and adjust where your package is delivered (pickup, secure location, or contactless)
                       </li>
                     </ul>
@@ -296,7 +296,7 @@ export function Checkout() {
                 <h1 className="font-Heebo-16 mb-[5px] text-[#1E1E1E]">Keep in mind:</h1>
                 <ul className="list-disc pl-4 text-[#6F6F6F]">
                   <li className="mb-2 font-Heebo-reg-14"><span className='font-Heebo-14-bolt text-[#1E1E1E]'>Signature: </span>You may need to sign for your delivery.</li>
-                  <li className="max-w-[437px] w-full font-Heebo-reg-14"> <span className='font-Heebo-14-bolt text-[#1E1E1E]'>Change delivery: </span>
+                  <li className="max-w-[437px] w-full font-Heebo-reg-14 text-[#1E1E1E]"> <span className='font-Heebo-14-bolt text-[#1E1E1E]'>Change delivery: </span>
                     Once shipped, you can track and adjust where your package is delivered (pickup, secure location, or contactless)
                   </li>
                 </ul>
@@ -336,7 +336,7 @@ export function Checkout() {
                   <h1 className="font-Heebo-14 mb-[5px]">Keep in mind:</h1>
                   <ul className="list-disc pl-4">
                     <li className="md:mb-2 mb-[5px] md:font-Heebo-reg-14 font-Heebo-reg-12"><span className='font-Heebo-14-bolt'>Signature: </span>You may need to sign for your delivery.</li>
-                    <li className="max-w-[437px] w-full md:font-Heebo-reg-14 font-Heebo-reg-12"> <span className='font-Heebo-14-bolt'>Change delivery: </span>
+                    <li className="max-w-[437px] w-full md:font-Heebo-reg-14 font-Heebo-reg-12"> <span className='font-Heebo-14-bolt text-[#1E1E1E]'>Change delivery: </span>
                       Once shipped, you can track and adjust where your package is delivered (pickup, secure location, or contactless)
                     </li>
                   </ul>
