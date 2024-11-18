@@ -333,7 +333,7 @@ export function Checkout() {
 
               <div className="w-full lg:w-1/3 md:p-4 pb-10 md:hidden block border-b">
                 <div className="md:py-5">
-                  <h1 className="font-Heebo-14 mb-[5px]">Keep in mind:</h1>
+                  <h1 className="font-Heebo-14 mb-[5px] text-[#1E1E1E]">Keep in mind:</h1>
                   <ul className="list-disc pl-4">
                     <li className="md:mb-2 mb-[5px] md:font-Heebo-reg-14 font-Heebo-reg-12"><span className='font-Heebo-14-bolt'>Signature: </span>You may need to sign for your delivery.</li>
                     <li className="max-w-[437px] w-full md:font-Heebo-reg-14 font-Heebo-reg-12"> <span className='font-Heebo-14-bolt text-[#1E1E1E]'>Change delivery: </span>
