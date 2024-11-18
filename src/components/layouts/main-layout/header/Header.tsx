@@ -30,12 +30,9 @@ export function Header() {
       <div className="flex-1 lg:block hidden">
         <HeaderMenu />
       </div>
-      <div className="flex-1 lg:block hidden relative">
-        <div className="absolute left-1/2 transform -translate-x-1/2">
-          <Logo />
-        </div>
+      <div className="flex-1 lg:flex hidden items-center justify-center">
+        <Logo />
       </div>
-
       <div className="flex-1 flex items-center justify-end lg:flex hidden">
         <SearchInput />
         <User />

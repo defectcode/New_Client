@@ -10,6 +10,7 @@ import { CartActions } from './CartActions';
 import { useDispatch } from 'react-redux';
 import { FavoriteButton } from '@/app/(root)/product/[id]/product-info/FavoriteButton';
 import { cartSlice } from '@/store/cart/cart.slice';
+import { colorColumns } from '../../../../../../../app/store/[storeId]/colors/ColorColumns';
 
 interface CartItemProps {
   item: ICartItem;
@@ -50,9 +51,10 @@ export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
   return (
     <div
       className={`flex items-center relative ${
-        !isLastItem && !isSingleItem ? 'border-b border-[#000000]/10' : ''
-      } py-4`}
+        !isLastItem && !isSingleItem ? 'border-b border-[#8C8C8C]/10' : ''
+      } ${item.id === 0 ? 'pt-0 pb-[20px]' : 'pt-[20px] pb-[20px]'}`}
     >
+
       {/* Product Image */}
       <Link
         href={PUBLIC_URL.product(item.product.id)}
@@ -79,7 +81,7 @@ export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
 
         {/* Color Selector */}
         <div
-          className={`flex items-center gap-1 mt-[10px] relative ${
+          className={`flex items-center gap-1 mt-[2px] relative ${
             isCheckoutPage ? 'pointer-events-none opacity-50' : 'cursor-pointer'
           }`}
           onClick={toggleColorDropdown}

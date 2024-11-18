@@ -17,7 +17,6 @@ export function Logo() {
 				className='max-md:w-[73px] max-md:h-[43px]'
 				style={{ lineHeight: '40px' }}
 			/>
-			{/* <div className="text-2xl font-bold text-black">{SITE_NAME}</div> */}
 		</Link>
 	)
 }
