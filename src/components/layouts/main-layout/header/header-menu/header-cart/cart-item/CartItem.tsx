@@ -52,7 +52,7 @@ export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
     <div
       className={`flex items-center relative ${
         !isLastItem && !isSingleItem ? 'border-b border-[#8C8C8C]/10' : ''
-      } ${item.id === 0 ? 'pt-0 pb-[20px]' : 'pt-[20px] pb-[20px]'}`}
+      } ${item.id === 0 ? 'md:pt-0 pt-[20px] pb-[20px]' : 'pt-[20px] pb-[20px]'}`}
     >
 
       {/* Product Image */}
@@ -60,7 +60,7 @@ export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
         href={PUBLIC_URL.product(item.product.id)}
         className="relative flex items-center justify-center w-[100px] h-[100px] bg-white border border-transparent"
       >
-        <div className="flex items-center justify-center w-[90px] h-[90px]">
+        <div className="relative flex items-center justify-center w-[90px] h-[90px]">
           <Image
             src={item.product.images[0]}
             alt={item.product.title}
@@ -68,6 +68,10 @@ export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
             height={90}
             className="object-cover"
           />
+          {/* Cerc pentru cantitate */}
+          <div className="absolute -top-3 -right-2 bg-[#5D5D5D]/50 text-[#FFF4F4] text-[12px] w-5 h-5 flex items-center justify-center rounded-full font-bold">
+            {item.quantity}
+          </div>
         </div>
       </Link>
 

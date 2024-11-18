@@ -91,7 +91,7 @@ export function CheckoutCartHome() {
           }}
           >
         {/* Conținut scrollabil */}
-        <div className="relative overflow-y-auto h-[calc(55vh)]">
+        <div className="relative overflow-y-auto h-[calc(65vh)]">
           <div className="absolute top-0 left-0 right-0 h-5 bg-gradient-to-b from-black/10 to-transparent z-10"></div>
           <div className="px-5 pb-5 max-h-[300px] overflow-y-auto">
             {items.length ? (
@@ -112,15 +112,15 @@ export function CheckoutCartHome() {
 
         {/* Footer fix */}
         <div className="fixed bottom-0 left-0 right-0 bg-white px-5 py-4 shadow-lg border-t">
-          <div className="flex items-center justify-between text-[16px] mb-3">
+          <div className="flex items-center justify-between text-[16px] border-b  border-[#E8E8ED] pb-5">
             <p className="font-Heebo-16 text-[#1E1E1E]">{`${totalItemsCount} ${itemText}`}</p>
             <a href="/bag" className="underline font-Heebo-reg-16 text-[#5D5D5D]">View Bag</a>
           </div>
-          <div className="flex items-center justify-between text-[16px] border-b border-[#E8E8ED] pb-3">
+          <div className="flex items-center justify-between text-[16px] border-b border-[#E8E8ED] py-5">
             <p className="font-Heebo-18 text-[#1E1E1E]">Total</p>
             <span className="font-Heebo-18 text-[#1E1E1E]">{formatPrice(finalTotal)}</span>
           </div>
-          <div className="space-y-5 mt-4">
+          <div className="space-y-5 mt-10">
             <CheckoutButton />
             <button className="w-full bg-black flex items-center justify-center h-12 rounded-lg">
               <Image src='/images/applepayBlack.svg' alt='applepay' width={42} height={16} />
