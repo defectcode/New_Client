@@ -1,5 +1,3 @@
-
-
 import Image from 'next/image';
 import { useState } from 'react';
 import { IProduct } from '@/shared/types/product.interface';
@@ -56,7 +54,6 @@ export function ProductGallery({ product }: ProductGalleryProps) {
 
       {/* Imaginea principală - afișare pe desktop și mobil */}
       <div className="relative w-full lg:w-auto">
-        {/* Imagine principală */}
         <Image
           src={product.images[currentIndex]}
           alt={product.title}
@@ -65,12 +62,10 @@ export function ProductGallery({ product }: ProductGalleryProps) {
           className="rounded-lg h-[430px] lg:h-[758px] w-[430px] lg:w-[758px]"
         />
 
-        {/* Favorite Button - poziționat în colțul din dreapta sus al imaginii */}
         <div className="absolute top-5 right-5 z-10 md:hidden">
           <FavoriteButton product={product} />
         </div>
 
-        {/* Navigare prin apăsare pe marginile imaginii pentru mobil */}
         <div className="lg:hidden absolute inset-0 flex justify-between items-center">
           <div
             onClick={handlePrevImage}
@@ -82,7 +77,6 @@ export function ProductGallery({ product }: ProductGalleryProps) {
           ></div>
         </div>
 
-        {/* Indicatori de puncte pentru mobil */}
         <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 lg:hidden flex space-x-2">
           {product.images.map((_, index) => (
             <button

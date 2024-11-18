@@ -53,7 +53,7 @@ export function CheckoutCartHeader() {
       <div className="md:hidden block w-full">
         {isSummaryVisible ? (
           // Render Logo and Summary inside the drawer when open
-          <div className="absolute inset-x-0 top-0 bg-white z-50 py-4 px-5 flex items-center justify-between border-b">
+          <div className="absolute inset-x-0 top-0 bg-white z-50 py-4 px-5 flex items-center justify-between border-b h-[56px]">
             <div className="">
               <Logo />
             </div>
@@ -95,7 +95,7 @@ export function CheckoutCartHeader() {
 
         {/* Drawer for Summary */}
         <div
-          className={`fixed inset-x-0 top-0 transform transition-all duration-300 ease-in-out bg-white shadow-lg z-50 mt-[72px] ${
+          className={`fixed inset-x-0 top-0 transform transition-all duration-300 ease-in-out bg-white shadow-lg z-50 mt-[50px] ${
             isSummaryVisible ? 'max-h-[80vh] opacity-100 translate-y-0' : 'max-h-0 opacity-0 -translate-y-5'
           }`}
           style={{
@@ -107,7 +107,7 @@ export function CheckoutCartHeader() {
           }}
         >
           <div className="pb-5">
-          <div className="relative mt-4 overflow-hidden">
+          <div className="relative overflow-hidden">
             <div className="absolute top-0 left-0 right-0 h-5 bg-gradient-to-b from-black/10 to-transparent z-10"></div>
             <div className="overflow-y-auto overflow-x-hidden pt-5 px-5 min-h-[250px] max-h-[300px]">
               {items.length ? (

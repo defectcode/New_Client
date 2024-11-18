@@ -198,7 +198,6 @@ export default function Order({ items }: PaymentProps) {
           disabled={!isFormValid}
         >
           Payment
-           {/* ${total.toFixed(2)} */}
         </button>
       )}
     </div>

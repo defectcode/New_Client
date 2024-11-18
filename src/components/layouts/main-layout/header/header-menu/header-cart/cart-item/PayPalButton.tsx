@@ -71,23 +71,23 @@ const PayPalButton: React.FC<PayPalButtonProps> = ({ totalAmount }) => {
                 body: JSON.stringify({ orderId: order.id }),
               });
 
-              alert('Payment successful!'); // Notificare pentru utilizator
-              navigateTo('/thankyou'); // Redirecționare către pagina "thankyou"
+              alert('Payment successful!');
+              navigateTo('/thankyou'); 
             } catch (error) {
               console.error('Error capturing the payment:', error);
-              alert('Failed to capture payment. Please try again.'); // Gestionarea erorii de capturare
-              navigateTo('/error'); // Redirecționare către pagina "error"
+              alert('Failed to capture payment. Please try again.'); 
+              navigateTo('/error'); 
             }
           },
           onError: (err: any) => {
             console.error('Error with PayPal:', err);
-            alert('Payment failed. Please try again or contact support.'); // Gestionarea erorilor PayPal
-            navigateTo('/error'); // Redirecționare către pagina "error"
+            alert('Payment failed. Please try again or contact support.');
+            navigateTo('/error'); 
           },
           onCancel: () => {
             console.log('Payment was cancelled.');
-            alert('Payment process was cancelled.'); // Notificare pentru utilizator
-            navigateTo('/cancel'); // Redirecționare către pagina "cancel"
+            alert('Payment process was cancelled.'); 
+            navigateTo('/cancel');
           },
         }).render('#paypal-button-container');
         setIsButtonRendered(true);

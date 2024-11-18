@@ -42,7 +42,7 @@ export function FavoriteButton({ product }: FavoriteButtonProps) {
 			disabled={isPending}
 		>
 			{isExists ? (
-				<Image src='/images/selectHeart.svg' alt='heart' height={16} width={17} color='#8C8C8C' />
+				<Image src='/images/selectHeart.svg' alt='heart' height={16} width={17} color='#8C8C8C'/>
 			) : (
 				<Image src='/images/heart.svg' alt='heart' height={16} width={17} color='#8C8C8C'/>
 			)}

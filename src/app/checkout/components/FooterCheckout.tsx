@@ -28,7 +28,6 @@ const FooterCheckout = () => {
             </div>
           
             <div className='flex justify-between items-center w-full font-Heebo-r-14'>
-              {/* Footer Links */}
               <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-center text-[#BDBDBD]">
                 {footerLinks.map((link) => (
                   <Link key={link.name} href={link.href} className="hover:underline">
@@ -55,7 +54,6 @@ const FooterCheckout = () => {
 
         {/* Mobile layout */}
         <div className="flex flex-col items-start space-y-4 md:hidden">
-          {/* Footer Top Section */}
           <div className="border-y border-[#7C788A]/20 py-5 w-full">
             <p className="font-Heebo-r-14 text-[#BDBDBD]">
               &copy; 2024 vellov. All Rights Reserved.{' '}

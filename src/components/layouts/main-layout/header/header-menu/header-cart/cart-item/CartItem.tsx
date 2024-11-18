@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -18,6 +20,9 @@ interface CartItemProps {
 export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
   const dispatch = useDispatch();
 
+  // Verificăm dacă suntem pe pagina /checkout
+  const isCheckoutPage = typeof window !== 'undefined' && window.location.pathname === '/checkout';
+
   // State for color dropdown
   const [colorDropdownOpen, setColorDropdownOpen] = useState(false);
   const [selectedColor, setSelectedColor] = useState<string>(item.product.color.name);
@@ -30,12 +35,16 @@ export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
   };
 
   const toggleColorDropdown = () => {
-    setColorDropdownOpen((prev) => !prev);
+    if (!isCheckoutPage) {
+      setColorDropdownOpen((prev) => !prev);
+    }
   };
 
   const selectColor = (color: string) => {
-    setSelectedColor(color);
-    setColorDropdownOpen(false);
+    if (!isCheckoutPage) {
+      setSelectedColor(color);
+      setColorDropdownOpen(false);
+    }
   };
 
   return (
@@ -47,36 +56,49 @@ export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
       {/* Product Image */}
       <Link
         href={PUBLIC_URL.product(item.product.id)}
-        className="relative h-[90px] w-[90px] overflow-hidden flex items-center justify-center bg-white border border-transparent"
+        className="relative flex items-center justify-center w-[100px] h-[100px] bg-white border border-transparent"
       >
-        <Image
-          src={item.product.images[0]}
-          alt={item.product.title}
-          width={90}
-          height={90}
-          className="object-cover w-full h-full"
-        />
+        <div className="flex items-center justify-center w-[90px] h-[90px]">
+          <Image
+            src={item.product.images[0]}
+            alt={item.product.title}
+            width={90}
+            height={90}
+            className="object-cover"
+          />
+        </div>
       </Link>
 
       {/* Product Details */}
-      <div className="flex flex-col ml-4 w-3/4 relative">
+      <div className="flex flex-col ml-[10px] w-3/4 relative">
         <div className="flex items-center justify-between w-full">
           <h2 className="text-[15px] font-semibold truncate max-w-[300px]">{item.product.title}</h2>
-          <FavoriteButton product={item.product} />
+          {/* Ascunde FavoriteButton pe pagina checkout */}
+          {!isCheckoutPage && <FavoriteButton product={item.product} />}
         </div>
 
         {/* Color Selector */}
-        <div className="flex items-center gap-1 cursor-pointer mt-[20px] relative" onClick={toggleColorDropdown}>
+        <div
+          className={`flex items-center gap-1 mt-[10px] relative ${
+            isCheckoutPage ? 'pointer-events-none opacity-50' : 'cursor-pointer'
+          }`}
+          onClick={toggleColorDropdown}
+        >
           <p className="text-sm text-gray-500">{selectedColor}</p>
-          <Image
-            src="/images/arr.svg"
-            alt="dropdown arrow"
-            width={12}
-            height={10}
-            className={`text-[#8C8C8C] transition-transform duration-300 ${colorDropdownOpen ? 'rotate-180' : ''}`}
-          />
+          {/* Ascunde săgeata pe pagina checkout */}
+          {!isCheckoutPage && (
+            <Image
+              src="/images/arr.svg"
+              alt="dropdown arrow"
+              width={12}
+              height={10}
+              className={`text-[#8C8C8C] transition-transform duration-300 ${
+                colorDropdownOpen ? 'rotate-180' : ''
+              }`}
+            />
+          )}
           {/* Dropdown */}
-          {colorDropdownOpen && (
+          {!isCheckoutPage && colorDropdownOpen && (
             <div
               className="absolute bg-white shadow-lg border rounded-md z-10"
               style={{
@@ -98,11 +120,12 @@ export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
           )}
         </div>
 
-        <div className="flex items-center justify-between mt-5 w-full h-[12px]">
+        <div className="flex items-center justify-between mt-[10px] w-full h-[12px]">
           <div className="flex items-center gap-2 text-sm text-gray-500">
             <p>{formatPrice(item.product.price)}</p>
           </div>
-          <CartActions item={item} />
+          {/* Ascunde CartActions pe pagina checkout */}
+          {!isCheckoutPage && <CartActions item={item} />}
         </div>
       </div>
     </div>

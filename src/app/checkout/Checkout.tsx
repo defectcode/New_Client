@@ -3,9 +3,9 @@
 import { useState, useEffect } from 'react';
 import { useProfile } from '@/hooks/useProfile';
 import { useCart } from '@/hooks/useCart';
-import { CountrySelect } from './components/CountrySelect'; // Importăm componenta CountrySelect
-import { parsePhoneNumberFromString, CountryCode } from 'libphonenumber-js'; // Validarea numerelor de telefon
-import Image from 'next/image'; // Pentru logo-urile PayPal, Apple Pay etc.
+import { CountrySelect } from './components/CountrySelect'; 
+import { parsePhoneNumberFromString, CountryCode } from 'libphonenumber-js'; 
+import Image from 'next/image'; 
 import Order from '../../components/layouts/main-layout/header/header-menu/header-cart/cart-item/components/order/Order';
 import CheckoutPage from '@/components/layouts/main-layout/header/header-menu/header-cart/cart-item/components/order/StripePaymentButton';
 import { InfoHeader } from '@/components/layouts/main-layout/header/InfoHeader';
@@ -14,6 +14,7 @@ import FooterCheckout from './components/FooterCheckout';
 import FloatingLabelInput from './components/FloatingLabelInput';
 
 import '../../../src/components/layouts/main-layout/header/header-menu/header-cart/cart-item/PayPal.css'
+import PayPalButton from '@/components/layouts/main-layout/header/header-menu/header-cart/cart-item/PayPalButton';
 
 interface ShippingData {
   company: string;
@@ -62,6 +63,9 @@ export function Checkout() {
   const [isPaymentVisible, setIsPaymentVisible] = useState(false);
   const [focused, setFocused] = useState(false);
   const [showCompanyInput, setShowCompanyInput] = useState(false);
+  const [showPayPalButton, setShowPayPalButton] = useState(false);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string>('');
+
 
   const handleToggleCompanyInput = () => {
     setShowCompanyInput(!showCompanyInput);
@@ -155,10 +159,8 @@ export function Checkout() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Verifică dacă formularul este valid
     if (!isFormValid) return;
 
-    // Extrage produsele din coș
     const products = items.map((item) => ({
         name: item.product,
         quantity: item.quantity,
@@ -252,7 +254,9 @@ export function Checkout() {
                   <>
                     <div className="flex flex-col gap-5 mb-6">
                       <div className="flex gap-[15px] md:h-[56px] h-12">
-                        <button className="w-full py-2 border rounded-[10px] bg-[#00457C] flex items-center justify-center">
+                        <button className="w-full py-2 border rounded-[10px] bg-[#00457C] flex items-center justify-center"
+                                  onClick={() => setSelectedPaymentMethod('PayPal')}
+                        >
                           <Image src='/images/paypal.svg' alt='PayPal' width={69} height={18} className='md:w-[69px] md:h-[18px] w-[48px] h-[13px]' />
                         </button>
                         <button className="w-full py-2 border rounded-[10px] bg-[#000000] flex items-center justify-center">
@@ -271,6 +275,12 @@ export function Checkout() {
                       <div className="flex-1 border-t border-gray-300"></div>
                     </div>
                   </>
+                )}
+
+                {selectedPaymentMethod === 'PayPal' && (
+                  <div className="w-full">
+                    <PayPalButton totalAmount={totalAmount} />
+                  </div>      
                 )}
                 <div className="mt-6 flex justify-between items-center mb-10">
                   <h2 className="font-Heebo-bold-20">Shipping Address</h2>
@@ -358,9 +368,19 @@ export function Checkout() {
               <>
                   <div className="flex flex-col gap-5 mb-6">
                     <div className="flex gap-[15px] md:h-[56px] h-12">
-                      <button className="w-full py-2 border rounded-[10px] bg-[#00457C] flex items-center justify-center">
-                        <Image src='/images/paypal.svg' alt='PayPal' width={69} height={18} className='md:w-[69px] md:h-[18px] w-[48px] h-[13px]' />
+                      <button
+                        className="w-full py-2 border rounded-[10px] bg-[#00457C] flex items-center justify-center"
+                        onClick={() => setShowPayPalButton(true)}
+                      >
+                        <Image
+                          src='/images/paypal.svg'
+                          alt='PayPal'
+                          width={69}
+                          height={18}
+                          className='md:w-[69px] md:h-[18px] w-[48px] h-[13px]'
+                        />
                       </button>
+
                       <button className="w-full py-2 border rounded-[10px] bg-[#000000] flex items-center justify-center">
                         <Image src='/images/applepay.svg' alt='Apple Pay' width={54} height={20} className='md:w-[54px] md:h-[20px] w-[42px] h-[16px]'/>
                         <CheckoutPage/>

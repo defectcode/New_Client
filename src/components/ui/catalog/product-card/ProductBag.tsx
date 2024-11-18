@@ -107,10 +107,10 @@ export function ProductBag({ product }: ProductCardCheckoutProps) {
                items.length > 1 && index !== items.length - 1 ? 'border-b' : ''}`}
                style={{ borderColor: '#E8E8ED', marginLeft: '20px', marginRight: '20px' }}
              >
-               <Link href={PUBLIC_URL.product(item.product.id)} className="flex-shrink-0">
-                 <Image src={item.product.images[0]} alt={item.product.title} width={80} height={80} className="object-cover rounded-md" />
+               <Link href={PUBLIC_URL.product(item.product.id)} className="flex-shrink-0 bg-white w-[100px] h-[100px] flex items-center justify-center">
+                 <Image src={item.product.images[0]} alt={item.product.title} width={90} height={90} className="object-cover rounded-md w-[90px] h-[90px]" />
                </Link>
-               <div className="ml-[10px] space-y-6 w-full">
+               <div className="ml-[10px] flex flex-col  justify-between w-full h-[80px]">
                  <div className='flex items-center justify-between'>
                    <h2 className="font-Heebo-15 text-[#1E1E1E] truncate-2-lines">{item.product.title}</h2>
                    <FavoriteButton product={item.product} />

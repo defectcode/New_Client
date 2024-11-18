@@ -12,7 +12,7 @@ export function Bag() {
 	const { user } = useProfile()
 
 	return (
-		<div className='bg-[#F9F9F9] md:py-6 h-full'>
+		<div className='bg-[#F9F9F9] h-full'>
 			<Header />
 			<CatalogBag 
 				title='' 

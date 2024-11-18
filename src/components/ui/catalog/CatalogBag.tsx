@@ -13,7 +13,7 @@ export function CatalogBag({
   const { items, total } = useCart()
 
   return (
-    <div className="pt-5 rounded-lg md:min-h-screen min-h-[300px] max-w-[1000px] w-full mx-auto flex flex-col items-center justify-between">
+    <div className="md:pt-5 rounded-lg md:min-h-screen min-h-[300px] max-w-[1000px] w-full mx-auto flex flex-col items-center justify-between">
       {items.length ? (
         items.map((item) => (
           <ProductBag product={item.product} key={item.product.id} />

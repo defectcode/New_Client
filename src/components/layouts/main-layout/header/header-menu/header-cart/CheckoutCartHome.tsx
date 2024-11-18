@@ -53,7 +53,7 @@ export function CheckoutCartHome() {
         <div className="md:hidden block w-full">
           {isSummaryVisible ? (
             // Header-ul sumarului când este deschis
-            <div className="fixed inset-x-0 top-0 bg-white z-50 py-4 px-5 flex items-center justify-between border-b">
+            <div className="fixed inset-x-0 top-0 bg-white z-50 py-5 px-5 flex items-center justify-between border-b h-[56px]">
               <div className="flex items-center">
                 <Logo />
               </div>
@@ -79,7 +79,7 @@ export function CheckoutCartHome() {
 
         {/* Drawer-ul sumarului */}
         <div
-          className={`fixed inset-x-0 top-0 transform transition-all duration-300 ease-in-out bg-white shadow-lg z-50 mt-[72px]  ${
+          className={`fixed inset-x-0 top-0 transform transition-all duration-300 ease-in-out bg-white shadow-lg z-50 mt-[54px]  ${
             isSummaryVisible ? 'max-h-[80vh] opacity-100 translate-y-0' : 'max-h-0 opacity-0 -translate-y-5'
           }`}
           style={{
@@ -150,7 +150,7 @@ export function CheckoutCartHome() {
               {/* Scrollable Products Section */}
               <div className="relative flex-grow overflow-y-auto">
                 <div className="absolute top-0 left-0 right-0 h-5 bg-gradient-to-b from-black/10 to-transparent z-10"></div>
-                <div className="scroll-content-product max-h-[500px] px-5 py-5">
+                <div className="scroll-content-product px-5 py-5 h-full">
                   {items.length ? (
                     items.map((item, index) => (
                       <CheckoutCartItem
