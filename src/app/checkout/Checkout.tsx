@@ -223,7 +223,7 @@ export function Checkout() {
             <InfoHeader />  
           </div> 
           <div className="w-full lg:w-1/3 md:p-4 md:hidden block p-0 m-0">
-                <CheckoutCartHeader />
+              <CheckoutCartHeader />
           </div>
           <div className="container mx-auto flex flex-col lg:flex-row justify-center items-start lg:h-screen pt-6 px-5 sm:px-6 lg:px-0 bg-[#F9F9F9]">
             <div className="w-full max-w-[620px] flex flex-col gap-10 justify-center items-center py-4 sm:p10 mb-6 lg:mb-0">
@@ -570,6 +570,8 @@ export function Checkout() {
                         )}
                     </div>
                 )}
+
+                
                   
 
                 <div className="flex items-center cursor-pointer text-[#6F6F6F] text-[14px] font-heebo md:mb-0 md:block hidden" onClick={handleToggleCompanyInput}>
