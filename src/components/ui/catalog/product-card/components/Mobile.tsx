@@ -51,7 +51,7 @@ export function Mobile() {
             </div>
 
             {/* Scrollable product list */}
-            <div className="overflow-y-auto flex-1 p-5 border-t border-[#E8E8ED] bg-[#F9F9F9]">
+            <div className="overflow-y-auto flex-1 p-5 border-t border-[#E8E8ED] bg-[#F9F9F9] min-h-[250px] max-h-[300px]">
                 {/* <div className="absolute top-0 left-0 right-0 h-5 bg-gradient-to-b from-black/10 to-transparent z-10"></div> */}
                 {items.map((item, index) => (
                     <div
