@@ -39,8 +39,7 @@ export function Mobile() {
 
     return (
         <div>
-            <div className="flex flex-col max-w-[470px] mx-auto bg-white rounded-lg shadow-md h-screen">
-            {/* Header */}
+            <div className="flex flex-col max-w-[470px] mx-auto bg-white rounded-lg h-screen">
             <div className="flex items-center justify-between px-4 py-3 bg-white h-[56px]">
                 <h2 className="font-Heebo-20-semi text-[#1E1E1E]">Bag</h2>
                 <button
@@ -107,7 +106,7 @@ export function Mobile() {
 
             <div className="p-5">
                 <Promocode/>
-                <div className="">
+                <div>
                     <div className="border-y border-[#E8E8ED] pt-5">
                         <div className="flex justify-between text-sm mb-3">
                             <p className="font-Heebo-16 text-[#1E1E1E]">Subtotal</p>
