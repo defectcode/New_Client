@@ -39,7 +39,7 @@ export function CatalogBag({
   return (
     <div className="md:pt-14 rounded-lg md:min-h-screen max-w-[1000px] w-full mx-auto flex flex-col">
       {items.length ? (
-        <div className="flex flex-wrap lg:flex-nowrap items-start justify-between gap-10">
+        <div className="flex flex-wrap lg:flex-nowrap items-start justify-between gap-20">
           {/* Product List */}
           <div className="flex-grow w-full lg:max-w-[60%]">
             <h1 className="font-Heebo-24-- mb-5">Bag</h1>
