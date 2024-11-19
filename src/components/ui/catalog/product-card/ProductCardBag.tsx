@@ -78,7 +78,7 @@ export function ProductCardBag({ product, isLast }: ProductCardProps) {
                   disabled={quantity === 1}
                   className="px-2 py-1 border-transparent rounded-md text-sm text-[#8C8C8C] disabled:opacity-50 "
                 >
-                  -
+                  <Image src='./images/Minus.svg' alt="minus" width={11} height={11} />
                 </button>
 
                 {/* Cantitate */}
@@ -89,7 +89,7 @@ export function ProductCardBag({ product, isLast }: ProductCardProps) {
                   onClick={handleIncrement}
                   className="px-2 py-1 border-transparent rounded-md text-sm text-[#8C8C8C]"
                 >
-                  +
+                  <Image src='./images/Plus.svg' alt="plus" width={11} height={11} />
                 </button>
               </div>
             </div>

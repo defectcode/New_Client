@@ -88,14 +88,14 @@ export function Mobile() {
                                         onClick={() => console.log('Decrement')}
                                         disabled={item.quantity === 1}
                                     >
-                                        -
+                                        <Image src='./images/Minus.svg' alt="minus" width={8} height={8} />
                                     </button>
                                     <span className="text-sm">{item.quantity}</span>
                                     <button
                                         className="text-sm text-[#8C8C8C] border-transparent rounded"
                                         onClick={() => console.log('Increment')}
                                     >
-                                        +
+                                        <Image src='./images/Plus.svg' alt="plus" width={8} height={8} />
                                     </button>
                                 </div>
                             </div>
