@@ -63,21 +63,11 @@ export function ProductBag({ product }: ProductCardCheckoutProps) {
     }))
   }
 
-  if (!items || items.length === 0) {
-    return <p>No items in cart.</p>
-  }
-
   const totalProducts = items.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
   const totalItems = items.reduce((acc, item) => acc + item.quantity, 0);
   const delivery = 14.00;
   const sales = totalProducts * 0.2899;
   const total = totalProducts + delivery + sales;
-
-  // Debugging pentru verificare
-  // console.log('Subtotal:', totalProducts);
-  // console.log('Delivery:', delivery);
-  // console.log('Estimated Tax:', sales);
-  // console.log('Total:', total);
 
   const handleCheckout = () => {
     router.push('/checkout') 

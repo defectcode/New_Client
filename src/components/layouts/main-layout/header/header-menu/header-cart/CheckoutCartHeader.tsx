@@ -95,7 +95,7 @@ export function CheckoutCartHeader() {
 
         {/* Drawer for Summary */}
         <div
-          className={`fixed inset-x-0 top-0 transform transition-all duration-300 ease-in-out bg-white shadow-lg z-50 mt-[50px] ${
+          className={`fixed inset-x-0 top-0 transform transition-all duration-300 ease-in-out bg-[#F9F9F9] shadow-lg z-50 mt-[50px] ${
             isSummaryVisible ? 'max-h-[80vh] opacity-100 translate-y-0' : 'max-h-0 opacity-0 -translate-y-5'
           }`}
           style={{
@@ -178,7 +178,7 @@ export function CheckoutCartHeader() {
           
           {/* Desktop Drawer */}
           {isSummaryVisible && (
-            <div className="fixed right-0 w-[400px] bg-white z-50 top-[20px] bottom-[20px] shadow-lg overflow-hidden rounded-tl-[20px] rounded-bl-[20px] flex flex-col h-[calc(100%-40px)]">
+            <div className="fixed right-0 w-[400px] bg-[#F9F9F9] z-50 top-[20px] bottom-[20px] shadow-lg overflow-hidden rounded-tl-[20px] rounded-bl-[20px] flex flex-col h-[calc(100%-40px)]">
               
               {/* Header Section */}
               <div className="flex items-center justify-between h-[56px] p-5 bg-white">

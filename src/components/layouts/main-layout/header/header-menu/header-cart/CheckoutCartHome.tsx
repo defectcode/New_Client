@@ -79,7 +79,7 @@ export function CheckoutCartHome() {
 
         {/* Drawer-ul sumarului */}
         <div
-          className={`fixed inset-x-0 top-0 transform transition-all duration-300 ease-in-out bg-white shadow-lg z-50 mt-[54px]  ${
+          className={`fixed inset-x-0 top-0 transform transition-all duration-300 ease-in-out bg-[#F9F9F9] shadow-lg z-50 mt-[54px]  ${
             isSummaryVisible ? 'max-h-[80vh] opacity-100 translate-y-0' : 'max-h-0 opacity-0 -translate-y-5'
           }`}
           style={{
