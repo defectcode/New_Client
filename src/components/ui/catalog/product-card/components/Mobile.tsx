@@ -38,7 +38,8 @@ export function Mobile() {
 
 
     return (
-        <div className="flex flex-col max-w-[470px] mx-auto bg-white rounded-lg shadow-md h-screen">
+        <div>
+            <div className="flex flex-col max-w-[470px] mx-auto bg-white rounded-lg shadow-md h-screen">
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 bg-white h-[56px]">
                 <h2 className="font-Heebo-20-semi text-[#1E1E1E]">Bag</h2>
@@ -120,25 +121,25 @@ export function Mobile() {
                             <p className="font-Heebo-16 text-[#1E1E1E]">Estimated Tax</p>
                             <p className="text-[#5D5D5D]">{formatPrice(sales)}</p>
                         </div>
-                        
+                        </div>
+                        <div className="flex justify-between font-Heebo-16-semi mt-5 mb-10">
+                            <p>Total</p>
+                            <p>{formatPrice(total)}</p>
+                        </div>
+                        <button
+                            className="w-full py-3 mb-3 text-[#1E1E1E] border border-[#1E1E1E] rounded-lg font-Heebo-16-semi h-[56px]"
+                            onClick={handleCheckout}
+                        >
+                            Checkout
+                        </button>
+                        <button className="w-full py-3 mb-3 text-white bg-black rounded-lg font-Heebo-16-semi h-[56px] flex items-center justify-center">
+                            <Image src="/images/applepay.svg" alt="applepay" width={54} height={20} />
+                        </button>
                     </div>
-                    <div className="flex justify-between font-Heebo-16-semi mt-5 mb-10">
-                        <p>Total</p>
-                        <p>{formatPrice(total)}</p>
-                    </div>
-                    <button
-                        className="w-full py-3 mb-3 text-[#1E1E1E] border border-[#1E1E1E] rounded-lg font-Heebo-16-semi h-[56px]"
-                        onClick={handleCheckout}
-                    >
-                        Checkout
-                    </button>
-                    <button className="w-full py-3 mb-3 text-white bg-black rounded-lg font-Heebo-16-semi h-[56px] flex items-center justify-center">
-                        <Image src="/images/applepay.svg" alt="applepay" width={54} height={20} />
-                    </button>
                 </div>
-                
             </div>
             <Info/>
         </div>
+        
     );
 }
