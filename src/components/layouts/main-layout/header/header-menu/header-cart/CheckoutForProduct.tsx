@@ -30,11 +30,11 @@ export function CheckoutForProduct() {
   useEffect(() => {
     if (items.length > 0) {
       setIsSummaryVisible(true);
-      const timer = setTimeout(() => {
-        setIsSummaryVisible(false);
-      }, 5000);
+      // const timer = setTimeout(() => {
+      //   setIsSummaryVisible(false);
+      // }, 5000);
 
-      return () => clearTimeout(timer);
+      // return () => clearTimeout(timer);
     } else {
       setIsSummaryVisible(false);
     }
@@ -51,7 +51,7 @@ export function CheckoutForProduct() {
       ></div>
 
       {/* Mobile Version - Bottom Drawer */}
-      <div className="md:hidden fixed inset-x-0 bottom-0 bg-white shadow-lg rounded-t-2xl z-50">
+      <div className="md:hidden fixed inset-x-0 bottom-0 bg-[#F9F9F9] shadow-lg rounded-t-2xl z-50">
         <div className="py-5">
           <div className="flex items-center justify-between px-5">
             <h2 className="text-[16px] font-medium text-[#1E1E1E]">Your Shopping Bag</h2>
@@ -105,7 +105,7 @@ export function CheckoutForProduct() {
         <div className="py-4 bg-[#F9F9F9] max-w-[300px]">
           {/* Desktop Drawer */}
           {isSummaryVisible && (
-            <div className="fixed right-0 w-[400px] bg-white z-50 top-[20px] bottom-[20px] shadow-lg overflow-hidden rounded-tl-[20px] rounded-bl-[20px] flex flex-col">
+            <div className="fixed right-0 w-[400px] bg-[#F9F9F9] z-50 top-[20px] bottom-[20px] shadow-lg overflow-hidden rounded-tl-[20px] rounded-bl-[20px] flex flex-col">
               
               {/* Header Section */}
               <div className="flex items-center justify-between h-[56px] p-5 bg-white">

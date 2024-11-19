@@ -10,7 +10,6 @@ import { CartActions } from './CartActions';
 import { useDispatch } from 'react-redux';
 import { FavoriteButton } from '@/app/(root)/product/[id]/product-info/FavoriteButton';
 import { cartSlice } from '@/store/cart/cart.slice';
-import { colorColumns } from '../../../../../../../app/store/[storeId]/colors/ColorColumns';
 
 interface CartItemProps {
   item: ICartItem;
@@ -21,14 +20,15 @@ interface CartItemProps {
 export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
   const dispatch = useDispatch();
 
-  // Verificăm dacă suntem pe pagina /checkout
+  // Detectăm pagina curentă
   const isCheckoutPage = typeof window !== 'undefined' && window.location.pathname === '/checkout';
+  const isProductPage = typeof window !== 'undefined' && window.location.pathname.startsWith('/product');
 
-  // State for color dropdown
+  // State pentru color dropdown
   const [colorDropdownOpen, setColorDropdownOpen] = useState(false);
   const [selectedColor, setSelectedColor] = useState<string>(item.product.color.name);
 
-  // Available colors
+  // Culori disponibile
   const availableColors = ['Light gray', 'Blue', 'Red', 'Black'];
 
   const handleRemoveItem = () => {
@@ -54,8 +54,7 @@ export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
         !isLastItem && !isSingleItem ? 'border-b border-[#8C8C8C]/10' : ''
       } ${item.id === 0 ? 'md:pt-0 pt-[20px] pb-[20px]' : 'pt-[20px] pb-[20px]'}`}
     >
-
-      {/* Product Image */}
+      {/* Imaginea produsului */}
       <Link
         href={PUBLIC_URL.product(item.product.id)}
         className="relative flex items-center justify-center w-[100px] h-[100px] bg-white border border-transparent"
@@ -69,30 +68,32 @@ export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
             className="object-cover"
           />
           {/* Cerc pentru cantitate */}
-          <div className="absolute -top-3 -right-2 bg-[#5D5D5D]/50 text-[#FFF4F4] text-[12px] w-5 h-5 flex items-center justify-center rounded-full font-bold">
-            {item.quantity}
-          </div>
+          {isCheckoutPage && (
+            <div className="absolute -top-3 -right-2 bg-[#5D5D5D]/50 text-[#FFF4F4] text-[12px] w-5 h-5 flex items-center justify-center rounded-full font-bold">
+              {item.quantity}
+            </div>
+          )}
         </div>
       </Link>
 
-      {/* Product Details */}
+      {/* Detalii produs */}
       <div className="flex flex-col ml-[10px] w-3/4 relative">
         <div className="flex items-center justify-between w-full">
           <h2 className="text-[15px] font-semibold truncate max-w-[300px]">{item.product.title}</h2>
-          {/* Ascunde FavoriteButton pe pagina checkout */}
-          {!isCheckoutPage && <FavoriteButton product={item.product} />}
+          {/* Ascunde FavoriteButton pe paginile `checkout` și `product` */}
+          {!isCheckoutPage && !isProductPage && <FavoriteButton product={item.product} />}
         </div>
 
-        {/* Color Selector */}
+        {/* Selector de culori */}
         <div
           className={`flex items-center gap-1 mt-[2px] relative ${
-            isCheckoutPage ? 'pointer-events-none opacity-50' : 'cursor-pointer'
+            isCheckoutPage || isProductPage ? 'pointer-events-none opacity-50' : 'cursor-pointer'
           }`}
           onClick={toggleColorDropdown}
         >
           <p className="text-sm text-gray-500">{selectedColor}</p>
-          {/* Ascunde săgeata pe pagina checkout */}
-          {!isCheckoutPage && (
+          {/* Ascunde săgeata pe paginile `checkout` și `product` */}
+          {!isCheckoutPage && !isProductPage && (
             <Image
               src="/images/arr.svg"
               alt="dropdown arrow"
@@ -104,7 +105,7 @@ export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
             />
           )}
           {/* Dropdown */}
-          {!isCheckoutPage && colorDropdownOpen && (
+          {!isCheckoutPage && !isProductPage && colorDropdownOpen && (
             <div
               className="absolute bg-white shadow-lg border rounded-md z-10"
               style={{
@@ -130,8 +131,8 @@ export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
           <div className="flex items-center gap-2 text-sm text-gray-500">
             <p>{formatPrice(item.product.price)}</p>
           </div>
-          {/* Ascunde CartActions pe pagina checkout */}
-          {!isCheckoutPage && <CartActions item={item} />}
+          {/* Ascunde CartActions pe paginile `checkout` și `product` */}
+          {!isCheckoutPage && !isProductPage && <CartActions item={item} />}
         </div>
       </div>
     </div>

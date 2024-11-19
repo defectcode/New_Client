@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/Button'
 import Image from 'next/image'
 import { User } from './header-menu/header-cart/cart-item/user'
 import { CheckoutCartHome } from './header-menu/header-cart/CheckoutCartHome'
+import { CheckoutForProduct } from './header-menu/header-cart/CheckoutForProduct'
 
 
 export function Header() {
@@ -74,7 +75,7 @@ export function Header() {
             >
               <Image src='/images/close.svg' alt='close' width={12} height={12}/>
             </button>
-            <CheckoutCartHome />
+            <CheckoutForProduct />
           </div>
         </div>
       )}
