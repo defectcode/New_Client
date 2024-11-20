@@ -16,17 +16,17 @@ interface CartWindowProps {
 
 export function CartWindow({ product, onClose }: CartWindowProps) {
   // Disable scroll when the component is open
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    const timer = setTimeout(() => {
-      onClose();
-    }, 5000);
+  // useEffect(() => {
+  //   document.body.style.overflow = 'hidden';
+  //   const timer = setTimeout(() => {
+  //     onClose();
+  //   }, 5000);
 
-    return () => {
-      document.body.style.overflow = '';
-      clearTimeout(timer); 
-    };
-  }, [onClose]);
+  //   return () => {
+  //     document.body.style.overflow = '';
+  //     clearTimeout(timer); 
+  //   };
+  // }, [onClose]);
 
   return (
     <>
@@ -67,7 +67,7 @@ export function CartWindow({ product, onClose }: CartWindowProps) {
                   className="object-cover rounded"
                 />
               </div>
-              <div>
+              <div className='flex items-start justify-center'>
                 <h3 className="text-[16px] font-medium text-[#1E1E1E]">{product.title}</h3>
                 <h3 className="text-[16px] font-medium text-[#8C8C8C]">{product.color}</h3>
                 <p className="text-[#1E1E1E] text-[14px]">{formatPrice(product.price)}</p>

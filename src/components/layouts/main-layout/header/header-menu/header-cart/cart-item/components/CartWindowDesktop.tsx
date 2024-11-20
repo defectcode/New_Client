@@ -16,18 +16,18 @@ interface CartWindowDesktopProps {
 
 export function CartWindowDesktop({ product, onClose }: CartWindowDesktopProps) {
   // Disable scroll while the cart window is open
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
+  // useEffect(() => {
+  //   document.body.style.overflow = "hidden";
 
-    const timer = setTimeout(() => {
-      onClose();
-    }, 5000);
+  //   const timer = setTimeout(() => {
+  //     onClose();
+  //   }, 5000);
 
-    return () => {
-      document.body.style.overflow = "";
-      clearTimeout(timer);
-    };
-  }, [onClose]);
+  //   return () => {
+  //     document.body.style.overflow = "";
+  //     clearTimeout(timer);
+  //   };
+  // }, [onClose]);
 
   return (
     <>
@@ -38,12 +38,12 @@ export function CartWindowDesktop({ product, onClose }: CartWindowDesktopProps) 
       ></div>
 
       {/* Cart Window */}
-      <div className="fixed top-5 right-0 bg-white shadow-lg rounded-l-[20px] z-50 w-[400px]">
+      <div className="fixed top-5 right-0 bg-[#F9F9F9] shadow-lg rounded-l-[20px] z-50 w-[400px]">
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-3 border-b border-gray-200">
           <div className="flex items-center gap-3">
             <Image src="/images/bif.svg" alt="bif" width={20} height={20} />
-            <h2 className="text-[18px] font-medium text-[#1E1E1E]">1 Item Added To Bag</h2>
+            <h2 className="text-[16px] font-medium text-[#1E1E1E]">1 Item Added To Bag</h2>
           </div>
           <button
             className="text-[16px] text-black"
@@ -58,8 +58,8 @@ export function CartWindowDesktop({ product, onClose }: CartWindowDesktopProps) 
           {/* Top Gradient */}
           <div className="absolute top-0 left-0 right-0 h-5 bg-gradient-to-b from-black/10 to-transparent z-10"></div>
 
-          <div className="flex items-start gap-4 py-5 relative z-20">
-            <div className="w-[90px] h-[90px]">
+          <div className="flex items-center gap-4 relative z-20">
+            <div className="w-[100px] h-[100px] bg-white flex items-center justify-center rounded">
               <Image
                 src={product.images[0]}
                 alt={product.title}
@@ -68,10 +68,10 @@ export function CartWindowDesktop({ product, onClose }: CartWindowDesktopProps) 
                 className="object-cover rounded"
               />
             </div>
-            <div>
-              <h3 className="text-[18px] font-medium text-[#1E1E1E]">{product.title}</h3>
-              <h4 className="text-[16px] font-medium text-[#8C8C8C]">{product.color}</h4>
-              <p className="text-[#1E1E1E] text-[14px]">{formatPrice(product.price)}</p>
+            <div className="space-y-[5px]">
+              <h3 className="text-[15px] font-semibold truncate max-w-[300px] text-[#1E1E1E]">{product.title}</h3>
+              <h4 className="text-[14px] font-medium text-[#8C8C8C]">{product.color}</h4>
+              <p className="text-[#5D5D5D] text-[14px]">{formatPrice(product.price)}</p>
             </div>
           </div>
 
