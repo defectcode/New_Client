@@ -1,7 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { formatPrice } from '@/utils/string/format-price';
 import Link from 'next/link';
+import { CheckoutCartHome } from '../../CheckoutCartHome';
+import { CheckoutCartHom } from '../../CheckoutCartHom';
+import { useCart } from '@/hooks/useCart';
 
 interface CartWindowProps {
   product: {
@@ -15,18 +18,31 @@ interface CartWindowProps {
 }
 
 export function CartWindow({ product, onClose }: CartWindowProps) {
-  // Disable scroll when the component is open
-  // useEffect(() => {
-  //   document.body.style.overflow = 'hidden';
-  //   const timer = setTimeout(() => {
-  //     onClose();
-  //   }, 5000);
 
-  //   return () => {
-  //     document.body.style.overflow = '';
-  //     clearTimeout(timer); 
-  //   };
-  // }, [onClose]);
+  const [isCartVisible, setIsCartVisible] = useState(false);
+  const { items, total } = useCart();
+
+  const totalItemsCount = items.reduce((accumulator, item) => accumulator + item.quantity, 0);
+  const itemText = totalItemsCount === 1 ? 'item' : 'items';
+
+  const estimatedTax = total * 0.2;
+  const finalTotal = total + estimatedTax;
+
+  const toggleCartVisibility = () => {
+    setIsCartVisible(!isCartVisible);
+  };
+  // Disable scroll when the component is open
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    const timer = setTimeout(() => {
+      onClose();
+    }, 5000);
+
+    return () => {
+      document.body.style.overflow = '';
+      clearTimeout(timer); 
+    };
+  }, [onClose]);
 
   return (
     <>
@@ -53,10 +69,10 @@ export function CartWindow({ product, onClose }: CartWindowProps) {
           </div>
 
           {/* Product Details */}
-          <div className="px-5 mt-4 relative">
+          <div className="px-5 mt-4 relative ">
             <div className="absolute top-0 left-0 right-0 h-5 bg-gradient-to-b from-black/10 to-transparent z-10"></div>
 
-            <div className="flex items-start gap-4 py-5 relative z-20">
+            <div className="flex items-center gap-4 py-5 relative z-20">
               {/* z-20 ensures content is above the gradient */}
               <div className="w-[90px] h-[90px]">
                 <Image
@@ -67,7 +83,7 @@ export function CartWindow({ product, onClose }: CartWindowProps) {
                   className="object-cover rounded"
                 />
               </div>
-              <div className='flex items-start justify-center'>
+              <div className='flex flex-col items-start justify-center'>
                 <h3 className="text-[16px] font-medium text-[#1E1E1E]">{product.title}</h3>
                 <h3 className="text-[16px] font-medium text-[#8C8C8C]">{product.color}</h3>
                 <p className="text-[#1E1E1E] text-[14px]">{formatPrice(product.price)}</p>
@@ -82,16 +98,21 @@ export function CartWindow({ product, onClose }: CartWindowProps) {
             <div className="flex items-center justify-between text-[16px] pb-5 border-b">
               <div className="flex gap-1">
                 <p className="font-Heebo-18 text-[#1E1E1E]">Total</p>
-                <p className="font-Heebo-16 text-[#8C8C8C]">(1 item)</p>
+                <p className="font-Heebo-16 text-[#8C8C8C]">{`(${totalItemsCount} ${itemText})`}</p>
               </div>
-              <span className="font-Heebo-18 text-[#1E1E1E]">{formatPrice(product.price)}</span>
+              <span className="font-Heebo-18 text-[#1E1E1E]">{formatPrice(total)}</span>
             </div>
             <div className="flex items-center justify-center space-x-4 mt-5">
-              <Link href="/bag" className="flex-1 max-w-[185px]">
-                <button className="font-bold border border-black/50 rounded-[10px] w-full h-[48px] flex items-center justify-center bg-white text-[#424242]">
+            <Link href="#" className="flex-1 max-w-[185px]">
+              <button
+                className="font-bold border border-black/50 rounded-[10px] w-full h-[48px] flex items-center justify-center bg-white text-[#424242]"
+                onClick={toggleCartVisibility} // Deschide/închide componenta
+                >
                   View Bag
                 </button>
               </Link>
+
+              {isCartVisible && <CheckoutCartHom onClose={toggleCartVisibility} />}
               <Link href="/checkout" className="flex-1 max-w-[185px]">
                 <button className="font-bold border border-black/50 rounded-[10px] w-full h-[48px] flex items-center justify-center bg-black text-white">
                   Checkout

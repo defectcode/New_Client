@@ -232,6 +232,14 @@
   line-height: 15px;
 }
 
+.font-Heebo-semi-15 {
+  font-family: 'Heebo', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 15px;
+}
+
+
 .font-Heebo-bold-15 {
   font-family: 'Heebo', sans-serif;
   font-size: 15px;

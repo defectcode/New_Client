@@ -18,24 +18,28 @@ interface ProductProps {
 
 export function Product({
   initialProduct,
-  similarProducts,
-  id = ''
+  id = '',
 }: ProductProps) {
   const { data: product } = useQuery({
     queryKey: ['product', initialProduct.id],
     queryFn: () => productService.getById(id),
     initialData: initialProduct,
-    enabled: !!id
-  })
+    enabled: !!id, // Rulează doar dacă `id` este definit
+  });
+
+  if (!product) {
+    // Afișăm un loader sau un mesaj de eroare dacă produsul nu este încărcat
+    return <div>Loading product...</div>;
+  }
 
   return (
     <div className="mx-auto max-w-[1400px]">
-      <div className="space-y-7 md:py-10 py-5 md:px-6">
+      <div className="space-y-7 md:py-10 py-5">
         <div className="lg:flex lg:items-start lg:gap-20">
           <div className="w-full lg:w-2/3">
             <ProductGallery product={product} />
             <div className="hidden lg:block mt-6">
-              <SectionList />
+              <SectionList product={product} /> {/* Transmitem produsul ca prop */}
             </div>
           </div>
           <div className="w-full lg:w-1/3 mt-6 lg:mt-0">
@@ -44,9 +48,9 @@ export function Product({
           </div>
         </div>
         <div className="lg:hidden mt-6">
-          <SectionList />
+          <SectionList product={product} />
         </div>
       </div>
     </div>
-  )
+  );
 }

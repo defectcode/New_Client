@@ -11,21 +11,25 @@ import Link from 'next/link';
 import { Logo } from '../../logo/Logo';
 import CheckoutButton from '@/app/checkout/ButtonCheckout';
 
-export function CheckoutCartHome() {
+type CheckoutCartHomProps = {
+  onClose: () => void; // Definim tipul pentru prop-ul onClose
+};
+
+export function CheckoutCartHom({ onClose }: CheckoutCartHomProps) {
   const [isSummaryVisible, setIsSummaryVisible] = useState(true);
   const { items, total } = useCart();
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Calculul corect al numărului total de articoles
+  const handleToggleSummary = () => {
+    setIsSummaryVisible(!isSummaryVisible);
+    if (!isSummaryVisible && onClose) onClose(); // Închide componenta când este ascunsă
+  };
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const totalItemsCount = items.reduce((accumulator, item) => accumulator + item.quantity, 0);
   const itemText = totalItemsCount === 1 ? 'item' : 'items';
 
   const estimatedTax = total * 0.2;
   const finalTotal = total + estimatedTax;
-
-  // const handleToggleSummary = () => {
-  //   setIsSummaryVisible(!isSummaryVisible);
-  // };
 
   const handleToggleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -44,10 +48,6 @@ export function CheckoutCartHome() {
     };
   }, [isSummaryVisible]);
 
-  const handleToggleSummary = () => {
-    setIsSummaryVisible(!isSummaryVisible);
-    document.body.style.overflow = isSummaryVisible ? '' : 'hidden'; // Blochează scroll-ul când componenta este vizibilă
-  };
 
   // Cleanup pentru `overflow` la demontare
   useEffect(() => {
@@ -60,7 +60,7 @@ export function CheckoutCartHome() {
     <div className="relative flex items-center justify-between bg-[#F9F9F9]">
       {/* Background overlay for non-summary elements when summary is open */}
         {isSummaryVisible && (
-          <div className="fixed inset-0 bg-[#000000] bg-opacity-60 z-40" onClick={handleToggleSummary}></div>
+          <div className="fixed inset-0 bg-[rgb(0,0,0)] bg-opacity-60 z-40" onClick={handleToggleSummary}></div>
         )}
 
       {isSummaryVisible && (

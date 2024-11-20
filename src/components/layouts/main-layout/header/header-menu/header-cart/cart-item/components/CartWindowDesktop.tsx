@@ -1,7 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { formatPrice } from "@/utils/string/format-price";
 import CheckoutButton from "@/app/checkout/ButtonCheckout";
+import Link from "next/link";
+import { CheckoutCartHom } from "../../CheckoutCartHom";
+import { useCart } from "@/hooks/useCart";
+import '../PayPal.css'
 
 interface CartWindowDesktopProps {
   product: {
@@ -15,19 +19,33 @@ interface CartWindowDesktopProps {
 }
 
 export function CartWindowDesktop({ product, onClose }: CartWindowDesktopProps) {
+    const [isCartVisible, setIsCartVisible] = useState(false);
+    const { items, total } = useCart();
+
+    const totalItemsCount = items.reduce((accumulator, item) => accumulator + item.quantity, 0);
+    const itemText = totalItemsCount === 1 ? 'item' : 'items';
+  
+    const estimatedTax = total * 0.2;
+    const finalTotal = total + estimatedTax;
+
+
+  
+    const toggleCartVisibility = () => {
+      setIsCartVisible(!isCartVisible);
+    };
   // Disable scroll while the cart window is open
-  // useEffect(() => {
-  //   document.body.style.overflow = "hidden";
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
 
-  //   const timer = setTimeout(() => {
-  //     onClose();
-  //   }, 5000);
+    const timer = setTimeout(() => {
+      onClose();
+    }, 5000);
 
-  //   return () => {
-  //     document.body.style.overflow = "";
-  //     clearTimeout(timer);
-  //   };
-  // }, [onClose]);
+    return () => {
+      document.body.style.overflow = "";
+      clearTimeout(timer);
+    };
+  }, [onClose]);
 
   return (
     <>
@@ -81,19 +99,34 @@ export function CartWindowDesktop({ product, onClose }: CartWindowDesktopProps) 
 
         {/* Footer */}
         <div className="p-5 border-t border-gray-200">
-          <div className="flex items-center justify-between text-[16px]">
+          <div className="flex items-center justify-between text-[16px] border-b pb-5">
             <div className="flex gap-1">
               <p className="font-Heebo-18 text-[#1E1E1E]">Total</p>
-              <p className="font-Heebo-16 text-[#8C8C8C]">(1 item)</p>
+              <p className="font-Heebo-semi-15 text-[#8C8C8C]">{`(${totalItemsCount} ${itemText})`}</p>
             </div>
-            <span className="font-Heebo-18 text-[#1E1E1E]">{formatPrice(product.price)}</span>
+            <span className="font-Heebo-18 text-[#1E1E1E]">{formatPrice(total)}</span>
           </div>
-          <div className="space-y-5 mt-5 border-t pt-5">
-            <CheckoutButton />
-            <button className="w-full mb-2 bg-[#1E1E1E] flex items-center justify-center h-[48px] rounded-[10px]">
-              <Image src="/images/applepayBlack.svg" alt="applepay" width={42} height={16} />
-            </button>
-          </div>
+          <div className="flex flex-col items-center justify-center mt-5 space-y-[10px]">
+          <Link href="#" className="flex-1 w-full">
+              <button
+                  className="font-bold border border-black/50 rounded-[10px] w-full h-[48px] flex items-center justify-center bg-white text-[#424242]"
+                  onClick={(e) => {
+                    e.preventDefault(); // Evită redirect-ul default de la Link
+                    toggleCartVisibility();
+                  }}
+                >
+                  View Bag
+                </button>
+              </Link>
+
+              {/* Componentele dependente de vizibilitate */}
+              {isCartVisible && <CheckoutCartHom onClose={toggleCartVisibility} />}
+              <Link href="/checkout" className="flex-1 w-full">
+                <button className="font-bold border border-black/50 rounded-[10px] w-full h-[48px] flex items-center justify-center bg-black text-white">
+                  Checkout
+                </button>
+              </Link>
+            </div>
         </div>
       </div>
     </>

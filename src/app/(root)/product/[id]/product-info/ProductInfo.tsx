@@ -17,6 +17,7 @@ interface ProductInfoProps {
 export function ProductInfo({ product }: ProductInfoProps) {
   const isDesktop = useIsDesktop(); // Apelăm hook-ul în afara oricărei condiții
   const [isCheckoutCartVisible, setIsCheckoutCartVisible] = useState(false);
+  const [isSelected, setIsSelected] = useState(false);
   const [recentlyAddedProduct, setRecentlyAddedProduct] = useState<{
     title: string;
     price: number;
@@ -63,6 +64,21 @@ export function ProductInfo({ product }: ProductInfoProps) {
         </div>
         <span className="font-Heebo-reg-14">{product.color.name}</span>
       </div>
+
+      <div
+        onClick={() => setIsSelected(!isSelected)}
+        className={`w-[18px] h-[18px] rounded-full border ${
+          isSelected ? "border-black" : "border-gray-300"
+        } my-5`}
+        style={{
+          backgroundColor: product.color.value,
+          boxShadow: isSelected
+            ? "0 0 0 2px white, 0 0 0 3px black"
+            : "none",
+        }}
+      ></div>
+
+
 
       <h1 className="text-[#5D5D5D] font-Heebo-reg-16 mb-5">Description</h1>
       <p className="font-Heebo-15-light text-[#8C8C8C] max-w-[393px] w-full mb-10">
