@@ -11,7 +11,7 @@ interface CartWindowProps {
     quantity?: number;
     color: string;
   };
-  onClose: () => void; // Function to close the component
+  onClose: () => void;
 }
 
 export function CartWindow({ product, onClose }: CartWindowProps) {
@@ -19,12 +19,12 @@ export function CartWindow({ product, onClose }: CartWindowProps) {
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     const timer = setTimeout(() => {
-      onClose(); // Automatically close after 5 seconds
+      onClose();
     }, 5000);
 
     return () => {
-      document.body.style.overflow = ''; // Re-enable scrolling when the component is closed
-      clearTimeout(timer); // Clear the timeout to avoid errors
+      document.body.style.overflow = '';
+      clearTimeout(timer); 
     };
   }, [onClose]);
 
@@ -33,7 +33,7 @@ export function CartWindow({ product, onClose }: CartWindowProps) {
       {/* Overlay for darkened background */}
       <div
         className="fixed inset-0 bg-black/50 z-40"
-        onClick={onClose} // Close the cart window when clicking outside
+        onClick={onClose}
       ></div>
 
       {/* Cart Window */}

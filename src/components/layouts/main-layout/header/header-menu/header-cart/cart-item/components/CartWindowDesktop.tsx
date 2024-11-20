@@ -20,12 +20,12 @@ export function CartWindowDesktop({ product, onClose }: CartWindowDesktopProps) 
     document.body.style.overflow = "hidden";
 
     const timer = setTimeout(() => {
-      onClose(); // Automatically close the cart after 5 seconds
+      onClose();
     }, 5000);
 
     return () => {
-      document.body.style.overflow = ""; // Re-enable scrolling when the cart is closed
-      clearTimeout(timer); // Clear the timeout to avoid errors
+      document.body.style.overflow = "";
+      clearTimeout(timer);
     };
   }, [onClose]);
 

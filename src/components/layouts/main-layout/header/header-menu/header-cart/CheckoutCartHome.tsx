@@ -6,6 +6,8 @@ import { formatPrice } from '@/utils/string/format-price';
 import { CheckoutCartItem } from './cart-item/CheckoutCartItem';
 import './cart-item/PayPal.css';
 import Image from 'next/image';
+import Link from 'next/link';
+
 import { Logo } from '../../logo/Logo';
 import CheckoutButton from '@/app/checkout/ButtonCheckout';
 
@@ -21,9 +23,9 @@ export function CheckoutCartHome() {
   const estimatedTax = total * 0.2;
   const finalTotal = total + estimatedTax;
 
-  const handleToggleSummary = () => {
-    setIsSummaryVisible(!isSummaryVisible);
-  };
+  // const handleToggleSummary = () => {
+  //   setIsSummaryVisible(!isSummaryVisible);
+  // };
 
   const handleToggleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -42,6 +44,18 @@ export function CheckoutCartHome() {
     };
   }, [isSummaryVisible]);
 
+  const handleToggleSummary = () => {
+    setIsSummaryVisible(!isSummaryVisible);
+    document.body.style.overflow = isSummaryVisible ? '' : 'hidden'; // Blochează scroll-ul când componenta este vizibilă
+  };
+
+  // Cleanup pentru `overflow` la demontare
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
+
   return (
     <div className="relative flex items-center justify-between bg-[#F9F9F9]">
       {/* Background overlay for non-summary elements when summary is open */}
@@ -49,87 +63,67 @@ export function CheckoutCartHome() {
           <div className="fixed inset-0 bg-[#000000] bg-opacity-60 z-40" onClick={handleToggleSummary}></div>
         )}
 
-        {/* Mobile Header */}
-        <div className="md:hidden block w-full">
-          {isSummaryVisible ? (
-            // Header-ul sumarului când este deschis
-            <div className="fixed inset-x-0 top-0 bg-white z-50 py-5 px-5 flex items-center justify-between border-b h-[56px]">
-              <div className="flex items-center">
-                <Logo />
-              </div>
-              <div
-                className="flex items-center gap-2 text-[16px] font-Heebo-med text-[#1E1E1E]"
-                onClick={handleToggleSummary}
+      {isSummaryVisible && (
+        <div className="fixed inset-x-0 bottom-0 bg-white shadow-lg rounded-t-2xl z-50 md:hidden">
+          <div className="py-5">
+            <div className="flex items-center justify-between px-5">
+              <h2 className="text-[16px] font-medium text-black">Your Shopping Bag</h2>
+              <button
+                className="text-black"
+                onClick={handleToggleSummary} // Închide componenta când se apasă pe buton
               >
-                <span>Summary</span>
-                <p>{formatPrice(finalTotal)}</p>
-                <Image
-                  src="/images/arr.svg"
-                  alt="arr"
-                  width={10}
-                  height={5}
-                  className={`transition-transform duration-300 ${isSummaryVisible ? 'rotate-180' : 'rotate-0'}`}
-                />
+                <Image src="/images/close.svg" alt="close" width={14} height={14} />
+              </button>
+            </div>
+
+            {/* Produsele din coș */}
+            <div className="relative mt-4 overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-5 bg-gradient-to-b from-black/10 to-transparent z-10"></div>
+              <div className="overflow-y-auto overflow-x-hidden px-5 min-h-[110px] max-h-[300px]">
+                {items.length ? (
+                  items.map((item, index) => (
+                    <CheckoutCartItem
+                      item={item}
+                      key={item.id}
+                      isLastItem={index === items.length - 1}
+                      isSingleItem={items.length === 1}
+                    />
+                  ))
+                ) : (
+                  <div className="text-sm text-muted-foreground">The cart is empty!</div>
+                )}
               </div>
+              <div className="absolute bottom-0 left-0 right-0 h-5 bg-gradient-to-t from-black/10 to-transparent z-10"></div>
             </div>
-          ) : (
-            <div>
+
+
+            {/* Secțiunea totalului */}
+            <div className="border-t border-gray-200 pt-5 px-5">
+            <div className="flex items-center justify-between text-[16px] mb-3 border-b border-[#E8E8ED] pb-5">
+              <p className="font-Heebo-16 text-[#1E1E1E]">{`${totalItemsCount} ${itemText}`}</p>
+              <a href="/bag" className="underline font-Heebo-reg-16 text-[#5D5D5D] ">View Bag</a>
             </div>
-          )}
-
-        {/* Drawer-ul sumarului */}
-        <div
-          className={`fixed inset-x-0 top-0 transform transition-all duration-300 ease-in-out bg-[#F9F9F9] shadow-lg z-50 mt-[54px]  ${
-            isSummaryVisible ? 'max-h-[80vh] opacity-100 translate-y-0' : 'max-h-0 opacity-0 -translate-y-5'
-          }`}
-          style={{
-            transformOrigin: 'top',
-            overflow: 'hidden',
-            transitionProperty: 'max-height, opacity, transform',
-            borderBottomLeftRadius: '10px',
-            borderBottomRightRadius: '10px',
-          }}
-          >
-        {/* Conținut scrollabil */}
-        <div className="relative overflow-y-auto h-[calc(65vh)]">
-          <div className="absolute top-0 left-0 right-0 h-5 bg-gradient-to-b from-black/10 to-transparent z-10"></div>
-          <div className="px-5 pb-5 max-h-[300px] overflow-y-auto">
-            {items.length ? (
-              items.map((item, index) => (
-                <CheckoutCartItem
-                  item={item}
-                  key={item.id}
-                  isLastItem={index === items.length - 1}
-                  isSingleItem={items.length === 1}
-                />
-              ))
-            ) : (
-              <div className="text-sm text-muted-foreground">The cart is empty!</div>
-            )}
+            <div className="flex items-center justify-between text-[16px] border-b border-[#E8E8ED] pb-5 mt-5">
+              <p className="font-Heebo-18 text-[#1E1E1E]">Total</p>
+              <span className="font-Heebo-18 text-[#1E1E1E]">{formatPrice(finalTotal)}</span>
+            </div>
+            <div className="flex items-center justify-center space-x-4 mt-5">
+              <Link href="/checkout" className="flex-1 max-w-[185px]">
+                <button className="font-bold border border-black/50 rounded-[10px] w-full h-[48px] flex items-center justify-center bg-white text-[#1E1E1E]">
+                  Checkout
+                </button>
+              </Link>
+              <Link href="/bag" className="flex-1 max-w-[185px]">
+                  <button className="w-full bg-[#1E1E1E] flex items-center justify-center h-[48px] rounded-[10px]">
+                    <Image src='/images/applepayBlack.svg' alt='applepay' width={42} height={16} />
+                  </button>
+              </Link>
+            </div>
           </div>
-          <div className="absolute bottom-0 left-0 right-0 h-5 bg-gradient-to-t from-black/10 to-transparent z-10"></div>
-        </div>
-
-        {/* Footer fix */}
-        <div className="fixed bottom-0 left-0 right-0 bg-white px-5 py-4 shadow-lg border-t">
-          <div className="flex items-center justify-between text-[16px] border-b  border-[#E8E8ED] pb-5">
-            <p className="font-Heebo-16 text-[#1E1E1E]">{`${totalItemsCount} ${itemText}`}</p>
-            <a href="/bag" className="underline font-Heebo-reg-16 text-[#5D5D5D]">View Bag</a>
-          </div>
-          <div className="flex items-center justify-between text-[16px] border-b border-[#E8E8ED] py-5">
-            <p className="font-Heebo-18 text-[#1E1E1E]">Total</p>
-            <span className="font-Heebo-18 text-[#1E1E1E]">{formatPrice(finalTotal)}</span>
-          </div>
-          <div className="space-y-5 mt-10">
-            <CheckoutButton />
-            <button className="w-full bg-black flex items-center justify-center h-12 rounded-lg">
-              <Image src='/images/applepayBlack.svg' alt='applepay' width={42} height={16} />
-            </button>
+            {/* </div> */}
           </div>
         </div>
-      </div>
-    </div>
-
+      )}
 
 
           {/* Structura desktop */}
