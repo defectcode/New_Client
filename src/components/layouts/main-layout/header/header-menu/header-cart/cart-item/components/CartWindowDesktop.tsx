@@ -81,7 +81,7 @@ export function CartWindowDesktop({ product, onClose }: CartWindowDesktopProps) 
 
         {/* Footer */}
         <div className="p-5 border-t border-gray-200">
-          <div className="flex items-center justify-between text-[16px] pb-5">
+          <div className="flex items-center justify-between text-[16px]">
             <div className="flex gap-1">
               <p className="font-Heebo-18 text-[#1E1E1E]">Total</p>
               <p className="font-Heebo-16 text-[#8C8C8C]">(1 item)</p>
