@@ -7,22 +7,25 @@ import { AddToCartButton } from './AddToCartButton';
 import { FavoriteButton } from './FavoriteButton';
 import Image from 'next/image';
 import { CartWindow } from '@/components/layouts/main-layout/header/header-menu/header-cart/cart-item/components/CartWindow';
+import { CartWindowDesktop } from '@/components/layouts/main-layout/header/header-menu/header-cart/cart-item/components/CartWindowDesktop';
+import { useIsDesktop } from '@/hooks/useIsDesktop';
 
 interface ProductInfoProps {
   product: IProduct;
 }
 
 export function ProductInfo({ product }: ProductInfoProps) {
+  const isDesktop = useIsDesktop(); // Apelăm hook-ul în afara oricărei condiții
   const [isCheckoutCartVisible, setIsCheckoutCartVisible] = useState(false);
   const [recentlyAddedProduct, setRecentlyAddedProduct] = useState<{
     title: string;
     price: number;
     images: string[];
-    color: string; // Adăugăm culoarea aici
+    color: string; 
   } | null>(null);
 
   const handleCloseCartWindow = () => {
-    setIsCheckoutCartVisible(false); // Ascunde CartWindow
+    setIsCheckoutCartVisible(false); 
   };
 
   const handleAddToCart = () => {
@@ -30,9 +33,9 @@ export function ProductInfo({ product }: ProductInfoProps) {
       title: product.title,
       price: product.price,
       images: product.images,
-      color: product.color.name, // Include culoarea produsului
+      color: product.color.name, 
     });
-    setIsCheckoutCartVisible(true); // Afișăm fereastra
+    setIsCheckoutCartVisible(true);
   };
 
   return (
@@ -67,7 +70,7 @@ export function ProductInfo({ product }: ProductInfoProps) {
       </p>
       <div className="flex flex-col md:flex-row items-start gap-x-2 w-full">
         <div className="w-full space-y-[10px]">
-          <AddToCartButton product={product} onAddToCart={handleAddToCart} />
+          <AddToCartButton product={product}/>
           <button className="w-full mb-2 bg-[#1E1E1E] flex items-center justify-center h-[48px] rounded-[10px]">
             <Image
               src="/images/applepayBlack.svg"
@@ -79,21 +82,25 @@ export function ProductInfo({ product }: ProductInfoProps) {
           </button>
         </div>
       </div>
-      {isCheckoutCartVisible && recentlyAddedProduct && (
-        <>
-          {/* Overlay semi-transparent */}
-          <div
-            className="fixed inset-0 bg-black/50 z-40"
-            onClick={() => setIsCheckoutCartVisible(false)}
-          ></div>
-
-          {/* CartWindow */}
-          <CartWindow
-            product={recentlyAddedProduct}
-            onClose={handleCloseCartWindow} // Transmite funcția corectă
-          />
-        </>
-      )}
+        {isCheckoutCartVisible && recentlyAddedProduct && (
+          <>
+            <div
+              className="fixed inset-0 bg-black/50 z-40"
+              onClick={handleCloseCartWindow}
+            ></div>
+            {isDesktop ? (
+              <CartWindowDesktop
+                product={recentlyAddedProduct}
+                onClose={handleCloseCartWindow}
+              />
+            ) : (
+              <CartWindow
+                product={recentlyAddedProduct}
+                onClose={handleCloseCartWindow}
+              />
+            )}
+          </>
+        )}
     </div>
   );
 }

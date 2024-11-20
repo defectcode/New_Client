@@ -27,18 +27,13 @@ export function CheckoutForProduct() {
     return () => document.body.classList.remove('no-scroll');
   }, [isSummaryVisible]);
 
-  useEffect(() => {
-    if (items.length > 0) {
-      setIsSummaryVisible(true);
-      // const timer = setTimeout(() => {
-      //   setIsSummaryVisible(false);
-      // }, 5000);
-
-      // return () => clearTimeout(timer);
-    } else {
-      setIsSummaryVisible(false);
-    }
-  }, [items.length]);
+  // useEffect(() => {
+  //   if (items.length > 0) {
+  //     setIsSummaryVisible(true);
+  //   } else {
+  //     setIsSummaryVisible(false);
+  //   }
+  // }, [items.length]);
 
   if (!isSummaryVisible) return null;
 
