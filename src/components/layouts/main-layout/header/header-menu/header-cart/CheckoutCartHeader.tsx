@@ -106,10 +106,10 @@ export function CheckoutCartHeader() {
             borderBottomRightRadius: '10px',
           }}
         >
-          <div className="pb-5">
+          <div className="">
           <div className="relative overflow-hidden">
             <div className="absolute top-0 left-0 right-0 h-5 bg-gradient-to-b from-black/10 to-transparent z-10"></div>
-            <div className="overflow-y-auto overflow-x-hidden pt-5 px-5 min-h-[250px] max-h-[300px]">
+            <div className="overflow-y-auto overflow-x-hidden px-5 min-h-[110px] max-h-[350px]">
               {items.length ? (
                 items.map((item, index) => (
                   <CheckoutCartItem
@@ -149,7 +149,7 @@ export function CheckoutCartHeader() {
                   <span className="text-[#5D5D5D]">{formatPrice(estimatedTax)}</span>
                 </div>
               </div>
-              <div className="font-Heebo-16 text-[#111111] mt-5 flex items-center justify-between">
+              <div className="font-Heebo-16 text-[#111111] mt-5 flex items-center justify-between pb-5">
                 <p>Total</p>
                 <span>{formatPrice(finalTotal)}</span>
               </div>

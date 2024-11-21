@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useState } from 'react';
 import Image from 'next/image';
@@ -22,7 +22,6 @@ export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
 
   // Detectăm pagina curentă
   const isCheckoutPage = typeof window !== 'undefined' && window.location.pathname === '/checkout';
-  const isProductPage = typeof window !== 'undefined' && window.location.pathname.startsWith('/product');
 
   // State pentru color dropdown
   const [colorDropdownOpen, setColorDropdownOpen] = useState(false);
@@ -80,20 +79,20 @@ export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
       <div className="flex flex-col ml-[10px] w-3/4 relative">
         <div className="flex items-center justify-between w-full">
           <h2 className="text-[15px] font-semibold truncate max-w-[300px]">{item.product.title}</h2>
-          {/* Ascunde FavoriteButton pe paginile `checkout` și `product` */}
-          {!isCheckoutPage && !isProductPage && <FavoriteButton product={item.product} />}
+          {/* Ascunde FavoriteButton doar pe pagina checkout */}
+          {!isCheckoutPage && <FavoriteButton product={item.product} />}
         </div>
 
         {/* Selector de culori */}
         <div
           className={`flex items-center gap-1 mt-[2px] relative ${
-            isCheckoutPage || isProductPage ? 'pointer-events-none opacity-50' : 'cursor-pointer'
+            isCheckoutPage ? 'pointer-events-none opacity-50' : 'cursor-pointer'
           }`}
           onClick={toggleColorDropdown}
         >
           <p className="text-sm text-gray-500">{selectedColor}</p>
-          {/* Ascunde săgeata pe paginile `checkout` și `product` */}
-          {!isCheckoutPage && !isProductPage && (
+          {/* Ascunde săgeata doar pe pagina checkout */}
+          {!isCheckoutPage && (
             <Image
               src="/images/arr.svg"
               alt="dropdown arrow"
@@ -105,7 +104,7 @@ export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
             />
           )}
           {/* Dropdown */}
-          {!isCheckoutPage && !isProductPage && colorDropdownOpen && (
+          {colorDropdownOpen && !isCheckoutPage && (
             <div
               className="absolute bg-white shadow-lg border rounded-md z-10"
               style={{
@@ -131,8 +130,8 @@ export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
           <div className="flex items-center gap-2 text-sm text-gray-500">
             <p>{formatPrice(item.product.price)}</p>
           </div>
-          {/* Ascunde CartActions pe paginile `checkout` și `product` */}
-          {!isCheckoutPage && !isProductPage && <CartActions item={item} />}
+          {/* Ascunde CartActions doar pe pagina checkout */}
+          {!isCheckoutPage && <CartActions item={item} />}
         </div>
       </div>
     </div>

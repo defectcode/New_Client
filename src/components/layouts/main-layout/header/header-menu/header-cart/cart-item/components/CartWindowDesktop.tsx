@@ -33,7 +33,7 @@ export function CartWindowDesktop({ product, onClose }: CartWindowDesktopProps) 
     const toggleCartVisibility = () => {
       setIsCartVisible(!isCartVisible);
     };
-  // Disable scroll while the cart window is open
+  // // Disable scroll while the cart window is open
   useEffect(() => {
     document.body.style.overflow = "hidden";
 

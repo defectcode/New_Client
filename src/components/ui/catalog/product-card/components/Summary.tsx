@@ -37,7 +37,7 @@ export function Summary() {
             <h2 className="font-Heebo-20-semi text-[#1E1E1E] mb-5">Summary</h2>
 
             <div className="w-full bg-white p-5 rounded-lg shadow">
-                <Promocode />
+                {/* <Promocode /> */}
                 <div className="text-sm text-gray-700">
                     <div className="flex flex-col border-y border-[#E8E8ED]">
                         <div className="flex justify-between text-sm mt-5 font-Heebo-16 mb-[10px]">

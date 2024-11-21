@@ -1,7 +1,6 @@
 'use client';
 
 import { useCart } from "@/hooks/useCart";
-import { Promocode } from "./Promocode";
 import { formatPrice } from '@/utils/string/format-price';
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -10,49 +9,57 @@ import { FavoriteButton } from "@/app/(root)/product/[id]/product-info/FavoriteB
 import { ColorSelector } from "./ColorSelector";
 import { Info } from "./Info";
 import { useActions } from "@/hooks/useActions";
+import Link from "next/link";
+import { ConfirmDeleteModal } from "@/components/layouts/main-layout/header/header-menu/header-cart/cart-item/components/ConfirmDeleteModal";
 
 export function Mobile() {
-    const { items } = useCart(); // Obține lista produselor din coș
-    const { changeQuantity, removeFromCart } = useActions(); // Acțiuni pentru a modifica cantitatea și a șterge produse
+    const { items } = useCart();
+    const { changeQuantity, removeFromCart } = useActions(); 
     const router = useRouter();
 
     const availableColors = ['Light gray', 'Blue', 'Red', 'Black', 'Green'];
     const [selectedColor, setSelectedColor] = useState(availableColors[0]);
+    const [showConfirm, setShowConfirm] = useState(false);
+    const [itemToRemove, setItemToRemove] = useState<number | null>(null);
 
     // Calculează totalurile
     const totalProducts = items.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
     const totalItems = items.reduce((acc, item) => acc + item.quantity, 0);
+    const itemText = totalItems === 1 ? 'item' : 'items';
+
     const delivery = 14.00;
     const sales = totalProducts * 0.2899;
     const total = totalProducts + delivery + sales;
 
-    // Secțiuni expandabile (Easy Returns, Secure Payment etc.)
-    const [expandedSections, setExpandedSections] = useState<{ [key: string]: boolean }>({
-        'easyReturns': false,
-        'securePayment': false,
-        'youCanPayBy': false,
-    });
+    const handleDecrement = (itemId: number, quantity: number) => {
+        if (quantity === 1) {
+            setItemToRemove(itemId); 
+            setShowConfirm(true);
+        } else {
+            changeQuantity({ id: itemId, type: 'minus' });
+        }
+    };
 
-    const toggleSection = (section: string) => {
-        setExpandedSections(prev => ({ ...prev, [section]: !prev[section] }));
+    const handleIncrement = (itemId: number) => {
+        changeQuantity({ id: itemId, type: 'plus' });
+    };
+
+    const handleConfirmDelete = () => {
+        if (itemToRemove !== null) {
+            removeFromCart({ id: itemToRemove });
+            setItemToRemove(null); 
+            setShowConfirm(false); 
+        }
+    };
+
+    const handleCancelDelete = () => {
+        setItemToRemove(null); 
+        setShowConfirm(false); 
     };
 
     const handleCheckout = () => {
         router.push('/checkout');
     };
-
-    const handleIncrement = (id: number) => {
-        changeQuantity({ id, type: 'plus' });
-    };
-    
-    const handleDecrement = (id: number, quantity: number) => {
-        if (quantity === 1) {
-            removeFromCart({ id });
-        } else {
-            changeQuantity({ id, type: 'minus' });
-        }
-    };
-    
 
     return (
         <div>
@@ -69,7 +76,7 @@ export function Mobile() {
                 </div>
 
                 {/* Lista de produse */}
-                <div className="overflow-y-auto flex-1 p-5 border-t border-[#E8E8ED] bg-[#F9F9F9] min-h-[250px] max-h-[300px]">
+                <div className="min-h-[110px] max-h-[330px] h-full overflow-y-auto flex-1 px-5 border-t border-[#E8E8ED] bg-[#F9F9F9]">
                     {items.map((item, index) => (
                         <div
                             key={item.id}
@@ -99,20 +106,24 @@ export function Mobile() {
                                 />
                                 <div className="flex items-center justify-between mt-2 h-[16px]">
                                     <p className="text-[#5D5D5D] font-Heebo-14">${item.product.price.toFixed(2)}</p>
-                                    <div className="flex items-center space-x-[30px]">
+                                    <div className="flex items-center space-x-2">
                                         <button
-                                            className="text-sm text-[#8C8C8C] border-transparent rounded disabled:opacity-50"
+                                            className="text-sm text-[#8C8C8C] border-transparent rounded disabled:opacity-50 p-2"
                                             onClick={() => handleDecrement(item.id, item.quantity)}
-                                            disabled={item.quantity === 1}
+                                            disabled={item.quantity === 0}
                                         >
-                                            <Image src='/images/Minus.svg' alt="minus" width={8} height={8} />
+                                            <Image src='/images/Minus.svg' alt="minus" width={14} height={14} />
                                         </button>
-                                        <span className="text-sm">{item.quantity}</span>
+                                        <input
+                                            readOnly
+                                            value={item.quantity}
+                                            className="w-8 text-center text-sm bg-transparent border-none"
+                                        />
                                         <button
-                                            className="text-sm text-[#8C8C8C] border-transparent rounded"
+                                            className="text-sm text-[#8C8C8C] border-transparent rounded p-2"
                                             onClick={() => handleIncrement(item.id)}
                                         >
-                                            <Image src='/images/Plus.svg' alt="plus" width={8} height={8} />
+                                            <Image src='/images/Plus.svg' alt="plus" width={11} height={11} />
                                         </button>
                                     </div>
                                 </div>
@@ -121,9 +132,19 @@ export function Mobile() {
                     ))}
                 </div>
 
-                {/* Summary */}
-                <div className="p-5">
-                    <Promocode />
+                {showConfirm && (
+                    <ConfirmDeleteModal
+                        onConfirm={handleConfirmDelete}
+                        onCancel={handleCancelDelete}
+                    />
+                )}
+
+                <div className="px-5 pt-5">
+                    {/* <Promocode /> */}
+                    <div className="text-[#1E1E1E] flex items-center justify-between pb-5">
+                        <h2>Summary</h2>
+                        <p className="font-Heebo-semi-15 ">{`${totalItems} ${itemText}`}</p>
+                        </div>
                     <div>
                         <div className="border-y border-[#E8E8ED] pt-5">
                             <div className="flex justify-between text-sm mb-3">
@@ -139,21 +160,27 @@ export function Mobile() {
                                 <p className="text-[#5D5D5D]">{formatPrice(sales)}</p>
                             </div>
                         </div>
-                        <div className="flex justify-between font-Heebo-16-semi mt-5 mb-10">
+                        <div className="flex justify-between font-Heebo-16-semi my-5">
                             <p>Total</p>
                             <p>{formatPrice(total)}</p>
                         </div>
-                        <button
-                            className="w-full py-3 mb-3 text-[#1E1E1E] border border-[#1E1E1E] rounded-lg font-Heebo-16-semi h-[56px]"
-                            onClick={handleCheckout}
-                        >
-                            Checkout
-                        </button>
-                        <button className="w-full py-3 mb-3 text-white bg-black rounded-lg font-Heebo-16-semi h-[56px] flex items-center justify-center">
-                            <Image src="/images/applepay.svg" alt="applepay" width={54} height={20} />
-                        </button>
+                        <div className="flex items-center justify-center space-x-4 mt-5">
+                            <Link href="#" className="flex-1 max-w-[185px]">
+                            <button
+                                className="font-bold border border-black/50 rounded-[10px] w-full h-[48px] flex items-center justify-center bg-white text-[#424242]"
+                                >
+                                Checkout
+                                </button>
+                            </Link>
+
+                            <Link href="/checkout" className="flex-1 max-w-[185px]">
+                                <button className="font-bold border border-black/50 rounded-[10px] w-full h-[48px] flex items-center justify-center bg-black text-white">
+                                    <Image src="/images/applepay.svg" alt="applypay" width={54} height={20}/>
+                                </button>
+                            </Link>
+                            </div>
+                        </div>
                     </div>
-                </div>
                 <Info />
             </div>
         </div>
