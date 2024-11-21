@@ -64,7 +64,7 @@ export function CheckoutCartHome() {
         )}
 
       {isSummaryVisible && (
-        <div className="fixed inset-x-0 bottom-0 bg-white shadow-lg rounded-t-2xl z-50 md:hidden">
+        <div className="fixed inset-x-0 bottom-0 bg-[#F9F9F9] shadow-lg rounded-t-2xl z-50 md:hidden">
           <div className="py-5">
             <div className="flex items-center justify-between px-5">
               <h2 className="text-[16px] font-medium text-black">Your Shopping Bag</h2>

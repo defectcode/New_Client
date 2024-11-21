@@ -76,7 +76,13 @@ export function Mobile() {
                 </div>
 
                 {/* Lista de produse */}
-                <div className="min-h-[110px] max-h-[330px] h-full overflow-y-auto flex-1 px-5 border-t border-[#E8E8ED] bg-[#F9F9F9]">
+                <div
+                    className="overflow-y-auto flex-1 px-5 border-t border-[#E8E8ED] bg-[#F9F9F9]"
+                    style={{
+                        minHeight: items.length === 1 ? '130px' : items.length === 2 ? '260px' : '330px', // Dacă e 1 produs: 130px, 2 produse: 250px
+                        maxHeight: items.length > 2 ? '330px' : '130px', // Dacă sunt mai multe produse, maxHeight rămâne 330px
+                    }}
+                >
                     {items.map((item, index) => (
                         <div
                             key={item.id}

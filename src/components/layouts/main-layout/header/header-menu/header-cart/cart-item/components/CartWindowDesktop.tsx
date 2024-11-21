@@ -34,18 +34,18 @@ export function CartWindowDesktop({ product, onClose }: CartWindowDesktopProps) 
       setIsCartVisible(!isCartVisible);
     };
   // // Disable scroll while the cart window is open
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
+  // useEffect(() => {
+  //   document.body.style.overflow = "hidden";
 
-    const timer = setTimeout(() => {
-      onClose();
-    }, 5000);
+  //   const timer = setTimeout(() => {
+  //     onClose();
+  //   }, 5000);
 
-    return () => {
-      document.body.style.overflow = "";
-      clearTimeout(timer);
-    };
-  }, [onClose]);
+  //   return () => {
+  //     document.body.style.overflow = "";
+  //     clearTimeout(timer);
+  //   };
+  // }, [onClose]);
 
   return (
     <>
