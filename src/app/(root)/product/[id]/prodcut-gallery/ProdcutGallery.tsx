@@ -59,7 +59,7 @@ export function ProductGallery({ product }: ProductGalleryProps) {
           alt={product.title}
           width={758}
           height={758}
-          className="rounded-lg h-[430px] lg:h-[758px] w-[430px] lg:w-[758px]"
+          className="md:rounded-lg h-[430px] lg:h-[758px] w-[430px] lg:w-[758px]"
         />
 
         <div className="absolute top-5 right-5 z-10 md:hidden">

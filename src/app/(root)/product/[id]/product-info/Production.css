@@ -5,6 +5,13 @@
 	line-height: 24px;
 }
 
+.font-Heebo-20 {
+	font-family: 'Heebo', sans-serif;
+	font-size: 20px;
+	font-weight: 500;
+	line-height: 20px;
+}
+
 .font-Heebo-16 {
 	font-family: 'Heebo', sans-serif;
 	font-size: 16px;
@@ -47,6 +54,13 @@
 	line-height: 15px;
 }
 
+.font-Heebo-15-reg {
+	font-family: 'Heebo', sans-serif;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 15px;
+}
+
 .font-Heebo-reg-13 {
 	font-family: 'Heebo', sans-serif;
 	font-size: 13px;
@@ -61,8 +75,6 @@
 	line-height: 14px;
 	color: #bdbdbd;
 }
-
-
 
 .font-Heebo-med-14 {
 	font-family: 'Heebo', sans-serif;
