@@ -103,16 +103,14 @@ export function CartWindow({ product, onClose }: CartWindowProps) {
               <span className="font-Heebo-18 text-[#1E1E1E]">{formatPrice(total)}</span>
             </div>
             <div className="flex items-center justify-center space-x-4 mt-5">
-            <Link href="#" className="flex-1 max-w-[185px]">
+            <Link href="/bag" className="flex-1 max-w-[185px]">
               <button
                 className="font-bold border border-black/50 rounded-[10px] w-full h-[48px] flex items-center justify-center bg-white text-[#424242]"
-                onClick={toggleCartVisibility} // Deschide/închide componenta
                 >
                   View Bag
                 </button>
               </Link>
 
-              {isCartVisible && <CheckoutCartHom onClose={toggleCartVisibility} />}
               <Link href="/checkout" className="flex-1 max-w-[185px]">
                 <button className="font-bold border border-black/50 rounded-[10px] w-full h-[48px] flex items-center justify-center bg-black text-white">
                   Checkout

@@ -107,20 +107,15 @@ export function CartWindowDesktop({ product, onClose }: CartWindowDesktopProps) 
             <span className="font-Heebo-18 text-[#1E1E1E]">{formatPrice(total)}</span>
           </div>
           <div className="flex flex-col items-center justify-center mt-5 space-y-[10px]">
-            <Link href="#" className="flex-1 w-full">
+            <Link href="/bag" className="flex-1 w-full">
               <button
                   className="font-bold border border-black/50 rounded-[10px] w-full h-[48px] flex items-center justify-center bg-white text-[#424242]"
-                  onClick={(e) => {
-                    e.preventDefault(); // Evită redirect-ul default de la Link
-                    toggleCartVisibility();
-                  }}
                 >
                   View Bag
                 </button>
             </Link>
 
               {/* Componentele dependente de vizibilitate */}
-              {isCartVisible && <CheckoutCartHom onClose={toggleCartVisibility} />}
               <Link href="/checkout" className="flex-1 w-full">
                 <button className="font-bold border border-black/50 rounded-[10px] w-full h-[48px] flex items-center justify-center bg-black text-white">
                   Checkout

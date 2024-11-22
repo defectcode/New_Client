@@ -42,12 +42,12 @@ export function Product({
               <SectionList product={product} /> {/* Transmitem produsul ca prop */}
             </div>
           </div>
-          <div className="w-full lg:w-1/3 mt-6 lg:mt-0">
+          <div className="w-full lg:w-1/3 mt-6 lg:mt-0 md:px-0">
             <ProductInfo product={product} />
             <AllInfoProducts />
           </div>
         </div>
-        <div className="lg:hidden mt-6">
+        <div className="lg:hidden mt-6 px-5">
           <SectionList product={product} />
         </div>
       </div>

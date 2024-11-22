@@ -6,7 +6,7 @@ import './Production.css'
 
 const AllInfoProducts = () => {
   return (
-    <div className="space-y-10 py-10 md:px-0 px-5">
+    <div className="space-y-10 py-5 md:px-0 px-5">
       {/* First Block */}
       <div className="flex items-center space-x-5 max-w-[393px] w-full">
         <Image src='/images/message.svg' alt="music" width={30} height={25}/>

@@ -1,9 +1,8 @@
 import Image from 'next/image';
 import { FC, useState } from 'react';
-import './Production.css';
 import { sectionContent } from './constants/sectionContent';
+import { ReviewsSection } from './components/ReviewsSection';
 
-// 
 interface SectionListProps {
   product: {
     id: string;
@@ -15,42 +14,51 @@ interface SectionListProps {
   };
 }
 
-interface SectionItem {
-  name: string;
-  content?: string; // Adăugăm opțional un conținut pentru fiecare secțiune
-  image?: string; // Corectăm tipul proprietății image la string
-}
-
-
 export const SectionList: FC<SectionListProps> = ({ product }) => {
   const [selectedSection, setSelectedSection] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  const openModal = (sectionKey: string) => {
-    setSelectedSection(sectionKey);
+  const toggleSection = (sectionKey: string) => {
+    if (sectionKey === 'reviews') {
+      setSelectedSection(selectedSection === sectionKey ? null : sectionKey);
+    } else {
+      setSelectedSection(sectionKey);
+      setIsModalOpen(true);
+    }
   };
 
   const closeModal = () => {
     setSelectedSection(null);
+    setIsModalOpen(false);
   };
 
   const sections = Object.keys(sectionContent);
 
   return (
-    <div className="w-full bg-white border-t border-b border-gray-200 mt-10 md:px-0 px-5">
+    <div
+      className={`w-full bg-white ${
+        selectedSection === 'reviews' ? 'border-t' : 'border-y'
+      } border-gray-200 md:mt-10`}
+    >
       {sections.map((sectionKey, index) => {
         const section = sectionContent[sectionKey as keyof typeof sectionContent];
+
         return (
           <div
             key={sectionKey}
             className={`${
-              index !== sections.length - 1 ? "border-b border-gray-200" : ""
+              sectionKey === 'reviews' && selectedSection === 'reviews'
+                ? '' 
+                : index !== sections.length - 1
+                ? 'border-b border-gray-200'
+                : ''
             }`}
           >
             <div
-              className="flex items-center justify-between py-4 hover:bg-gray-100 cursor-pointer"
-              onClick={() => openModal(sectionKey)}
+              className="flex items-center justify-between py-4 hover:bg-white cursor-pointer"
+              onClick={() => toggleSection(sectionKey)}
             >
-              <div className="flex items-center justify-center gap-[10px]">
+              <div className="flex items-center gap-[10px]">
                 {section.image && (
                   <Image
                     src={section.image}
@@ -62,22 +70,64 @@ export const SectionList: FC<SectionListProps> = ({ product }) => {
                 )}
                 <span className="text-gray-800 text-[16px] font-medium">
                   {section.title}
+                  {sectionKey === 'reviews' && sectionContent.reviews.totalReviews && (
+                    <span className="text-gray-500 ml-2">
+                      ({sectionContent.reviews.totalReviews})
+                    </span>
+                  )}
                 </span>
               </div>
-              <Image
-                src="/images/Pllus.svg"
-                alt="arrows"
-                width={11}
-                height={11}
-                className="transform transition-transform duration-300"
-              />
+              {sectionKey === 'reviews' ? (
+                <div className="flex items-center gap-[5px]">
+                  {[...Array(5)].map((_, i) => (
+                    <Image
+                      key={i}
+                      src={
+                        i < Math.floor(section.rating || 0)
+                          ? '/images/black-star.svg'
+                          : '/images/gray-star.svg'
+                      }
+                      alt="star"
+                      width={12}
+                      height={12}
+                      className="object-contain"
+                    />
+                  ))}
+                  <Image
+                    src="/images/arr.svg"
+                    alt="arrow"
+                    width={11}
+                    height={11}
+                    className={`transform transition-transform duration-300 ${
+                      selectedSection === sectionKey ? 'rotate-180' : ''
+                    }`}
+                  />
+                </div>
+              ) : (
+                <div>
+                  <Image
+                    src="/images/Plus.svg"
+                    alt="arrow"
+                    height={11}
+                    width={11}
+                    className="text-[#1E1E1E]"
+                  />
+                </div>
+              )}
             </div>
+
+            {/* Content for Reviews */}
+            {selectedSection === sectionKey && sectionKey === 'reviews' && (
+              <div>
+                <ReviewsSection product={product}/>
+              </div>
+            )}
           </div>
         );
       })}
 
-      {/* Modal */}
-      {selectedSection && (
+      {/* Modal pentru alte secțiuni */}
+      {isModalOpen && selectedSection && selectedSection !== 'reviews' && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-white rounded-lg max-w-[663px] w-full h-[712px] p-10 relative">
             <button
@@ -86,10 +136,7 @@ export const SectionList: FC<SectionListProps> = ({ product }) => {
             >
               <Image src="/images/close.svg" alt="close" width={12} height={12} />
             </button>
-            <h2 className="text-[18px] font-medium font-Heebo-16-bold mb-4 text-[#1E1E1E]">
-              {sectionContent[selectedSection as keyof typeof sectionContent].title}
-            </h2>
-            {selectedSection === "productDetails" && (
+            {selectedSection === 'productDetails' && (
               <div className="flex items-center gap-4 mb-10">
                 <Image
                   src={product.images[0]}
@@ -99,46 +146,19 @@ export const SectionList: FC<SectionListProps> = ({ product }) => {
                   className="object-cover rounded"
                 />
                 <div className="flex flex-col justify-center gap-[10px]">
-                  <h1 className="font-Heebo-15-med text-[#1E1E1E]">
-                    {product.title}
-                  </h1>
+                  <h1 className="font-Heebo-15-med text-[#1E1E1E]">{product.title}</h1>
                   <p className="font-Heebo-med-14 text-[#5D5D5D]">{`$${product.price.toFixed(
                     2
                   )}`}</p>
                 </div>
               </div>
             )}
+            <h2 className="text-[18px] font-medium font-Heebo-16-bold mb-4 text-[#1E1E1E]">
+              {sectionContent[selectedSection as keyof typeof sectionContent].title}
+            </h2>
             <p className="font-Heebo-regular-16 text-[#8C8C8C]">
               {sectionContent[selectedSection as keyof typeof sectionContent].description}
             </p>
-
-            {/* Beneficii */}
-            {sectionContent[selectedSection as keyof typeof sectionContent].benefits && (
-              <>
-                <h3 className="font-Heebo-16-bold text-[#1E1E1E] mt-5">Benefits</h3>
-                <ul className="list-disc ml-5 mt-[10px] font-Heebo-regular-16 text-[#8C8C8C]">
-                  {sectionContent[selectedSection as keyof typeof sectionContent].benefits!.map(
-                    (benefit, index) => (
-                      <li key={index}>{benefit}</li>
-                    )
-                  )}
-                </ul>
-              </>
-            )}
-
-            {/* Detalii */}
-            {sectionContent[selectedSection as keyof typeof sectionContent].details && (
-              <>
-                <h3 className="font-Heebo-16-bold text-[#1E1E1E] mt-5">Details</h3>
-                <ul className="list-disc ml-5 mt-[10px] font-Heebo-regular-16 text-[#8C8C8C]">
-                  {sectionContent[selectedSection as keyof typeof sectionContent].details!.map(
-                    (detail, index) => (
-                      <li key={index}>{detail}</li>
-                    )
-                  )}
-                </ul>
-              </>
-            )}
           </div>
         </div>
       )}

@@ -39,7 +39,7 @@ const footerData: FooterInfo[] = [
 
 export const Footer = () => {
   return (
-    <footer className="bg-white pb-10 md:py-10">
+    <footer className="bg-white pb-10 md:py-10 md:mt-0 mt-5">
       <div className="max-w-[1400px] mx-auto w-full px-4 lg:px-0">
         {/* Container principal pentru secțiuni și logo */}
         <div className="flex md:flex-nowrap flex-wrap md:justify-between justify-center items-start w-full ">

@@ -28,16 +28,16 @@ export function ProductInfo({ product }: ProductInfoProps) {
 
   // Lista de culori disponibile
   const COLORS = [
-    { name: 'Gray', value: '#D3D3D3' },      // Gri
-    { name: 'Pink', value: '#FFC0CB' },      // Roz
-    { name: 'Beige', value: '#D2B48C' },     // Bej
-    { name: 'Light Blue', value: '#ADD8E6' }, // Albastru deschis
-    { name: 'Light Green', value: '#D3D9AE' }, // Verde deschis
-    { name: 'Purple', value: '#9370DB' },    // Mov
-    { name: 'Black', value: '#000000' },     // Negru
+    { name: 'Gray', value: '#D3D3D3' },    
+    { name: 'Pink', value: '#FFC0CB' },    
+    { name: 'Beige', value: '#D2B48C' },   
+    { name: 'Light Blue', value: '#ADD8E6' }, 
+    { name: 'Light Green', value: '#D3D9AE' }, 
+    { name: 'Purple', value: '#9370DB' },    
+    { name: 'Black', value: '#000000' },     
   ];
 
-  const [selectedColor, setSelectedColor] = useState(COLORS[0]); // Selectează culoarea implicită
+  const [selectedColor, setSelectedColor] = useState(COLORS[0]);
 
   const handleCloseCartWindow = () => {
     setIsCheckoutCartVisible(false);
@@ -48,7 +48,7 @@ export function ProductInfo({ product }: ProductInfoProps) {
       title: product.title,
       price: product.price,
       images: product.images,
-      color: selectedColor.name, // Utilizează culoarea selectată
+      color: selectedColor.name, 
     });
     setIsCheckoutCartVisible(true);
   };
@@ -71,14 +71,14 @@ export function ProductInfo({ product }: ProductInfoProps) {
           {formatPrice(product.price)}
         </div>
         <span className="text-[#D1D1D1] md:block hidden">|</span>
-        <span className="font-Heebo-reg-14 md:block hidden">{selectedColor.name}</span> {/* Afișează culoarea selectată */}
+        <span className="font-Heebo-reg-14 md:block hidden">{selectedColor.name}</span>
       </div>
 
       <div className="flex gap-2 my-5 max-md:hidden">
         {COLORS.map((color) => (
           <div
             key={color.value}
-            onClick={() => setSelectedColor(color)} // Actualizează culoarea selectată
+            onClick={() => setSelectedColor(color)} 
             className={`w-[18px] h-[18px] rounded-full border`}
             style={{
               backgroundColor: color.value,
@@ -96,7 +96,7 @@ export function ProductInfo({ product }: ProductInfoProps) {
           {COLORS.map((color) => (
             <div
               key={color.value}
-              onClick={() => setSelectedColor(color)} // Actualizează culoarea selectată
+              onClick={() => setSelectedColor(color)}
               className={`w-[18px] h-[18px] rounded-full border`}
               style={{
                 backgroundColor: color.value,
@@ -129,11 +129,25 @@ export function ProductInfo({ product }: ProductInfoProps) {
           </button>
         </div>
 
-        <div className="flex justify-between items-center mt-5 space-x-4 md:hidden">
+        {/* <div className="flex justify-between items-center mt-5 space-x-4 md:hidden">
             <div className="flex-1">
               <AddToCartButton product={product} />
             </div>
-
+            <button className="flex-1 bg-[#1E1E1E] flex items-center justify-center h-[48px] rounded-[10px]">
+              <Image
+                src="/images/applepayBlack.svg"
+                alt="applepay"
+                width={42}
+                height={16}
+              />
+            </button>
+          </div> */}
+        </div>
+        <div className="fixed bottom-0 left-0 right-0 bg-[#F9F9F9] z-50 px-5 py-3 shadow-md md:hidden">
+          <div className="flex justify-between items-center space-x-4">
+            <div className="flex-1">
+              <AddToCartButton product={product} />
+            </div>
             <button className="flex-1 bg-[#1E1E1E] flex items-center justify-center h-[48px] rounded-[10px]">
               <Image
                 src="/images/applepayBlack.svg"
@@ -143,23 +157,8 @@ export function ProductInfo({ product }: ProductInfoProps) {
               />
             </button>
           </div>
+        </div>
 
-          </div>
-
-        <div className="flex justify-between items-center mt-5 space-x-4 md:hidden">
-  <div className="flex-1">
-    <AddToCartButton product={product} />
-  </div>
-
-  <button className="flex-1 bg-[#1E1E1E] flex items-center justify-center h-[48px] rounded-[10px]">
-    <Image
-      src="/images/applepayBlack.svg"
-      alt="applepay"
-      width={42}
-      height={16}
-    />
-  </button>
-</div>
 
       {isCheckoutCartVisible && recentlyAddedProduct && (
         <>
