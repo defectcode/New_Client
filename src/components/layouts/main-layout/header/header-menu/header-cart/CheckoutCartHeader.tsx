@@ -53,7 +53,7 @@ export function CheckoutCartHeader() {
       <div className="md:hidden block w-full">
         {isSummaryVisible ? (
           // Render Logo and Summary inside the drawer when open
-          <div className="absolute inset-x-0 top-0 bg-white z-50 py-4 px-5 flex items-center justify-between border-b h-[56px]">
+          <div className="absolute inset-x-0 top-0 bg-white z-50 py-[10px] px-5 flex items-center justify-between border-b">
             <div className="">
               <Logo />
             </div>
@@ -75,7 +75,7 @@ export function CheckoutCartHeader() {
           </div>
         ) : (
           // Render Logo and Summary as usual in the header when summary is closed
-          <div className="flex items-center justify-between bg-[#F9F9F9] px-5 py-4 w-full">
+          <div className="flex items-center justify-between bg-[#F9F9F9] px-5 py-[10px] w-full">
             <div className="">
               <Logo />
             </div>
@@ -95,7 +95,7 @@ export function CheckoutCartHeader() {
 
         {/* Drawer for Summary */}
         <div
-          className={`fixed inset-x-0 top-0 transform transition-all duration-300 ease-in-out bg-[#F9F9F9] shadow-lg z-50 mt-[50px] ${
+          className={`fixed inset-x-0 top-0 transform transition-all duration-300 ease-in-out bg-[#F9F9F9] shadow-lg z-50 mt-[63px] ${
             isSummaryVisible ? 'max-h-[80vh] opacity-100 translate-y-0' : 'max-h-0 opacity-0 -translate-y-5'
           }`}
           style={{

@@ -54,6 +54,13 @@
 	line-height: 18px;
 }
 
+.font-Heebo-regular-16-1 {
+	font-family: 'Heebo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 17px;
+}
+
 .font-Heebo-15-light {
 	font-family: 'Heebo', sans-serif;
 	font-size: 15px;
@@ -73,6 +80,13 @@
 	font-size: 15px;
 	font-weight: 400;
 	line-height: 15px;
+}
+
+.font-Heebo-15-reg-1 {
+	font-family: 'Heebo', sans-serif;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 17px;
 }
 
 .font-Heebo-15-regular {
@@ -116,5 +130,69 @@
 	  overflow-y: auto;
 	  background-color: white;
 	}
+  }
+  
+
+
+  .custom-list {
+	list-style: none; /* Elimină stilul implicit */
+	padding-left: 1rem; /* Adaugă spațiere pentru text */
+  }
+  
+  .custom-list-item {
+	font-weight: bold; /* Text bold */
+	font-size: 16px; /* Dimensiunea textului */
+	line-height: 1.5; /* Spațiere între linii */
+	color: #8C8C8C; /* Culoarea textului */
+	position: relative; /* Necesită pentru marker personalizat */
+  }
+  
+  .custom-list-item::before {
+	content: ''; /* Creează un cerc */
+	width: 8px; /* Dimensiunea cercului */
+	height: 8px; /* Dimensiunea cercului */
+	background-color: gray; /* Culoarea cercului */
+	border-radius: 50%; /* Transformă punctul în cerc */
+	position: absolute; /* Poziționare față de text */
+	top: 50%; /* Aliniere verticală */
+	left: 0; /* Poziționează lângă text */
+	transform: translateY(-50%); /* Corectează alinierea verticală */
+  }
+  
+
+  @media (max-width: 768px) {
+	.modal-mobile {
+	  animation: slide-up 0.3s ease-out;
+	}
+  }
+  
+  @keyframes slide-up {
+	from {
+	  transform: translateY(100%);
+	}
+	to {
+	  transform: translateY(0);
+	}
+  }
+  
+
+
+  table {
+	width: 100%;
+	border-collapse: collapse;
+  }
+  
+  th {
+	background-color: #f9f9f9;
+	font-weight: bold;
+  }
+  
+  td, th {
+	border: 1px solid #ddd;
+	padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+	background-color: #f2f2f2;
   }
   

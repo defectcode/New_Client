@@ -1,5 +1,6 @@
 export interface SectionContentItem {
     title: string;
+    subtitle?: string;
     description: string;
     benefits?: string[];
     details?: string[];
@@ -7,19 +8,31 @@ export interface SectionContentItem {
     image2?: string;
     totalReviews?: number;
     rating?: number;
+    titleBenefits?: string,
+    productDetails?: string;
     comments?: {
       title: string;
       rating: number;
       text: string;
       user: string;
     }[];
-  }
-  
+    sizes?: ProductSize[];
+}
+
+export interface ProductSize {
+  standard: string;
+  size: number;
+  us: string;
+}
+
+
   export const sectionContent: Record<string, SectionContentItem> = {
     productDetails: {
       title: 'PRODUCT DETAILS',
+      subtitle: 'TRUE TO YOUR CREW.',
       description:
         'Created for the hardwood but taken to the streets, the Nike Dunk Low Retro returns with crisp overlays and original team colors. This basketball icon channels "80s vibes with premium leather in the upper that looks good and breaks in even better. Modern footwear technology helps bring the comfort into the 21st century.',
+      titleBenefits: 'Benefits',
       benefits: [
         'Premium leather in the upper has the perfect sheen and breaks in beautifully.',
         'The modern foam midsole offers lightweight, responsive cushioning.',
@@ -27,6 +40,7 @@ export interface SectionContentItem {
         'Bold color blocking throws it back to the original colorway inspiration: school team colors.',
         'The rubber outsole with classic hoops pivot circle adds durability, traction and heritage style.',
       ],
+      productDetails: 'Product Details',
       details: [
         'Low-cut collar',
         'Foam insole',
@@ -42,6 +56,16 @@ export interface SectionContentItem {
       description:
         'This product fits true to size. Please refer to the size chart for accurate measurements.',
       image: '/images/size.svg',
+      sizes: [
+        { standard: "XXS", size: 42, us: "XXS" },
+        { standard: "XS", size: 44, us: "XS" },
+        { standard: "S", size: 46, us: "S" },
+        { standard: "M", size: 48, us: "M" },
+        { standard: "L", size: 50, us: "L" },
+        { standard: "XL", size: 52, us: "XL" },
+        { standard: "XXL", size: 54, us: "XXL" },
+        { standard: "XXXL", size: 56, us: "XXXL" },
+      ],
     },
     shippingReturns: {
       title: 'SHIPPING RETURNS',
@@ -75,5 +99,25 @@ export interface SectionContentItem {
         },
       ],
     },
+  };
+  
+
+
+  
+  export const productSizes: SectionContentItem = {
+    title: "Size Compliance",
+    description: "Sizes and corresponding measurements",
+    details: [],
+    
+    sizes: [
+      { standard: "XXS", size: 42, us: "XXS" },
+      { standard: "XS", size: 44, us: "XS" },
+      { standard: "S", size: 46, us: "S" },
+      { standard: "M", size: 48, us: "M" },
+      { standard: "L", size: 50, us: "L" },
+      { standard: "XL", size: 52, us: "XL" },
+      { standard: "XXL", size: 54, us: "XXL" },
+      { standard: "XXXL", size: 56, us: "XXXL" },
+    ],
   };
   
