@@ -171,7 +171,7 @@ export function Mobile() {
                             <p>{formatPrice(total)}</p>
                         </div>
                         <div className="flex items-center justify-center space-x-4 mt-5">
-                            <Link href="#" className="flex-1 max-w-[185px]">
+                            <Link href="/checkout" className="flex-1 max-w-[185px]">
                             <button
                                 className="font-bold border border-black/50 rounded-[10px] w-full h-[48px] flex items-center justify-center bg-white text-[#424242]"
                                 >
@@ -179,7 +179,7 @@ export function Mobile() {
                                 </button>
                             </Link>
 
-                            <Link href="/checkout" className="flex-1 max-w-[185px]">
+                            <Link href="" className="flex-1 max-w-[185px]">
                                 <button className="font-bold border border-black/50 rounded-[10px] w-full h-[48px] flex items-center justify-center bg-black text-white">
                                     <Image src="/images/applepay.svg" alt="applypay" width={54} height={20}/>
                                 </button>
