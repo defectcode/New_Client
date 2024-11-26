@@ -4,6 +4,7 @@ import { sectionContent, productSizes } from './constants/sectionContent';
 import { ReviewsSection } from './components/ReviewsModal';
 import './Production.css'
 import SectionSizeTables from './components/SizeModal';
+import SizeModalMobile from './components/SizeModalMobile';
 
 interface SectionListProps {
   product: {
@@ -20,6 +21,24 @@ interface SectionListProps {
 export const SectionList: FC<SectionListProps> = ({ product }) => {
   const [selectedSection, setSelectedSection] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Funcție pentru a actualiza valoarea lui isMobile
+    const updateIsMobile = () => {
+      setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+    };
+
+    // Setează valoarea inițială
+    updateIsMobile();
+
+    // Adaugă un event listener pentru a urmări modificările dimensiunii ecranului
+    window.addEventListener("resize", updateIsMobile);
+
+    // Curățare pentru a evita scurgerile de memorie
+    return () => window.removeEventListener("resize", updateIsMobile);
+  }, []);
 
   const [activeTab, setActiveTab] = useState<"sizeCompliance" | "sizes">(
     "sizeCompliance"
@@ -229,7 +248,7 @@ export const SectionList: FC<SectionListProps> = ({ product }) => {
             )}
 
             {selectedSection === 'sizeAndFit' && (
-              <SectionSizeTables/>
+              isMobile ? <SizeModalMobile/> : <SectionSizeTables/>
             )}
           </div>
         </div>

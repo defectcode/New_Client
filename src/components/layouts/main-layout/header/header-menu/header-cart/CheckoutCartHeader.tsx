@@ -53,30 +53,47 @@ export function CheckoutCartHeader() {
       <div className="md:hidden block w-full">
         {isSummaryVisible ? (
           // Render Logo and Summary inside the drawer when open
-          <div className="absolute inset-x-0 top-0 bg-white z-50 py-[10px] px-5 flex items-center justify-between border-b">
-            <div className="">
-              <Logo />
+          <div>
+            <div className="absolute inset-x-0 top-0 bg-white z-50 py-[10px] px-5 flex items-center justify-between border-b">
+              <div>
+                <Logo />
+              </div>
+              <div
+                className="flex items-center gap-2 text-[16px] font-Heebo-med text-[#1E1E1E]"
+                onClick={handleToggleSummary}
+              >
+                <span>Summary</span>
+                <p>{formatPrice(finalTotal)}</p>
+                <Image
+                  src="/images/arr.svg"
+                  alt="arr"
+                  width={10}
+                  height={5}
+                  className={`transition-transform duration-300 ${isSummaryVisible ? 'rotate-180' : 'rotate-0'}`}
+                />
             </div>
-            <div
-              className="flex items-center gap-2 text-[16px] font-Heebo-med text-[#1E1E1E]"
-              onClick={handleToggleSummary}
-            >
-              <span>Summary</span>
-              <p>{formatPrice(finalTotal)}</p>
-              <Image
-                src="/images/arr.svg"
-                alt="arr"
-                width={10}
-                height={5}
-                className={`transition-transform duration-300 ${isSummaryVisible ? 'rotate-180' : 'rotate-0'}`}
-              />
             </div>
-
+                <div className="flex items-center justify-between bg-[#F9F9F9] px-5 py-[10px] w-full">
+                <div>
+                  <Logo />
+                </div>
+                <div className="flex items-center gap-2 text-[16px] font-Heebo-med text-[#1E1E1E]" onClick={handleToggleSummary}>
+                  <span>Summary</span>
+                  <p>{formatPrice(finalTotal)}</p>
+                  <Image
+                    src="/images/arr.svg"
+                    alt="arr"
+                    width={10}
+                    height={5}
+                    className={`transition-transform duration-300 ${isSummaryVisible ? 'rotate-180' : 'rotate-0'}`}
+                  />
+                </div>
+            </div>
           </div>
         ) : (
           // Render Logo and Summary as usual in the header when summary is closed
           <div className="flex items-center justify-between bg-[#F9F9F9] px-5 py-[10px] w-full">
-            <div className="">
+            <div>
               <Logo />
             </div>
             <div className="flex items-center gap-2 text-[16px] font-Heebo-med text-[#1E1E1E]" onClick={handleToggleSummary}>

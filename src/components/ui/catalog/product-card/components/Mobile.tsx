@@ -75,12 +75,11 @@ export function Mobile() {
                     </button>
                 </div>
 
-                {/* Lista de produse */}
                 <div
-                    className="overflow-y-auto flex-1 px-5 border-t border-[#E8E8ED] bg-[#F9F9F9]"
+                    className="flex-1 px-5 border-t border-[#E8E8ED] bg-[#F9F9F9]"
                     style={{
-                        minHeight: items.length === 1 ? '130px' : items.length === 2 ? '260px' : '330px', // Dacă e 1 produs: 130px, 2 produse: 250px
-                        maxHeight: items.length > 2 ? '330px' : '130px', // Dacă sunt mai multe produse, maxHeight rămâne 330px
+                        minHeight: `${130 + (items.length - 1) * 134}px`, 
+                        maxHeight: `${130 + (items.length - 1) * 130}px`, 
                     }}
                 >
                     {items.map((item, index) => (

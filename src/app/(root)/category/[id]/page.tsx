@@ -46,7 +46,7 @@ export default async function CategoryPage({
 	const { category, products } = await getProducts(params)
 
 	return (
-		<div className='my-6'>
+		<div className=''>
 			<Catalog
 				title={category.title}
 				description={category.description}

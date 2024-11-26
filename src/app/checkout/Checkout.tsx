@@ -189,9 +189,9 @@ export function Checkout() {
           throw new Error(`Email sending failed: ${response.statusText}`);
       }
       console.log('Email sent successfully');
-  } catch (error) {
-      console.error('Error while sending email:', error);
-  }
+    } catch (error) {
+        console.error('Error while sending email:', error);
+    }
   
 
     setIsSubmitted(true);

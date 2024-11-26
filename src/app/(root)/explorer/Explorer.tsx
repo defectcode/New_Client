@@ -24,7 +24,7 @@ export function Explorer({ products }: ExplorerProps) {
 	})
 
 	return (
-		<div className='my-6'>
+		<div className=''>
 			<Catalog
 				title={
 					searchTerm
