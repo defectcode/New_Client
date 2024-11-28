@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { ICatalog } from '../catalog.interface';
 import { ProductCard } from '../product-card/ProductCard';
 
+import '../Catalog.css'
+
 export function CatalogMobile({ title, description, linkTitle, link, products }: ICatalog) {
 	const [filters, setFilters] = useState<{ [key: string]: string[] }>({});
 	const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -33,6 +35,18 @@ export function CatalogMobile({ title, description, linkTitle, link, products }:
 		});
 	};
 
+	useEffect(() => {
+		if (isOpen) {
+			document.body.style.overflow = 'hidden'; // Blochează scroll-ul
+		} else {
+			document.body.style.overflow = ''; // Resetează comportamentul scroll-ului
+		}
+		return () => {
+			document.body.style.overflow = ''; // Asigură curățarea stilului
+		};
+	}, [isOpen]);
+	
+
 	// Filtrarea produselor pe baza filtrelor
 	const filterProducts = () => {
 		return products.filter((product) => {
@@ -61,7 +75,7 @@ export function CatalogMobile({ title, description, linkTitle, link, products }:
 				<span className="text-[#8C8C8C]">Home / Catalog</span>
 				<h2 className="font-Heebo-24 text-[#000000]">Clothing and accessories</h2>
 			</div>
-			<div className="flex items-center justify-between mb-2 border-y-[1px] border-[#BDBDBD]/50 p-5 bg-white">
+			<div className="flex items-center justify-between mb-5 border-y-[1px] border-[#BDBDBD]/50 p-5 bg-white">
 				<span className="font-Heebo-14-reg text-[#8C8C8C]">{filteredProducts.length} Results</span>
 				<button
 					className="flex items-center gap-[10px] cursor-pointer"
@@ -79,8 +93,10 @@ export function CatalogMobile({ title, description, linkTitle, link, products }:
 
 			{/* Modal pentru filtre */}
 			{isOpen && (
-				<div className="fixed inset-0 bg-black/50 z-50">
-					<div className="absolute bottom-0 w-full bg-white rounded-t-xl p-5 h-[75vh] overflow-y-auto">
+				<div className="fixed inset-0 bg-black/50 z-50" onClick={() => setIsOpen(false)}>
+					<div className="absolute bottom-0 w-full bg-[#F9F9F9] rounded-t-xl p-5 h-[75vh] overflow-y-auto"
+					onClick={(e) => e.stopPropagation()}
+					>
 						<div className="flex justify-between items-center mb-5">
 							<h3 className="text-lg font-semibold">Filters</h3>
 							<button onClick={() => setIsOpen(false)}>
@@ -93,16 +109,17 @@ export function CatalogMobile({ title, description, linkTitle, link, products }:
 							</button>
 						</div>
 
-						<div className="space-y-5">
+						<div className="">
 							{/* Sortare */}
-							<div>
+							<div className='border-b-[1px] pb-5'>
 								<h4 className="font-bold mb-2">Sort By</h4>
 								<ul className="space-y-2">
 									{['Newest', 'Price: Low-High', 'Price: High-Low', 'Discount'].map((option) => (
 										<li key={option}>
-											<label className="flex items-center space-x-2">
+											<label className="flex items-center space-x-2 ml-[10px]">
 												<input
 													type="checkbox"
+													className='form-checkbox'
 													checked={filters['Sort By']?.includes(option) || false}
 													onChange={() => handleFilterChange('Sort By', option)}
 												/>
@@ -113,15 +130,35 @@ export function CatalogMobile({ title, description, linkTitle, link, products }:
 								</ul>
 							</div>
 
+							<div className='border-b-[1px] py-5'>
+								<h4 className="font-bold mb-2">Category</h4>
+								<ul className="space-y-2">
+									{['Woman', 'Man', 'Kids'].map((category) => (
+										<li key={category}>
+											<label className="flex items-center space-x-2 ml-[10px]">
+												<input
+													type="checkbox"
+													className='form-checkbox'
+													checked={filters['Gender']?.includes(category) || false}
+													onChange={() => handleFilterChange('Gender', category)}
+												/>
+												<span>{category}</span>
+											</label>
+										</li>
+									))}
+								</ul>
+							</div>
+
 							{/* Filtrare după preț */}
-							<div>
+							<div className='border-b-[1px] py-5'>
 								<h4 className="font-bold mb-2">Shop by Price</h4>
 								<ul className="space-y-2">
 									{['$25 - 50', '$50 - 100', '$100 - 150', 'Over $150'].map((priceRange) => (
 										<li key={priceRange}>
-											<label className="flex items-center space-x-2">
+											<label className="flex items-center space-x-2 ml-[10px]">
 												<input
 													type="checkbox"
+													className='form-checkbox'
 													checked={filters['Shop by Price']?.includes(priceRange) || false}
 													onChange={() => handleFilterChange('Shop by Price', priceRange)}
 												/>
@@ -133,14 +170,15 @@ export function CatalogMobile({ title, description, linkTitle, link, products }:
 							</div>
 
 							{/* Filtrare după gen */}
-							<div>
+							<div className='border-b-[1px] py-5'>
 								<h4 className="font-bold mb-2">Gender</h4>
 								<ul className="space-y-2">
 									{['Woman', 'Man', 'Kids'].map((gender) => (
 										<li key={gender}>
-											<label className="flex items-center space-x-2">
+											<label className="flex items-center space-x-2 ml-[10px]">
 												<input
 													type="checkbox"
+													className='form-checkbox'
 													checked={filters['Gender']?.includes(gender) || false}
 													onChange={() => handleFilterChange('Gender', gender)}
 												/>
@@ -150,11 +188,49 @@ export function CatalogMobile({ title, description, linkTitle, link, products }:
 									))}
 								</ul>
 							</div>
+
+							<div className='border-b-[1px] py-5'>
+								<h4 className="font-bold mb-2">Color</h4>
+								<ul className="space-y-2">
+									{['gray', 'black', 'white'].map((color) => (
+										<li key={color}>
+											<label className="flex items-center space-x-2 ml-[10px]">
+												<input
+													type="checkbox"
+													className='form-checkbox'
+													checked={filters['color']?.includes(color) || false}
+													onChange={() => handleFilterChange('Gender', color)}
+												/>
+												<span>{color}</span>
+											</label>
+										</li>
+									))}
+								</ul>
+							</div>
+
+							<div className='pt-5 pb-20'>
+								<h4 className="font-bold mb-2">Size</h4>
+								<ul className="space-y-2">
+									{['XL', 'XS', 'Xsize'].map((size) => (
+										<li key={size}>
+											<label className="flex items-center space-x-2 ml-[10px]">
+												<input
+													type="checkbox"
+													className='form-checkbox'
+													checked={filters['Size']?.includes(size) || false}
+													onChange={() => handleFilterChange('Size', size)}
+												/>
+												<span>{size}</span>
+											</label>
+										</li>
+									))}
+								</ul>
+							</div>
 						</div>
 
-						<div className="flex justify-between mt-5">
+						<div className="fixed bottom-0 left-0 w-full bg-white z-50 border-t-[1px] flex justify-between items-center h-[87px] px-5 py-3">
 							<button
-								className="border border-black px-4 py-2 rounded-lg"
+								className="border w-[185px] h-[48px] border-black rounded-lg"
 								onClick={() => {
 									setFilters({});
 									setIsOpen(false);
@@ -163,7 +239,7 @@ export function CatalogMobile({ title, description, linkTitle, link, products }:
 								Clear All
 							</button>
 							<button
-								className="bg-black text-white px-4 py-2 rounded-lg"
+								className="bg-black w-[185px] h-[48px] text-white rounded-lg"
 								onClick={() => setIsOpen(false)}
 							>
 								Apply Filters

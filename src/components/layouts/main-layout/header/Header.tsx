@@ -24,7 +24,7 @@ export function Header() {
   }
 
   return (
-    <div className="md:py-5 p-0 max-w-[1400px] w-full md:h-full h-[60px] flex items-center justify-between bg-transparent mx-auto">
+    <div className="md:py-5 p-0 max-w-[1400px] w-full md:h-full h-[60px] flex items-center justify-between bg-[#F9F9F9] mx-auto">
       
       {/* Versiunea Desktop */}
       <div className="flex-1 lg:block hidden">

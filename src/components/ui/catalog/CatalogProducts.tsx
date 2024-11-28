@@ -98,7 +98,7 @@ export function CatalogProducts({ title, description, linkTitle, link, products 
 	const options = ['Newest', 'Low-High', 'High-Low', 'Discount'];
 
 	return (
-		<div className="max-w-[1400px] w-full mx-auto md:px-0 px-5">
+		<div className="max-w-[1400px] w-full mx-auto md:px-0 px-5 bg-[#F9F9F9]">
 			<div className='flex items-center justify-between pt-16 mb-10'>
 				<h2 className="font-Heebo-24 text-[#000000]">Clothing and accessories</h2>
 				<div className="relative" ref={dropdownRef}>
@@ -140,7 +140,7 @@ export function CatalogProducts({ title, description, linkTitle, link, products 
 				<div>
 					<Category onFilterChange={handleFilterChange} />
 				</div>
-				<div className="w-full">
+				<div className="w-full mb-10">
 					<div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8">
 						{filteredProducts.length ? (
 							filteredProducts.map((product) => (
