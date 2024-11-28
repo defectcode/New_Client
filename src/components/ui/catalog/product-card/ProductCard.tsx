@@ -36,18 +36,18 @@ export function ProductCard({ product, isBestSeller }: ProductCardProps) {
 				/>
 			</Link>
 
-			<h3 className="mt-4 font-semibold text-gray-700 line-clamp-1">{product.title}</h3>
+			<h3 className="mt-5 font-semibold text-[#000000] line-clamp-1 mb-[10px]">{product.title}</h3>
 			<Link
 				href={PUBLIC_URL.category(product.category.id)}
-				className="mt-1 text-sm text-gray-500"
+				className="text-sm text-[#8C8C8C] mb-[10px]"
 			>
 				{product.category.title}
 			</Link>
 			{/* Afișează numărul total de culori */}
-			<p className="mt-1 text-sm text-gray-500">
+			<p className="mb-[10px] text-sm text-[#BDBDBD]">
 				{productColors.length} {productColors.length === 1 ? 'Color' : 'Colors'}
 			</p>
-			<p className="mt-1 font-medium text-sm text-gray-900">{formatPrice(product.price)}</p>
+			<p className="font-medium text-sm text-[#424242]">{formatPrice(product.price)}</p>
 		</div>
 	)
 }
