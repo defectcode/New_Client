@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import { FC, useState, useEffect } from 'react';
-import { sectionContent, productSizes } from './constants/sectionContent';
+import { sectionContent } from './constants/sectionContent';
 import { ReviewsSection } from './components/ReviewsModal';
-import './Production.css'
 import SectionSizeTables from './components/SizeModal';
 import SizeModalMobile from './components/SizeModalMobile';
+import './Production.css'
 
 interface SectionListProps {
   product: {
@@ -21,32 +21,19 @@ interface SectionListProps {
 export const SectionList: FC<SectionListProps> = ({ product }) => {
   const [selectedSection, setSelectedSection] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
   const [isMobile, setIsMobile] = useState(false);
+  const sections = Object.keys(sectionContent);
+
 
   useEffect(() => {
-    // Funcție pentru a actualiza valoarea lui isMobile
     const updateIsMobile = () => {
       setIsMobile(window.matchMedia("(max-width: 768px)").matches);
     };
 
-    // Setează valoarea inițială
     updateIsMobile();
-
-    // Adaugă un event listener pentru a urmări modificările dimensiunii ecranului
     window.addEventListener("resize", updateIsMobile);
-
-    // Curățare pentru a evita scurgerile de memorie
     return () => window.removeEventListener("resize", updateIsMobile);
   }, []);
-
-  const [activeTab, setActiveTab] = useState<"sizeCompliance" | "sizes">(
-    "sizeCompliance"
-  );
-
-  const handleTabClick = (tab: "sizeCompliance" | "sizes") => {
-    setActiveTab(tab);
-  };
 
   const toggleSection = (sectionKey: string) => {
     if (sectionKey === 'reviews') {
@@ -62,7 +49,6 @@ export const SectionList: FC<SectionListProps> = ({ product }) => {
     setIsModalOpen(false);
   };
 
-  // Adaugă sau elimină `overflow-hidden` pe body când modalul este activ
   useEffect(() => {
     if (isModalOpen) {
       document.body.classList.add('overflow-hidden');
@@ -70,11 +56,11 @@ export const SectionList: FC<SectionListProps> = ({ product }) => {
       document.body.classList.remove('overflow-hidden');
     }
     return () => {
-      document.body.classList.remove('overflow-hidden'); // Asigurare la cleanup
+      document.body.classList.remove('overflow-hidden');
     };
   }, [isModalOpen]);
 
-  const sections = Object.keys(sectionContent);
+
 
   return (
     <div
@@ -167,11 +153,10 @@ export const SectionList: FC<SectionListProps> = ({ product }) => {
         );
       })}
 
-      {/* Modal pentru alte secțiuni */}
       {isModalOpen && selectedSection && selectedSection !== 'reviews' && (
         
-        <div className="fixed inset-0 z-50 flex items-end md:items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-t-lg md:rounded-lg w-full md:max-w-[663px] h-[75vh] md:max-h-[712px] md:h-full overflow-y-auto p-6 md:p-10 relative">
+        <div className="fixed inset-0 z-50 flex items-end md:items-center justify-center bg-black bg-opacity-50" onClick={closeModal}>
+          <div className="bg-white rounded-t-lg md:rounded-lg w-full md:max-w-[663px] h-[75vh] md:max-h-[712px] md:h-full overflow-y-auto p-6 md:p-10 relative" onClick={e => e.stopPropagation()}>
             <button
               className="absolute md:top-10 md:right-10 top-5 right-5 text-[#5D5D5D] hover:text-gray-800"
               onClick={closeModal}

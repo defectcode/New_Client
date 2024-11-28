@@ -42,7 +42,7 @@ export function Header() {
       </div>
       
       {/* Versiunea Mobilă */}
-      <div className="flex items-center justify-between w-full lg:hidden p-4">
+      <div className="flex items-center justify-between w-full lg:hidden p-4 bg-[#F9F9F9]">
         <Link href="/" className="p-2">
           <Image src="/images/home.svg" alt="home" width={15} height={15} />
         </Link>

@@ -84,19 +84,19 @@ const SizeModalMobile = () => {
                             className="flex items-center gap-2 text-gray-700 h-[48px]"
                             onClick={toggleCountryDropdown}
                         >
-                        Size {selectedCountry} <Image src="/images/arr.svg" alt="arrow" width={9} height={5} />
+                            Size {selectedCountry} <Image src="/images/arr.svg" alt="arrow" width={9} height={5} />
                         </button>
                         {showCountryDropdown && (
                             <ul className="absolute left-0 mt-2 bg-white z-10">
-                            {Object.keys(sizeStandards).map((country) => (
-                                <li
-                                key={country}
-                                className="px-4 py-2 text-gray-700 cursor-pointer hover:bg-gray-100"
-                                onClick={() => handleCountryChange(country as "US" | "EU" | "UK")}
-                                >
-                                {country}
-                                </li>
-                            ))}
+                                {Object.keys(sizeStandards).map((country) => (
+                                    <li
+                                        key={country}
+                                        className="px-4 py-2 text-gray-700 cursor-pointer hover:bg-gray-100"
+                                        onClick={() => handleCountryChange(country as "US" | "EU" | "UK")}
+                                    >
+                                        {country}
+                                    </li>
+                                ))}
                             </ul>
                         )}
                     </div>
@@ -110,15 +110,15 @@ const SizeModalMobile = () => {
                     </button>
                     {showUnitDropdown && (
                         <ul className="absolute left-0 mt-2 bg-white z-10">
-                        {["cm", "dm"].map((unit) => (
-                            <li
-                            key={unit}
-                            className="px-4 py-2 text-gray-700 cursor-pointer hover:bg-gray-100"
-                            onClick={() => handleUnitChange(unit as "cm" | "dm")}
-                            >
-                            {unit}
-                            </li>
-                        ))}
+                            {["cm", "dm"].map((unit) => (
+                                <li
+                                    key={unit}
+                                    className="px-4 py-2 text-gray-700 cursor-pointer hover:bg-gray-100"
+                                    onClick={() => handleUnitChange(unit as "cm" | "dm")}
+                                >
+                                    {unit}
+                                </li>
+                            ))}
                         </ul>
                     )}
                     </div>
@@ -126,13 +126,13 @@ const SizeModalMobile = () => {
 
                 {tableRow.map((row, index) => (
                     <div
-                    key={index}
-                    className={`flex justify-between items-center py-3 px-4 ${
-                        index % 2 === 0 ? "bg-gray-50" : "bg-white"
-                    } border-b border-transparent`}
+                        key={index}
+                        className={`flex justify-between items-center py-3 px-4 ${
+                            index % 2 === 0 ? "bg-gray-50" : "bg-white"
+                        } border-b border-transparent`}
                     >
-                    <span className="text-gray-500">{row.size}</span>
-                    <span className="text-gray-700">{selectedUnit === "cm" ? row.cm : row.dm}</span>
+                        <span className="text-gray-500">{row.size}</span>
+                        <span className="text-gray-700">{selectedUnit === "cm" ? row.cm : row.dm}</span>
                     </div>
                 ))}
             </div>

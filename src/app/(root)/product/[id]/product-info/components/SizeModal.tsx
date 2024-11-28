@@ -19,8 +19,8 @@ const SectionSizeTables = () => {
 
   const handleCountryChange = (country: "US" | "EU" | "UK") => {
     setSelectedCountry(country);
-    setShowDropdown(false); // Închide dropdown-ul după selectare
-    setShowCountryDropdown(false); // Asigură că dropdown-ul este ascuns
+    setShowDropdown(false); 
+    setShowCountryDropdown(false); 
   };
 
   return (

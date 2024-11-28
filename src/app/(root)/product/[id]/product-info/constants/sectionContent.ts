@@ -56,16 +56,6 @@ export interface ProductSize {
       description:
         'This product fits true to size. Please refer to the size chart for accurate measurements.',
       image: '/images/size.svg',
-      sizes: [
-        { standard: "XXS", size: 42, us: "XXS" },
-        { standard: "XS", size: 44, us: "XS" },
-        { standard: "S", size: 46, us: "S" },
-        { standard: "M", size: 48, us: "M" },
-        { standard: "L", size: 50, us: "L" },
-        { standard: "XL", size: 52, us: "XL" },
-        { standard: "XXL", size: 54, us: "XXL" },
-        { standard: "XXXL", size: 56, us: "XXXL" },
-      ],
     },
     shippingReturns: {
       title: 'SHIPPING RETURNS',
@@ -103,21 +93,4 @@ export interface ProductSize {
   
 
 
-  
-  export const productSizes: SectionContentItem = {
-    title: "Size Compliance",
-    description: "Sizes and corresponding measurements",
-    details: [],
-    
-    sizes: [
-      { standard: "XXS", size: 42, us: "XXS" },
-      { standard: "XS", size: 44, us: "XS" },
-      { standard: "S", size: 46, us: "S" },
-      { standard: "M", size: 48, us: "M" },
-      { standard: "L", size: 50, us: "L" },
-      { standard: "XL", size: 52, us: "XL" },
-      { standard: "XXL", size: 54, us: "XXL" },
-      { standard: "XXXL", size: 56, us: "XXXL" },
-    ],
-  };
   
