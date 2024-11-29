@@ -3,6 +3,7 @@ import { IColor } from './color.interface'
 import { IReview } from './review.interface'
 
 export interface IProduct {
+	discountedPrice: number
 	id: string
 	title: string
 	description: string
@@ -11,7 +12,10 @@ export interface IProduct {
 	category: ICategory
 	reviews: IReview[]
 	color: IColor
-	storeId: string
+	storeId: string,
+	gender: string,
+	size: string
+	
 }
 
 export interface IProductInput

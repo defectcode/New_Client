@@ -44,7 +44,7 @@
 	display: inline-block;
 	width: 20px;
 	height: 20px;
-	border: 2px solid #bdbdbd;
+	border: 1px solid #424242;
 	border-radius: 2px;
 	cursor: pointer;
 	position: relative;
@@ -62,7 +62,10 @@
 	left: 4px;
 	width: 8px;
 	height: 11px;
-	border: solid white; /* Culoarea bifei */
+	border: solid white;
 	border-width: 0 2px 2px 0;
 	transform: rotate(45deg);
 }
+
+
+
