@@ -24,21 +24,18 @@ export function CatalogMobile({ title, description, linkTitle, link, products }:
 	const bestSellerIds = useMemo(() => {
     	const randomProducts = [...products]
     	  .sort(() => 0.5 - Math.random())
-    	  .slice(0, 2) // Selectăm două produse random
+    	  .slice(0, 2) 
     	  .map((product) => product.id);
     	return new Set(randomProducts);
     }, [products]);
 
 	useEffect(() => {
 		if (isOpen) {
-			// Adaugă clasa pentru a dezactiva scroll-ul
 			document.body.style.overflow = 'hidden';
 		} else {
-			// Elimina clasa pentru a permite scroll-ul
 			document.body.style.overflow = '';
 		}
 
-		// Cleanup la demontare
 		return () => {
 			document.body.style.overflow = '';
 		};
@@ -150,6 +147,7 @@ export function CatalogMobile({ title, description, linkTitle, link, products }:
 							title="Size"
 							options={['S', 'M', 'L', 'XL']}
 							onFilterChange={handleFilterChange}
+							isLast={true} 
 						/>
 						</div>
 
@@ -182,7 +180,7 @@ export function CatalogMobile({ title, description, linkTitle, link, products }:
 								key={product.id} 
 								product={product} 
 								isBestSeller={bestSellerIds.has(product.id)}
-								isBestPrice={bestPriceIds.has(product.id)} // Verificăm dacă este Best Price
+								isBestPrice={bestPriceIds.has(product.id)} 
 							/>
 						))
 					) : (

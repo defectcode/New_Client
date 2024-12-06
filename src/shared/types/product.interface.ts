@@ -8,6 +8,7 @@ export interface IProduct {
 	title: string
 	description: string
 	price: number
+	discount?: number; 
 	images: string[]
 	category: ICategory
 	reviews: IReview[]
@@ -24,5 +25,5 @@ export interface IProductInput
 		'id' | 'reviews' | 'storeId' | 'category' | 'color'
 	> {
 	categoryId: string
-	colorId: string
+	colorId: string 
 }

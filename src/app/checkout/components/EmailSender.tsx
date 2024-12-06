@@ -38,6 +38,5 @@ export const EmailSender: React.FC<EmailSenderProps> = ({ emailData, onSuccess, 
     }
   };
 
-  // Poți apela `sendEmail` din `Checkout` atunci când formularul este trimis.
   return null;
 };

@@ -22,7 +22,7 @@ interface ModalProps {
 }
 
 const Modal: FC<ModalProps> = ({ isOpen, onClose, reviews, product }) => {
-  // Prevent scrolling when modal is open
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -31,7 +31,7 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, reviews, product }) => {
     }
 
     return () => {
-      document.body.style.overflow = 'auto'; // Cleanup on unmount
+      document.body.style.overflow = 'auto'; 
     };
   }, [isOpen]);
 
@@ -40,11 +40,11 @@ const Modal: FC<ModalProps> = ({ isOpen, onClose, reviews, product }) => {
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
-      onClick={onClose} // Close modal on background click
+      onClick={onClose} 
     >
       <div
         className="bg-[#F9F9F9] w-full md:max-w-3xl max-h-[80vh] overflow-y-auto rounded-t-lg md:rounded-lg md:relative fixed bottom-0"
-        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
+        onClick={(e) => e.stopPropagation()} 
       >
         {/* Header */}
         <div className="flex items-center justify-between mb-4 p-5">

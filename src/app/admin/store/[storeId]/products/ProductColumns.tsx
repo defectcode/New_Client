@@ -17,6 +17,7 @@ export interface IProductColumn {
 	id: string
 	title: string
 	price: string
+	discount: string
 	category: string
 	color: string
 	storeId: string
@@ -50,6 +51,22 @@ export const productColumns: ColumnDef<IProductColumn>[] = [
 					}
 				>
 					Price
+					<ArrowUpDown className='ml-2 size-4' />
+				</Button>
+			)
+		}
+	},
+	{
+		accessorKey: 'discount',
+		header: ({ column }) => {
+			return (
+				<Button
+					variant='ghost'
+					onClick={() =>
+						column.toggleSorting(column.getIsSorted() === 'asc')
+					}
+				>
+					Discount
 					<ArrowUpDown className='ml-2 size-4' />
 				</Button>
 			)

@@ -7,9 +7,9 @@ import { SITE_DESCRIPTION } from '@/constants/seo.constants'
 
 export function Hero() {
 	return (
-		<div className="my-24 py-20 mx-auto text-center flex flex-col items-center max-w-4xl space-y-6">
+		<div className="my-24 py-20 mx-auto text-center flex flex-col items-center max-w-4xl space-y-6 px-5">
 			<h1 className="text-4xl font-bold tracking-tight md:text-5xl">
-				Your shopping, your pleasure - <span className="text-blue-600">all in one place</span>
+				Your shopping, your pleasure - <span className="text-[#180459]">all in one place</span>
 			</h1>
 			<p className="text-lg text-muted-foreground">{SITE_DESCRIPTION}</p>
 			<Link href={PUBLIC_URL.explorer()}>

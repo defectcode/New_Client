@@ -63,7 +63,6 @@ const FooterCheckout = () => {
             </p>
           </div>
 
-          {/* Footer Links */}
           <div className="flex flex-col items-start justify-start gap-4 font-Heebo-r-14 text-[#BDBDBD] border-b border-[#7C788A]/20 pb-5 w-full">
             {footerLinks.map((link) => (
               <Link key={link.name} href={link.href} className="hover:underline">
@@ -72,7 +71,6 @@ const FooterCheckout = () => {
             ))}
           </div>
 
-          {/* Country Selector */}
           <div className="flex items-center gap-2">
             <span className="text-sm">🌐</span>
             <select

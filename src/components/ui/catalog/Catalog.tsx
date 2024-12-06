@@ -15,11 +15,10 @@ export function Catalog({
 	link,
 	products
 }: ICatalog) {
-
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 
 	return (
-		<div className='max-w-[1400px] w-full mx-auto md:px-0 px-5'>
+		<div className='max-w-[1400px] w-full mx-auto md:px-0 px-5 mb-10'>
 
 					<div className="md:flex md:items-center md:justify-between mb-4 md:mt-5">
 						<div className="max-w-2xl px-4 lg:max-w-full lg:px-0">

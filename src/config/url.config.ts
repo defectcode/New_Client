@@ -24,28 +24,28 @@ export const DASHBOARD_URL = {
 }
 
 export const STORE_URL = {
-	root: (url = '') => `/store${url ? url : ''}`,
+    root: (url = '') => `/admin/store${url ? url : ''}`, // Prefixul modificat pentru "/admin/store"
 
-	home: (storeId = '') => STORE_URL.root(`/${storeId}`),
+    home: (storeId = '') => STORE_URL.root(`/${storeId}`),
 
-	products: (storeId = '') => STORE_URL.root(`/${storeId}/products`),
-	productCreate: (storeId = '') =>
-		STORE_URL.root(`/${storeId}/products/create`),
-	productEdit: (storeId = '', id = '') =>
-		STORE_URL.root(`/${storeId}/products/${id}`),
+    products: (storeId = '') => STORE_URL.root(`/${storeId}/products`),
+    productCreate: (storeId = '') =>
+        STORE_URL.root(`/${storeId}/products/create`),
+    productEdit: (storeId = '', id = '') =>
+        STORE_URL.root(`/${storeId}/products/${id}`),
 
-	categories: (storeId = '') => STORE_URL.root(`/${storeId}/categories`),
-	categoryCreate: (storeId = '') =>
-		STORE_URL.root(`/${storeId}/categories/create`),
-	categoryEdit: (storeId = '', id = '') =>
-		STORE_URL.root(`/${storeId}/categories/${id}`),
+    categories: (storeId = '') => STORE_URL.root(`/${storeId}/categories`),
+    categoryCreate: (storeId = '') =>
+        STORE_URL.root(`/${storeId}/categories/create`),
+    categoryEdit: (storeId = '', id = '') =>
+        STORE_URL.root(`/${storeId}/categories/${id}`),
 
-	colors: (storeId = '') => STORE_URL.root(`/${storeId}/colors`),
-	colorCreate: (storeId = '') => STORE_URL.root(`/${storeId}/colors/create`),
-	colorEdit: (storeId = '', id = '') =>
-		STORE_URL.root(`/${storeId}/colors/${id}`),
+    colors: (storeId = '') => STORE_URL.root(`/${storeId}/colors`),
+    colorCreate: (storeId = '') => STORE_URL.root(`/${storeId}/colors/create`),
+    colorEdit: (storeId = '', id = '') =>
+        STORE_URL.root(`/${storeId}/colors/${id}`),
 
-	reviews: (storeId = '') => STORE_URL.root(`/${storeId}/reviews`),
+    reviews: (storeId = '') => STORE_URL.root(`/${storeId}/reviews`),
 
-	settings: (storeId = '') => STORE_URL.root(`/${storeId}/settings`)
-}
+    settings: (storeId = '') => STORE_URL.root(`/${storeId}/settings`)
+};

@@ -57,7 +57,7 @@ export function DataTable<TData, TValue>({
 			{filterKey && (
 				<div className={styles.search}>
 					<Input
-						placeholder='Поиск'
+						placeholder='Search'
 						value={
 							(table
 								.getColumn(filterKey)

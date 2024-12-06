@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
-    apiVersion: '2022-11-15' as any, // Forțează tipul
+    apiVersion: '2022-11-15' as any, 
   });
   
 
@@ -11,16 +11,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { amount } = req.body;
 
     try {
-      // Creăm un Payment Intent
       const paymentIntent = await stripe.paymentIntents.create({
-        amount, // Suma în cenți
+        amount,
         currency: 'usd',
         automatic_payment_methods: {
           enabled: true,
         },
       });
 
-      // Asigură-te că primești un client_secret valid
       console.log(paymentIntent.client_secret);
 
       res.status(200).json({ clientSecret: paymentIntent.client_secret });

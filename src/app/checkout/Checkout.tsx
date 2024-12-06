@@ -15,6 +15,7 @@ import FloatingLabelInput from './components/FloatingLabelInput';
 
 import '../../../src/components/layouts/main-layout/header/header-menu/header-cart/cart-item/PayPal.css'
 import PayPalButton from '@/components/layouts/main-layout/header/header-menu/header-cart/cart-item/PayPalButton';
+import Modal from './components/order/ModalPayPal';
 
 interface ShippingData {
   company: string;
@@ -35,7 +36,7 @@ export function Checkout() {
     company: '',
     firstName: '',
     lastName: '',
-    country: 'MD', // Cod implicit pentru țară
+    country: 'MD',
     address: '',
     city: '',
     zip: '',
@@ -56,16 +57,24 @@ export function Checkout() {
   });
 
   const [isFormValid, setIsFormValid] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false); // Stare pentru a gestiona trimiterea formularului
-  const [isEditing, setIsEditing] = useState(false); // Stare pentru a gestiona editarea datelor
-  const [isExpressCheckoutVisible, setExpressCheckoutVisible] = useState(true); // Gestionarea vizibilității secțiunii Express Checkout
+  const [isSubmitted, setIsSubmitted] = useState(false); 
+  const [isEditing, setIsEditing] = useState(false); 
+  const [isExpressCheckoutVisible, setExpressCheckoutVisible] = useState(true); 
   const [showTooltip, setShowTooltip] = useState(false);
   const [isPaymentVisible, setIsPaymentVisible] = useState(false);
   const [focused, setFocused] = useState(false);
   const [showCompanyInput, setShowCompanyInput] = useState(false);
   const [showPayPalButton, setShowPayPalButton] = useState(false);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string>('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   const handleToggleCompanyInput = () => {
     setShowCompanyInput(!showCompanyInput);
@@ -146,6 +155,9 @@ export function Checkout() {
       country,
     });
   };
+
+
+  
 
   useEffect(() => {
     const { firstName, lastName, country, address, city, zip, email, phone } = shippingData;
@@ -370,16 +382,20 @@ export function Checkout() {
                     <div className="flex gap-[15px] md:h-[56px] h-12">
                       <button
                         className="w-full py-2 border rounded-[10px] bg-[#00457C] flex items-center justify-center"
-                        onClick={() => setShowPayPalButton(true)}
+                        onClick={handleOpenModal}
                       >
-                        <Image
-                          src='/images/paypal.svg'
-                          alt='PayPal'
-                          width={69}
-                          height={18}
-                          className='md:w-[69px] md:h-[18px] w-[48px] h-[13px]'
+                        <img
+                          src="/images/paypal.svg"
+                          alt="PayPal"
+                          className="md:w-[69px] md:h-[18px] w-[48px] h-[13px]"
                         />
                       </button>
+
+                      <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+                        <h2 className="text-lg font-semibold mb-4">Complete Payment</h2>
+                        <PayPalButton totalAmount={totalAmount} />
+                      </Modal>
+
 
                       <button className="w-full py-2 border rounded-[10px] bg-[#000000] flex items-center justify-center">
                         <Image src='/images/applepay.svg' alt='Apple Pay' width={54} height={20} className='md:w-[54px] md:h-[20px] w-[42px] h-[16px]'/>

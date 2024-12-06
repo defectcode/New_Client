@@ -33,31 +33,28 @@ export function CartWindowDesktop({ product, onClose }: CartWindowDesktopProps) 
     const toggleCartVisibility = () => {
       setIsCartVisible(!isCartVisible);
     };
-  // // Disable scroll while the cart window is open
-  // useEffect(() => {
-  //   document.body.style.overflow = "hidden";
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
 
-  //   const timer = setTimeout(() => {
-  //     onClose();
-  //   }, 5000);
+    const timer = setTimeout(() => {
+      onClose();
+    }, 5000);
 
-  //   return () => {
-  //     document.body.style.overflow = "";
-  //     clearTimeout(timer);
-  //   };
-  // }, [onClose]);
+    return () => {
+      document.body.style.overflow = "";
+      clearTimeout(timer);
+    };
+  }, [onClose]);
 
   return (
     <>
-      {/* Overlay for darkened background */}
+
       <div
         className="fixed inset-0 bg-black/50 z-40"
         onClick={onClose} // Close the cart when the background is clicked
       ></div>
 
-      {/* Cart Window */}
       <div className="fixed top-5 right-0 bg-[#F9F9F9] shadow-lg rounded-l-[20px] z-50 w-[400px]">
-        {/* Header */}
         <div className="flex items-center justify-between px-5 py-3 border-b border-gray-200">
           <div className="flex items-center gap-3">
             <Image src="/images/bif.svg" alt="bif" width={20} height={20} />
@@ -65,15 +62,13 @@ export function CartWindowDesktop({ product, onClose }: CartWindowDesktopProps) 
           </div>
           <button
             className="text-[16px] text-black"
-            onClick={onClose} // Close the cart window
+            onClick={onClose} 
           >
             <Image src="/images/close.svg" alt="close" width={14} height={14} />
           </button>
         </div>
 
-        {/* Product Details */}
         <div className="relative p-5">
-          {/* Top Gradient */}
           <div className="absolute top-0 left-0 right-0 h-5 bg-gradient-to-b from-black/10 to-transparent z-10"></div>
 
           <div className="flex items-center gap-4 relative z-20">
@@ -93,11 +88,9 @@ export function CartWindowDesktop({ product, onClose }: CartWindowDesktopProps) 
             </div>
           </div>
 
-          {/* Bottom Gradient */}
           <div className="absolute bottom-0 left-0 right-0 h-5 bg-gradient-to-t from-black/10 to-transparent z-10"></div>
         </div>
 
-        {/* Footer */}
         <div className="p-5 border-t border-gray-200">
           <div className="flex items-center justify-between text-[16px] border-b pb-5">
             <div className="flex gap-1">
@@ -109,13 +102,12 @@ export function CartWindowDesktop({ product, onClose }: CartWindowDesktopProps) 
           <div className="flex flex-col items-center justify-center mt-5 space-y-[10px]">
             <Link href="/bag" className="flex-1 w-full">
               <button
-                  className="font-bold border border-black/50 rounded-[10px] w-full h-[48px] flex items-center justify-center bg-white text-[#424242]"
+                  className="font-Heebo-16 border border-black/50 rounded-[10px] w-full h-[48px] flex items-center justify-center bg-white text-[#424242]"
                 >
                   View Bag
                 </button>
             </Link>
 
-              {/* Componentele dependente de vizibilitate */}
               <Link href="/checkout" className="flex-1 w-full">
                 <button className="font-bold border border-black/50 rounded-[10px] w-full h-[48px] flex items-center justify-center bg-black text-white">
                   Checkout

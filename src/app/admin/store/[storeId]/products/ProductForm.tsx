@@ -119,7 +119,7 @@ export function ProductForm({ product, categories, colors }: ProductFormProps) {
 							}}
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>Название</FormLabel>
+									<FormLabel>Name</FormLabel>
 									<FormControl>
 										<Input
 											placeholder='Product name'
@@ -142,7 +142,30 @@ export function ProductForm({ product, categories, colors }: ProductFormProps) {
 							}}
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>Цена</FormLabel>
+									<FormLabel>Price</FormLabel>
+									<FormControl>
+										<Input
+											placeholder='Price of the product'
+											disabled={
+												isLoadingCreate ||
+												isLoadingUpdate
+											}
+											{...field}
+										/>
+									</FormControl>
+									<FormMessage />
+								</FormItem>
+							)}
+						/>
+						<FormField
+							control={form.control}
+							name='discount'
+							rules={{
+								required: 'Discount is required'
+							}}
+							render={({ field }) => (
+								<FormItem>
+									<FormLabel>Discount</FormLabel>
 									<FormControl>
 										<Input
 											placeholder='Price of the product'
@@ -195,8 +218,7 @@ export function ProductForm({ product, categories, colors }: ProductFormProps) {
 								</FormItem>
 							)}
 						/>
-					</div>
-					<div className={styles.fields}>
+
 						<FormField
 							control={form.control}
 							name='colorId'
@@ -235,7 +257,9 @@ export function ProductForm({ product, categories, colors }: ProductFormProps) {
 								</FormItem>
 							)}
 						/>
+						
 					</div>
+					
 					<FormField
 						control={form.control}
 						name='description'

@@ -33,38 +33,36 @@ export function Header() {
       <div className="flex-1 lg:flex hidden items-center justify-center">
         <Logo />
       </div>
-      <div className="flex-1 flex items-center justify-end lg:flex hidden">
+      <div className="flex-1 flex items-center justify-end lg:flex hidden gap-10">
         <SearchInput />
         <User />
-        <Button variant="ghost" onClick={toggleCart}>
+        <Button variant="ghost" onClick={toggleCart} className='p-0'>
           <Image src="/images/shop.svg" alt="shop" width={15} height={17} />
         </Button>
       </div>
       
       {/* Versiunea Mobilă */}
-      <div className="flex items-center justify-between w-full lg:hidden p-4 bg-[#F9F9F9]">
-        <Link href="/" className="p-2">
-          <Image src="/images/home.svg" alt="home" width={15} height={15} />
-        </Link>
+      <div className="flex items-center justify-between w-full h-[70px] lg:hidden px-5 bg-[#F9F9F9]">
+        <div className='flex  items-center gap-[10px]'>
+          <Link href="/" className="">
+            <Image src="/images/home.svg" alt="home" width={15} height={15} />
+          </Link>
+
+          <HeaderMenu />
+        </div>
         
         <div className="absolute left-1/2 transform -translate-x-1/2">
           <Logo />
         </div>
-        
-        <div className="flex items-center gap-4">
-          <button className="p-2">
-            <Image src="/images/search.svg" alt="search" width={11} height={14} />
-          </button>
-          <button className="p-2">
-            <Image src="/images/user.svg" alt="user" width={14} height={14} />
-          </button>
-          <button onClick={toggleCart} className="p-2">
+        <div className="flex items-center gap-5">
+          <SearchInput />
+          <User />
+          <button onClick={toggleCart}>
             <Image src="/images/shop.svg" alt="cart" width={13} height={15} />
           </button>
         </div>
       </div>
 
-      {/* Coșul de cumpărături (vizibil atât pe mobil, cât și pe desktop) */}
       {isCartOpen && (
         <div className="fixed inset-0flex items-center justify-center z-50">
           <div className="bg-white rounded-lg shadow-lg max-w-[430px] w-full relative">

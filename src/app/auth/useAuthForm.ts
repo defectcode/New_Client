@@ -4,9 +4,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
 import { DASHBOARD_URL } from '@/config/url.config'
-
 import { authService } from '@/services/auth/auth.service'
-
 import { IAuthForm } from '@/shared/types/auth.interface'
 
 export function useAuthForm(isReg: boolean) {

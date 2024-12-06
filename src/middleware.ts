@@ -18,13 +18,9 @@ export async function middleware(request: NextRequest) {
 		return NextResponse.next()
 	}
 
-	if (refreshToken === undefined) {
-		return NextResponse.redirect(new URL(PUBLIC_URL.auth(), request.url))
-	}
-
 	return NextResponse.next()
 }
 
 export const config = {
-	matcher: ['/dashboard/:path*', '/store/:path*', '/auth']
+	matcher: ['/dashboard/:path*', '/auth']
 }

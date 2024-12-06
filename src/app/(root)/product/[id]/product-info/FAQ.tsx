@@ -64,7 +64,7 @@ export const SectionList: FC<SectionListProps> = ({ product }) => {
 
   return (
     <div
-      className={`w-full bg-white ${
+      className={`w-full bg-[#F9F9F9] ${
         selectedSection === 'reviews' ? 'border-t' : 'border-y'
       } border-gray-200 md:mt-10`}
     >

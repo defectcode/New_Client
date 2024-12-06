@@ -20,7 +20,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang='ru'>
+		<html lang='en'>
 			<body className={GeistSans.variable}>
 				<Providers>{children}</Providers>
 			</body>

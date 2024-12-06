@@ -5,10 +5,10 @@ export function useIsDesktop() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 1024); // 1024px este limita pentru desktop
+      setIsDesktop(window.innerWidth >= 1024);
     };
 
-    handleResize(); // Detectăm dimensiunea inițială
+    handleResize();
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);

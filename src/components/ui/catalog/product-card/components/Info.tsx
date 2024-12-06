@@ -16,6 +16,7 @@ export function Info() {
         setExpandedSections(prev => ({ ...prev, [section]: !prev[section] }))
     };
 
+    
 
     return (
         <div className="px-5">

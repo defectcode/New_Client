@@ -126,6 +126,7 @@ export function CheckoutCartHeader() {
           <div className="">
           <div className="relative overflow-hidden">
             <div className="absolute top-0 left-0 right-0 h-5 bg-gradient-to-b from-black/10 to-transparent z-10"></div>
+            {/* <div className="overflow-y-auto overflow-x-hidden px-5 min-h-[110px] max-h-[350px]"> */}
             <div className="overflow-y-auto overflow-x-hidden px-5 min-h-[110px] max-h-[350px]">
               {items.length ? (
                 items.map((item, index) => (
@@ -195,7 +196,7 @@ export function CheckoutCartHeader() {
           
           {/* Desktop Drawer */}
           {isSummaryVisible && (
-            <div className="fixed right-0 w-[400px] bg-[#F9F9F9] z-50 top-[20px] bottom-[20px] shadow-lg overflow-hidden rounded-tl-[20px] rounded-bl-[20px] flex flex-col h-[calc(100%-40px)]">
+            <div className="fixed right-0 w-[400px] bg-[#F9F9F9] z-50 top-[20px] bottom-[20px]  overflow-hidden rounded-tl-[20px] rounded-bl-[20px] flex flex-col h-[calc(100%-40px)]">
               
               {/* Header Section */}
               <div className="flex items-center justify-between h-[56px] p-5 bg-white">
@@ -207,7 +208,7 @@ export function CheckoutCartHeader() {
 
               {/* Scrollable Products Section */}
               <div className="relative flex-grow overflow-y-auto">
-                <div className="absolute top-0 left-0 right-0 h-5 bg-gradient-to-b from-black/10 to-transparent z-10"></div>
+                <div className="absolute top-0 left-0 right-0 h-5 bg-gradient-to-b from-black/5 to-transparent z-10"></div>
                 <div className="scroll-content-product px-5 py-5 h-full">
                   {items.length ? (
                     items.map((item, index) => (
@@ -222,7 +223,8 @@ export function CheckoutCartHeader() {
                     <div className="text-sm text-muted-foreground">The cart is empty!</div>
                   )}
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 h-5 bg-gradient-to-t from-black/10 to-transparent z-10"></div>
+                <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-black/5 to-transparent z-10"></div>
+
               </div>
 
               {/* Footer Section */}

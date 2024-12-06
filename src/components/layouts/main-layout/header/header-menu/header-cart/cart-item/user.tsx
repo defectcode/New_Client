@@ -20,7 +20,7 @@ export function User() {
 
 
     return (
-        <Button className='bg-transparent hover:bg-[#F1F5F9]'>
+        <Button className='bg-transparent p-0'>
             {isLoading ? (
 				<Loader size='sm' />
 			) : user ? (
@@ -39,8 +39,8 @@ export function User() {
 						<Image
 							src={user.picture}
 							alt={user.name}
-							width={20}
-							height={20}
+							width={16}
+							height={16}
 							className={`${styles.avatar} ${currentPath === DASHBOARD_URL.home() ? 'border-2 border-white' : ''}`} // Iconiță activă
 						/>
 					</Link>

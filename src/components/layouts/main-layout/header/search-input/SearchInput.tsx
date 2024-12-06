@@ -23,7 +23,7 @@ export function SearchInput() {
 					placeholder="Search for products"
 					value={searchTerm}
 					onChange={e => setSearchTerm(e.target.value)}
-					className="rounded-full px-4 py-2 focus-visible:ring-transparent"
+					className="rounded-full  focus-visible:ring-transparent"
 				/>
 			)}
 			<Button
@@ -37,7 +37,7 @@ export function SearchInput() {
 						setSearchVisible(prev => !prev)
 					}
 				}}
-				className="ml-2 rounded-full bg-transparent text-white px-4 py-2"
+				className="md:ml-2 rounded-full bg-transparent text-white p-0"
 			>
 				<Image src='/images/search.svg' alt='search' width={15} height={15}/>
 			</Button>
