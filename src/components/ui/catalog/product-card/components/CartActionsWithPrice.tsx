@@ -21,7 +21,7 @@ export function CartQuantityActions({
 
   const handleMinusClick = () => {
     if (item.quantity === 1) {
-      setShowConfirm(true); // Arată confirmarea pentru ștergere
+      setShowConfirm(true); 
     } else {
       onQuantityChange(item.id, 'minus');
     }

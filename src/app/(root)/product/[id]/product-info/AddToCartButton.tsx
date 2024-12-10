@@ -13,7 +13,7 @@ interface AddToCartButtonProps {
 export function AddToCartButton({ product }: AddToCartButtonProps) {
   const { addToCart, removeFromCart } = useActions();
   const { items } = useCart();
-  const [isCartVisible, setIsCartVisible] = useState(false); // State to control visibility of cart
+  const [isCartVisible, setIsCartVisible] = useState(false); 
   const [recentlyAddedProduct, setRecentlyAddedProduct] = useState<IProduct | null>(null);
 
   const currentElement = items.find(
@@ -29,13 +29,13 @@ export function AddToCartButton({ product }: AddToCartButtonProps) {
         quantity: 1,
         price: product.price,
       });
-      setRecentlyAddedProduct(product); // Set the recently added product
-      setIsCartVisible(true); // Show the cart window
+      setRecentlyAddedProduct(product); 
+      setIsCartVisible(true); 
     }
   };
 
   const handleCloseCartWindow = () => {
-    setIsCartVisible(false); // Close the cart window
+    setIsCartVisible(false); 
   };
 
   return (
@@ -56,7 +56,7 @@ export function AddToCartButton({ product }: AddToCartButtonProps) {
                 title: recentlyAddedProduct.title,
                 price: recentlyAddedProduct.price,
                 images: recentlyAddedProduct.images,
-                color: recentlyAddedProduct.color.name, // Assuming color is available
+                color: recentlyAddedProduct.color.name,
               }}
               onClose={handleCloseCartWindow}
             />
@@ -69,7 +69,7 @@ export function AddToCartButton({ product }: AddToCartButtonProps) {
                 title: recentlyAddedProduct.title,
                 price: recentlyAddedProduct.price,
                 images: recentlyAddedProduct.images,
-                color: recentlyAddedProduct.color.name, // Assuming color is available
+                color: recentlyAddedProduct.color.name, 
               }}
               onClose={handleCloseCartWindow}
             />

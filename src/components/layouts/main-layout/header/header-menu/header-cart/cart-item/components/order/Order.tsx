@@ -5,7 +5,7 @@ import CheckoutPage from './StripePaymentButton';
 import { useOrderCalculations } from '@/hooks/useOrderCalculations';
 
 interface PaymentProps {
-  items: any[]; // Ar trebui să fie ICartItem[], dar depinde de datele tale reale
+  items: any[]; 
 }
 
 export default function Order({ items }: PaymentProps) {

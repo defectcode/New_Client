@@ -1,13 +1,13 @@
 'use client'
 import Image from "next/image";
-import { useState } from "react";
-import '../Catalog.css'
-
+import { useState, useEffect } from "react";
+import '../Catalog.css';
 
 interface FilterSectionProps {
   title: string;
   options: string[];
   onFilterChange: (title: string, selectedOptions: string[]) => void;
+  resetFilters: boolean;
   isLast?: boolean; 
 }
 
@@ -15,7 +15,8 @@ const FilterSection: React.FC<FilterSectionProps> = ({
   title,
   options,
   onFilterChange,
-  isLast = false, 
+  resetFilters,
+  isLast = false,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(true);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
@@ -29,11 +30,18 @@ const FilterSection: React.FC<FilterSectionProps> = ({
     onFilterChange(title, updatedOptions);
   };
 
+  useEffect(() => {
+    if (resetFilters) {
+      setSelectedOptions([]);
+      onFilterChange(title, []);
+    }
+  }, [resetFilters, title, onFilterChange]);
+
   return (
     <div
       className={`border-t-[1px] border-[#BDBDBD]/50 py-5 ${
         title === 'Size' ? 'border-b-[1px]' : ''
-      } ${isLast ? 'pb-24 md:pb-0' : ''}`} 
+      } ${isLast ? 'pb-24 md:pb-0' : ''}`}
     >
       <div
         className="flex items-center justify-between cursor-pointer"

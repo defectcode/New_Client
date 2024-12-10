@@ -45,6 +45,11 @@ export function Navigation() {
 			value: 'Colors'
 		},
 		{
+			icon: PaintBucket,
+			link: STORE_URL.sizes(storeId),
+			value: 'Sizes'
+		},
+		{
 			icon: Star,
 			link: STORE_URL.reviews(storeId),
 			value: 'Reviews'

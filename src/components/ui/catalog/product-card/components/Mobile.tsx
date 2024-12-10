@@ -22,7 +22,6 @@ export function Mobile() {
     const [showConfirm, setShowConfirm] = useState(false);
     const [itemToRemove, setItemToRemove] = useState<number | null>(null);
 
-    // Calculează totalurile
     const totalProducts = items.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
     const totalItems = items.reduce((acc, item) => acc + item.quantity, 0);
     const itemText = totalItems === 1 ? 'item' : 'items';
@@ -145,7 +144,6 @@ export function Mobile() {
                 )}
 
                 <div className="px-5 pt-5">
-                    {/* <Promocode /> */}
                     <div className="text-[#1E1E1E] flex items-center justify-between pb-5">
                         <h2>Summary</h2>
                         <p className="font-Heebo-semi-15 ">{`${totalItems} ${itemText}`}</p>

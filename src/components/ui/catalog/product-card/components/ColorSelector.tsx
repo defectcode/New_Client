@@ -1,28 +1,26 @@
 import { useState } from 'react'
 
 interface ColorSelectorProps {
-  colors: string[] // Lista culorilor disponibile
-  selectedColor: string // Culoarea selectată inițial
-  onColorSelect: (color: string) => void // Funcție apelată la selectarea unei culori
+  colors: string[] 
+  selectedColor: string 
+  onColorSelect: (color: string) => void 
 }
 
 export function ColorSelector({ colors, selectedColor, onColorSelect }: ColorSelectorProps) {
-  const [isOpen, setIsOpen] = useState(false) // Starea pentru afișarea popup-ului
+  const [isOpen, setIsOpen] = useState(false) 
 
   const handleColorSelect = (color: string) => {
-    onColorSelect(color) // Actualizează culoarea selectată în componenta părinte
-    setIsOpen(false) // Închide popup-ul
+    onColorSelect(color) 
+    setIsOpen(false) 
   }
 
   return (
     <div className="relative inline-block">
-      {/* Culoarea selectată */}
       <div
         className="flex items-center font-Heebo-16 text-[#8C8C8C] cursor-pointer"
         onClick={() => setIsOpen((prev) => !prev)}
       >
         {selectedColor}
-        {/* Săgeată */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -37,7 +35,6 @@ export function ColorSelector({ colors, selectedColor, onColorSelect }: ColorSel
         </svg>
       </div>
 
-      {/* Popup cu lista de culori */}
       {isOpen && (
         <div className="absolute top-full left-0 bg-white border border-gray-200 shadow-lg rounded-md mt-2 z-10">
           {colors.map((color) => (

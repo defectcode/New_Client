@@ -69,7 +69,7 @@ export function CatalogMobile({ title, description, linkTitle, link, products }:
 			const matchesGender =
 				!filters.Gender ||
 				filters.Gender.length === 0 ||
-				filters.Gender.includes(product.gender);
+				filters.Gender.includes(product.category.title);
 
 			const matchesColor =
 				!filters.Color ||
@@ -124,30 +124,30 @@ export function CatalogMobile({ title, description, linkTitle, link, products }:
 
 						<div className="">
 						<FilterSection
-							title="Category"
-							options={['Men', 'Women', 'Unisex']}
-							onFilterChange={handleFilterChange}
+								title="Category"
+								options={['Men', 'Women', 'Unisex']}
+								onFilterChange={handleFilterChange} resetFilters={false}						
 						/>
 						<FilterSection
-							title="Shop by Price"
-							options={['$25 - 50', '$50 - 100', '$100 - 150', 'Over 150']}
-							onFilterChange={handleFilterChange}
+								title="Shop by Price"
+								options={['$25 - 50', '$50 - 100', '$100 - 150', 'Over 150']}
+								onFilterChange={handleFilterChange} resetFilters={false}								
 						/>
 						<FilterSection
-							title="Gender"
-							options={['Men', 'Women', 'Unisex']}
-							onFilterChange={handleFilterChange}
+								title="Gender"
+								options={['Men', 'Women', 'Unisex']}
+								onFilterChange={handleFilterChange} resetFilters={false}						
 						/>
 						<FilterSection
-							title="Color"
-							options={['Red', 'Blue', 'Green', 'Black', 'White']}
-							onFilterChange={handleFilterChange}
+								title="Color"
+								options={['Red', 'Blue', 'Green', 'Black', 'White']}
+								onFilterChange={handleFilterChange} resetFilters={false}						
 						/>
 						<FilterSection
-							title="Size"
-							options={['S', 'M', 'L', 'XL']}
-							onFilterChange={handleFilterChange}
-							isLast={true} 
+								title="Size"
+								options={['S', 'M', 'L', 'XL']}
+								onFilterChange={handleFilterChange}
+								isLast={true} resetFilters={false}						
 						/>
 						</div>
 
@@ -184,7 +184,7 @@ export function CatalogMobile({ title, description, linkTitle, link, products }:
 							/>
 						))
 					) : (
-						<div>Nothing found!</div>
+						<div className='text-[18px] font-heebo font-light'>Nothing found!</div>
 					)}
 				</div>
 			</div>

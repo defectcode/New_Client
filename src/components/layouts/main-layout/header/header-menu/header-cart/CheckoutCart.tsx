@@ -8,7 +8,7 @@ import { CheckoutCartItem } from './cart-item/CheckoutCartItem';
 import './cart-item/PayPal.css';
 
 export function CheckoutCart() {
-  const [isSummaryVisible, setIsSummaryVisible] = useState(false); // Controlăm vizibilitatea sumarului
+  const [isSummaryVisible, setIsSummaryVisible] = useState(false); 
   const router = useRouter();
   const { items, total } = useCart();
 
@@ -21,7 +21,6 @@ export function CheckoutCart() {
 
   return (
     <div className="relative">
-      {/* Overlay pentru când drawer-ul este deschis, doar pentru mobil */}
       {isSummaryVisible && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40 md:hidden"
@@ -29,7 +28,6 @@ export function CheckoutCart() {
         ></div>
       )}
 
-      {/* Drawer-ul mobil */}
       <div
         className={`fixed inset-x-0 top-0 transform transition-transform duration-300 bg-white rounded-t-lg z-50 md:hidden ${
           isSummaryVisible ? 'translate-y-0' : '-translate-y-full'
@@ -50,7 +48,6 @@ export function CheckoutCart() {
             <p className="font-semibold text-[16px]">{formatPrice(finalTotal)}</p>
           </div>
 
-          {/* Secțiunea de produse cu scroll independent */}
           <div className="bg-[#F9F9F9] p-4 rounded-lg overflow-y-auto flex-grow mb-4">
             {items.length ? (
               items.map((item) => (
@@ -61,7 +58,6 @@ export function CheckoutCart() {
             )}
           </div>
 
-          {/* Secțiunea statică cu prețul total și alte informații */}
           <div className="p-4 bg-white rounded-lg">
             <div className="text-lg font-medium mt-[5px] flex items-center justify-between font-heebo text-[16px] text-[#111111]">
               <p>Subtotal:</p>
@@ -83,7 +79,6 @@ export function CheckoutCart() {
         </div>
       </div>
 
-      {/* Butonul pentru a deschide sumarul comenzii, doar pe mobil */}
       <div className="block md:hidden mb-4">
         <div
           className="flex items-center justify-between cursor-pointer px-5 py-4 bg-white md:border md:rounded-lg"
@@ -94,7 +89,6 @@ export function CheckoutCart() {
         </div>
       </div>
 
-      {/* Structura desktop rămâne neschimbată */}
       <div className="md:block hidden">
         <div className="py-4 bg-white border rounded-lg max-w-[430px] mx-auto">
           <div className="flex items-center justify-between cursor-pointer px-5" onClick={handleToggleSummary}>

@@ -1,5 +1,3 @@
-
-
 import { useEffect, useState } from 'react';
 import { useCart } from '@/hooks/useCart';
 import { formatPrice } from '@/utils/string/format-price';
@@ -7,14 +5,12 @@ import { CheckoutCartItem } from './cart-item/CheckoutCartItem';
 import './cart-item/PayPal.css';
 import Image from 'next/image';
 import { Logo } from '../../logo/Logo';
-import CheckoutButton from '@/app/checkout/ButtonCheckout';
 
 export function CheckoutCartHeader() {
   const [isSummaryVisible, setIsSummaryVisible] = useState(false);
   const { items, total } = useCart();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Calculul corect al numărului total de articole
   const totalItemsCount = items.reduce((accumulator, item) => accumulator + item.quantity, 0);
   const itemText = totalItemsCount === 1 ? 'item' : 'items';
 
@@ -36,7 +32,6 @@ export function CheckoutCartHeader() {
       document.body.style.overflow = '';
     }
 
-    // Cleanup la demontare
     return () => {
       document.body.style.overflow = '';
     };
@@ -44,7 +39,6 @@ export function CheckoutCartHeader() {
 
   return (
     <div className="relative flex items-center justify-between bg-[#F9F9F9]">
-      {/* Background overlay for non-summary elements when summary is open */}
       {isSummaryVisible && (
         <div className="fixed inset-0 bg-[#000000] bg-opacity-60 z-40" onClick={handleToggleSummary}></div>
       )}
@@ -126,7 +120,6 @@ export function CheckoutCartHeader() {
           <div className="">
           <div className="relative overflow-hidden">
             <div className="absolute top-0 left-0 right-0 h-5 bg-gradient-to-b from-black/10 to-transparent z-10"></div>
-            {/* <div className="overflow-y-auto overflow-x-hidden px-5 min-h-[110px] max-h-[350px]"> */}
             <div className="overflow-y-auto overflow-x-hidden px-5 min-h-[110px] max-h-[350px]">
               {items.length ? (
                 items.map((item, index) => (
@@ -198,7 +191,6 @@ export function CheckoutCartHeader() {
           {isSummaryVisible && (
             <div className="fixed right-0 w-[400px] bg-[#F9F9F9] z-50 top-[20px] bottom-[20px]  overflow-hidden rounded-tl-[20px] rounded-bl-[20px] flex flex-col h-[calc(100%-40px)]">
               
-              {/* Header Section */}
               <div className="flex items-center justify-between h-[56px] p-5 bg-white">
                 <h2 className="font-Heebo-16-medium text-[#1E1E1E]">Your Shopping Bag</h2>
                 <button className="text-[16px] text-black" onClick={() => setIsSummaryVisible(false)}>
@@ -206,7 +198,6 @@ export function CheckoutCartHeader() {
                 </button>
               </div>
 
-              {/* Scrollable Products Section */}
               <div className="relative flex-grow overflow-y-auto">
                 <div className="absolute top-0 left-0 right-0 h-5 bg-gradient-to-b from-black/5 to-transparent z-10"></div>
                 <div className="scroll-content-product px-5 py-5 h-full">

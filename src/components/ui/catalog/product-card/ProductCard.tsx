@@ -5,32 +5,48 @@ import { IProduct } from '@/shared/types/product.interface';
 import { formatPrice } from '@/utils/string/format-price';
 import { FavoriteButton } from '@/app/(root)/product/[id]/product-info/FavoriteButton';
 import { COLORS } from '@/app/(root)/product/[id]/product-info/constants/Colors';
-import './ProductCard.css'
+import './ProductCard.css';
+import Size from './components/size/Size';
+import { useEffect, useState } from 'react';
+import Color from './components/Color';
+import MobileSizeButton from './components/size/MobileSizeButton';
 
 interface ProductCardProps {
   product: IProduct;
   isBestSeller?: boolean;
-  isBestPrice?: boolean; 
-
+  isBestPrice?: boolean;
 }
 
-export function ProductCard({ product, isBestSeller, isBestPrice }: ProductCardProps) {
-  const productColors = COLORS;
+export function ProductCard({ product, isBestSeller, isBestPrice }: ProductCardProps) {  
+
+
 
   return (
-    <div className="bg-transparent relative">
-      <div className="relative group">
+    <div className="bg-transparent relative w-full sm:w-[350px]">
+      <div className="relative group mb-5">
         <Link href={PUBLIC_URL.product(product.id)}>
+          {/* Imaginea principală */}
           <Image
             src={product.images[0]}
             alt={product.title}
-            width={352}
-            height={352}
-            className="rounded-[10px] bg-white"
+            width={350}
+            height={500}
+            className="rounded-[10px] bg-white w-full sm:w-[350px] h-[250px] sm:h-[500px] object-contain"
           />
+
+          {/* Icon-ul de shopping */}
+          
         </Link>
+        <div className="absolute bottom-3 right-3 bg-[#A1A1A1]/10 rounded-full py-2 px-3 md:hidden">
+            <MobileSizeButton product={product} />
+          </div>
+
         <div className="absolute top-3 right-3 p-1 bg-transparent cursor-pointer md:block hidden">
           <FavoriteButton product={product} />
+        </div>
+
+        <div className='md:block hidden'>
+          <Size/>
         </div>
       </div>
 
@@ -38,40 +54,42 @@ export function ProductCard({ product, isBestSeller, isBestPrice }: ProductCardP
         <p className="mt-2 text-sm text-[#EB001B] font-semibold">Best Seller</p>
       )}
 
-      {isBestPrice && (
-        <div className="absolute top-3 left-2 bg-green-100 font-Heebo-16-reg text-green-600 text-xs py-1 px-2 rounded">
-          Best Price
-        </div>
-      )}
+      <div className='flex items-center justify-between mt-[10px]'>
+        <h3 className="font-Heebo-16-semi text-[#000000] line-clamp-1">
+          {product.title}
+        </h3>
 
-      <h3 className="mt-[10px] font-Heebo-16-reg text-[#000000] line-clamp-1">
-        {product.title}
-      </h3>
-
-      <Link
-        href={PUBLIC_URL.category(product.category.id)}
-        className="font-heebo text-[14px] text-[#8C8C8C] mb-[10px]"
-      >
-        {product.category.title}
-      </Link>
-
-      <p className="mb-5 text-sm text-[#BDBDBD]">
-        {productColors.length} {productColors.length === 1 ? 'Color' : 'Colors'}
-      </p>
-
-      <div className="font-Heebo-16-med text-[#1E1E1E] flex items-center gap-2">
+        <div className="font-Heebo-15-reg text-[#424242] flex items-center justify-between gap-5 md:block hidden">
           {isBestPrice ? (
-            <>
-              <span className="line-through text-[#BDBDBD]">
+            <div className="price-container"> {/* Aplica clasa pentru spațiu */}
+              <span className="line-through text-[#424242]">
                 {formatPrice(product.price)}
               </span>
-              <span className="text-green-600">
+              <span className="text-[#34A853]">
                 {formatPrice(product.discountedPrice || product.price * 0.9)}
               </span>
-            </>
+            </div>
           ) : (
             <span>{formatPrice(product.price)}</span>
           )}
+        </div>
+
+      </div> 
+
+      <Color/>
+      <div className="font-Heebo-15-reg text-[#424242] flex items-center md:hidden mt-5">
+        {isBestPrice ? (
+          <div className='price-container'>
+            <span className="line-through text-[#424242]">
+              {formatPrice(product.price)}
+            </span>
+            <span className="text-[#34A853]">
+              {formatPrice(product.discountedPrice || product.price * 0.9)}
+            </span>
+          </div>
+        ) : (
+          <span>{formatPrice(product.price)}</span>
+        )}
       </div>
     </div>
   );

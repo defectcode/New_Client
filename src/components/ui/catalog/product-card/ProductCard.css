@@ -100,3 +100,10 @@
 	font-weight: 500;
 	line-height: 13px;
 }
+
+
+.price-container {
+	display: flex;
+	gap: 10px;
+  }
+  
