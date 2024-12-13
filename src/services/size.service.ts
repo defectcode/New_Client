@@ -14,11 +14,12 @@ class SizeService {
 
   async getByStoreId(storeId: string) {
     const { data } = await axiosClassic<ISize[]>({
-      url: STORE_URL.sizes(`/by-storeId/${storeId}`),
+      url: `${API_URL.sizes(`/by-storeId/${storeId}`)}`, // Correct the API URL
       method: 'GET',
     });
     return data;
   }
+  
 
   async getById(id: string) {
     const { data } = await axiosClassic<ISize>({
@@ -29,13 +30,12 @@ class SizeService {
   }
 
   async create(data: ISizeInput, storeId: string) {
-    const { data: createdSize } = await axiosWithAuth<ISize>({
-      url: STORE_URL.sizes(`${storeId}`),
-      method: 'POST',
-      data,
-    });
-    return createdSize;
+    return axiosWithAuth.post(`${API_URL.sizes(`/${storeId}`)}`, data); // Ensure the correct API URL
   }
+  
+
+
+  
 
   async update(id: string, data: ISizeInput) {
     const { data: updatedSize } = await axiosWithAuth<ISize>({

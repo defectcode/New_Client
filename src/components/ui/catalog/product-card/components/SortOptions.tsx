@@ -47,7 +47,7 @@ const SortOptions: React.FC<SortOptionsProps> = ({
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 bg-[#E8E8ED] shadow-lg w-[162px] h-auto rounded-md border border-[#E0E0E0] z-10 space-y-[10px] py-5 md:mt-5">
+        <div className="absolute right-6 bg-[#E8E8ED] shadow-lg w-[162px] h-auto rounded-md border border-[#E0E0E0] z-10 space-y-[10px] py-5 md:mt-5">
           {options.map((option, index) => (
             <p
               key={index}

@@ -6,6 +6,7 @@ import { ICatalog } from '../catalog.interface';
 
 import '../Catalog.css';
 import { COLORS } from '@/app/(root)/product/[id]/product-info/constants/Colors';
+import { ExplorerProducts } from '@/app/(root)/explorer/components/ExplorerProducts';
 
 
 
@@ -176,7 +177,7 @@ export function CatalogMobile({ title, description, linkTitle, link, products }:
 				<div className="grid grid-cols-2 gap-x-[10px] gap-y-10 px-5 pb-10">
 					{filteredProducts.length ? (
 						filteredProducts.map((product) => (
-							<ProductCard 
+							<ExplorerProducts 
 								key={product.id} 
 								product={product} 
 								isBestSeller={bestSellerIds.has(product.id)}

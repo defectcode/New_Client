@@ -1,7 +1,7 @@
 import { AddToCartButton } from '@/app/(root)/product/[id]/product-info/AddToCartButton';
 import { IProduct } from '@/shared/types/product.interface'; 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface MobileSizeButtonProps {
   product: IProduct; 
@@ -10,18 +10,34 @@ interface MobileSizeButtonProps {
 const MobileSizeButton: React.FC<MobileSizeButtonProps> = ({ product }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
-
   const sizes = ["XS", "S", "M", "L", "XL", "2XL"];
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = ""; 
+    }
+
+    return () => {
+      document.body.style.overflow = ""; 
+    };
+  }, [isOpen]);
 
   return (
     <>
-      <button onClick={() => setIsOpen(true)} className="flex items-center gap-2">
-        <Image src="/images/shoping.svg" alt="shopping" height={20} width={14} />
-      </button>
+      <div className="absolute bottom-[10px] left-1/2 transform -translate-x-1/2 flex items-center justify-center">
+        <button
+          onClick={() => setIsOpen(true)}
+          className="text-[#424242] font-heebo h-[30px] w-[110px] max-w-[110px] bg-[#A1A1A1]/10 rounded-full"
+        >
+          Add
+        </button>
+      </div>
 
       {isOpen && (
         <div
-          className="fixed inset-0 z-50 bg-black bg-opacity-50"
+          className="fixed inset-0 z-50 bg-black bg-opacity-50 "
           onClick={() => setIsOpen(false)}
         >
           <div
@@ -59,14 +75,14 @@ const MobileSizeButton: React.FC<MobileSizeButtonProps> = ({ product }) => {
               ))}
             </div>
 
-            <div className="absolute bottom-0 left-0 w-full p-5 mb-5 flex items-center justify-between bg-white">
+            <div className="absolute bottom-0 left-0 w-full p-5 flex items-center justify-between bg-white">
               <button
                 onClick={() => setSelectedSize(null)}
                 className="border border-black text-black w-[185px] h-[48px] py-2 px-5 rounded-lg"
               >
                 Clear {selectedSize ? "(1)" : ""}
               </button>
-              <div className='bg-black w-[185px] rounded-[10px] text-white font-Heebo-16-regular'>
+              <div className='bg-black w-[185px] rounded-[10px] text-white'>
                 <AddToCartButton product={product} />
               </div>
             </div>

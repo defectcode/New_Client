@@ -36,7 +36,7 @@ export function ColorSelector({ colors, selectedColor, onColorSelect }: ColorSel
       </div>
 
       {isOpen && (
-        <div className="absolute top-full left-0 bg-white border border-gray-200 shadow-lg rounded-md mt-2 z-10">
+        <div className="absolute top-full w-[120px] left-0 bg-white border border-gray-200 shadow-lg rounded-md mt-2 z-10">
           {colors.map((color) => (
             <div
               key={color}

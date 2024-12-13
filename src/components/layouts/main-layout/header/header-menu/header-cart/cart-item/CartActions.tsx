@@ -4,7 +4,6 @@ import { useActions } from '@/hooks/useActions';
 import { useCart } from '@/hooks/useCart';
 import { ICartItem } from '@/shared/types/cart.interface';
 import { ConfirmDeleteModal } from './components/ConfirmDeleteModal';
-import Image from 'next/image';
 import { Minus, Plus } from 'lucide-react';
 
 interface CartActionsProps {
@@ -40,10 +39,10 @@ export function CartActions({ item }: CartActionsProps) {
         onClick={handleMinusClick}
         variant="ghost"
         size="icon"
-        className="p-0"
+        className="p-0 bg-transparent hover:bg-transparent"
         disabled={quantity === 0}
       >
-        <Minus width={10} height={10} />
+        <Minus width={11} height={11} />
       </Button>
 
       <input
@@ -57,9 +56,9 @@ export function CartActions({ item }: CartActionsProps) {
         onClick={() => changeQuantity({ id: item.id, type: 'plus' })}
         variant="ghost"
         size="icon"
-        className="p-0"
+        className="p-0 bg-transparent hover:bg-transparent"
       >
-        <Plus width={10} height={10} />
+        <Plus width={11} height={11} />
       </Button>
 
       {showConfirm && (

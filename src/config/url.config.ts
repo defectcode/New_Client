@@ -24,7 +24,7 @@ export const DASHBOARD_URL = {
 }
 
 export const STORE_URL = {
-    root: (url = '') => `/admin/store${url ? url : ''}`, // Prefixul modificat pentru "/admin/store"
+    root: (url = '') => `/admin/store${url ? url : ''}`,
 
     home: (storeId = '') => STORE_URL.root(`/${storeId}`),
 
@@ -49,6 +49,8 @@ export const STORE_URL = {
     sizesCreate: (storeId = '') => STORE_URL.root(`/${storeId}/sizes/create`),
     sizesEdit: (storeId = '', id = '') =>
         STORE_URL.root(`/${storeId}/sizes/${id}`),
+
+    
 
     reviews: (storeId = '') => STORE_URL.root(`/${storeId}/reviews`),
 

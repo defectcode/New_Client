@@ -8,6 +8,7 @@ import {
 	FolderKanban,
 	PaintBucket,
 	Settings,
+	Ruler,
 	Star
 } from 'lucide-react'
 import { useParams } from 'next/navigation'
@@ -45,7 +46,7 @@ export function Navigation() {
 			value: 'Colors'
 		},
 		{
-			icon: PaintBucket,
+			icon: Ruler,
 			link: STORE_URL.sizes(storeId),
 			value: 'Sizes'
 		},

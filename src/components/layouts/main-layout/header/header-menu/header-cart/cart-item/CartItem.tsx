@@ -10,6 +10,8 @@ import { CartActions } from './CartActions';
 import { useDispatch } from 'react-redux';
 import { FavoriteButton } from '@/app/(root)/product/[id]/product-info/FavoriteButton';
 import { cartSlice } from '@/store/cart/cart.slice';
+import { COLORS } from '@/app/(root)/product/[id]/product-info/constants/Colors';
+
 
 interface CartItemProps {
   item: ICartItem;
@@ -25,7 +27,9 @@ export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
 
   // State pentru color dropdown
   const [colorDropdownOpen, setColorDropdownOpen] = useState(false);
-  const [selectedColor, setSelectedColor] = useState<string>(item.product.color.name);
+  const color = COLORS.find(c => c.name === item.product.color?.name) || COLORS[0];
+
+  const [selectedColor, setSelectedColor] = useState<string>(color.name);
 
   // Culori disponibile
   const availableColors = ['Light gray', 'Blue', 'Red', 'Black'];

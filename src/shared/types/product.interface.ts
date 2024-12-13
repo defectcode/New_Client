@@ -3,6 +3,7 @@ import { IColor } from './color.interface'
 import { IReview } from './review.interface'
 
 export interface IProduct {
+    selectedSize: string;
 	dateAdded: string | number | Date;
 	discountedPrice: number;
 	id: string;
@@ -16,7 +17,7 @@ export interface IProduct {
 	color: IColor;
 	storeId: string;
 	gender: string;
-	sizes: string[]; // Mărimile vor fi un array
+	size: string[]; 
   }
   
   export interface IProductInput
@@ -26,5 +27,5 @@ export interface IProduct {
   > {
   categoryId: string;
   colorId: string;
-  sizes: string[]; // Array de mărimi
+  size: string[]; 
 }

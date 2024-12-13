@@ -56,14 +56,9 @@ export function Mobile() {
         setShowConfirm(false); 
     };
 
-    const handleCheckout = () => {
-        router.push('/checkout');
-    };
-
     return (
         <div>
             <div className="flex flex-col max-w-[470px] mx-auto bg-white rounded-lg h-screen">
-                {/* Header */}
                 <div className="flex items-center justify-between px-4 py-3 bg-white h-[56px]">
                     <h2 className="font-Heebo-20-semi text-[#1E1E1E]">Bag</h2>
                     <button
@@ -93,7 +88,7 @@ export function Mobile() {
                                     alt={item.product.title}
                                     width={90}
                                     height={90}
-                                    className="object-cover rounded-md"
+                                    className="rounded-md object-cover max-w-[90px] max-h-[90px]"
                                 />
                             </div>
                             <div className="ml-4 flex flex-col justify-between w-full space-y-4">

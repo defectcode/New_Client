@@ -8,6 +8,7 @@ import { ProductCard } from './product-card/ProductCard';
 import ClearFilter from './product-card/components/ClearFilter';
 import { COLORS } from '@/app/(root)/product/[id]/product-info/constants/Colors';
 import SortOptions from './product-card/components/SortOptions';
+import { ExplorerProducts } from '@/app/(root)/explorer/components/ExplorerProducts';
 
 
 
@@ -166,7 +167,7 @@ export function CatalogProducts({ title, description, linkTitle, link, products 
           <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-x-[10px] gap-y-10">
             {filteredProducts.length ? (
               filteredProducts.map((product) => (
-                <ProductCard 
+                <ExplorerProducts 
                   key={product.id} 
                   product={product} 
                   isBestSeller={bestSellerIds.has(product.id)}

@@ -173,7 +173,6 @@ export function ProductForm({ product, categories, colors }: ProductFormProps) {
               )}
             />
 
-            {/* Dropdown pentru selecția multiplă a mărimilor */}
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)}>
                 <FormField
@@ -184,6 +183,7 @@ export function ProductForm({ product, categories, colors }: ProductFormProps) {
                       <FormLabel>Sizes</FormLabel>
                       <Select
                         disabled={isLoadingSizes || isLoadingUpdate}
+                        defaultValue='M'
                         onValueChange={(value) =>
                           field.onChange([...field.value, value])
                         }
@@ -210,7 +210,6 @@ export function ProductForm({ product, categories, colors }: ProductFormProps) {
               </form>
             </Form>
 
-            {/* Dropdown pentru categorie */}
             <FormField
               control={form.control}
               name="categoryId"

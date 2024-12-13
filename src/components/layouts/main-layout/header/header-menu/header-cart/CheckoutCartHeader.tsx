@@ -13,7 +13,6 @@ export function CheckoutCartHeader() {
 
   const totalItemsCount = items.reduce((accumulator, item) => accumulator + item.quantity, 0);
   const itemText = totalItemsCount === 1 ? 'item' : 'items';
-
   const estimatedTax = total * 0.2;
   const finalTotal = total + estimatedTax;
 
@@ -46,7 +45,6 @@ export function CheckoutCartHeader() {
       {/* Mobile Header */}
       <div className="md:hidden block w-full">
         {isSummaryVisible ? (
-          // Render Logo and Summary inside the drawer when open
           <div>
             <div className="absolute inset-x-0 top-0 bg-white z-50 py-[10px] px-5 flex items-center justify-between border-b">
               <div>
@@ -85,14 +83,15 @@ export function CheckoutCartHeader() {
             </div>
           </div>
         ) : (
-          // Render Logo and Summary as usual in the header when summary is closed
           <div className="flex items-center justify-between bg-[#F9F9F9] px-5 py-[10px] w-full">
             <div>
               <Logo />
             </div>
             <div className="flex items-center gap-2 text-[16px] font-Heebo-med text-[#1E1E1E]" onClick={handleToggleSummary}>
               <span>Summary</span>
-              <p>{formatPrice(finalTotal)}</p>
+              <p>
+                {formatPrice(finalTotal)}
+              </p>
               <Image
                 src="/images/arr.svg"
                 alt="arr"
@@ -104,7 +103,6 @@ export function CheckoutCartHeader() {
           </div>
         )}
 
-        {/* Drawer for Summary */}
         <div
           className={`fixed inset-x-0 top-0 transform transition-all duration-300 ease-in-out bg-[#F9F9F9] shadow-lg z-50 mt-[63px] ${
             isSummaryVisible ? 'max-h-[80vh] opacity-100 translate-y-0' : 'max-h-0 opacity-0 -translate-y-5'
@@ -215,7 +213,6 @@ export function CheckoutCartHeader() {
                   )}
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 h-6 bg-gradient-to-t from-black/5 to-transparent z-10"></div>
-
               </div>
 
               {/* Footer Section */}

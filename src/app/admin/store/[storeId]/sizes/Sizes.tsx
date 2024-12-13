@@ -41,7 +41,7 @@ export function Sizes() {
             />
             <div className={styles.buttons}>
               <Link href={STORE_URL.sizesCreate(params?.storeId)}>
-                <Button variant="primary">
+                <Button variant="primary" className='bg-gray-500 hover:bg-gray-600'>
                   <Plus />
                   Add Size
                 </Button>

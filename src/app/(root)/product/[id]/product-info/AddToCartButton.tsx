@@ -41,7 +41,7 @@ export function AddToCartButton({ product }: AddToCartButtonProps) {
   return (
     <>
       <button
-        className="bg-transparent text-[#1E1E1E] border-[#1E1E1E] border rounded-[10px] max-w-[393px] h-[48px] w-full font-Heebo-16"
+        className="bg-transparent text-[#FFFFFF] border-[#1E1E1E] border rounded-[10px] max-w-[393px] h-[48px] w-full font-Heebo-16"
         onClick={handleAddToCart}
       >
         {currentElement ? "Remove from Bag" : "Add to Bag"}
@@ -49,27 +49,25 @@ export function AddToCartButton({ product }: AddToCartButtonProps) {
 
       {isCartVisible && recentlyAddedProduct && (
         <>
-          {/* Mobile Version */}
           <div className="md:hidden">
             <CartWindow
               product={{
                 title: recentlyAddedProduct.title,
                 price: recentlyAddedProduct.price,
                 images: recentlyAddedProduct.images,
-                color: recentlyAddedProduct.color.name,
+                color: recentlyAddedProduct.color?.name || "N/A", 
               }}
               onClose={handleCloseCartWindow}
             />
           </div>
 
-          {/* Desktop Version */}
           <div className="hidden md:block">
             <CartWindowDesktop
               product={{
                 title: recentlyAddedProduct.title,
                 price: recentlyAddedProduct.price,
                 images: recentlyAddedProduct.images,
-                color: recentlyAddedProduct.color.name, 
+                color: recentlyAddedProduct.color?.name || "N/A",
               }}
               onClose={handleCloseCartWindow}
             />

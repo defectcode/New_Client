@@ -1,84 +1,75 @@
 import { COLORS } from "@/app/(root)/product/[id]/product-info/constants/Colors";
 import { useEffect, useState } from "react";
+import "../ProductCard.css";
+import { AddToCartButton } from "@/app/(root)/product/[id]/product-info/AddToCartButton";
+import { IProduct } from "@/shared/types/product.interface";
+import ColorSelector from "./Color/components/ColorSelector";
+import ColorModal from "./Color/components/ColorModal";
 
 
-const Color = () => {
-    const [selectedColor, setSelectedColor] = useState(COLORS[0]);
+export type Color = {
+    name: string;
+    value: string;
+};
+
+interface ColorProduct {
+    product: IProduct;
+}
+
+export function Color({ product }: ColorProduct) {
+    const [selectedColors, setSelectedColors] = useState<Color[]>([]);
     const [isMobile, setIsMobile] = useState(false);
-  
-  
+    const [showModal, setShowModal] = useState(false);
+
     useEffect(() => {
         const updateIsMobile = () => {
-          setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+            setIsMobile(window.matchMedia("(max-width: 768px)").matches);
         };
-      
+
         updateIsMobile();
         window.addEventListener("resize", updateIsMobile);
         return () => window.removeEventListener("resize", updateIsMobile);
     }, []);
 
-      
+    // Setarea automată a primei culori dacă nu este selectată nicio culoare
+    useEffect(() => {
+        if (selectedColors.length === 0 && COLORS.length > 0) {
+            setSelectedColors([COLORS[0]]);
+        }
+    }, [selectedColors]);
+
+    const handleModalOpen = () => setShowModal(true);
+    const handleModalClose = () => setShowModal(false);
+
+    const handleToggleColor = (color: Color) => {
+        setSelectedColors((prev) => {
+            if (showModal) {
+                return prev.some((c) => c.value === color.value)
+                    ? prev.filter((c) => c.value !== color.value)
+                    : [...prev, color];
+            } else {
+                return [color];
+            }
+        });
+    };
+
     return (
         <div className="md:flex items-center justify-between">
-        {isMobile 
-        ? 
-        <div>
-            <div className="flex gap-2 md:mt-5 mt-[10px] items-center">
-            {COLORS.slice(0, 3).map((color) => (
-                <div
-                    key={color.value}
-                    onClick={() => setSelectedColor(color)} 
-                    className={`w-[26px] h-[26px] rounded-full border cursor-pointer`}
-                    style={{
-                        backgroundColor: color.value,
-                        boxShadow:
-                        selectedColor.value === color.value
-                            ? '0 0 0 1px white, 0 0 0 2px white'
-                            : 'none',
-                        }}
-                ></div>
-            ))}
-                {COLORS.length > 3 && (
-                    <div
-                        className="w-auto h-[26px] flex items-center justify-center text-xs font-medium text-[#BDBDBD] cursor-default px-2"
-                        title={`+${COLORS.length - 3} more colors`}
-                        >
-                        +{COLORS.length - 3} Colors
-                    </div>
-                )}
-                </div>
-
-                <div className="font-Heebo-14 mt-2">
-                <p className="text-[#BDBDBD]">{selectedColor.name}</p>
-                </div>
-            </div>
-        :
-            <div className="flex items-center justify-between w-full mt-5">
-                <div className="flex gap-1">
-                {COLORS.map((color) => (
-                    <div
-                        key={color.value}
-                        onClick={() => setSelectedColor(color)}
-                        className={`w-[26px] h-[26px] rounded-full border cursor-pointer`}
-                        style={{
-                            backgroundColor: color.value,
-                            boxShadow:
-                            selectedColor.value === color.value
-                                ? '0 0 0 1px white, 0 0 0 2px white'
-                                : 'none',
-                        }}
-                    ></div>
-                ))}
-                </div>
-            
-                <div className="font-Heebo-14">
-                    <p className="text-[#BDBDBD]">{selectedColor.name}</p>
-                </div>
-            </div>
-                }
+            <ColorSelector
+                isMobile={isMobile}
+                selectedColors={selectedColors}
+                onColorClick={handleToggleColor}
+                onModalOpen={handleModalOpen}
+            />
+            {showModal && (
+                <ColorModal
+                    selectedColors={selectedColors}
+                    onToggleColor={handleToggleColor}
+                    onClear={() => setSelectedColors([COLORS[0]])}
+                    onClose={handleModalClose}
+                    product={product}
+                />
+            )}
         </div>
-
-    )
+    );
 }
-
-export default Color

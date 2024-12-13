@@ -19,10 +19,9 @@ export function CatalogBag({
   const { items } = useCart();
   const [isMobile, setIsMobile] = useState(false);
 
-  // Detect screen size
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // If screen width is 768px or less, set to mobile
+      setIsMobile(window.innerWidth <= 768);
     };
 
     handleResize();
@@ -31,7 +30,6 @@ export function CatalogBag({
   }, []);
 
   if (isMobile) {
-    // Render the Mobile component if on a mobile device
     return <Mobile />;
   }
 
@@ -45,7 +43,8 @@ export function CatalogBag({
             <h1 className="font-Heebo-24-- mb-5">Bag</h1>
             {items.map((item, index) => (
               <ProductCardBag
-                key={item.id}
+                item={item}
+                key={item.product.id}
                 product={item.product}
                 isLast={index === items.length - 1}
               />

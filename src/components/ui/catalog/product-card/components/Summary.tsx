@@ -1,17 +1,14 @@
 'use client';
 
 import { useCart } from "@/hooks/useCart";
-import { Promocode } from "./Promocode";
 import { formatPrice } from '@/utils/string/format-price';
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export function Summary() {
     const { items } = useCart();
     const router = useRouter();
-    const [isMobile, setIsMobile] = useState(false);
-
     const totalProducts = items.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
     const totalItems = items.reduce((acc, item) => acc + item.quantity, 0);
     const delivery = 14.00;
@@ -60,12 +57,11 @@ export function Summary() {
                 </div>
             </div>
             <div className="mt-5">
-                
                 <button
-                    className="w-full py-3 mb-5 text-[#1E1E1E] border border-[#1E1E1E] rounded-lg font-Heebo-16-semi h-[56px]"
-                    onClick={handleCheckout}
+                  className="w-full py-3 mb-5 text-[#1E1E1E] border border-[#1E1E1E] rounded-lg font-Heebo-16-semi h-[56px]"
+                  onClick={handleCheckout}
                 >
-                    Checkout
+                  Checkout
                 </button>
                 <button className="w-full py-3 mb-5 text-white rounded-lg bg-black h-[56px]">
                     <span className="flex justify-center items-center">

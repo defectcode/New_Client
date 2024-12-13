@@ -7,23 +7,6 @@
 	white-space: normal;
 }
 
-/* 
-  .checkout-button {
-    background: linear-gradient(to right, #ff9a9e, #fecfef);
-    border-radius: 30px;
-    padding: 10px;
-    text-align: center;
-    font-size: 18px;
-    color: white;
-    font-weight: bold;
-    width: 100%;
-  }
-  
-  .checkout-button:hover {
-    background: linear-gradient(to right, #ff6f91, #fe82c5);
-  }
-   */
-
 .font-Heebo-24-- {
 	font-family: 'Heebo', sans-serif;
 	font-size: 24px;
@@ -101,35 +84,14 @@
 	line-height: 13px;
 }
 
-
 .price-container {
 	display: flex;
 	gap: 10px;
-  }
-  
+}
 
-
-  .font-Heebo-16-regular {
+.font-Heebo-16-regular {
 	font-family: 'Heebo', sans-serif;
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 16px;
 }
-
-
-
-.square-image-container {
-	position: relative;
-	width: 100px; /* Ajustează dimensiunea dorită */
-	height: 100px; /* Ajustează dimensiunea dorită */
-	overflow: hidden;
-	background-color: #ffffff; /* Fundal pentru imagini lipsă */
-	border-radius: 10px; /* Optional: colțuri rotunjite */
-  }
-  
-  .square-image {
-	width: 100%;
-	height: 100%;
-	object-fit: cover; /* Asigură-te că imaginea își păstrează proporțiile */
-  }
-  
