@@ -1,23 +1,27 @@
-import { ArrowRight } from 'lucide-react'
-import Link from 'next/link'
-
-import { Button } from '@/components/ui/Button'
-import { PUBLIC_URL } from '@/config/url.config'
-import { SITE_DESCRIPTION } from '@/constants/seo.constants'
+import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/Button';
+import { PUBLIC_URL } from '@/config/url.config';
+import './style/Hero.css';
 
 export function Hero() {
-	return (
-		<div className="my-24 py-20 mx-auto text-center flex flex-col items-center max-w-4xl space-y-6 px-5">
-			<h1 className="text-4xl font-bold tracking-tight md:text-5xl">
-				Your shopping, your pleasure - <span className="text-[#180459]">all in one place</span>
-			</h1>
-			<p className="text-lg text-muted-foreground">{SITE_DESCRIPTION}</p>
-			<Link href={PUBLIC_URL.explorer()}>
-				<Button variant='primary' className="flex items-center">
-					Going shopping
-					<ArrowRight className="ml-2 transition-all size-4" />
-				</Button>
-			</Link>
-		</div>
-	)
+    return (
+        <div className="image--bg">
+            <div className="hero-content md:items-center ">
+				<div className='flex flex-col items-center justify-center'>
+					<h1 className="text-4xl font-bold md:leading-[1] leading-[1]">VELLOV</h1>
+					<p>New collection 2025</p>
+					<Link href={PUBLIC_URL.explorer()} className='md:block hidden'>
+						<Button
+							variant="primary"
+							className="flex items-center justify-center bg-[#FFFFFF] text-black hover:bg-gray-200 py-2 px-5 rounded-[10px] md:w-[260px] h-[48px]"
+						>
+							Catalog
+							<ArrowRight className="ml-2 size-4" />
+						</Button>
+					</Link>
+				</div>
+            </div>
+        </div>
+    );
 }

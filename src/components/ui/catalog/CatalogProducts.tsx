@@ -116,7 +116,7 @@ export function CatalogProducts({ title, description, linkTitle, link, products 
       const matchesSize =
         !filters.Size ||
         filters.Size.length === 0 ||
-        filters.Size.includes(product.size);
+        filters.Size.includes(product.color.name);
   
       return matchesCategory && matchesPrice && matchesGender && matchesColor && matchesSize;
     });

@@ -60,15 +60,15 @@ export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
       {/* Imaginea produsului */}
       <Link
         href={PUBLIC_URL.product(item.product.id)}
-        className="relative flex items-center justify-center w-[100px] h-[100px] bg-white border border-transparent"
+        className="relative flex items-center justify-center w-[100px] h-[100px] bg-[#FFFFFF] border border-transparent"
       >
-        <div className="relative flex items-center justify-center w-[90px] h-[90px]">
+        <div className="relative flex items-center justify-center max-w-[90px] max-h-[90px]">
           <Image
             src={item.product.images[0]}
             alt={item.product.title}
             width={90}
             height={90}
-            className="object-cover"
+            className="object-cover max-w-[90px] max-h-[90px]"
           />
           {/* Cerc pentru cantitate */}
           {isCheckoutPage && (

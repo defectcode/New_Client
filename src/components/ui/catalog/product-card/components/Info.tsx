@@ -20,7 +20,7 @@ export function Info() {
 
     return (
         <div className="px-5">
-            <div className="mt-5">
+            <div className="md:mt-5">
                 <div className="border-y-[0.5px] border-[#5D5D5D]">
                 <div
                     className="flex justify-between items-center text-sm cursor-pointer py-5 border-b-[0.5px] border-[#5D5D5D]"

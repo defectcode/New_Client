@@ -85,7 +85,7 @@ export function CatalogMobile({ title, description, linkTitle, link, products }:
 			const matchesSize =
 				!filters.Size ||
 				filters.Size.length === 0 ||
-				filters.Size.includes(product.size);
+				filters.Size.includes(product.color.name);
 
 			return matchesCategory && matchesPrice && matchesGender && matchesColor && matchesSize;
 		});
@@ -96,7 +96,7 @@ export function CatalogMobile({ title, description, linkTitle, link, products }:
 	return (
 		<div className="max-w-[1400px] w-full mx-auto bg-[#F9F9F9]">
 			<div className="bg-white px-5 space-y-5 py-5">
-				<span className="text-[#8C8C8C]">Home / Catalog</span>
+				{/* <span className="text-[#8C8C8C]">Home / Catalog</span> */}
 				<h2 className="font-Heebo-24 text-[#000000]">{title}</h2>
 			</div>
 			<div className="flex items-center justify-between mb-5 border-y-[1px] border-[#BDBDBD]/50 p-5 bg-white">
@@ -124,32 +124,37 @@ export function CatalogMobile({ title, description, linkTitle, link, products }:
 						</div>
 
 						<div className="">
-						<FilterSection
-								title="Category"
-								options={['Men', 'Women', 'Unisex']}
-								onFilterChange={handleFilterChange} resetFilters={false}						
-						/>
-						<FilterSection
-								title="Shop by Price"
-								options={['$25 - 50', '$50 - 100', '$100 - 150', 'Over 150']}
-								onFilterChange={handleFilterChange} resetFilters={false}								
-						/>
-						<FilterSection
-								title="Gender"
-								options={['Men', 'Women', 'Unisex']}
-								onFilterChange={handleFilterChange} resetFilters={false}						
-						/>
-						<FilterSection
-								title="Color"
-								options={['Red', 'Blue', 'Green', 'Black', 'White']}
-								onFilterChange={handleFilterChange} resetFilters={false}						
-						/>
-						<FilterSection
-								title="Size"
-								options={['S', 'M', 'L', 'XL']}
-								onFilterChange={handleFilterChange}
-								isLast={true} resetFilters={false}						
-						/>
+							<FilterSection
+									title="Filters"
+									options={['Newest', 'Price: Low-High', 'Price: High-Low', 'Price: Discount']}
+									onFilterChange={handleFilterChange} resetFilters={false}						
+							/>
+							<FilterSection
+									title="Category"
+									options={['Men', 'Women', 'Unisex']}
+									onFilterChange={handleFilterChange} resetFilters={false}						
+							/>
+							<FilterSection
+									title="Shop by Price"
+									options={['$25 - 50', '$50 - 100', '$100 - 150', 'Over 150']}
+									onFilterChange={handleFilterChange} resetFilters={false}								
+							/>
+							<FilterSection
+									title="Gender"
+									options={['Men', 'Women', 'Unisex']}
+									onFilterChange={handleFilterChange} resetFilters={false}						
+							/>
+							<FilterSection
+									title="Color"
+									options={['Red', 'Blue', 'Green', 'Black', 'White']}
+									onFilterChange={handleFilterChange} resetFilters={false}						
+							/>
+							<FilterSection
+									title="Size"
+									options={['S', 'M', 'L', 'XL']}
+									onFilterChange={handleFilterChange}
+									isLast={true} resetFilters={false}						
+							/>
 						</div>
 
 						<div className="fixed bottom-0 left-0 w-full bg-white z-50 border-t-[1px] flex justify-between items-center h-[87px] px-5 py-3">

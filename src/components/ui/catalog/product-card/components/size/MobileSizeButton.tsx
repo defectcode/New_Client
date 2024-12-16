@@ -1,7 +1,7 @@
-import { AddToCartButton } from '@/app/(root)/product/[id]/product-info/AddToCartButton';
 import { IProduct } from '@/shared/types/product.interface'; 
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { AddToCartButton } from './components/AddToCartButton';
 
 interface MobileSizeButtonProps {
   product: IProduct; 
@@ -24,29 +24,35 @@ const MobileSizeButton: React.FC<MobileSizeButtonProps> = ({ product }) => {
     };
   }, [isOpen]);
 
+  const handleAddToCart = () => {
+    console.log("Added to cart:", product);
+    setIsOpen(false); 
+  };
+
   return (
     <>
       <div className="absolute bottom-[10px] left-1/2 transform -translate-x-1/2 flex items-center justify-center">
         <button
           onClick={() => setIsOpen(true)}
-          className="text-[#424242] font-heebo h-[30px] w-[110px] max-w-[110px] bg-[#A1A1A1]/10 rounded-full"
+          className="text-[#424242] font-heebo h-[30px] w-[110px] max-w-[110px] bg-[#A1A1A1]/10 rounded-[10px] backdrop-blur-sm"
         >
           Add
         </button>
       </div>
 
+
       {isOpen && (
         <div
-          className="fixed inset-0 z-50 bg-black bg-opacity-50 "
+          className="fixed inset-0 z-50 bg-black bg-opacity-50"
           onClick={() => setIsOpen(false)}
         >
           <div
-            className="fixed bottom-0 w-full h-[70vh] bg-white rounded-t-lg p-5"
+            className="fixed bottom-0 w-full max-h-[66vh] bg-[#F9F9F9] rounded-t-lg p-5 overflow-hidden"
             onClick={(e) => {
               e.stopPropagation();
             }}
           >
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-5">
               <h2 className="font-Heebo-16-regular">Select Size</h2>
               <button
                 onClick={() => setIsOpen(false)}
@@ -56,7 +62,7 @@ const MobileSizeButton: React.FC<MobileSizeButtonProps> = ({ product }) => {
               </button>
             </div>
 
-            <div className="flex flex-col border-b-[1px]">
+            <div className="flex flex-col border-b-[1px] overflow-y-auto max-h-[45vh] mb-16">
               {sizes.map((size) => (
                 <label
                   key={size}
@@ -75,7 +81,7 @@ const MobileSizeButton: React.FC<MobileSizeButtonProps> = ({ product }) => {
               ))}
             </div>
 
-            <div className="absolute bottom-0 left-0 w-full p-5 flex items-center justify-between bg-white">
+            <div className="absolute bottom-0 left-0 w-full p-5 flex items-center justify-between bg-[#FFFFFF]">
               <button
                 onClick={() => setSelectedSize(null)}
                 className="border border-black text-black w-[185px] h-[48px] py-2 px-5 rounded-lg"

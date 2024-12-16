@@ -30,7 +30,7 @@ export function ProductGallery({ product }: ProductGalleryProps) {
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => handleNextImage(),
     onSwipedRight: () => handlePrevImage(),
-    preventScrollOnSwipe: false, // Allow scroll
+    preventScrollOnSwipe: false,
     trackMouse: false,
   });
 
@@ -69,7 +69,6 @@ export function ProductGallery({ product }: ProductGalleryProps) {
         <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
       </div>
 
-      {/* Main image - displayed on both desktop and mobile */}
       <div className="relative w-full lg:w-auto" {...swipeHandlers}>
         <Image
           src={product.images[currentIndex]}
@@ -77,6 +76,7 @@ export function ProductGallery({ product }: ProductGalleryProps) {
           width={758}
           height={758}
           className="md:rounded-lg h-[430px] lg:h-[758px] w-[430px] lg:w-[758px]"
+          style={{ objectFit: 'cover' }}
         />
 
         <div className="absolute top-5 right-5 z-10 md:hidden">

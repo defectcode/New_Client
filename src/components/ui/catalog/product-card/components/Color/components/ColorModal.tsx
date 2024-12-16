@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { COLORS } from "@/app/(root)/product/[id]/product-info/constants/Colors";
 import Image from "next/image";
 import { AddToCartButton } from "@/app/(root)/product/[id]/product-info/AddToCartButton";
@@ -5,27 +6,37 @@ import { IProduct } from "@/shared/types/product.interface";
 import { Color } from "../../Color";
 
 interface ColorModalProps {
-    selectedColors: Color[];
-    onToggleColor: (color: Color) => void;
-    onClear: () => void;
-    onClose: () => void;
     product: IProduct;
+    onClose: () => void;
 }
 
-export default function ColorModal({
-    selectedColors,
-    onToggleColor,
-    onClear,
-    onClose,
-    product,
-}: ColorModalProps) {
+export default function ColorModal({ product, onClose }: ColorModalProps) {
+    const [selectedColor, setSelectedColor] = useState<Color | null>(null);
+
+    useEffect(() => {
+        document.body.style.overflow = "hidden";
+
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, []);
+
+
+    const handleToggleColor = (color: Color) => {
+        setSelectedColor((prev) => (prev?.value === color.value ? null : color));
+    };
+
+    const handleClear = () => {
+        setSelectedColor(null);
+    };
+
     return (
         <div
             className="fixed inset-0 bg-black/50 z-50 flex justify-center items-end"
             onClick={onClose}
         >
             <div
-                className="bg-white w-full h-[75vh] rounded-t-lg p-5 relative flex flex-col justify-between"
+                className="bg-[#F9F9F9] w-full min-h-[67vh] max-h-[67vh] rounded-t-lg p-5 relative flex flex-col justify-between overflow-hidden"
                 onClick={(e) => e.stopPropagation()}
             >
                 <div>
@@ -35,16 +46,16 @@ export default function ColorModal({
                     >
                         <Image src="/images/close.svg" alt="close" width={14} height={14} />
                     </button>
-                    <h3 className="font-Heebo-16-regular mb-4">Select Color</h3>
+                    <h3 className="font-Heebo-16-regular mb-5">Select Color</h3>
+                </div>
+                <div className="flex flex-col overflow-y-auto h-full mb-20">
                     <ul className="border-t">
                         {COLORS.map((color) => (
                             <li
                                 key={color.value}
-                                onClick={() => onToggleColor(color)}
+                                onClick={() => handleToggleColor(color)}
                                 className={`flex items-center cursor-pointer hover:bg-gray-100 p-2 rounded border-b py-5 ${
-                                    selectedColors.some((c) => c.value === color.value)
-                                        ? "bg-gray-100"
-                                        : ""
+                                    selectedColor?.value === color.value ? "bg-gray-100" : ""
                                 }`}
                             >
                                 <div
@@ -58,13 +69,12 @@ export default function ColorModal({
                         ))}
                     </ul>
                 </div>
-
                 <div className="absolute bottom-0 left-0 w-full p-5 flex items-center justify-between bg-white">
                     <button
-                        onClick={onClear}
+                        onClick={handleClear}
                         className="flex items-center justify-center w-[185px] h-[48px] border border-black rounded-md text-black font-Heebo-14 hover:bg-gray-100"
                     >
-                        Clear ({selectedColors.length})
+                        Clear {selectedColor ? "(1)" : "(0)"}
                     </button>
                     <div className="bg-black w-[185px] rounded-[10px] text-white">
                         <AddToCartButton product={product} />
@@ -72,5 +82,6 @@ export default function ColorModal({
                 </div>
             </div>
         </div>
+
     );
 }

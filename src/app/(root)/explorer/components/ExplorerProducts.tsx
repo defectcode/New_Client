@@ -16,17 +16,25 @@ interface ExplorerProductsProps {
 }
 
 export function ExplorerProducts({ product, isBestSeller, isBestPrice }: ExplorerProductsProps) {  
-
   return (
     <div className="bg-transparent relative w-full sm:w-[350px] rounded-[10px]">
       <div className="relative group mb-5 rounded-[10px]">
         <Link href={PUBLIC_URL.product(product.id)}>
+          {/* Primary image */}
           <Image
-              src={product.images[0]}
-              alt={product.title}
-              width={350} 
-              height={500}
-              className="rounded-[16px] bg-[#EFEFEF] w-full object-contain sm:w-[350px] sm:h-[500px] w-[190px] h-[270px]"
+            src={product.images[0]}
+            alt={product.title}
+            width={350}
+            height={500}
+            className="rounded-[16px] bg-transparent w-full object-cover sm:w-[350px] sm:h-[500px] w-[190px] h-[270px] transition-opacity duration-500 group-hover:opacity-0"
+          />
+          {/* Secondary image (hover) */}
+          <Image
+            src={product.images[1] || product.images[0]}
+            alt={`${product.title} hover`}
+            width={350}
+            height={500}
+            className="rounded-[16px] bg-transparent w-full object-cover sm:w-[350px] sm:h-[500px] w-[190px] h-[270px] absolute top-0 left-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           />
         </Link>
         <div className="absolute w-full flex items-center justify-center bg-[#A1A1A1]/10 rounded-full md:hidden">
@@ -35,12 +43,11 @@ export function ExplorerProducts({ product, isBestSeller, isBestPrice }: Explore
           </div>
         </div>
 
-
         <div className="absolute top-3 right-3 p-1 bg-transparent cursor-pointer md:block hidden">
           <FavoriteButton product={product} />
         </div>
 
-        <div className='md:block hidden h-0'>
+        <div className="md:block hidden h-0">
           <AddCartSize product={product}/>
         </div>
       </div>

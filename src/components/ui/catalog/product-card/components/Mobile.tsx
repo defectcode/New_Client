@@ -1,10 +1,9 @@
 'use client';
-
 import { useCart } from "@/hooks/useCart";
 import { formatPrice } from '@/utils/string/format-price';
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FavoriteButton } from "@/app/(root)/product/[id]/product-info/FavoriteButton";
 import { ColorSelector } from "./ColorSelector";
 import { Info } from "./Info";
@@ -17,8 +16,28 @@ export function Mobile() {
     const { changeQuantity, removeFromCart } = useActions(); 
     const router = useRouter();
 
+    const [selectedColors, setSelectedColors] = useState<{ [key: number]: string }>(() => {
+      if (typeof window !== 'undefined') {
+          const savedColors = localStorage.getItem('selectedColors');
+          return savedColors ? JSON.parse(savedColors) : {};
+      }
+      return {};
+    });
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('selectedColors', JSON.stringify(selectedColors));
+        }
+    }, [selectedColors]);
+
+    const handleColorChange = (itemId: number, color: string) => {
+        setSelectedColors((prev) => ({
+            ...prev,
+            [itemId]: color,
+        }));
+    };
+
     const availableColors = ['Light gray', 'Blue', 'Red', 'Black', 'Green'];
-    const [selectedColor, setSelectedColor] = useState(availableColors[0]);
     const [showConfirm, setShowConfirm] = useState(false);
     const [itemToRemove, setItemToRemove] = useState<number | null>(null);
 
@@ -56,6 +75,8 @@ export function Mobile() {
         setShowConfirm(false); 
     };
 
+
+
     return (
         <div>
             <div className="flex flex-col max-w-[470px] mx-auto bg-white rounded-lg h-screen">
@@ -79,39 +100,44 @@ export function Mobile() {
                     {items.map((item, index) => (
                         <div
                             key={item.id}
-                            className={`flex items-start py-4 ${index < items.length - 1 ? 'border-b' : ''}`}
-                            style={{ borderColor: '#E8E8ED' }}
+                            className={`flex items-start py-4 ${index < items.length - 1 ? "border-b" : ""}`}
+                            style={{ borderColor: "#E8E8ED" }}
                         >
-                            <div className="flex-shrink-0 rounded-md bg-white w-[100px] h-[100px] flex items-center justify-center">
+                            <Link href={`/product/${item.product.id}`} className="flex-shrink-0 rounded-md bg-white w-[100px] h-[100px] flex items-center justify-center">
                                 <Image
                                     src={item.product.images[0]}
                                     alt={item.product.title}
                                     width={90}
                                     height={90}
-                                    className="rounded-md object-cover max-w-[90px] max-h-[90px]"
+                                    className="rounded-md object-cover max-w-[90px] max-h-[90px] cursor-pointer"
                                 />
-                            </div>
+                            </Link>
+
                             <div className="ml-4 flex flex-col justify-between w-full space-y-4">
                                 <div className="flex items-center justify-between">
-                                    <h3 className="font-Heebo-15 text-[#1E1E1E] truncate">
-                                        {item.product.title}
-                                    </h3>
-                                    <FavoriteButton product={item.product} />
+                                    <Link href={`/product/${item.product.id}`}>
+                                        <h3 className="font-Heebo-15 text-[#1E1E1E] truncate cursor-pointer">
+                                            {item.product.title}
+                                        </h3>
+                                    </Link>
+                                    <FavoriteButton product={item.product}/>
                                 </div>
                                 <ColorSelector
                                     colors={availableColors}
-                                    selectedColor={selectedColor}
-                                    onColorSelect={(color) => setSelectedColor(color)}
+                                    selectedColor={selectedColors[item.id] || 'Light gray'}
+                                    onColorSelect={(color) => handleColorChange(item.id, color)}
                                 />
                                 <div className="flex items-center justify-between mt-2 h-[16px]">
-                                    <p className="text-[#5D5D5D] font-Heebo-14">${item.product.price.toFixed(2)}</p>
+                                    <p className="text-[#5D5D5D] font-Heebo-14">
+                                        ${item.product.price.toFixed(2)}
+                                    </p>
                                     <div className="flex items-center space-x-2">
                                         <button
                                             className="text-sm text-[#8C8C8C] border-transparent rounded disabled:opacity-50 p-2"
                                             onClick={() => handleDecrement(item.id, item.quantity)}
                                             disabled={item.quantity === 0}
                                         >
-                                            <Image src='/images/Minus.svg' alt="minus" width={14} height={14} />
+                                            <Image src="/images/Minus.svg" alt="minus" width={14} height={14} />
                                         </button>
                                         <input
                                             readOnly
@@ -122,7 +148,7 @@ export function Mobile() {
                                             className="text-sm text-[#8C8C8C] border-transparent rounded p-2"
                                             onClick={() => handleIncrement(item.id)}
                                         >
-                                            <Image src='/images/Plus.svg' alt="plus" width={11} height={11} />
+                                            <Image src="/images/Plus.svg" alt="plus" width={11} height={11} />
                                         </button>
                                     </div>
                                 </div>
@@ -162,20 +188,22 @@ export function Mobile() {
                             <p>Total</p>
                             <p>{formatPrice(total)}</p>
                         </div>
-                        <div className="flex items-center justify-center space-x-4 mt-5">
-                            <Link href="/checkout" className="flex-1 max-w-[185px]">
-                            <button
-                                className="font-bold border border-black/50 rounded-[10px] w-full h-[48px] flex items-center justify-center bg-white text-[#424242]"
-                                >
-                                Checkout
-                                </button>
-                            </Link>
+                        <div className="fixed bottom-0 left-0 w-full bg-white px-5 py-4 shadow-md">
+                            <div className="flex items-center justify-center space-x-4">
+                                <Link href="/checkout" className="flex-1 max-w-[185px]">
+                                    <button
+                                        className="font-bold border border-black/50 rounded-[10px] w-full h-[48px] flex items-center justify-center bg-white text-[#424242]"
+                                    >
+                                        Checkout
+                                    </button>
+                                    </Link>
 
-                            <Link href="" className="flex-1 max-w-[185px]">
-                                <button className="font-bold border border-black/50 rounded-[10px] w-full h-[48px] flex items-center justify-center bg-black text-white">
-                                    <Image src="/images/applepay.svg" alt="applypay" width={54} height={20}/>
-                                </button>
-                            </Link>
+                                    <Link href="" className="flex-1 max-w-[185px]">
+                                    <button className="font-bold border border-black/50 rounded-[10px] w-full h-[48px] flex items-center justify-center bg-black text-white">
+                                        <Image src="/images/applepay.svg" alt="applypay" width={54} height={20} />
+                                    </button>
+                                </Link>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -12,6 +12,7 @@ import { useIsDesktop } from '@/hooks/useIsDesktop';
 
 import './Production.css'
 import { COLORS } from './constants/Colors';
+import { AddToCartButtonProduct } from './AddToCartButtonProduct';
 
 interface ProductInfoProps {
   product: IProduct;
@@ -70,7 +71,7 @@ export function ProductInfo({ product }: ProductInfoProps) {
           <div
             key={color.value}
             onClick={() => setSelectedColor(color)} 
-            className={`w-[18px] h-[18px] rounded-full border`}
+            className={`w-[26px] h-[26px] rounded-full border`}
             style={{
               backgroundColor: color.value,
               boxShadow:
@@ -88,13 +89,13 @@ export function ProductInfo({ product }: ProductInfoProps) {
             <div
               key={color.value}
               onClick={() => setSelectedColor(color)}
-              className={`w-[18px] h-[18px] rounded-full border`}
+              className={`w-[28px] h-[28px] rounded-full border`}
               style={{
                 backgroundColor: color.value,
                 boxShadow:
                   selectedColor.value === color.value
-                    ? '0 0 0 1px white, 0 0 0 2px black'
-                    : 'none',
+                  ? "0 0 0 2px white, 0 0 0 3px black"
+                  : "0 0 0 2px white",
               }}
             ></div>
           ))}
@@ -108,36 +109,22 @@ export function ProductInfo({ product }: ProductInfoProps) {
       </p>
       <div className="flex flex-col md:flex-row items-start gap-x-2 w-full md:block hidden">
         <div className="w-full space-y-[10px] md:block hidden">
-          <AddToCartButton product={product} />
+          <AddToCartButtonProduct product={product} />
           <button className="w-full mb-2 bg-[#1E1E1E] flex items-center justify-center h-[48px] rounded-[10px]">
             <Image
               src="/images/applepayBlack.svg"
               alt="applepay"
               width={42}
               height={16}
-              className=""
             />
           </button>
         </div>
 
-        {/* <div className="flex justify-between items-center mt-5 space-x-4 md:hidden">
-            <div className="flex-1">
-              <AddToCartButton product={product} />
-            </div>
-            <button className="flex-1 bg-[#1E1E1E] flex items-center justify-center h-[48px] rounded-[10px]">
-              <Image
-                src="/images/applepayBlack.svg"
-                alt="applepay"
-                width={42}
-                height={16}
-              />
-            </button>
-          </div> */}
         </div>
         <div className="fixed bottom-0 left-0 right-0 bg-[#F9F9F9] z-50 px-5 py-3 shadow-md md:hidden">
           <div className="flex justify-between items-center space-x-4">
             <div className="flex-1">
-              <AddToCartButton product={product} />
+              <AddToCartButtonProduct product={product}/>
             </div>
             <button className="flex-1 bg-[#1E1E1E] flex items-center justify-center h-[48px] rounded-[10px]">
               <Image

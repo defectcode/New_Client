@@ -1,0 +1,61 @@
+.image--bg {
+	background-image: url('/images/vellovBackground.png');
+	background-size: cover;
+	background-position: center;
+	height: 600px;
+	max-width: 1400px;
+	margin: 0 auto;
+	border-radius: 20px;
+
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding-right: 5%;
+}
+
+.hero-content {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	text-align: end;
+	color: white;
+}
+
+.hero-content h1 {
+	font-size: 80px;
+	font-weight: bold;
+	font-family: 'Courier New', Courier, monospace;
+}
+
+.hero-content p {
+	font-size: 1.5rem;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.hero-content button {
+	margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+	.image--bg {
+		background-image: url('/images/vellovMobile.png');
+		height: 274px;
+		border-radius: unset;
+		display: flex;
+		justify-content: flex-end;
+		background-size: cover;
+	}
+
+	.hero-content {
+		align-items: flex-end;
+		text-align: right;
+	}
+
+	.hero-content h1 {
+		font-size: 20px;
+	}
+
+	.hero-content p {
+		font-size: 15px;
+	}
+}

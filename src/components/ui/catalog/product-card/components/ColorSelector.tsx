@@ -1,17 +1,17 @@
 import { useState } from 'react'
 
 interface ColorSelectorProps {
-  colors: string[] 
-  selectedColor: string 
-  onColorSelect: (color: string) => void 
+  colors: string[]
+  selectedColor: string
+  onColorSelect: (color: string) => void
 }
 
 export function ColorSelector({ colors, selectedColor, onColorSelect }: ColorSelectorProps) {
-  const [isOpen, setIsOpen] = useState(false) 
+  const [isOpen, setIsOpen] = useState(false)
 
   const handleColorSelect = (color: string) => {
-    onColorSelect(color) 
-    setIsOpen(false) 
+    onColorSelect(color)
+    setIsOpen(false)
   }
 
   return (
