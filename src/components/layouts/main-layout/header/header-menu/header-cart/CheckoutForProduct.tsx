@@ -9,14 +9,11 @@ import CheckoutButton from '@/app/checkout/ButtonCheckout';
 export function CheckoutForProduct() {
   const [isSummaryVisible, setIsSummaryVisible] = useState(false);
   const { items, total } = useCart();
-
   const totalItemsCount = items.reduce((accumulator, item) => accumulator + item.quantity, 0);
   const itemText = totalItemsCount === 1 ? 'item' : 'items';
-
   const estimatedTax = total * 0.2;
   const finalTotal = total + estimatedTax;
 
-  // Manage no-scroll class on body when the summary is visible
   useEffect(() => {
     if (isSummaryVisible) {
       document.body.classList.add('no-scroll');
@@ -27,25 +24,15 @@ export function CheckoutForProduct() {
     return () => document.body.classList.remove('no-scroll');
   }, [isSummaryVisible]);
 
-  // useEffect(() => {
-  //   if (items.length > 0) {
-  //     setIsSummaryVisible(true);
-  //   } else {
-  //     setIsSummaryVisible(false);
-  //   }
-  // }, [items.length]);
-
   if (!isSummaryVisible) return null;
 
   return (
     <>
-      {/* Overlay for dark background */}
       <div
         className="fixed inset-0 bg-black opacity-60 z-40"
         onClick={() => setIsSummaryVisible(false)}
       ></div>
 
-      {/* Mobile Version - Bottom Drawer */}
       <div className="md:hidden fixed inset-x-0 bottom-0 bg-[#F9F9F9] shadow-lg rounded-t-2xl z-50">
         <div className="py-5">
           <div className="flex items-center justify-between px-5">
@@ -55,7 +42,6 @@ export function CheckoutForProduct() {
             </button>
           </div>
 
-          {/* Scrollable content with gradient shadows */}
           <div className="relative mt-4 overflow-hidden">
             <div className="absolute top-0 left-0 right-0 h-5 bg-gradient-to-b from-black/10 to-transparent z-10"></div>
             <div className="overflow-y-auto overflow-x-hidden pt-5 px-5 min-h-[250px] max-h-[300px]">
@@ -94,15 +80,10 @@ export function CheckoutForProduct() {
         </div>
       </div>
 
-      {/* Desktop Version - Drawer open by default */}
-         {/* Structura desktop */}
-         <div className="md:block hidden">
+      <div className="md:block hidden">
         <div className="py-4 bg-[#F9F9F9] max-w-[300px]">
-          {/* Desktop Drawer */}
           {isSummaryVisible && (
-            <div className="fixed right-0 w-[400px] bg-[#F9F9F9] z-50 top-[20px] bottom-[20px] shadow-lg overflow-hidden rounded-tl-[20px] rounded-bl-[20px] flex flex-col">
-              
-              {/* Header Section */}
+            <div className="fixed right-0 w-[400px] bg-[#F9F9F9] z-50 top-[20px] bottom-[20px] shadow-lg overflow-hidden rounded-tl-[20px] rounded-bl-[20px] flex flex-col">              
               <div className="flex items-center justify-between h-[56px] p-5 bg-white">
                 <h2 className="font-Heebo-16-medium text-[#1E1E1E]">Your Shopping Bag</h2>
                 <button className="text-[16px] text-black" onClick={() => setIsSummaryVisible(false)}>
@@ -110,7 +91,6 @@ export function CheckoutForProduct() {
                 </button>
               </div>
 
-              {/* Scrollable Products Section */}
               <div className="relative flex-grow overflow-y-auto">
                 <div className="absolute top-0 left-0 right-0 h-5 bg-gradient-to-b from-black/10 to-transparent z-10"></div>
                 <div className="scroll-content-product px-5 py-5 h-full">
@@ -130,7 +110,6 @@ export function CheckoutForProduct() {
                 <div className="absolute bottom-0 left-0 right-0 h-5 bg-gradient-to-t from-black/10 to-transparent z-10"></div>
               </div>
 
-              {/* Footer Section */}
               <div className="px-5 pt-5 bg-white h-[280px] mb-[20px] rounded-bl-[20px]">
                 <div className="flex items-center justify-between text-[#111111] font-Heebo-16 text-[16px] mb-5 border-b border-[#E8E8ED] pb-5">
                   <p>{`${totalItemsCount} ${itemText}`}</p>

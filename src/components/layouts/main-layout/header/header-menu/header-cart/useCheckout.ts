@@ -2,17 +2,13 @@ import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { useMemo } from 'react'
 import toast from 'react-hot-toast'
-
 import { useActions } from '@/hooks/useActions'
 import { useCart } from '@/hooks/useCart'
-
 import { orderService } from '@/services/order.service'
 
 export const useCheckout = () => {
 	const { items } = useCart()
-
 	const { reset } = useActions()
-
 	const router = useRouter()
 
 	const { mutate: createPayment, isPending: isLoadingCreate } = useMutation({

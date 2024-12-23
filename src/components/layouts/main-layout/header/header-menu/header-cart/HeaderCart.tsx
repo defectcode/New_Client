@@ -9,21 +9,17 @@ import CheckoutButton from '@/app/checkout/ButtonCheckout';
 export function HeaderCart() {
   const [isSummaryVisible, setIsSummaryVisible] = useState(false);
   const { items, total } = useCart();
-
   const totalItemsCount = items.reduce((accumulator, item) => accumulator + item.quantity, 0);
   const itemText = totalItemsCount === 1 ? 'item' : 'items';
-
   const estimatedTax = total * 0.2;
   const finalTotal = total + estimatedTax;
 
-  // Manage no-scroll class on body when the summary is visible
   useEffect(() => {
     if (isSummaryVisible) {
       document.body.classList.add('no-scroll');
     } else {
       document.body.classList.remove('no-scroll');
     }
-
     return () => document.body.classList.remove('no-scroll');
   }, [isSummaryVisible]);
 
@@ -44,13 +40,11 @@ export function HeaderCart() {
 
   return (
     <>
-      {/* Overlay for dark background */}
       <div
         className="fixed inset-0 bg-black opacity-60 z-40"
         onClick={() => setIsSummaryVisible(false)}
       ></div>
 
-      {/* Mobile Version - Bottom Drawer */}
       <div className="md:hidden fixed inset-x-0 bottom-0 bg-white shadow-lg rounded-t-2xl z-50">
         <div className="py-5">
           <div className="flex items-center justify-between px-5">
@@ -60,7 +54,6 @@ export function HeaderCart() {
             </button>
           </div>
 
-          {/* Scrollable content with gradient shadows */}
           <div className="relative mt-4 overflow-hidden">
             <div className="absolute top-0 left-0 right-0 h-5 bg-gradient-to-b from-black/10 to-transparent z-10"></div>
             <div className="overflow-y-auto overflow-x-hidden pt-5 px-5 min-h-[250px] max-h-[300px]">
@@ -99,7 +92,6 @@ export function HeaderCart() {
         </div>
       </div>
 
-      {/* Desktop Version - Drawer open by default */}
       <div className="md:block hidden fixed right-0 w-[400px] bg-white z-50 top-[20px] bottom-[20px] shadow-lg overflow-hidden rounded-tl-[20px] rounded-bl-[20px]">
         <div className="flex flex-col justify-between h-full">
           <div>
@@ -110,33 +102,26 @@ export function HeaderCart() {
               </button>
             </div>
 
-            {/* Shadow container fills available space dynamically */}
             <div className="relative">
-            <div className="absolute top-0 left-0 right-0 h-5 bg-gradient-to-b from-black/10 to-transparent z-10"></div>
-
-
-              {/* Scrollable content limited to 4 items */}
-              <div className="scroll-content-product overflow-y-auto max-h-[500px] px-5 py-5">
-                {items.length ? (
-                  items.map((item, index) => (
-                    <CheckoutCartItem
-                      item={item}
-                      key={item.id}
-                      isLastItem={index === items.length - 1}
-                      isSingleItem={items.length === 1}
-                    />
-                  ))
-                ) : (
-                  <div className="text-sm text-muted-foreground">The cart is empty!</div>
-                )}
-              </div>
-
-
-              <div className="absolute bottom-0 left-0 right-0 h-5 bg-gradient-to-t from-black/10 to-transparent z-10"></div>
+              <div className="absolute top-0 left-0 right-0 h-5 bg-gradient-to-b from-black/10 to-transparent z-10"></div>
+                <div className="scroll-content-product overflow-y-auto max-h-[500px] px-5 py-5">
+                  {items.length ? (
+                    items.map((item, index) => (
+                      <CheckoutCartItem
+                        item={item}
+                        key={item.id}
+                        isLastItem={index === items.length - 1}
+                        isSingleItem={items.length === 1}
+                      />
+                    ))
+                  ) : (
+                    <div className="text-sm text-muted-foreground">The cart is empty!</div>
+                  )}
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 h-5 bg-gradient-to-t from-black/10 to-transparent z-10"></div>
             </div>
           </div>
 
-          {/* Footer section */}
           <div className="px-5 pt-5 bg-white h-[300px] overflow-hidden">
             <div className="flex items-center justify-between text-[#111111] font-Heebo-16 text-[16px] mb-5 border-b border-[#E8E8ED] pb-5">
               <p>{`${totalItemsCount} ${itemText}`}</p>

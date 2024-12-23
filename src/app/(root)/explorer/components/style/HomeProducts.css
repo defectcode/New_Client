@@ -1,0 +1,97 @@
+.truncate-2-lines {
+	display: -webkit-box;
+	-webkit-line-clamp: 2; /* Limitează la 2 rânduri */
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: normal;
+}
+
+.font-Heebo-24-- {
+	font-family: 'Heebo', sans-serif;
+	font-size: 24px;
+	font-weight: 600;
+	line-height: 24px;
+}
+
+.font-Heebo-18 {
+	font-family: 'Heebo', sans-serif;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 18px;
+}
+
+.font-Heebo-15 {
+	font-family: 'Heebo', sans-serif;
+	font-size: 15px;
+	font-weight: 500;
+	line-height: 15px;
+}
+
+.font-Heebo-16-semi {
+	font-family: 'Heebo', sans-serif;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 16px;
+}
+
+.font-Heebo-20-semi {
+	font-family: 'Heebo', sans-serif;
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 20px;
+}
+
+.font-Heebo-16 {
+	font-family: 'Heebo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 16px;
+}
+
+.font-Heebo-16-med {
+	font-family: 'Heebo', sans-serif;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 16px;
+}
+
+.font-Heebo-14 {
+	font-family: 'Heebo', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 14px;
+}
+
+.font-Heebo-14-med {
+	font-family: 'Heebo', sans-serif;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 13px;
+}
+
+.font-Heebo-13 {
+	font-family: 'Heebo', sans-serif;
+	font-size: 13px;
+	font-weight: 400;
+	line-height: 13px;
+}
+
+.font-Heebo-15-reg {
+	font-family: 'Heebo', sans-serif;
+	font-size: 15px;
+	font-weight: 500;
+	line-height: 13px;
+}
+
+.price-container {
+	display: flex;
+	gap: 10px;
+}
+
+.font-Heebo-16-regular {
+	font-family: 'Heebo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 16px;
+}

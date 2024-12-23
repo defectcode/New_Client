@@ -9,14 +9,6 @@ export function InfoHeader() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
 
-  const toggleCart = () => {
-    setIsCartOpen(!isCartOpen);
-  };
-
-  const toggleBurger = () => {
-    setIsBurgerOpen(!isBurgerOpen);
-  };
-
   return (
     <div className="w-full bg-[#F9F9F9]">
       <div className="flex md:h-[62px] h-[56px] justify-between items-center w-full max-w-[1060px] mx-auto md:border-b">

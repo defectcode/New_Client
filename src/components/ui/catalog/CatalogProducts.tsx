@@ -9,6 +9,7 @@ import ClearFilter from './product-card/components/ClearFilter';
 import { COLORS } from '@/app/(root)/product/[id]/product-info/constants/Colors';
 import SortOptions from './product-card/components/SortOptions';
 import { ExplorerProducts } from '@/app/(root)/explorer/components/ExplorerProducts';
+import { CatalogForProduct } from './CatalogForProduct';
 
 
 
@@ -80,8 +81,7 @@ export function CatalogProducts({ title, description, linkTitle, link, products 
 
 
   const filterProducts = () => {
-    // Filtrarea produselor
-    let filtered = products.filter((product) => {
+      let filtered = products.filter((product) => {
       const matchesCategory =
         !filters.Category ||
         filters.Category.length === 0 ||
@@ -130,13 +130,12 @@ export function CatalogProducts({ title, description, linkTitle, link, products 
     } else if (selectedOption === 'Discount') {
       filtered = filtered.sort((a, b) => (b.discount || 0) - (a.discount || 0));
     }
-  
+
     return filtered;
   };
   
 
   const filteredProducts = filterProducts();
-
   const options = ['Newest', 'Low-High', 'High-Low', 'Discount'];
 
   return (
@@ -155,7 +154,6 @@ export function CatalogProducts({ title, description, linkTitle, link, products 
           />
         </div>
       </div>
-
       <div className="flex items-start justify-between w-full gap-10">
       <div>
         <Category 

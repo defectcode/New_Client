@@ -1,0 +1,15 @@
+.images {
+	background-image: url('/images/vellovDesktop.png');
+	background-size: cover;
+	background-position: center;
+	margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+	.images {
+		background-image: url('/images/vellovMobileBack.png');
+		background-size: cover;
+		background-position: center;
+		margin: 0 auto;
+	}
+}

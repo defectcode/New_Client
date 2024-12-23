@@ -1,61 +1,111 @@
 .image--bg {
-	background-image: url('/images/vellovBackground.png');
 	background-size: cover;
 	background-position: center;
-	height: 600px;
-	max-width: 1400px;
-	margin: 0 auto;
-	border-radius: 20px;
-
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	padding-right: 5%;
-}
-
-.hero-content {
+	height: 95vh;
+	width: 100%;
+	margin: 0;
+	position: relative;
 	display: flex;
 	flex-direction: column;
-	align-items: flex-end;
-	text-align: end;
+	justify-content: space-between; 
 	color: white;
 }
 
-.hero-content h1 {
-	font-size: 80px;
+.container {
+	width: 100%;
+	max-width: 1400px;
+	height: 100%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+}
+
+.center-text {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	font-size: 24px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	max-width: 600px;
+	line-height: 1.5;
+}
+
+.logo {
+	position: absolute;
+	bottom: 2.5rem;
+	left: 2.5rem;
+	font-size: 34px;
 	font-weight: bold;
 	font-family: 'Courier New', Courier, monospace;
 }
 
-.hero-content p {
-	font-size: 1.5rem;
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
+.catalog-button {
+	position: absolute;
+	bottom: 2.5rem;
+	right: 2.5rem;
 }
 
-.hero-content button {
-	margin-top: 20px;
+.catalog-button button {
+	width: 260px;
+	height: 48px;
+	background-color: #ffffff;
+	color: #000;
+	border: none;
+	border-radius: 10px;
+	font-size: 1rem;
+	transition: background-color 0.3s ease;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.catalog-button button:hover {
+	background-color: #f0f0f0;
 }
 
 @media (max-width: 768px) {
 	.image--bg {
-		background-image: url('/images/vellovMobile.png');
-		height: 274px;
-		border-radius: unset;
 		display: flex;
-		justify-content: flex-end;
-		background-size: cover;
+		height: 95vh;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		padding: 10px 20px; 
 	}
 
-	.hero-content {
-		align-items: flex-end;
-		text-align: right;
+	.container {
+		margin: 0;
+		padding: 0;
 	}
 
-	.hero-content h1 {
-		font-size: 20px;
+	.logo {
+		position: static;
+		font-size: 24px;
 	}
 
-	.hero-content p {
-		font-size: 15px;
+	.borderCatalog {
+		width: 100%;
+	}
+
+	.center-text {
+		position: static;
+		transform: none;
+		text-align: center;
+		font-size: 18px;
+		margin-top: auto;
+	}
+
+	.catalog-button {
+		position: static;
+	}
+
+	.catalog-button button {
+		width: 116px;
+		max-width: 300px;
+		height: 36px;
 	}
 }

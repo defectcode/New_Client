@@ -8,11 +8,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { email, firstName, lastName, products } = req.body;
 
     try {
-      // Debugging: verificăm structura fiecărui produs
       console.log("Products:", products);
 
       const productsList = products.map((product: any) => {
-        // Verificăm structura fiecărui produs
         console.log("Product structure:", product);
 
         return `

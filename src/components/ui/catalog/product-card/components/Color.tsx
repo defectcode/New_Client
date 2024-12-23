@@ -63,9 +63,9 @@ export function Color({ product }: ColorProduct) {
             />
             {showModal && (
                 <ColorModal
-                    selectedColors={selectedColors}
-                    onToggleColor={handleToggleColor}
-                    onClear={() => setSelectedColors([COLORS[0]])}
+                    // selectedColors={selectedColors}
+                    // onToggleColor={handleToggleColor}
+                    // onClear={() => setSelectedColors([COLORS[0]])}
                     onClose={handleModalClose}
                     product={product}
                 />

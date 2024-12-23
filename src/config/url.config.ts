@@ -56,3 +56,9 @@ export const STORE_URL = {
 
     settings: (storeId = '') => STORE_URL.root(`/${storeId}/settings`)
 };
+
+
+export const CAREER_URL = {
+    root: (url = '') => `/career`,
+    position: (postionId = '') => CAREER_URL.root(`/${postionId}`)
+}

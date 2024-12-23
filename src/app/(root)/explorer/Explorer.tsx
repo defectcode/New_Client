@@ -41,16 +41,16 @@ export function Explorer({ products }: ExplorerProps) {
 	return (
 	  <div className="max-w-[1400px] w-full mx-auto bg-[#FFFFFF]">
 
-{isMobile ? (
-        <CatalogMobile 
-			title={
-				searchTerm
-				? `Search by request "${searchTerm}"`
-				: 'Product Catalog'
-			}
-			products={data}
-		  />
-      ) : (
+		{isMobile ? (
+			<CatalogMobile 
+				title={
+					searchTerm
+					? `Search by request "${searchTerm}"`
+					: 'Product Catalog'
+				}
+				products={data}
+			/>
+		) : (
         <CatalogProducts
 		  title={
 			searchTerm

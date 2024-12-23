@@ -15,6 +15,17 @@ export function Mobile() {
     const { items } = useCart();
     const { changeQuantity, removeFromCart } = useActions(); 
     const router = useRouter();
+    const availableColors = ['Light gray', 'Blue', 'Red', 'Black', 'Green'];
+    const [showConfirm, setShowConfirm] = useState(false);
+    const [itemToRemove, setItemToRemove] = useState<number | null>(null);
+
+    const totalProducts = items.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
+    const totalItems = items.reduce((acc, item) => acc + item.quantity, 0);
+    const itemText = totalItems === 1 ? 'item' : 'items';
+
+    const delivery = 14.00;
+    const sales = totalProducts * 0.2899;
+    const total = totalProducts + delivery + sales;
 
     const [selectedColors, setSelectedColors] = useState<{ [key: number]: string }>(() => {
       if (typeof window !== 'undefined') {
@@ -36,18 +47,6 @@ export function Mobile() {
             [itemId]: color,
         }));
     };
-
-    const availableColors = ['Light gray', 'Blue', 'Red', 'Black', 'Green'];
-    const [showConfirm, setShowConfirm] = useState(false);
-    const [itemToRemove, setItemToRemove] = useState<number | null>(null);
-
-    const totalProducts = items.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
-    const totalItems = items.reduce((acc, item) => acc + item.quantity, 0);
-    const itemText = totalItems === 1 ? 'item' : 'items';
-
-    const delivery = 14.00;
-    const sales = totalProducts * 0.2899;
-    const total = totalProducts + delivery + sales;
 
     const handleDecrement = (itemId: number, quantity: number) => {
         if (quantity === 1) {

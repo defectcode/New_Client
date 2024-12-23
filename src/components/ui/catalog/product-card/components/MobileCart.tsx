@@ -54,7 +54,6 @@ export function MobileCart() {
         </Link>
       </div>
 
-      {/* Scrollable area for cart products */}
       <div className="overflow-y-auto max-h-[400px]">
         {items.map((item, index) => (
           <div
@@ -125,7 +124,6 @@ export function MobileCart() {
         ))}
       </div>
 
-      {/* Summary */}
       <div className="bg-white p-5">
         <div className="flex items-center justify-between">
           <h2 className="font-Heebo-20-semi text-[#1E1E1E]">Summary</h2>

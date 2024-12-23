@@ -22,13 +22,13 @@ export function ProductCard({ product, isBestSeller, isBestPrice }: ProductCardP
         <Link href={PUBLIC_URL.product(product.id)}>
           {/* Imaginea principală */}
           <div className="square-image-container">
-  <Image
-    src={product.images[0]}
-    alt={product.title}
-    className="square-image"
-    layout="fill"
-  />
-</div>
+            <Image
+              src={product.images[0]}
+              alt={product.title}
+              className="square-image"
+              layout="fill"
+            />
+          </div>
 
         </Link>
         <div className="absolute bottom-3 right-3 bg-[#A1A1A1]/10 rounded-full py-2 px-3 md:hidden">

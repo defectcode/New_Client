@@ -1,42 +1,113 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-
 .font-heebo {
-    font-family: 'Heebo', sans-serif;
-  }
-  
-  .font-heebo-light {
-    font-family: 'Heebo', sans-serif;
-    font-weight: 300;
-  }
-  
-  .font-heebo-regular {
-    font-family: 'Heebo', sans-serif;
-    font-weight: 400;
-  }
-  
-  .font-heebo-medium {
-    font-family: 'Heebo', sans-serif;
-    font-weight: 500;
-  }
-  
-  .font-heebo-semibold {
-    font-family: 'Heebo', sans-serif;
-    font-weight: 600;
-  }
-  
-  .font-heebo-bold {
-    font-family: 'Heebo', sans-serif;
-    font-weight: 700;
-  }
-  
-  .font-heebo-extra-bold {
-    font-family: 'Heebo', sans-serif;
-    font-weight: 800;
-  }
-  
-  .font-heebo-black {
-    font-family: 'Heebo', sans-serif;
-    font-weight: 900;
-  }
-  
+	font-family: 'Heebo', sans-serif;
+}
+
+.font-heebo-light {
+	font-family: 'Heebo', sans-serif;
+	font-weight: 300;
+}
+
+.font-heebo-regular {
+	font-family: 'Heebo', sans-serif;
+	font-weight: 400;
+}
+
+.font-heebo-medium {
+	font-family: 'Heebo', sans-serif;
+	font-weight: 500;
+}
+
+.font-heebo-semibold {
+	font-family: 'Heebo', sans-serif;
+	font-weight: 600;
+}
+
+.font-heebo-bold {
+	font-family: 'Heebo', sans-serif;
+	font-weight: 700;
+}
+
+.font-heebo-extra-bold {
+	font-family: 'Heebo', sans-serif;
+	font-weight: 800;
+}
+
+.font-heebo-black {
+	font-family: 'Heebo', sans-serif;
+	font-weight: 900;
+}
+
+/* new */
+/* 14 */
+.heedo-14-regular {
+	font-family: 'Heebo', sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 14px;
+}
+
+.heedo-14-med {
+	font-family: 'Heebo', sans-serif;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 14px;
+}
+
+.heedo-14-med {
+	font-family: 'Heebo', sans-serif;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 14px;
+}
+
+.heedo-14-semi {
+	font-family: 'Heebo', sans-serif;
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 14px;
+}
+
+.heedo-14-bold {
+	font-family: 'Heebo', sans-serif;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 14px;
+}
+
+/* 15 */
+.heedo-15-regular {
+	font-family: 'Heebo', sans-serif;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 15px;
+}
+
+.heedo-15-med {
+	font-family: 'Heebo', sans-serif;
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 15px;
+}
+
+.heedo-15-med {
+	font-family: 'Heebo', sans-serif;
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 15px;
+}
+
+.heedo-15-semi {
+	font-family: 'Heebo', sans-serif;
+	font-weight: 600;
+	font-size: 15px;
+	line-height: 15px;
+}
+
+.heedo-15-bold {
+	font-family: 'Heebo', sans-serif;
+	font-weight: 700;
+	font-size: 15px;
+	line-height: 15px;
+}

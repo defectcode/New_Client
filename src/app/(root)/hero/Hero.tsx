@@ -1,26 +1,45 @@
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { Button } from '@/components/ui/Button';
-import { PUBLIC_URL } from '@/config/url.config';
 import './style/Hero.css';
+import { PUBLIC_URL } from '@/config/url.config';
 
 export function Hero() {
     return (
         <div className="image--bg">
-            <div className="hero-content md:items-center ">
-				<div className='flex flex-col items-center justify-center'>
-					<h1 className="text-4xl font-bold md:leading-[1] leading-[1]">VELLOV</h1>
-					<p>New collection 2025</p>
-					<Link href={PUBLIC_URL.explorer()} className='md:block hidden'>
-						<Button
-							variant="primary"
-							className="flex items-center justify-center bg-[#FFFFFF] text-black hover:bg-gray-200 py-2 px-5 rounded-[10px] md:w-[260px] h-[48px]"
-						>
-							Catalog
-							<ArrowRight className="ml-2 size-4" />
-						</Button>
-					</Link>
-				</div>
+            <div className="container">
+                <div className="center-text md:block hidden">
+                    <p>Your energy. Your style.</p>
+                </div>
+
+                <h1 className="logo md:block hidden">VELLOV</h1>
+
+                <div className="catalog-button md:block hidden">
+                    <Link href={PUBLIC_URL.explorer()}>
+                        <button>
+                            Catalog
+                            <ArrowRight className="ml-2 size-4" />
+                        </button>
+                    </Link>
+                </div>
+
+
+                <div className="md:hidden absolute bottom-0 w-full bg-[#FFFFFF]/10 rounded-[10px] h-[86px] backdrop-blur-md">
+                    <div className="w-full flex items-center justify-between rounded-[10px] h-[86px] px-5">
+                        <div>
+                            <h1 className="logo text-lg font-bold">VELLOV</h1>
+                            <p>Your energy. Your style.</p>
+                        </div>
+
+                        <div className="catalog-button flex items-center">
+                            <Link href={PUBLIC_URL.explorer()}>
+                                <button className="bg-white text-black px-4 py-2 rounded-md">
+                                    Catalog
+                                </button>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     );

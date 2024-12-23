@@ -39,16 +39,15 @@ export function User() {
 						<Image
 							src={user.picture}
 							alt={user.name}
-							width={16}
-							height={16}
-							className={`${styles.avatar} ${currentPath === DASHBOARD_URL.home() ? 'border-2 border-white' : ''}`} // Iconiță activă
+							width={22}
+							height={22}
+							className={`${styles.avatar} ${currentPath === DASHBOARD_URL.home() ? 'border-2 border-white max-md:w-5 max-md:h-5' : 'max-md:w-5 max-md:h-5'}`} // Iconiță activă
 						/>
 					</Link>
 				</>
 			) : (
 				<Link href={PUBLIC_URL.auth()}>
-					<button className='flex items-center justify-center text-[#7C788A]' >
-						<LogOut className={`${styles.icon} ${currentPath === PUBLIC_URL.auth() ? 'text-white' : 'text-gray-300'}`} />
+					<button className='flex items-center justify-center text-[#FFFFFF]' >
 						Login
 					</button>
 				</Link>

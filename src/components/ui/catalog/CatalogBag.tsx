@@ -33,7 +33,6 @@ export function CatalogBag({
     return <Mobile />;
   }
 
-  // Render the desktop version
   return (
     <div className="md:pt-14 rounded-lg md:min-h-screen max-w-[1000px] w-full mx-auto flex flex-col">
       {items.length ? (
@@ -51,7 +50,6 @@ export function CatalogBag({
             ))}
           </div>
 
-          {/* Summary */}
           <div className="flex-shrink-0 w-full lg:max-w-[400px]">
             <Summary />
           </div>

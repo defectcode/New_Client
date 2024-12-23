@@ -9,24 +9,21 @@ import { Button } from '@/components/ui/Button'
 import Image from 'next/image'
 import { User } from './header-menu/header-cart/cart-item/user'
 import { CheckoutCartHome } from './header-menu/header-cart/CheckoutCartHome'
+import { PUBLIC_URL } from '@/config/url.config'
 
 
 export function Header() {
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [isBurgerOpen, setIsBurgerOpen] = useState(false)
+  const currentPath = window.location.pathname;
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen)
   }
 
-  const toggleBurger = () => {
-    setIsBurgerOpen(!isBurgerOpen)
-  }
-
   return (
-    <div className="md:py-5 p-0 max-w-[1400px] w-full md:h-full h-[60px] flex items-center justify-between bg-[#F9F9F9] mx-auto">
+    <div className="md:py-2 p-0 max-w-[1400px] w-full md:h-full h-[60px] flex items-center justify-between bg-transparent mx-auto">
       
-      {/* Versiunea Desktop */}
       <div className="flex-1 lg:block hidden">
         <HeaderMenu />
       </div>
@@ -36,18 +33,16 @@ export function Header() {
       <div className="flex-1 flex items-center justify-end lg:flex hidden gap-10">
         <SearchInput />
         <User />
-        <Button variant="ghost" onClick={toggleCart} className='p-0'>
-          <Image src="/images/shop.svg" alt="shop" width={15} height={17} />
+        <Button variant="ghost" onClick={toggleCart} className='p-0 hover:bg-transparent'>
+          {currentPath === PUBLIC_URL.home() ? <Image src="/images/shop.svg" alt="shop" width={15} height={17} /> : <Image src="/images/shop2.svg" alt="shop" width={15} height={17} />}
         </Button>
       </div>
       
-      {/* Versiunea Mobilă */}
-      <div className="flex items-center justify-between w-full h-[70px] lg:hidden px-5 bg-[#F9F9F9]">
-        <div className='flex  items-center gap-[10px]'>
+      <div className="flex items-center justify-between w-full h-[70px] lg:hidden px-5">
+        <div className='flex items-center gap-[10px]'>
           <Link href="/" className="">
             <Image src="/images/home.svg" alt="home" width={15} height={15} />
           </Link>
-
           <HeaderMenu />
         </div>
         

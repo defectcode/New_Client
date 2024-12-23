@@ -1,0 +1,33 @@
+.backgroundContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 40px 0;
+}
+
+.imageWrapper {
+	position: relative;
+	width: 100%;
+	max-width: 1400px;
+}
+
+/* Desktop image */
+.imageDesktop {
+	display: block;
+}
+
+/* Mobile image */
+.imageMobile {
+	display: none;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+	.imageDesktop {
+		display: none;
+	}
+
+	.imageMobile {
+		display: block;
+	}
+}

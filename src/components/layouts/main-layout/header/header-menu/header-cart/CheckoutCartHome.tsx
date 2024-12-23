@@ -7,29 +7,17 @@ import { CheckoutCartItem } from './cart-item/CheckoutCartItem';
 import './cart-item/PayPal.css';
 import Image from 'next/image';
 import Link from 'next/link';
-
 import { Logo } from '../../logo/Logo';
 import CheckoutButton from '@/app/checkout/ButtonCheckout';
 
 export function CheckoutCartHome() {
   const [isSummaryVisible, setIsSummaryVisible] = useState(true);
   const { items, total } = useCart();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // Calculul corect al numărului total de articoles
   const totalItemsCount = items.reduce((accumulator, item) => accumulator + item.quantity, 0);
   const itemText = totalItemsCount === 1 ? 'item' : 'items';
-
   const estimatedTax = total * 0.2;
   const finalTotal = total + estimatedTax;
 
-  // const handleToggleSummary = () => {
-  //   setIsSummaryVisible(!isSummaryVisible);
-  // };
-
-  const handleToggleModal = () => {
-    setIsModalOpen(!isModalOpen);
-  };
 
   useEffect(() => {
     if (isSummaryVisible) {
@@ -38,7 +26,6 @@ export function CheckoutCartHome() {
       document.body.style.overflow = '';
     }
 
-    // Cleanup la demontare
     return () => {
       document.body.style.overflow = '';
     };
@@ -46,10 +33,9 @@ export function CheckoutCartHome() {
 
   const handleToggleSummary = () => {
     setIsSummaryVisible(!isSummaryVisible);
-    document.body.style.overflow = isSummaryVisible ? '' : 'hidden'; // Blochează scroll-ul când componenta este vizibilă
+    document.body.style.overflow = isSummaryVisible ? '' : 'hidden'; 
   };
 
-  // Cleanup pentru `overflow` la demontare
   useEffect(() => {
     return () => {
       document.body.style.overflow = '';
@@ -58,7 +44,6 @@ export function CheckoutCartHome() {
 
   return (
     <div className="relative flex items-center justify-between bg-[#F9F9F9]">
-      {/* Background overlay for non-summary elements when summary is open */}
         {isSummaryVisible && (
           <div className="fixed inset-0 bg-[#000000] bg-opacity-60 z-40" onClick={handleToggleSummary}></div>
         )}
@@ -70,13 +55,12 @@ export function CheckoutCartHome() {
               <h2 className="text-[16px] font-medium text-black">Your Shopping Bag</h2>
               <button
                 className="text-black"
-                onClick={handleToggleSummary} // Închide componenta când se apasă pe buton
+                onClick={handleToggleSummary} 
               >
                 <Image src="/images/close.svg" alt="close" width={14} height={14} />
               </button>
             </div>
 
-            {/* Produsele din coș */}
             <div className="relative mt-4 overflow-hidden">
               <div className="absolute top-0 left-0 right-0 h-5 bg-gradient-to-b from-black/10 to-transparent z-10"></div>
               <div className="overflow-y-auto overflow-x-hidden px-5 min-h-[110px] max-h-[350px]">
@@ -95,9 +79,6 @@ export function CheckoutCartHome() {
               </div>
               <div className="absolute bottom-0 left-0 right-0 h-5 bg-gradient-to-t from-black/10 to-transparent z-10"></div>
             </div>
-
-
-            {/* Secțiunea totalului */}
             <div className="border-t border-gray-200 pt-5 px-5">
             <div className="flex items-center justify-between text-[16px] mb-3 border-b border-[#E8E8ED] pb-5">
               <p className="font-Heebo-16 text-[#1E1E1E]">{`${totalItemsCount} ${itemText}`}</p>
@@ -120,7 +101,6 @@ export function CheckoutCartHome() {
               </Link>
             </div>
           </div>
-            {/* </div> */}
           </div>
         </div>
       )}
