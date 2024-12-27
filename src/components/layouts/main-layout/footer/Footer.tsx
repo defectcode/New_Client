@@ -33,6 +33,7 @@ const footerData: FooterInfo[] = [
       { name: 'About Us', href: '/about' },
       { name: 'Wishlist', href: '/wishlist' },
       { name: 'Product Page', href: '/products' },
+      { name: 'Careers', href: '/careers' },
     ],
   },
 ];

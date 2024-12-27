@@ -2,11 +2,10 @@
 import { Header } from "@/components/layouts/main-layout/header/Header";
 import { useRef, useState, useEffect } from "react";
 import { POSITION_DATA } from "./constants/constants";
-import AboutApply from "./components/AboutApply";
 import Portfolio from "./components/Portfolio";
 import Info from "./components/Info";
 import { useSearchParams } from "next/navigation";
-import ApplyPositionMobile from "./ApplyPositionMobile";
+import AboutApplyMobile from "./components/AboutApplyMobile";
 
 interface ApplyPositionProps {
   className?: string;
@@ -74,7 +73,7 @@ export default function ApplyPosition({ className = "" }: ApplyPositionProps) {
       setMessage('Something went wrong!');
     }
   };
-  
+    
   
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -125,17 +124,11 @@ export default function ApplyPosition({ className = "" }: ApplyPositionProps) {
       </div>
     );
   }
-
-  if(isMobile) {
-    return <ApplyPositionMobile/>
-  }
-
   return (
-    <div className={`w-full bg-[#FFFEFE] tracking-[0px] ${className}`}>
+    <div className={`w-full bg-white ${className}`}>
       <Header />
-      <AboutApply position={position} selectedPositions={selectedPositions} />
-      <div onSubmit={handleSubmit} className="flex flex-col items-start max-w-[1400px] mx-auto">
-        <div className="py-8 w-[615px]">
+      <AboutApplyMobile position={position} selectedPositions={selectedPositions} />
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 px-5 mt-24">
           <h3 className="text-2xl font-bold mb-4">General Information</h3>
           <div className="flex flex-col gap-4">
               <div className="relative" ref={dropdownRef}>
@@ -207,23 +200,20 @@ export default function ApplyPosition({ className = "" }: ApplyPositionProps) {
                 className="border border-[#6F6F6F] rounded-lg px-5 h-[56px]"
                 placeholder={position.country}
               />
-          </div>
         </div>
-        <Portfolio
-          setLinkedin={setLinkedin}
-          setPortfolio={setPortfolio} 
-          position={position}        
-        />
-        <Info/>
-        <button
-          type="button"
-          onClick={handleSubmit}
-          className="w-full md:w-[200px] bg-neutral-900 text-white mb-5 px-6 py-3 rounded-lg hover:bg-gray-800"
-        >
-          {position.applyButton}
-        </button>
-        {message && <p className="text-lg mb-10">{message}</p>}
-      </div>
+        <Portfolio setLinkedin={setLinkedin} setPortfolio={setPortfolio} position={position} />
+        <Info />
+        <div className="w-full flex flex-col items-center text-center mt-6">
+          <p className="text-sm mb-2">By clicking the "Payment" button, you confirm that you have read, understand, and accept our <a href="#" className="text-blue-500">Terms of Sale</a>, <a href="#" className="text-blue-500">Privacy Policy</a>, and <a href="#" className="text-blue-500">Return Policy</a>.</p>
+          <button
+            type="submit"
+            className="w-[200px] bg-[#1E1E1E] text-white px-6 py-3 rounded-lg hover:bg-gray-800"
+          >
+            {position.applyButton}
+          </button>
+        </div>
+        {message && <p className="text-center text-green-600 mt-4">{message}</p>}
+      </form>
     </div>
-  )
+  );
 }

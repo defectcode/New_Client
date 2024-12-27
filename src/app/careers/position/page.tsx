@@ -1,8 +1,12 @@
+import { Footer } from "@/components/layouts/main-layout/footer/Footer";
 import Position from "./Position";
 
 
 export default function PagePosition() {
     return (
-        <Position/>
+        <div>
+            <Position/>
+            <Footer/>
+        </div>
     )
 }

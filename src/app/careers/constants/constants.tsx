@@ -1,6 +1,4 @@
 
-
-
 export const HERO_CONTENT = {
   title: "Join 'Paradise Problems' As a Volunteer!",
   description:
@@ -8,15 +6,87 @@ export const HERO_CONTENT = {
   buttonText: "Join Us",
 };
 
-
-  
 export const JOB_LISTINGS = [
-  { title: 'Marketing Manager', team: 'Marketing and PR' },
-  { title: 'Cinematographer', team: 'Creative Production' },
-  { title: 'Data Analyst', team: 'IT Development' },
-  { title: 'Web Developer', team: 'Creative Production' },
-  { title: 'Editor', team: 'Creative Production' },
+  {
+    id: 1,
+    title: "CTO (Chief Technology Officer)",
+    location: "Moldova",
+    team: "Marketing and PR",
+    workType: "Part Time",
+    position: "Volunteer",
+    aboutRole: "Manage technical direction...",
+    whatYoullDo: ["Task 1", "Task 2"],
+    greatFit: ["Quality 1", "Quality 2"],
+    locationDetails: "Remote",
+    benefits: ["Benefit 1", "Benefit 2"]
+  },
+  {
+    id: 2,
+    title: "Front End Developer",
+    location: "Remote",
+    team: "IT Development",
+    workType: "Full Time",
+    position: "Employee",
+    aboutRole: "Develop frontend components...",
+    whatYoullDo: ["Build UIs", "Optimize performance"],
+    greatFit: ["React skills", "JavaScript mastery"],
+    locationDetails: "Remote",
+    benefits: ["Remote work", "Flexible hours"]
+  },
+  {
+    id: 3,
+    title: "Back End Developer",
+    location: "Remote",
+    team: "IT Development",
+    workType: "Full Time",
+    position: "Employee",
+    aboutRole: "Develop frontend components...",
+    whatYoullDo: ["Build UIs", "Optimize performance"],
+    greatFit: ["React skills", "JavaScript mastery"],
+    locationDetails: "Remote",
+    benefits: ["Remote work", "Flexible hours"]
+  },
+  {
+    id: 4,
+    title: "Full Stack Developer",
+    location: "Remote",
+    team: "IT Development",
+    workType: "Full Time",
+    position: "Employee",
+    aboutRole: "Develop frontend components...",
+    whatYoullDo: ["Build UIs", "Optimize performance"],
+    greatFit: ["React skills", "JavaScript mastery"],
+    locationDetails: "Remote",
+    benefits: ["Remote work", "Flexible hours"]
+  },
+  {
+    id: 5,
+    title: "Manager",
+    location: "Remote",
+    team: "IT Development",
+    workType: "Full Time",
+    position: "Employee",
+    aboutRole: "Develop frontend components...",
+    whatYoullDo: ["Build UIs", "Optimize performance"],
+    greatFit: ["React skills", "JavaScript mastery"],
+    locationDetails: "Remote",
+    benefits: ["Remote work", "Flexible hours"]
+  },
+  {
+    id: 6,
+    title: "Targetologist",
+    location: "Remote",
+    team: "IT Development",
+    workType: "Full Time",
+    position: "Employee",
+    aboutRole: "Develop frontend components...",
+    whatYoullDo: ["Build UIs", "Optimize performance"],
+    greatFit: ["React skills", "JavaScript mastery"],
+    locationDetails: "Remote",
+    benefits: ["Remote work", "Flexible hours"]
+  }
 ];
+
   
 export const FILTER_TEAMS = [
   'Creative Development',
@@ -36,21 +106,5 @@ export const STAY_CONNECTED = {
   buttonText: 'Join Us',
 };
   
-export const FOOTER_INFO = {
-  taxText: "Come & See is a 501(c)(3) and all donations are tax deductible.",
-  taxID: 'Tax ID: 88-3013171',
-  supportLinks: [
-    'Donation Link',
-    'How Your Contributions Help',
-    'FAQ',
-    'Help Center',
-  ],
-  legalLinks: [
-    'Privacy Policy',
-    'Cookie Policy',
-    'Terms of Use',
-    'Email: dariarez@fyne.pro',
-  ],
-  copyright: 'Copyright © 2024 Fyne Inc. All rights reserved.',
-};
+
 

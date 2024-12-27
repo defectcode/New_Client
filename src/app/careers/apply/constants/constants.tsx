@@ -1,24 +1,25 @@
-// ✅ Definirea interfeței pentru PositionData
 export interface PositionData {
-    title: string;
-    subtitle: string;
-    location: string;
-    team: string;
-    workType: string;
-    position: string;
-    fullName: string;
-    email: string;
-    phoneNumber: string;
-    country: string;
-    resumeLabel: string;
-    termsText: string;
-    applyButton: string;
-    termsPolicy1: string;
-    termsPolicy2: string;
-  }
-  
-  // ✅ Obiectul de constante
-  export const POSITION_DATA: PositionData = {
+  id: number;
+  title: string;
+  subtitle: string;
+  location: string;
+  team: string;
+  workType: string;
+  position: string;
+  fullName: string;
+  email: string;
+  phoneNumber: string;
+  country: string;
+  resumeLabel: string;
+  termsText: string;
+  termsPolicy1: string;
+  termsPolicy2: string;
+  applyButton: string;
+}
+
+export const POSITION_DATA: PositionData[] = [
+  {
+    id: 1,
     title: "CTO (Chief Technology Officer)",
     subtitle: "You Respond To",
     location: "Moldova",
@@ -31,9 +32,28 @@ export interface PositionData {
     country: "Country",
     resumeLabel: "CV / Resume (pdf, doc, docx)",
     termsText:
-      'By clicking the "Payment" button, you confirm that you have read, understand, and accept our Terms of Sale, Privacy Policy, and ',
+      'By clicking the "Apply" button, you confirm that you have read, understand, and accept our Terms of Sale, Privacy Policy, and ',
     termsPolicy1: "Terms of Sale, Privacy Policy",
     termsPolicy2: "Return Policy",
     applyButton: "Apply",
-  };
-  
+  },
+  {
+    id: 2,
+    title: "Frontend Developer",
+    subtitle: "You Respond To",
+    location: "Remote",
+    team: "IT Development",
+    workType: "Full Time",
+    position: "Employee",
+    fullName: "Full name",
+    email: "Email",
+    phoneNumber: "Phone number",
+    country: "Country",
+    resumeLabel: "CV / Resume (pdf, doc, docx)",
+    termsText:
+      'By clicking the "Apply" button, you confirm that you have read, understand, and accept our Terms of Sale, Privacy Policy, and ',
+    termsPolicy1: "Terms of Sale, Privacy Policy",
+    termsPolicy2: "Return Policy",
+    applyButton: "Apply",
+  },
+];

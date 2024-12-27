@@ -5,9 +5,10 @@ import FileUploader from "./FileUploader";
 interface PortfolioProps {
     setLinkedin: (value: string) => void;
     setPortfolio: (value: string) => void;
+    position: any
   }
   
-  export default function Portfolio({ setLinkedin, setPortfolio }: PortfolioProps) {
+  export default function Portfolio({ setLinkedin, setPortfolio, position }: PortfolioProps) {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
   
     const handleFileSelect = (file: File | null) => {
@@ -16,9 +17,9 @@ interface PortfolioProps {
     };
   
     return (
-      <div className="w-[615px]">
+      <div className="md:w-[615px] w-full">
         <h3 className="text-2xl font-bold mb-4">Show Us Your Work</h3>
-        <p className="text-neutral-400 mb-4">{POSITION_DATA.resumeLabel}</p>
+        <p className="text-neutral-400 mb-4">{position.resumeLabel}</p>
         <div className="flex flex-col gap-4">
           <FileUploader onFileSelect={handleFileSelect} />
           <div className="relative w-full">
