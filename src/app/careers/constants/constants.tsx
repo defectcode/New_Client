@@ -9,7 +9,7 @@ export const HERO_CONTENT = {
 export const JOB_LISTINGS = [
   {
     id: 1,
-    title: "CTO (Chief Technology Officer)",
+    title: "Специалист по цифровой рекламе",
     location: "Moldova",
     team: "Marketing and PR",
     workType: "Part Time",
@@ -22,8 +22,8 @@ export const JOB_LISTINGS = [
   },
   {
     id: 2,
-    title: "Front End Developer",
-    location: "Remote",
+    title: "Specialist în Publicitate Digitală",
+    location: "Moldova",
     team: "IT Development",
     workType: "Full Time",
     position: "Employee",

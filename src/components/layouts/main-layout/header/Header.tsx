@@ -34,7 +34,8 @@ export function Header() {
         <SearchInput />
         <User />
         <Button variant="ghost" onClick={toggleCart} className='p-0 hover:bg-transparent'>
-          {currentPath === PUBLIC_URL.home() ? <Image src="/images/shop.svg" alt="shop" width={15} height={17} /> : <Image src="/images/shop2.svg" alt="shop" width={15} height={17} />}
+          {/* {currentPath === PUBLIC_URL.home() ? <Image src="/images/shop.svg" alt="shop" width={15} height={17} /> : <Image src="/images/shop2.svg" alt="shop" width={15} height={17} />} */}
+          <Image src="/images/shopNavBar.svg" alt="shop" width={15} height={17} />
         </Button>
       </div>
       

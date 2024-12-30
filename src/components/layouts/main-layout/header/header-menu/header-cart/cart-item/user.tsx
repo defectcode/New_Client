@@ -37,7 +37,7 @@ export function User() {
 					)}
 					<Link href={DASHBOARD_URL.home()}>
 						<Image
-							src={user.picture}
+							src="/images/userNavBar.svg"
 							alt={user.name}
 							width={22}
 							height={22}
@@ -47,7 +47,7 @@ export function User() {
 				</>
 			) : (
 				<Link href={PUBLIC_URL.auth()}>
-					<button className='flex items-center justify-center text-[#FFFFFF]' >
+					<button className='flex items-center justify-center text-[#000000]' >
 						Login
 					</button>
 				</Link>

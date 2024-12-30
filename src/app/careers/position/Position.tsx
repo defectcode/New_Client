@@ -90,12 +90,12 @@ export default function Position({ className = "" }: PositionProps) {
       </section>
 
       <section className="pt-20 max-w-[1400px] mx-auto px-8">
-        <h2 className="text-[34px] font-semibold mb-4">About the Role</h2>
+        <h2 className="text-[34px] font-semibold mb-4">{pageContent.about}</h2>
         <p className="w-[775px]">{pageContent.aboutRole}</p>
       </section>
 
       <section className="pt-10 max-w-[1400px] mx-auto px-8">
-        <h2 className="text-[34px] font-semibold mb-4">What You'll Do</h2>
+        <h2 className="text-[34px] font-semibold mb-4">{pageContent.what}</h2>
         <ul className="list-disc ml-5 w-[775px] space-y-2">
           {pageContent.whatYoullDo.map((task, index) => (
             <li key={index}>{task}</li>
@@ -104,7 +104,7 @@ export default function Position({ className = "" }: PositionProps) {
       </section>
 
       <section className="pt-10 max-w-[1400px] mx-auto px-8">
-        <h2 className="text-[34px] font-semibold mb-4">What Makes You a Great Fit</h2>
+        <h2 className="text-[34px] font-semibold mb-4">{pageContent.make}</h2>
         <ul className="list-disc ml-5 w-[775px] space-y-2">
           {pageContent.greatFit.map((quality, index) => (
             <li key={index}>{quality}</li>
@@ -113,12 +113,12 @@ export default function Position({ className = "" }: PositionProps) {
       </section>
 
       <section className="pt-10 max-w-[1400px] mx-auto px-8">
-        <h2 className="text-[34px] font-semibold mb-4">Where You'll Be</h2>
+        <h2 className="text-[34px] font-semibold mb-4">{pageContent.where}</h2>
         <p>{pageContent.locationDetails}</p>
       </section>
 
       <section className="pt-10 pb-20 max-w-[1400px] mx-auto px-8">
-        <h2 className="text-[34px] font-semibold mb-4">Benefits of Joining Our Team</h2>
+        <h2 className="text-[34px] font-semibold mb-4">{pageContent.teamBenefits}</h2>
         <ul className="list-disc ml-5 space-y-2">
           {pageContent.benefits.map((benefit, index) => (
             <li key={index}>{benefit}</li>

@@ -20,7 +20,7 @@ export interface PositionData {
 export const POSITION_DATA: PositionData[] = [
   {
     id: 1,
-    title: "CTO (Chief Technology Officer)",
+    title: "Специалист по цифровой рекламе",
     subtitle: "You Respond To",
     location: "Moldova",
     team: "Marketing and PR",
@@ -39,9 +39,9 @@ export const POSITION_DATA: PositionData[] = [
   },
   {
     id: 2,
-    title: "Frontend Developer",
+    title: "Specialist în Publicitate Digitală",
     subtitle: "You Respond To",
-    location: "Remote",
+    location: "Moldova",
     team: "IT Development",
     workType: "Full Time",
     position: "Employee",

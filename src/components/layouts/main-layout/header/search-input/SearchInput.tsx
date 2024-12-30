@@ -36,7 +36,8 @@ export function SearchInput() {
 				}}
 				className="md:ml-2 rounded-full bg-transparent text-white p-0"
 			>
-				{currentPath === PUBLIC_URL.home() ? <Image src='/images/search.svg' alt='search' width={15} height={15}/> : <Image src='/images/search2.svg' alt='search' width={15} height={15}/>}
+				{/* {currentPath === PUBLIC_URL.home() ? <Image src='/images/search.svg' alt='search' width={15} height={15}/> : <Image src='/images/search2.svg' alt='search' width={15} height={15}/>} */}
+				<Image src='/images/searchNavBar.svg' alt='search' width={15} height={15}/>
 			</Button>
 		</div>
 	)

@@ -84,14 +84,14 @@ export default function MobilePosition({ className = "" }: PositionProps) {
         </ul>
       </section>
       
-      <div className="flex items-center gap-[20px] my-6 px-5">
+      <div className="fixed bottom-0 left-0 right-0 bg-white p-4 flex gap-4 items-center justify-center shadow-md z-50">
         <Link href={`/careers/apply?id=${job.id}`} className="flex-1 min-w-[209px]">
-          <button className="bg-black text-white text-md font-semibold rounded-[10px] h-[48px] w-full hover:bg-gray-800 transition-colors">
+          <button className="bg-black text-white text-md font-semibold rounded-lg h-12 w-full hover:bg-gray-800 transition-colors">
             Apply Now
           </button>
         </Link>
         <div className="flex-1 min-w-[115px]">
-          <button className="border border-[#1E1E1E] text-[#1E1E1E] text-md font-semibold rounded-[10px] h-[48px] w-full flex items-center justify-center gap-2">
+          <button className="border border-gray-900 text-gray-900 text-md font-semibold rounded-lg h-12 w-full flex items-center justify-center gap-2">
             Share
             <span>📤</span>
           </button>

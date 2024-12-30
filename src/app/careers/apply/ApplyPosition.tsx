@@ -49,26 +49,25 @@ export default function ApplyPosition({ className = "" }: ApplyPositionProps) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ 
-          position: selectedPositions.join(", "), 
           email, 
           fullName, 
           phone, 
           country, 
-          file, 
           linkedin, 
-          portfolio 
+          portfolio,
+          position: selectedPositions.join(', ') 
         }),
       });
   
       if (!response.ok) {
-        throw new Error('Failed to send email');
+        throw new Error('Failed to submit the form');
       }
   
       const result = await response.json();
       setMessage(result.message || 'Success!');
-  
+
       resetForm();
-  
+      
     } catch (error: any) {
       console.error('Error:', error.message);
       setMessage('Something went wrong!');
@@ -130,11 +129,18 @@ export default function ApplyPosition({ className = "" }: ApplyPositionProps) {
     return <ApplyPositionMobile/>
   }
 
+
   return (
     <div className={`w-full bg-[#FFFEFE] tracking-[0px] ${className}`}>
       <Header />
-      <AboutApply position={position} selectedPositions={selectedPositions} />
-      <div onSubmit={handleSubmit} className="flex flex-col items-start max-w-[1400px] mx-auto">
+      <AboutApply 
+        position={position} 
+        selectedPositions={selectedPositions} 
+      />
+      <div 
+        onSubmit={handleSubmit} 
+        className="flex flex-col items-start max-w-[1400px] mx-auto"
+      >
         <div className="py-8 w-[615px]">
           <h3 className="text-2xl font-bold mb-4">General Information</h3>
           <div className="flex flex-col gap-4">

@@ -3,43 +3,40 @@
 export const PAGE_CONTENT = [
   {
     id: 1,
-    title: "CTO (Chief Technology Officer)",
-    subtitle: "We Are Looking For",
-    location: "Moldova",
-    team: "Leadership and Technology",
-    workType: "Part Time",
-    position: "Volunteer",
-    aboutRole: "As the Chief Technology Officer (CTO) for 'Paradise Problems,' you will be the driving force behind the project's technical vision, ensuring technological excellence, scalability, and innovation across all platforms. You will work closely with leadership and production teams to align technical goals with the overall project vision, while maintaining focus on long-term technological sustainability and growth.",
+    about: "О роли",
+    what: "Что вы будете делать",
+    make: "Что делает вас идеальным кандидатом",
+    where: "Где ты будешь",
+    teamBenefits: "Преимущества присоединения к нашей команде",
+    title: "Специалист по цифровой рекламе",
+    subtitle: "Мы ищем",
+    location: "Молдова",
+    team: "Лидерство и технологии",
+    workType: "Full Time",
+    position: "Волонтер",
+    aboutRole: "Если у вас есть опыт в управлении кампаниями на TikTok Ads Manager, Facebook Ads и Instagram Ads, и вы ориентированы на измеримые результаты, мы приглашаем вас присоединиться к нашей команде для участия в двух уникальных проектах!.",
     whatYoullDo: [
-      "Define and execute the overall technical strategy and roadmap.",
-      "Lead and mentor a multidisciplinary tech team.",
-      "Collaborate with creative and production teams to align tech goals.",
-      "Evaluate and implement emerging technologies.",
-      "Ensure system performance, scalability, and reliability.",
-      "Address critical technical challenges proactively.",
-      "Establish best practices for software development and system architecture.",
-      "Facilitate regular code reviews and technical audits."
+      "Vellov – Премиальный бренд фитнеса и lifestyle: проект, сочетающий аксессуары для фитнеса, спортивную одежду премиум-класса и цифровую платформу с продвижением через livestream и рекламные кампании. Vellov стремится занять лидирующую позицию в сегменте премиального фитнеса с помощью современных стратегий и креативных подходов."
     ],
     greatFit: [
-      "Proven experience as a CTO or senior technical leader.",
-      "Strong expertise in software architecture and development.",
-      "Innovative mindset with a passion for emerging tech.",
-      "Excellent communication and leadership skills.",
-      "Strategic thinker with problem-solving capabilities.",
-      "Experience in scaling technology systems for growth.",
-      "Understanding of cybersecurity principles."
+      "Интерактивная ферма – Livestream & Reality Show для инвесторов: инновационная платформа, где инвесторы могут наблюдать за своими животными, размещёнными на нашей ферме, совмещая прозрачность и развлекательный формат реалити-шоу."
     ],
     locationDetails: "This role offers remote flexibility, with occasional on-site requirements in Moldova.",
     benefits: [
-      "Lead the tech direction of an innovative project.",
-      "Collaborate with a talented international team.",
-      "Flexible remote working options.",
-      "Gain recognition in the tech and entertainment sectors.",
-      "Opportunity to build scalable tech infrastructure for global impact."
+      "создание и управление рекламными кампаниями для Интерактивной фермы и бренда Vellov.",
+      "оптимизация затрат для достижения максимального ROI",
+      "исследование и внедрение эффективных стратегий для различных рынков и аудиторий",
+      "мониторинг и анализ производительности кампаний с подготовкой подробных отчетов",
+      "еестирование новых методов и каналов продвижения для максимальной эффективности"
     ]
   },
   {
     id: 2,
+    about: "About the Role",
+    what: "What You'll Do",
+    make: "What Makes You a Great Fit",
+    where: "Where You'll Be",
+    teamBenefits: "Benefits of Joining Our Team",
     title: "Front End Developer",
     subtitle: "We Are Looking For",
     location: "Moldova",
@@ -76,6 +73,11 @@ export const PAGE_CONTENT = [
   },
   {
     id: 3,
+    about: "About the Role",
+    what: "What You'll Do",
+    make: "What Makes You a Great Fit",
+    where: "Where You'll Be",
+    teamBenefits: "Benefits of Joining Our Team",
     title: "Back End Developer",
     subtitle: "We Are Looking For",
     location: "Moldova",
@@ -112,6 +114,11 @@ export const PAGE_CONTENT = [
   },
   {
     id: 4,
+    about: "About the Role",
+    what: "What You'll Do",
+    make: "What Makes You a Great Fit",
+    where: "Where You'll Be",
+    teamBenefits: "Benefits of Joining Our Team",
     title: "Full Stack Developer",
     subtitle: "We Are Looking For",
     location: "Moldova",
@@ -148,6 +155,11 @@ export const PAGE_CONTENT = [
   },
   {
     id: 5,
+    about: "About the Role",
+    what: "What You'll Do",
+    make: "What Makes You a Great Fit",
+    where: "Where You'll Be",
+    teamBenefits: "Benefits of Joining Our Team",
     title: "Manager",
     subtitle: "We Are Looking For",
     location: "Moldova",
@@ -181,6 +193,11 @@ export const PAGE_CONTENT = [
   },
   {
     id: 6,
+    about: "About the Role",
+    what: "What You'll Do",
+    make: "What Makes You a Great Fit",
+    where: "Where You'll Be",
+    teamBenefits: "Benefits of Joining Our Team",
     title: "Targetologist",
     subtitle: "We Are Looking For",
     location: "Moldova",
@@ -217,7 +234,7 @@ export const PAGE_CONTENT = [
 export const JOB_LISTINGS = [
   {
     id: 1,
-    title: "CTO (Chief Technology Officer)",
+    title: "Специалист по цифровой рекламе",
     location: "Moldova",
     team: "Marketing and PR",
     workType: "Part Time",
