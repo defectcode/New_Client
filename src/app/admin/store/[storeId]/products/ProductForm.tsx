@@ -61,7 +61,7 @@ export function ProductForm({ product, categories, colors }: ProductFormProps) {
       discount: product?.discount || 0,
       categoryId: product?.category?.id || '',
       colorId: product?.color?.id || '',
-      sizes: product?.sizes || [], // Initialize sizes
+      // sizes: product?.sizes || [], // Initialize sizes
     },
   });
   
@@ -177,16 +177,14 @@ export function ProductForm({ product, categories, colors }: ProductFormProps) {
               <form onSubmit={form.handleSubmit(onSubmit)}>
                 <FormField
                   control={form.control}
-                  name="sizes"
+                  name="categoryId"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Sizes</FormLabel>
                       <Select
                         disabled={isLoadingSizes || isLoadingUpdate}
                         defaultValue='M'
-                        onValueChange={(value) =>
-                          field.onChange([...field.value, value])
-                        }
+                        onValueChange={field.onChange}
                       >
                         <FormControl>
                           <SelectTrigger>

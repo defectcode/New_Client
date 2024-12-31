@@ -8,7 +8,6 @@ import { PUBLIC_URL } from '@/config/url.config'
 
 import { NO_INDEX_PAGE } from '@/constants/seo.constants'
 
-import styles from '../hero/Hero.module.scss'
 
 export const metadata: Metadata = {
 	title: 'Thank you for your purchase',
@@ -17,9 +16,9 @@ export const metadata: Metadata = {
 
 export default function ThanksPage() {
 	return (
-		<div className={styles.section}>
-			<h1 className={styles.heading}>Thank you for your purchase</h1>
-			<p className={styles.description}>
+		<div>
+			<h1>Thank you for your purchase</h1>
+			<p>
 				Thank you for your order! We appreciate your trust and will do our best to deliver your order as soon as possible.
 			</p>
 			<Link href={PUBLIC_URL.home()}>
