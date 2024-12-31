@@ -54,9 +54,6 @@ const FileUploader: React.FC = () => {
         accept=".pdf,.doc,.docx"
         onChange={handleFileChange}
       />
-      {/* <button onClick={handleUpload} className="bg-blue-500 text-white px-4 py-2 rounded">
-        Upload File
-      </button> */}
       {status && <p className="text-sm mt-2">{status}</p>}
     </div>
   );

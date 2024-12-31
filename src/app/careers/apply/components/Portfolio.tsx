@@ -16,7 +16,6 @@ interface PortfolioProps {
       console.log("Selected file:", file?.name || "No file selected");
     };
   
-
     return (
       <div className="md:w-[615px] w-full md:px-0 px-5">
         <h3 className="text-2xl font-bold mb-4">Show Us Your Work</h3>
@@ -72,7 +71,7 @@ interface PortfolioProps {
             />
           </div>
         </div>
-        
+
       </div>
     );
   }

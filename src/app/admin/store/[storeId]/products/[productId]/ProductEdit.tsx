@@ -16,9 +16,9 @@ export function ProductEdit() {
 	const params = useParams<{ productId: string }>()
 
 	const { data } = useQuery({
-		queryKey: ['get product', params?.productId], // Add params.productId to the query key
+		queryKey: ['get product', params?.productId], 
 		queryFn: () => (params?.productId ? productService.getById(params.productId) : Promise.reject('No productId')),
-		enabled: !!params?.productId // Only run the query if productId is available
+		enabled: !!params?.productId 
 	})
 
 	const { categories } = useGetCategories()
@@ -28,6 +28,7 @@ export function ProductEdit() {
 		<ProductForm
 			product={data}
 			categories={categories || []}
-			colors={colors || []} sizes={[]}		/>
+			colors={colors || []} sizes={[]}		
+		/>
 	)
 }
