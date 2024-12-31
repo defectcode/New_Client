@@ -9,7 +9,7 @@ export const useDeleteSize = () => {
     mutationKey: ['delete size'],
     mutationFn: (id: string) => sizeService.delete(id),
     onSuccess: () => {
-      queryClient.invalidateQueries('get sizes');
+      // queryClient.invalidateQueries('get sizes');
       toast.success('Size deleted');
     },
     onError: () => {
