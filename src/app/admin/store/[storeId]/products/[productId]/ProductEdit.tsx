@@ -28,7 +28,6 @@ export function ProductEdit() {
 		<ProductForm
 			product={data}
 			categories={categories || []}
-			colors={colors || []}
-		/>
+			colors={colors || []} sizes={[]}		/>
 	)
 }
