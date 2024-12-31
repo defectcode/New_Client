@@ -9,5 +9,5 @@ export function CreateProduct() {
 	const { categories } = useGetCategories()
 	const { colors } = useGetColors()
 
-	return <ProductForm categories={categories || []} colors={colors || []} />
+	return <ProductForm categories={categories || []} colors={colors || []} sizes={[]} />
 }
