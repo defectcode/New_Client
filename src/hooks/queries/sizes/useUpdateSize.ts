@@ -10,7 +10,7 @@ export const useUpdateSize = () => {
     mutationFn: ({ id, data }: { id: string; data: { value: string } }) =>
       sizeService.update(id, data),
     onSuccess: () => {
-      queryClient.invalidateQueries(['get sizes']);
+      // queryClient.invalidateQueries(['get sizes']);
       toast.success('Size updated');
     },
     onError: () => {
