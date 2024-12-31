@@ -21,7 +21,7 @@ interface PortfolioProps {
         <h3 className="text-2xl font-bold mb-4">Show Us Your Work</h3>
         <p className="text-neutral-400 mb-4">{position.resumeLabel}</p>
         <div className="flex flex-col gap-4">
-          <FileUploader onFileSelect={handleFileSelect} />
+          <FileUploader/>
           <div className="relative w-full">
             <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
               <svg
