@@ -31,12 +31,12 @@ export function User() {
 						<div>
 						</div>
 					) : (
-						// <CreateStoreModal>
-						// 	<Button variant='ghost'>Create a store</Button>
-						// </CreateStoreModal>
-						<div>
+						<CreateStoreModal>
+							<Button variant='ghost'>Create a store</Button>
+						</CreateStoreModal>
+						// <div>
 							
-						</div>
+						// </div>
 					)}
 					<Link href={DASHBOARD_URL.home()}>
 						<Image
