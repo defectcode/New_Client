@@ -4,8 +4,6 @@ import { PUBLIC_URL } from '@/config/url.config'
 import { SITE_NAME } from '@/constants/seo.constants'
 
 export function Logo() {
-	const currentPath = window.location.pathname;
-
 	return (
 		<Link
 			href={PUBLIC_URL.home()}
