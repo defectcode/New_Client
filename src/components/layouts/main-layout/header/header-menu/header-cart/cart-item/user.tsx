@@ -20,7 +20,7 @@ export function User() {
 
 
     return (
-        <Button className='bg-transparent hover:bg-[#F1F5F9]'>
+        <Button className='bg-transparent p-0'>
             {isLoading ? (
 				<Loader size='sm' />
 			) : user ? (
@@ -31,24 +31,26 @@ export function User() {
 						<div>
 						</div>
 					) : (
-						<CreateStoreModal>
-							<Button variant='ghost'>Create a store</Button>
-						</CreateStoreModal>
+						// <CreateStoreModal>
+						// 	<Button variant='ghost'>Create a store</Button>
+						// </CreateStoreModal>
+						<div>
+							
+						</div>
 					)}
 					<Link href={DASHBOARD_URL.home()}>
 						<Image
-							src={user.picture}
+							src="/images/userNavBar.svg"
 							alt={user.name}
-							width={20}
-							height={20}
-							className={`${styles.avatar} ${currentPath === DASHBOARD_URL.home() ? 'border-2 border-white' : ''}`} // Iconiță activă
+							width={22}
+							height={22}
+							className={`${styles.avatar} ${currentPath === DASHBOARD_URL.home() ? 'border-2 border-white max-md:w-5 max-md:h-5' : 'max-md:w-5 max-md:h-5'}`} // Iconiță activă
 						/>
 					</Link>
 				</>
 			) : (
 				<Link href={PUBLIC_URL.auth()}>
-					<button className='flex items-center justify-center text-[#7C788A]' >
-						<LogOut className={`${styles.icon} ${currentPath === PUBLIC_URL.auth() ? 'text-white' : 'text-gray-300'}`} />
+					<button className='flex items-center justify-center text-[#000000]' >
 						Login
 					</button>
 				</Link>
