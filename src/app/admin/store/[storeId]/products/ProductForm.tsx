@@ -61,7 +61,6 @@ export function ProductForm({ product, categories, colors }: ProductFormProps) {
       discount: product?.discount || 0,
       categoryId: product?.category?.id || '',
       colorId: product?.color?.id || '',
-      // sizes: product?.sizes || [], // Initialize sizes
     },
   });
   
@@ -173,41 +172,9 @@ export function ProductForm({ product, categories, colors }: ProductFormProps) {
               )}
             />
 
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)}>
-                <FormField
-                  control={form.control}
-                  name="categoryId"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Sizes</FormLabel>
-                      <Select
-                        disabled={isLoadingSizes || isLoadingUpdate}
-                        defaultValue='M'
-                        onValueChange={field.onChange}
-                      >
-                        <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select sizes" />
-                          </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectGroup>
-                            {sizes?.map((size) => (
-                              <SelectItem key={size.id} value={size.id}>
-                                {size.value}
-                              </SelectItem>
-                            ))}
-                          </SelectGroup>
-                        </SelectContent>
-                      </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </form>
-            </Form>
+            
 
+            {/* Dropdown pentru categorie */}
             <FormField
               control={form.control}
               name="categoryId"

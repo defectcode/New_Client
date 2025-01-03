@@ -1,3 +1,4 @@
+/** @type {import('next').NextConfig} */
 const nextConfig = {
 	env: {
 		APP_ENV: process.env.APP_ENV,
@@ -21,11 +22,8 @@ const nextConfig = {
 		return [
 			{
 				source: '/uploads/:path*',
-				destination: `${process.env.SERVER_URL}/uploads/:path*`,
-				source: '/careers/position/:id',
-				destination: '/careers/position/[id]',
+				destination: `${process.env.SERVER_URL}/uploads/:path*`
 			}
-			
 		]
 	}
 };
