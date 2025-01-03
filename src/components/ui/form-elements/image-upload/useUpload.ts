@@ -14,7 +14,7 @@ export function useUpload(onChange: (value: string[]) => void) {
 			onChange(data.map(file => file.url))
 		},
 		onError() {
-			toast.error('Ошибка при загрузки файлов')
+			toast.error('Error loading files')
 		}
 	})
 
