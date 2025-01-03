@@ -14,3 +14,5 @@ export const API_URL = {
 	statistics: (url = '') => API_URL.root(`/statistics${url}`),
 	files: (url = '') => API_URL.root(`/files${url}`)
 }
+
+
