@@ -568,27 +568,25 @@ export function Checkout() {
                   )}
                 </div>
 
-                {showCompanyInput && (
-                    <div className="w-full md:hidden">
-                        <FloatingLabelInput
-                            type="text"
-                            id="company"
-                            name="company"
-                            value={shippingData.company}
-                            onChange={handleChange}
-                            placeholder="Company Name (optional)"
-                            error={errors.company}
-                            required
-                            getInputStyles={getInputStyles}
-                        />
-                        {errors.company && (
-                            <p className="text-red-500 text-sm mt-1 mb-6">{errors.company}</p> // Increased mb-6 for spacing
-                        )}
-                    </div>
-                )}
 
-                
-                  
+                {showCompanyInput && (
+                  <div className="w-full md:hidden">
+                      <FloatingLabelInput
+                          type="text"
+                          id="company"
+                          name="company"
+                          value={shippingData.company}
+                          onChange={handleChange}
+                          placeholder="Company Name (optional)"
+                          error={errors.company}
+                          required
+                          getInputStyles={getInputStyles}
+                      />
+                      {errors.company && (
+                          <p className="text-red-500 text-sm mt-1 mb-6">{errors.company}</p> // Increased mb-6 for spacing
+                      )}
+                  </div>
+                )}
 
                 <div className="flex items-center cursor-pointer text-[#6F6F6F] text-[14px] font-heebo md:mb-0 md:block hidden" onClick={handleToggleCompanyInput}>
                   {!showCompanyInput && (
@@ -613,19 +611,19 @@ export function Checkout() {
 
                 {/* Company Field (conditionally shown) */}
                 {showCompanyInput && (
-                    <div className="w-full md:block hidden">
-                        <FloatingLabelInput
-                            type="text"
-                            id="company"
-                            name="company"
-                            value={shippingData.company}
-                            onChange={handleChange}
-                            placeholder="Company Name (optional)"
-                            error={errors.company}
-                            required
-                            getInputStyles={getInputStyles}
-                        />
-                    </div>
+                  <div className="w-full md:block hidden">
+                      <FloatingLabelInput
+                        type="text"
+                        id="company"
+                        name="company"
+                        value={shippingData.company}
+                        onChange={handleChange}
+                        placeholder="Company Name (optional)"
+                        error={errors.company}
+                        required
+                        getInputStyles={getInputStyles}
+                      />
+                  </div>
                 )}
 
                 <h2 className="font-Heebo-24-- text-[#1E1E1E] md:pt-5 pt-[30px] md:block hidden">How can we reach you?</h2>
@@ -675,8 +673,6 @@ export function Checkout() {
               <h1 className='md:hidden font-Heebo-18-pay text-[#BDBDBD] mt-5'>Payment</h1>
             </div>
           </div>
-
-            {/* <Order items={items} /> */}
           </div>
           <div className="w-full lg:w-1/3 md:py-10 md:ml-10 md:mr-[35px] md:block hidden">
             <div className=" text-[14px] font-heebo leading-[14px]">
