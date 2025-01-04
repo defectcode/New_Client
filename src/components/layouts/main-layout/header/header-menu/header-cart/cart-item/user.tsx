@@ -42,9 +42,9 @@ export function User() {
 						<Image
 							src="/images/userNavBar.svg"
 							alt={user.name}
-							width={22}
-							height={22}
-							className={`${styles.avatar} ${currentPath === DASHBOARD_URL.home() ? 'border-2 border-white max-md:w-5 max-md:h-5' : 'max-md:w-5 max-md:h-5'}`} // Iconiță activă
+							width={17}
+							height={17}
+							className={`${styles.avatar} ${currentPath === DASHBOARD_URL.home() ? 'border-2 border-white max-md:w-4 max-md:h-4' : 'max-md:w-4 max-md:h-4'}`} // Iconiță activă
 						/>
 					</Link>
 				</>

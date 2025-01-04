@@ -43,7 +43,7 @@ export function ExplorerProducts({ product, isBestSeller, isBestPrice }: Explore
           </div>
         </div>
 
-        <div className="absolute top-3 right-3 p-1 bg-transparent cursor-pointer md:block hidden">
+        <div className="absolute top-3 right-3 p-1 bg-transparent hover:bg-transparent cursor-pointer md:block hidden">
           <FavoriteButton product={product} />
         </div>
 

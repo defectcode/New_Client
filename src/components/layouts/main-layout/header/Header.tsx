@@ -24,6 +24,7 @@ export function Header() {
   return (
     <div className="md:py-2 p-0 max-w-[1400px] w-full md:h-full h-[60px] flex items-center justify-between bg-transparent mx-auto">
       
+      {/* Desktop */}
       <div className="flex-1 lg:block hidden">
         <HeaderMenu />
       </div>
@@ -34,11 +35,12 @@ export function Header() {
         <SearchInput />
         <User />
         <Button variant="ghost" onClick={toggleCart} className='p-0 hover:bg-transparent'>
-          {/* {currentPath === PUBLIC_URL.home() ? <Image src="/images/shop.svg" alt="shop" width={15} height={17} /> : <Image src="/images/shop2.svg" alt="shop" width={15} height={17} />} */}
           <Image src="/images/shopNavBar.svg" alt="shop" width={15} height={17} />
         </Button>
       </div>
       
+
+      {/* Mobile */}
       <div className="flex items-center justify-between w-full h-[70px] lg:hidden px-5">
         <div className='flex items-center gap-[10px]'>
           <Link href="/" className="">
