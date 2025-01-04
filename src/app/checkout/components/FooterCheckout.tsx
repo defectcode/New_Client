@@ -15,7 +15,7 @@ const FooterCheckout = () => {
 
   return (
     <footer className="bg-[#F9F9F9] text-gray-500 text-sm py-6 w-full">
-      <div className="container max-w-[1060px] mx-auto px-4 md:border-t border-[#7C788A]/20">
+      <div className="container max-w-[1060px] mx-auto px-5 md:border-t border-[#7C788A]/20">
         {/* Desktop layout */}
         <div className='space-y-10 w-full mt-5 md:block hidden'>
             <div className="flex items-center justify-center md:justify-start text-center md:text-left">

@@ -4,7 +4,7 @@ import { CheckoutCartItem } from './cart-item/CheckoutCartItem';
 import Image from 'next/image';
 import './cart-item/PayPal.css';
 import { useEffect, useState } from 'react';
-import CheckoutButton from '@/app/checkout/ButtonCheckout';
+import CheckoutButton from '@/app/checkout/components/ButtonCheckout';
 
 export function HeaderCart() {
   const [isSummaryVisible, setIsSummaryVisible] = useState(false);

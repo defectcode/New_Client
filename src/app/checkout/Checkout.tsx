@@ -16,6 +16,9 @@ import FloatingLabelInput from './components/FloatingLabelInput';
 import '../../../src/components/layouts/main-layout/header/header-menu/header-cart/cart-item/PayPal.css'
 import PayPalButton from '@/components/layouts/main-layout/header/header-menu/header-cart/cart-item/PayPalButton';
 import Modal from './components/order/ModalPayPal';
+import ExpressCheckoutVisible from './components/ExpressCheckoutVisible';
+import AddCompany from './components/AddCompany';
+import InfoDelivery from './components/InfoDelivery';
 
 interface ShippingData {
   company: string;
@@ -29,7 +32,7 @@ interface ShippingData {
   phone: string;
 }
 
-export function Checkout() {
+export default function Checkout() {
   const { user } = useProfile();
   const { items } = useCart();
   const [shippingData, setShippingData] = useState<ShippingData>({
@@ -211,8 +214,6 @@ export function Checkout() {
     setIsPaymentVisible(true);
   };
 
-  
-  //Total:
   const subtotal = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const taxRate = 0.2; 
   const totalAmount = subtotal + subtotal * taxRate; 
@@ -228,17 +229,22 @@ export function Checkout() {
   };
   if (isSubmitted && !isEditing) {
     return (
-      <div>
-        <div className='md:h-[1100px] h-[1600px] bg-[#F9F9F9]'>
-        <div className='bg-[#F9F9F9]'>
-          <div className='md:block hidden'>
-            <InfoHeader />  
-          </div> 
+      <div className='bg-[#F9F9F9] min-h-screen flex flex-col'>
+        {/* HEADER */}
+        <div className='md:block hidden'>
+          <InfoHeader />  
+        </div> 
+  
+        {/* CONTAINER PRINCIPAL */}
+        <div className="flex-grow max-w-[1400px] mx-auto w-full md:px-0 ">
+          {/* HEADER MOBIL */}
           <div className="w-full lg:w-1/3 md:p-4 md:hidden block p-0 m-0">
-              <CheckoutCartHeader />
+            <CheckoutCartHeader />
           </div>
-          <div className="container mx-auto flex flex-col lg:flex-row justify-center items-start lg:h-screen pt-6 px-5 sm:px-6 lg:px-0 bg-[#F9F9F9]">
-            <div className="w-full max-w-[620px] flex flex-col gap-10 justify-center items-center py-4 sm:p10 mb-6 lg:mb-0">
+  
+          {/* SECTIUNEA PRINCIPALĂ */}
+          <div className="flex flex-col lg:flex-row justify-center items-start pt-6 flex-grow md:px-0 px-5">
+            <div className="w-full max-w-[620px] flex flex-col gap-10 justify-center items-center py-4 mb-6 lg:mb-0">
               <div className="w-full max-w-[520px]">
                 <div className="mb-4">
                   <h2 className="font-Heebo-24-- mb-5 text-[#1E1E1E]">When will your order arrive?</h2>
@@ -247,57 +253,38 @@ export function Checkout() {
                     <p className="text-[#8C8C8C] font-heebo font-medium text-[14px] leading-[14px]">FREE</p>
                   </div>
                 </div>
-                <div className="w-full lg:w-full md:p-4 md:hidden block border-b">
-                  <div className="py-5">
-                    <h1 className="font-Heebo-16 mb-[5px] text-[#1E1E1E]">Keep in mind:</h1>
+  
+                {/* INFORMAȚII SUPLIMENTARE */}
+                <div className="w-full lg:w-1/3 md:p-4 pb-10 md:hidden block border-b">
+                  <div className="md:py-5">
+                    <h1 className="font-Heebo-14 mb-[5px] text-[#1E1E1E]">Keep in mind:</h1>
                     <ul className="list-disc pl-4">
-                      <li className="mb-2 font-Heebo-reg-14">
-                        <span className='font-Heebo-14-bolt'>Signature: </span>You may need to sign for your delivery.
+                      <li className="md:mb-2 mb-[5px] md:font-Heebo-reg-14 font-Heebo-reg-12">
+                        <span className='font-Heebo-14-bolt'>Signature: </span>
+                        You may need to sign for your delivery.
                       </li>
-                      <li className="font-Heebo-reg-14 text-[#1E1E1E]">
+                      <li className="max-w-[437px] w-full md:font-Heebo-reg-14 font-Heebo-reg-12">
                         <span className='font-Heebo-14-bolt text-[#1E1E1E]'>Change delivery: </span>
                         Once shipped, you can track and adjust where your package is delivered (pickup, secure location, or contactless)
                       </li>
                     </ul>
                   </div>
                 </div>
-
-                {isExpressCheckoutVisible && (
-                  <>
-                    <div className="flex flex-col gap-5 mb-6">
-                      <div className="flex gap-[15px] md:h-[56px] h-12">
-                        <button className="w-full py-2 border rounded-[10px] bg-[#00457C] flex items-center justify-center"
-                                  onClick={() => setSelectedPaymentMethod('PayPal')}
-                        >
-                          <Image src='/images/paypal.svg' alt='PayPal' width={69} height={18} className='md:w-[69px] md:h-[18px] w-[48px] h-[13px]' />
-                        </button>
-                        <button className="w-full py-2 border rounded-[10px] bg-[#000000] flex items-center justify-center">
-                          <Image src='/images/applepay.svg' alt='Apple Pay' width={54} height={20} className='md:w-[54px] md:h-[20px] w-[42px] h-[16px]' />
-                          <CheckoutPage />
-                        </button>
-                        <button className="w-full py-2 border rounded-[10px] bg-[#333E48] flex items-center justify-center">
-                          <Image src='/images/amazonpay.svg' alt='Amazon Pay' width={102} height={20} className='mt-1 md:w-[102px] md:h-[20px] w-[81px] h-[15px]' />
-                          <CheckoutPage />
-                        </button>
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between mt-10">
-                      <div className="flex-1 border-t border-gray-300"></div>
-                      <h1 className="mx-2 font-Heebo-16 text-[#424242]">OR</h1>
-                      <div className="flex-1 border-t border-gray-300"></div>
-                    </div>
-                  </>
-                )}
-
+  
+                <ExpressCheckoutVisible />
+  
+                {/* REZUMAT COMANDĂ */}
                 {selectedPaymentMethod === 'PayPal' && (
                   <div className="w-full">
                     <PayPalButton totalAmount={totalAmount} />
-                  </div>      
+                  </div>
                 )}
+  
                 <div className="mt-6 flex justify-between items-center mb-10">
                   <h2 className="font-Heebo-bold-20">Shipping Address</h2>
                   <button className="text-[#8C8C8C] font-semibold font-heebo text-[16px] underline" onClick={handleEdit}>Edit</button>
                 </div>
+  
                 <div className='text-[#8C8C8C] font-Heebo-reg-16-0'>
                   <p className='font-Heebo-16 text-[#8C8C8C]'>{shippingData.firstName} {shippingData.lastName}</p>
                   <p>{shippingData.address}, {shippingData.city}, {shippingData.country}, {shippingData.zip}</p>
@@ -308,17 +295,24 @@ export function Checkout() {
                   <p>{shippingData.phone}</p>
                   <p className='border-t border-[#BDBDBD] mt-10 mb-5 h-[1px]'></p>
                 </div>
+  
                 {isPaymentVisible && (
                   <Order items={items} />
                 )}
               </div>
             </div>
+  
+            {/* INFORMAȚII LIVRARE */}
             <div className="w-full lg:w-1/3 md:p-4 md:block hidden">
               <div className="p-4 text-[14px] font-heebo leading-[14px]">
                 <h1 className="font-Heebo-16 mb-[5px] text-[#1E1E1E]">Keep in mind:</h1>
                 <ul className="list-disc pl-4 text-[#6F6F6F]">
-                  <li className="mb-2 font-Heebo-reg-14"><span className='font-Heebo-14-bolt text-[#1E1E1E]'>Signature: </span>You may need to sign for your delivery.</li>
-                  <li className="max-w-[437px] w-full font-Heebo-reg-14 text-[#1E1E1E]"> <span className='font-Heebo-14-bolt text-[#1E1E1E]'>Change delivery: </span>
+                  <li className="mb-2 font-Heebo-reg-14">
+                    <span className='font-Heebo-14-bolt text-[#1E1E1E]'>Signature: </span>
+                    You may need to sign for your delivery.
+                  </li>
+                  <li className="max-w-[437px] w-full font-Heebo-reg-14 text-[#1E1E1E]">
+                    <span className='font-Heebo-14-bolt text-[#1E1E1E]'>Change delivery: </span>
                     Once shipped, you can track and adjust where your package is delivered (pickup, secure location, or contactless)
                   </li>
                 </ul>
@@ -326,383 +320,236 @@ export function Checkout() {
             </div>
           </div>
         </div>
-      </div>
-      <FooterCheckout/>
+  
+        {/* FOOTER */}
+        <FooterCheckout />
       </div>
     );
   }
-
+  
+  
   return (
-    <div>
-      <div className='bg-[#F9F9F9] md:h-[1200px] h-[1600px]'>
-        <div className='md:block hidden'>
-          <InfoHeader />  
-        </div> 
-        <div className="w-full lg:w-1/3 md:p-4 md:hidden block p-0 m-0">
-              <CheckoutCartHeader />
-        </div>
-        <div className="container mx-auto flex flex-col lg:flex-row justify-center items-start lg:h-screen pt-6 px-5 sm:px-6 lg:px-0 bg-[#F9F9F9]">
-          <div className="w-full max-w-[620px] flex flex-col gap-10 justify-center items-center py-4 sm:p-10 mb-6 lg:mb-0">
-            <div className="w-full max-w-[520px]">
-              <div className="mb-4">
-                <h2 className="font-Heebo-24-- mb-5 text-[#1E1E1E] md:block hidden">When will your order arrive?</h2>
-                <h2 className="font-Heebo-18-med mb-5 text-[#1E1E1E] md:hidden">When will your order arrive?</h2>
-                <div className="flex items-center justify-between border border-[#1E1E1E] p-5 rounded-[10px] md:mb-10 mb-5 h-[56px]">
-                  <h3 className="text-[#1E1E1E] font-Heebo-16 ">Arrives Wed, Oct 22 - Oct 29</h3>
-                  <p className="text-[#8C8C8C] font-heebo font-medium text-[14px] leading-[14px]">FREE</p>
-                </div>
-              </div>
-
-              <div className="w-full lg:w-1/3 md:p-4 pb-10 md:hidden block border-b">
-                <div className="md:py-5">
-                  <h1 className="font-Heebo-14 mb-[5px] text-[#1E1E1E]">Keep in mind:</h1>
-                  <ul className="list-disc pl-4">
-                    <li className="md:mb-2 mb-[5px] md:font-Heebo-reg-14 font-Heebo-reg-12"><span className='font-Heebo-14-bolt'>Signature: </span>You may need to sign for your delivery.</li>
-                    <li className="max-w-[437px] w-full md:font-Heebo-reg-14 font-Heebo-reg-12"> <span className='font-Heebo-14-bolt text-[#1E1E1E]'>Change delivery: </span>
-                      Once shipped, you can track and adjust where your package is delivered (pickup, secure location, or contactless)
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* //Input Date */}
-              <button
-                className="w-full text-left pb-5 font-Heebo-24-- text-[#1e1e1e] md:mt-0 mt-10 md:block hidden"
-              >
-                Want to check out faster? {isExpressCheckoutVisible ? '' : ''}
-              </button>
-              <button
-                className="w-full text-left pb-5 font-Heebo-18-med text-[#424242] md:mt-0 mt-10 md:hidden"
-              >
-                Want to check out faster? {isExpressCheckoutVisible ? '' : ''}
-              </button>
-              {isExpressCheckoutVisible && (
-              <>
-                  <div className="flex flex-col gap-5 mb-6">
-                    <div className="flex gap-[15px] md:h-[56px] h-12">
-                      <button
-                        className="w-full py-2 border rounded-[10px] bg-[#00457C] flex items-center justify-center"
-                        onClick={handleOpenModal}
-                      >
-                        <img
-                          src="/images/paypal.svg"
-                          alt="PayPal"
-                          className="md:w-[69px] md:h-[18px] w-[48px] h-[13px]"
-                        />
-                      </button>
-
-                      <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-                        <h2 className="text-lg font-semibold mb-4">Complete Payment</h2>
-                        <PayPalButton totalAmount={totalAmount} />
-                      </Modal>
-
-
-                      <button className="w-full py-2 border rounded-[10px] bg-[#000000] flex items-center justify-center">
-                        <Image src='/images/applepay.svg' alt='Apple Pay' width={54} height={20} className='md:w-[54px] md:h-[20px] w-[42px] h-[16px]'/>
-                        <CheckoutPage/>
-                      </button>
-                      <button className="w-full py-2 border rounded-[10px] bg-[#333E48] flex items-center justify-center">
-                        <Image src='/images/amazonpay.svg' alt='Amazon Pay' width={102} height={20} className='mt-1 md:w-[102px] md:h-[20px] w-[81px] h-[15px]' />
-                        <CheckoutPage/>
-                      </button>
-                    </div>
-                  </div>
-                  <div className="flex items-center justify-between md:mt-5 mt-10">
-                    <div className="flex-1 border-t border-gray-300"></div>
-                    <h1 className="mx-2 font-Heebo-16 text-[#424242]">OR</h1>
-                    <div className="flex-1 border-t border-gray-300"></div>
-                  </div>
-                </>
-              )}
-
-              <h2 className="font-Heebo-24-- mb-5 text-[#1E1E1E] mt-[40px] md:block hidden">Where should we send your order?</h2>
-              <h2 className="font-Heebo-18-med mb-5 text-[#1E1E1E] mt-[40px] md:hidden block">When will your order arrive?</h2>
-              <form onSubmit={handleSubmit} className="space-y-2.5 md:space-y-5 h-full">
-                {/* First Name and Last Name Fields */}
-                <div className="flex md:gap-5 gap-[10px] md:h-[56px] max-w-[520px] md:flex-row flex-col">
-                    <div className="w-full md:h-full h-[56px] md:block hidden">
-                        <FloatingLabelInput
-                            type="text"
-                            id="firstName"
-                            name="firstName"
-                            value={shippingData.firstName}
-                            onChange={handleChange}
-                            placeholder="First Name"
-                            error={errors.firstName}
-                            required
-                            getInputStyles={getInputStyles}
-                        />
-                    </div>
-                    <div className="w-full md:h-full h-[56px] md:block hidden">
-                        <FloatingLabelInput
-                            type="text"
-                            id="lastName"
-                            name="lastName"
-                            value={shippingData.lastName}
-                            onChange={handleChange}
-                            placeholder="Last Name"
-                            error={errors.lastName}
-                            required
-                            getInputStyles={getInputStyles}
-                        />
-
-                    </div>
-                </div>
-
-                <div className='md:hidden'>
-                  <FloatingLabelInput
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    value={shippingData.firstName}
-                    onChange={handleChange}
-                    placeholder="First Name"
-                    error={errors.firstName}
-                    required
-                    getInputStyles={getInputStyles}
-                    
-                  />
-                </div>
-
-                <div className='md:hidden'>
-                  <FloatingLabelInput
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      value={shippingData.lastName}
-                      onChange={handleChange}
-                      placeholder="Last Name"
-                      error={errors.lastName}
-                      required
-                      getInputStyles={getInputStyles}
-                  />
-                </div>
-              
-                {/* Address Field */}
-                <div className="w-full">
-                    <FloatingLabelInput
-                        type="text"
-                        id="address"
-                        name="address"
-                        value={shippingData.address}
-                        onChange={handleChange}
-                        placeholder="Street address"
-                        error={errors.address}
-                        required
-                        getInputStyles={getInputStyles}
-                    />
-                </div>
-
-                  {/* City, Country, and Zip Code Fields */}
-                <div className="flex md:gap-[20px] gap-[10px] max-w-[520px] flex-col sm:flex-row">
-                    <div className="w-full h-[56px] mb-0 md:hidden">
-                        <FloatingLabelInput
-                            type="text"
-                            id="city"
-                            name="city"
-                            value={shippingData.city}
-                            onChange={handleChange}
-                            placeholder="City/Town"
-                            required
-                            getInputStyles={getInputStyles}
-                        />
-                        {errors.city && <p className="text-red-500 text-xs">{errors.city}</p>}
-                    </div>
-                    <div className="w-full h-[56px] mb-0 md:block hidden">
-                        <FloatingLabelInput
-                            type="text"
-                            id="city"
-                            name="city"
-                            value={shippingData.city}
-                            onChange={handleChange}
-                            placeholder="City/Town"
-                            error={errors.city}
-                            required
-                            getInputStyles={getInputStyles}
-                        />
-                    </div>
-                    {/* Country Select */}
-                    <div className={`w-full h-[56px] flex items-center py-2 rounded-[10px] text-[14px] font-heebo placeholder-[#6F6F6F] ${getInputStyles(errors.country)}`}>
-                        <CountrySelect
-                            selectedCountry={shippingData.country}
-                            onCountryChange={handleCountryChange}
-                        />
-                    </div>
-                    <div className="w-full">
-                        <FloatingLabelInput
-                            type="text"
-                            id="zip"
-                            name="zip"
-                            value={shippingData.zip}
-                            onChange={handleChange}
-                            placeholder="Zip code"
-                            error={errors.zip}
-                            required
-                            getInputStyles={getInputStyles}
-                        />
-                    </div>
-                </div>
-
-                  {/* Add Company Name section with conditional margin */}
-                <div 
-                    className={`flex items-center cursor-pointer text-[#6F6F6F] text-[14px] md:hidden font-heebo transition-all duration-200`}
-                    onClick={handleToggleCompanyInput}
-                >
-                  {!showCompanyInput && (
-                      <div className="flex items-center relative mt-2">
-                          <span className="mr-1">+</span>
-                          <span>Add Company Name</span>
-                          <span
-                              className="ml-2 cursor-pointer relative"
-                              onMouseEnter={() => setShowTooltip(true)}
-                              onMouseLeave={() => setShowTooltip(false)}
-                          >
-                              <Image src="/images/question-icon.svg" alt="info" width={22} height={22} className='' />
-                              {showTooltip && (
-                                  <div className="absolute bg-gray-100 text-gray-700 text-sm p-3 rounded-[10px] shadow-lg w-[250px] -left-1/2 transform -translate-x-1/2 bottom-full mb-2 z-50">
-                                      The sales tax listed on the checkout page is only an estimate. Your invoice will contain the final sales tax, including state and local taxes, as well as any applicable rebates or fees.
-                                  </div>
-                              )}
-                          </span>
-                      </div>
-                  )}
-                </div>
-
-
-                {showCompanyInput && (
-                  <div className="w-full md:hidden">
-                      <FloatingLabelInput
-                          type="text"
-                          id="company"
-                          name="company"
-                          value={shippingData.company}
-                          onChange={handleChange}
-                          placeholder="Company Name (optional)"
-                          error={errors.company}
-                          required
-                          getInputStyles={getInputStyles}
-                      />
-                      {errors.company && (
-                          <p className="text-red-500 text-sm mt-1 mb-6">{errors.company}</p> // Increased mb-6 for spacing
-                      )}
-                  </div>
-                )}
-
-                <div className="flex items-center cursor-pointer text-[#6F6F6F] text-[14px] font-heebo md:mb-0 md:block hidden" onClick={handleToggleCompanyInput}>
-                  {!showCompanyInput && (
-                    <div className='flex items-center relative mt-[10px]'>
-                      <span className="mr-2">+</span>
-                      <span>Add Company Name</span>
-                      <span
-                        className="ml-2 cursor-pointer relative"
-                        onMouseEnter={() => setShowTooltip(true)}
-                        onMouseLeave={() => setShowTooltip(false)}
-                      >
-                        <Image src="/images/question-icon.svg" alt="info" width={18} height={18} className='' />
-                        {showTooltip && (
-                          <div className="absolute bg-gray-100 text-gray-700 text-sm p-3 rounded-[10px] shadow-lg w-[250px] -left-1/2 transform -translate-x-1/2 bottom-full mb-2 z-50">
-                            The sales tax listed on the checkout page is only an estimate. Your invoice will contain the final sales tax, including state and local taxes, as well as any applicable rebates or fees.
-                          </div>
-                        )}
-                      </span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Company Field (conditionally shown) */}
-                {showCompanyInput && (
-                  <div className="w-full md:block hidden">
-                      <FloatingLabelInput
-                        type="text"
-                        id="company"
-                        name="company"
-                        value={shippingData.company}
-                        onChange={handleChange}
-                        placeholder="Company Name (optional)"
-                        error={errors.company}
-                        required
-                        getInputStyles={getInputStyles}
-                      />
-                  </div>
-                )}
-
-                <h2 className="font-Heebo-24-- text-[#1E1E1E] md:pt-5 pt-[30px] md:block hidden">How can we reach you?</h2>
-                <h2 className="font-Heebo-18-med text-[#1E1E1E] md:pt-5 pt-[20px] md:hidden">How can we reach you?</h2>
-                <FloatingLabelInput
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={shippingData.email}
-                  onChange={handleChange}
-                  placeholder="Email"
-                  error={errors.email}
-                  required
-                  getInputStyles={getInputStyles}
-                />
-                <div className='text-[14px] font-heebo text-[#1E1E1E] md:mt-[520px] md:hidden font-Heebo-reg-12'>
-                  <p className='mb-5'>We’ll send your receipt and updates by email.</p>
-                </div>  
-
-                <FloatingLabelInput
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={shippingData.phone}
-                  onChange={handleChange}
-                  placeholder="Phone"
-                  error={errors.phone}
-                  required
-                  getInputStyles={getInputStyles}
-                />
-              <div className='text-[14px] font-heebo text-[#1E1E1E] md:hidden font-Heebo-reg-12 '>
-                <p className='mb-[30px]'>Make sure your phone number is correct. It can’t be changed.</p>
-              </div>
-
-              <button
-                  type="submit"
-                  className={`bg-[#E5E5E5] py-2 h-[56px] rounded-[10px] w-full font-Heebo-16 text-[#9E9EA0] ${isFormValid ? 'bg-black text-white' : 'opacity-50 cursor-not-allowed text-white'}`}
-                  disabled={!isFormValid}
-              >
-                  Continue to Payment
-              </button>
-            </form>
-
-            <div className='mt-10'>
-              <p className='border-b border-[#BDBDBD] '></p>
-              <h1 className='font-Heebo-24-- md:block hidden text-[#BDBDBD] mt-5'>Payment</h1>
-              <h1 className='md:hidden font-Heebo-18-pay text-[#BDBDBD] mt-5'>Payment</h1>
-            </div>
-          </div>
-          </div>
-          <div className="w-full lg:w-1/3 md:py-10 md:ml-10 md:mr-[35px] md:block hidden">
-            <div className=" text-[14px] font-heebo leading-[14px]">
-              <h1 className="font-Heebo-16 mb-[5px] text-[#1E1E1E]">Keep in mind:</h1>
-              <ul className="list-disc pl-4 text-[#6F6F6F]">
-                <li className="mb-2 font-Heebo-reg-14"><span className='font-Heebo-14-bolt text-[#1E1E1E]'>Signature: </span>You may need to sign for your delivery.</li>
-                <li className="max-w-[437px] w-full font-Heebo-reg-14"> <span className='font-Heebo-14-bolt text-[#1E1E1E]'>Change delivery: </span>
-                  Once shipped, you can track and adjust where your package is delivered (pickup, secure location, or contactless)
-                </li>
-              </ul>
-            </div>
-            <div className='mt-[120px] w-full'>
-              <p className='max-w-[520px] w-full font-Heebo-reg-14'>Complete your purchase in just one click with <span className='font-Heebo-14 text-[#1E1E1E] w-full'>Express Checkout.</span></p>
-            </div>
-            <div className='space-y-[58px] leading-[14px]'>
-              <div
-                className={`text-[14px] font-heebo text-[#1E1E1E] ${
-                  showCompanyInput ? 'md:mt-[535px]' : 'md:mt-[500px]'
-                }`}
-              >
-                <p>We’ll send your receipt and updates by email.</p>
-              </div>
-              <div className="text-[14px] font-heebo text-[#1E1E1E]">
-                <p>Make sure your phone number is correct. It can’t be changed.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <FooterCheckout/>
-    </div>
-  );
+     <div className='bg-[#F9F9F9] min-h-screen flex flex-col'>
+       {/* HEADER */}
+       <div className='md:block hidden'>
+         <InfoHeader />  
+       </div> 
+       
+       {/* CONTAINER PRINCIPAL */}
+       <div className="flex-grow max-w-[1400px] mx-auto w-full">
+         {/* HEADER MOBIL */}
+         <div className="w-full lg:w-1/3 md:p-4 md:hidden block p-0 m-0">
+           <CheckoutCartHeader />
+         </div>
+ 
+         {/* SECTIUNEA PRINCIPALĂ */}
+         <div className="flex flex-col lg:flex-row justify-center items-start pt-6 flex-grow md:px-0 px-5">
+           <div className="w-full max-w-[620px] flex flex-col gap-10 justify-center items-center py-4 mb-6 lg:mb-0">
+             <div className="w-full max-w-[520px]">
+               <div className="mb-4">
+                 <h2 className="font-Heebo-24-- mb-5 text-[#1E1E1E] md:block hidden">When will your order arrive?</h2>
+                 <h2 className="font-Heebo-18-med mb-5 text-[#1E1E1E] md:hidden">When will your order arrive?</h2>
+                 <div className="flex items-center justify-between border border-[#1E1E1E] p-5 rounded-[10px] md:mb-10 mb-5 h-[56px]">
+                   <h3 className="text-[#1E1E1E] font-Heebo-16">Arrives Wed, Oct 22 - Oct 29</h3>
+                   <p className="text-[#8C8C8C] font-heebo font-medium text-[14px] leading-[14px]">FREE</p>
+                 </div>
+               </div>
+ 
+               {/* INFORMAȚII SUPLIMENTARE */}
+               <div className="w-full lg:w-1/3 md:p-4 pb-10 md:hidden block border-b">
+                 <div className="md:py-5">
+                   <h1 className="font-Heebo-14 mb-[5px] text-[#1E1E1E]">Keep in mind:</h1>
+                   <ul className="list-disc pl-4">
+                     <li className="md:mb-2 mb-[5px] md:font-Heebo-reg-14 font-Heebo-reg-12">
+                       <span className='font-Heebo-14-bolt'>Signature: </span>
+                       You may need to sign for your delivery.
+                     </li>
+                     <li className="max-w-[437px] w-full md:font-Heebo-reg-14 font-Heebo-reg-12">
+                       <span className='font-Heebo-14-bolt text-[#1E1E1E]'>Change delivery: </span>
+                       Once shipped, you can track and adjust where your package is delivered (pickup, secure location, or contactless)
+                     </li>
+                   </ul>
+                 </div>
+               </div>
+ 
+               <ExpressCheckoutVisible />
+ 
+               <h2 className="font-Heebo-24-- mb-5 text-[#1E1E1E] mt-[40px] md:block hidden">Where should we send your order?</h2>
+               <h2 className="font-Heebo-18-med mb-5 text-[#1E1E1E] mt-[40px] md:hidden block">When will your order arrive?</h2>
+               <form onSubmit={handleSubmit} className="space-y-2.5 md:space-y-5 h-full">
+                 <div className="flex md:gap-5 gap-[10px] md:h-[56px] max-w-[520px] md:flex-row flex-col">
+                     <div className="w-full md:h-full h-[56px] md:block hidden">
+                         <FloatingLabelInput
+                             type="text"
+                             id="firstName"
+                             name="firstName"
+                             value={shippingData.firstName}
+                             onChange={handleChange}
+                             placeholder="First Name"
+                             error={errors.firstName}
+                             required
+                             getInputStyles={getInputStyles}
+                         />
+                     </div>
+                     <div className="w-full md:h-full h-[56px] md:block hidden">
+                         <FloatingLabelInput
+                             type="text"
+                             id="lastName"
+                             name="lastName"
+                             value={shippingData.lastName}
+                             onChange={handleChange}
+                             placeholder="Last Name"
+                             error={errors.lastName}
+                             required
+                             getInputStyles={getInputStyles}
+                         />
+                     </div>
+                 </div>
+ 
+                 <div className='md:hidden'>
+                   <FloatingLabelInput
+                     type="text"
+                     id="firstName"
+                     name="firstName"
+                     value={shippingData.firstName}
+                     onChange={handleChange}
+                     placeholder="First Name"
+                     error={errors.firstName}
+                     required
+                     getInputStyles={getInputStyles}
+                     
+                   />
+                 </div>
+ 
+                 <div className='md:hidden'>
+                   <FloatingLabelInput
+                       type="text"
+                       id="lastName"
+                       name="lastName"
+                       value={shippingData.lastName}
+                       onChange={handleChange}
+                       placeholder="Last Name"
+                       error={errors.lastName}
+                       required
+                       getInputStyles={getInputStyles}
+                   />
+                 </div>
+               
+                 <div className="w-full">
+                     <FloatingLabelInput
+                         type="text"
+                         id="address"
+                         name="address"
+                         value={shippingData.address}
+                         onChange={handleChange}
+                         placeholder="Street address"
+                         error={errors.address}
+                         required
+                         getInputStyles={getInputStyles}
+                     />
+                 </div>
+ 
+                 <div className="flex md:gap-[20px] gap-[10px] max-w-[520px] flex-col sm:flex-row">
+                     <div className="w-full h-[56px] mb-0 md:hidden">
+                         <FloatingLabelInput
+                             type="text"
+                             id="city"
+                             name="city"
+                             value={shippingData.city}
+                             onChange={handleChange}
+                             placeholder="City/Town"
+                             required
+                             getInputStyles={getInputStyles}
+                         />
+                         {errors.city && <p className="text-red-500 text-xs">{errors.city}</p>}
+                     </div>
+                     <div className="w-full h-[56px] mb-0 md:block hidden">
+                         <FloatingLabelInput
+                             type="text"
+                             id="city"
+                             name="city"
+                             value={shippingData.city}
+                             onChange={handleChange}
+                             placeholder="City/Town"
+                             error={errors.city}
+                             required
+                             getInputStyles={getInputStyles}
+                         />
+                     </div>
+                     <div className={`w-full h-[56px] flex items-center py-2 rounded-[10px] text-[14px] font-heebo placeholder-[#6F6F6F] ${getInputStyles(errors.country)}`}>
+                         <CountrySelect
+                             selectedCountry={shippingData.country}
+                             onCountryChange={handleCountryChange}
+                         />
+                     </div>
+                     <div className="w-full">
+                         <FloatingLabelInput
+                             type="text"
+                             id="zip"
+                             name="zip"
+                             value={shippingData.zip}
+                             onChange={handleChange}
+                             placeholder="Zip code"
+                             error={errors.zip}
+                             required
+                             getInputStyles={getInputStyles}
+                         />
+                     </div>
+                 </div>
+                 <AddCompany/>
+                 <h2 className="font-Heebo-24-- text-[#1E1E1E] md:pt-5 pt-[30px] md:block hidden">How can we reach you?</h2>
+                 <h2 className="font-Heebo-18-med text-[#1E1E1E] md:pt-5 pt-[20px] md:hidden">How can we reach you?</h2>
+                 <FloatingLabelInput
+                     type="email"
+                     id="email"
+                     name="email"
+                     value={shippingData.email}
+                     onChange={handleChange}
+                     placeholder="Email"
+                     error={errors.email}
+                     required
+                     getInputStyles={getInputStyles}
+                 />
+                 <div className='text-[14px] font-heebo text-[#1E1E1E] md:mt-[520px] md:hidden font-Heebo-reg-12'>
+                     <p className='mb-5'>We’ll send your receipt and updates by email.</p>
+                 </div>  
+ 
+                 <FloatingLabelInput
+                     type="tel"
+                     id="phone"
+                     name="phone"
+                     value={shippingData.phone}
+                     onChange={handleChange}
+                     placeholder="Phone"
+                     error={errors.phone}
+                     required
+                     getInputStyles={getInputStyles}
+                 />
+                 <div className='text-[14px] font-heebo text-[#1E1E1E] md:hidden font-Heebo-reg-12 '>
+                   <p className='mb-[30px]'>Make sure your phone number is correct. It can’t be changed.</p>
+                 </div>
+ 
+                 <button
+                     type="submit"
+                     className={`bg-[#E5E5E5] py-2 h-[56px] rounded-[10px] w-full font-Heebo-16 text-[#9E9EA0] ${isFormValid ? 'bg-black text-white' : 'opacity-50 cursor-not-allowed text-white'}`}
+                     disabled={!isFormValid}
+                 >
+                     Continue to Payment
+                 </button>
+               </form>
+ 
+               <div className='mt-10'>
+                 <p className='border-b border-[#BDBDBD]'></p>
+                 <h1 className='font-Heebo-24-- md:block hidden text-[#BDBDBD] mt-5'>Payment</h1>
+                 <h1 className='md:hidden font-Heebo-18-pay text-[#BDBDBD] mt-5'>Payment</h1>
+               </div>
+             </div>
+           </div>
+           <InfoDelivery />
+         </div>
+       </div>
+       <FooterCheckout />
+     </div>
+   );
 }
+ 

@@ -1,0 +1,195 @@
+/* === GENERAL === */
+.bgWrapper {
+    background-color: #F9F9F9;
+    height: 1600px;
+  }
+  
+  .bgWrapperMd {
+    height: 1200px;
+  }
+  
+  /* === HEADER === */
+  .infoHeader {
+    display: none;
+  }
+  
+  .infoHeaderMd {
+    display: block;
+  }
+  
+  /* === CHECKOUT CONTAINER === */
+  .container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding-top: 1.5rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    background-color: #F9F9F9;
+  }
+  
+  .containerLg {
+    flex-direction: row;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  /* === SIDEBAR === */
+  .sidebar {
+    width: 100%;
+    max-width: 620px;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .sidebarContent {
+    width: 100%;
+    max-width: 520px;
+  }
+  
+  /* === SECTION HEADERS === */
+  .sectionHeader {
+    font-family: 'Heebo', sans-serif;
+    color: #1E1E1E;
+    margin-bottom: 1.25rem;
+  }
+  
+  .sectionHeaderMd {
+    display: block;
+    font-size: 24px;
+  }
+  
+  .sectionHeaderMobile {
+    display: none;
+    font-size: 18px;
+  }
+  
+  /* === DELIVERY INFO === */
+  .deliveryInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #1E1E1E;
+    padding: 1.25rem;
+    border-radius: 10px;
+    margin-bottom: 2.5rem;
+    height: 56px;
+  }
+  
+  .deliveryInfoText {
+    color: #1E1E1E;
+    font-family: 'Heebo', sans-serif;
+    font-size: 16px;
+  }
+  
+  .deliveryInfoFree {
+    color: #8C8C8C;
+    font-family: 'Heebo', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  /* === LIST SECTION === */
+  .listSection {
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid #BDBDBD;
+  }
+  
+  .listTitle {
+    font-family: 'Heebo', sans-serif;
+    color: #1E1E1E;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .listItem {
+    list-style-type: disc;
+    margin-left: 1rem;
+    margin-bottom: 5px;
+    font-family: 'Heebo', sans-serif;
+    font-size: 12px;
+  }
+  
+  .listItemBold {
+    font-weight: bold;
+  }
+  
+  /* === PAYMENT SECTION === */
+  .paymentSection {
+    margin-top: 2.5rem;
+    border-bottom: 1px solid #BDBDBD;
+  }
+  
+  .paymentTitle {
+    font-family: 'Heebo', sans-serif;
+    color: #BDBDBD;
+    margin-top: 1.25rem;
+    font-size: 24px;
+  }
+  
+  .paymentTitleMobile {
+    font-size: 18px;
+  }
+  
+  /* === FOOTER === */
+  .footer {
+    margin-top: 1.5rem;
+  }
+  
+  /* === MEDIA QUERIES === */
+  @media (min-width: 768px) {
+    .infoHeader {
+      display: block;
+    }
+  
+    .infoHeaderMd {
+      display: none;
+    }
+  
+    .container {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  
+    .sidebarContent {
+      margin-bottom: 0;
+    }
+  
+    .sectionHeaderMobile {
+      display: none;
+    }
+  
+    .sectionHeaderMd {
+      display: block;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .infoHeader {
+      display: none;
+    }
+  
+    .infoHeaderMd {
+      display: block;
+    }
+  
+    .sidebar {
+      padding: 0;
+    }
+  
+    .sectionHeaderMobile {
+      display: block;
+    }
+  
+    .sectionHeaderMd {
+      display: none;
+    }
+  }
+  

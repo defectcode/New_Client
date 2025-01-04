@@ -46,7 +46,7 @@ export function CheckoutCartHeader() {
       <div className="md:hidden block w-full">
         {isSummaryVisible ? (
           <div>
-            <div className="absolute inset-x-0 top-0 bg-white z-50 py-[10px] px-5 flex items-center justify-between border-b">
+            <div className="absolute w-full top-0 bg-white z-50 py-[10px] px-5 flex items-center justify-between border-b">
               <div>
                 <Logo />
               </div>

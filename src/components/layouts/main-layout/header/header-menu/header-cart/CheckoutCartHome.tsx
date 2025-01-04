@@ -8,7 +8,7 @@ import './cart-item/PayPal.css';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Logo } from '../../logo/Logo';
-import CheckoutButton from '@/app/checkout/ButtonCheckout';
+import CheckoutButton from '@/app/checkout/components/ButtonCheckout';
 
 export function CheckoutCartHome() {
   const [isSummaryVisible, setIsSummaryVisible] = useState(true);

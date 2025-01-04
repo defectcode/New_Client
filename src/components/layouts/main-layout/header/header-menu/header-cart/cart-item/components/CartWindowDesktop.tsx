@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { formatPrice } from "@/utils/string/format-price";
-import CheckoutButton from "@/app/checkout/ButtonCheckout";
+import CheckoutButton from "@/app/checkout/components/ButtonCheckout";
 import Link from "next/link";
 import { CheckoutCartHom } from "../../CheckoutCartHom";
 import { useCart } from "@/hooks/useCart";

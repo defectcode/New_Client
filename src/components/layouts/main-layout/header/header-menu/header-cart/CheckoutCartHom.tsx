@@ -8,7 +8,7 @@ import './cart-item/PayPal.css';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import CheckoutButton from '@/app/checkout/ButtonCheckout';
+import CheckoutButton from '@/app/checkout/components/ButtonCheckout';
 
 type CheckoutCartHomProps = {
   onClose: () => void; 
