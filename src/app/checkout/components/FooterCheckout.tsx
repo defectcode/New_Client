@@ -14,45 +14,40 @@ const FooterCheckout = () => {
   ];
 
   return (
-    <footer className="bg-[#F9F9F9] text-gray-500 text-sm py-6 w-full">
-      <div className="container max-w-[1060px] mx-auto px-5 md:border-t border-[#7C788A]/20">
-        {/* Desktop layout */}
+    <footer className="bg-[#F9F9F9] text-gray-500 text-sm py-5 w-full">
+      <div className="max-w-[1060px] mx-auto md:px-0 px-5 md:border-t border-[#7C788A]/20">
         <div className='space-y-10 w-full mt-5 md:block hidden'>
-            <div className="flex items-center justify-center md:justify-start text-center md:text-left">
-              <p className='font-Heebo-r-14 text-[#BDBDBD]'>
-                &copy; 2024 vellov. All Rights Reserved.{' '}
-                <Link href="/privacy-policy" className="hover:underline">
-                  Privacy Policy
+          <div className="flex items-center justify-center md:justify-start text-center md:text-left">
+            <p className='font-Heebo-r-14 text-[#BDBDBD]'>
+              &copy; 2024 vellov. All Rights Reserved.{' '}
+              <Link href="/privacy-policy" className="hover:underline">
+                Privacy Policy
+              </Link>
+            </p>
+          </div>
+          <div className='flex justify-between items-center w-full font-Heebo-r-14'>
+            <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-center text-[#BDBDBD]">
+              {footerLinks.map((link) => (
+                <Link key={link.name} href={link.href} className="hover:underline">
+                  {link.name}
                 </Link>
-              </p>
+              ))}
             </div>
-          
-            <div className='flex justify-between items-center w-full font-Heebo-r-14'>
-              <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-center text-[#BDBDBD]">
-                {footerLinks.map((link) => (
-                  <Link key={link.name} href={link.href} className="hover:underline">
-                    {link.name}
-                  </Link>
-                ))}
-              </div>
-
-              <div className="flex items-center justify-center md:justify-end gap-2">
-                <span className="text-sm">🌐</span>
-                <select
-                  className="bg-transparent border-none outline-none text-[#BDBDBD] cursor-pointer"
-                  value={country}
-                  onChange={(e) => setCountry(e.target.value)}
-                >
-                  <option value="United States">United States</option>
-                  <option value="United Kingdom">United Kingdom</option>
-                  <option value="Moldova">Moldova</option>
-                  <option value="Romania">Romania</option>
-                </select>
-              </div>
+            <div className="flex items-center justify-center md:justify-end gap-2">
+              <span className="text-sm">🌐</span>
+              <select
+                className="bg-transparent border-none outline-none text-[#BDBDBD] cursor-pointer"
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+              >
+                <option value="United States">United States</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="Moldova">Moldova</option>
+                <option value="Romania">Romania</option>
+              </select>
             </div>
           </div>
-
-        {/* Mobile layout */}
+        </div>
         <div className="flex flex-col items-start space-y-4 md:hidden">
           <div className="border-y border-[#7C788A]/20 py-5 w-full">
             <p className="font-Heebo-r-14 text-[#BDBDBD]">

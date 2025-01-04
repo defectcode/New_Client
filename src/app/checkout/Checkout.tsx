@@ -1,13 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useProfile } from '@/hooks/useProfile';
 import { useCart } from '@/hooks/useCart';
 import { CountrySelect } from './components/CountrySelect'; 
 import { parsePhoneNumberFromString, CountryCode } from 'libphonenumber-js'; 
-import Image from 'next/image'; 
 import Order from '../../components/layouts/main-layout/header/header-menu/header-cart/cart-item/components/order/Order';
-import CheckoutPage from '@/components/layouts/main-layout/header/header-menu/header-cart/cart-item/components/order/StripePaymentButton';
 import { InfoHeader } from '@/components/layouts/main-layout/header/InfoHeader';
 import { CheckoutCartHeader } from '@/components/layouts/main-layout/header/header-menu/header-cart/CheckoutCartHeader';
 import FooterCheckout from './components/FooterCheckout';
@@ -15,7 +12,6 @@ import FloatingLabelInput from './components/FloatingLabelInput';
 
 import '../../../src/components/layouts/main-layout/header/header-menu/header-cart/cart-item/PayPal.css'
 import PayPalButton from '@/components/layouts/main-layout/header/header-menu/header-cart/cart-item/PayPalButton';
-import Modal from './components/order/ModalPayPal';
 import ExpressCheckoutVisible from './components/ExpressCheckoutVisible';
 import AddCompany from './components/AddCompany';
 import InfoDelivery from './components/InfoDelivery';
@@ -33,7 +29,6 @@ interface ShippingData {
 }
 
 export default function Checkout() {
-  const { user } = useProfile();
   const { items } = useCart();
   const [shippingData, setShippingData] = useState<ShippingData>({
     company: '',
@@ -62,26 +57,8 @@ export default function Checkout() {
   const [isFormValid, setIsFormValid] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false); 
   const [isEditing, setIsEditing] = useState(false); 
-  const [isExpressCheckoutVisible, setExpressCheckoutVisible] = useState(true); 
-  const [showTooltip, setShowTooltip] = useState(false);
   const [isPaymentVisible, setIsPaymentVisible] = useState(false);
-  const [focused, setFocused] = useState(false);
-  const [showCompanyInput, setShowCompanyInput] = useState(false);
-  const [showPayPalButton, setShowPayPalButton] = useState(false);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string>('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleToggleCompanyInput = () => {
-    setShowCompanyInput(!showCompanyInput);
-  };
 
   const fetchCountryFromZip = async (zip: string) => {
     try {
@@ -160,8 +137,6 @@ export default function Checkout() {
   };
 
 
-  
-
   useEffect(() => {
     const { firstName, lastName, country, address, city, zip, email, phone } = shippingData;
     if (firstName && lastName && country && address && city && zip && email && phone) {
@@ -207,8 +182,6 @@ export default function Checkout() {
     } catch (error) {
         console.error('Error while sending email:', error);
     }
-  
-
     setIsSubmitted(true);
     setIsEditing(false);
     setIsPaymentVisible(true);
@@ -230,19 +203,15 @@ export default function Checkout() {
   if (isSubmitted && !isEditing) {
     return (
       <div className='bg-[#F9F9F9] min-h-screen flex flex-col'>
-        {/* HEADER */}
         <div className='md:block hidden'>
           <InfoHeader />  
         </div> 
   
-        {/* CONTAINER PRINCIPAL */}
         <div className="flex-grow max-w-[1400px] mx-auto w-full md:px-0 ">
-          {/* HEADER MOBIL */}
           <div className="w-full lg:w-1/3 md:p-4 md:hidden block p-0 m-0">
             <CheckoutCartHeader />
           </div>
   
-          {/* SECTIUNEA PRINCIPALĂ */}
           <div className="flex flex-col lg:flex-row justify-center items-start pt-6 flex-grow md:px-0 px-5">
             <div className="w-full max-w-[620px] flex flex-col gap-10 justify-center items-center py-4 mb-6 lg:mb-0">
               <div className="w-full max-w-[520px]">
@@ -254,7 +223,6 @@ export default function Checkout() {
                   </div>
                 </div>
   
-                {/* INFORMAȚII SUPLIMENTARE */}
                 <div className="w-full lg:w-1/3 md:p-4 pb-10 md:hidden block border-b">
                   <div className="md:py-5">
                     <h1 className="font-Heebo-14 mb-[5px] text-[#1E1E1E]">Keep in mind:</h1>
@@ -273,7 +241,6 @@ export default function Checkout() {
   
                 <ExpressCheckoutVisible />
   
-                {/* REZUMAT COMANDĂ */}
                 {selectedPaymentMethod === 'PayPal' && (
                   <div className="w-full">
                     <PayPalButton totalAmount={totalAmount} />
@@ -302,7 +269,6 @@ export default function Checkout() {
               </div>
             </div>
   
-            {/* INFORMAȚII LIVRARE */}
             <div className="w-full lg:w-1/3 md:p-4 md:block hidden">
               <div className="p-4 text-[14px] font-heebo leading-[14px]">
                 <h1 className="font-Heebo-16 mb-[5px] text-[#1E1E1E]">Keep in mind:</h1>
@@ -319,9 +285,7 @@ export default function Checkout() {
               </div>
             </div>
           </div>
-        </div>
-  
-        {/* FOOTER */}
+        </div>  
         <FooterCheckout />
       </div>
     );
@@ -330,19 +294,15 @@ export default function Checkout() {
   
   return (
      <div className='bg-[#F9F9F9] min-h-screen flex flex-col'>
-       {/* HEADER */}
        <div className='md:block hidden'>
          <InfoHeader />  
        </div> 
        
-       {/* CONTAINER PRINCIPAL */}
        <div className="flex-grow max-w-[1400px] mx-auto w-full">
-         {/* HEADER MOBIL */}
          <div className="w-full lg:w-1/3 md:p-4 md:hidden block p-0 m-0">
            <CheckoutCartHeader />
          </div>
  
-         {/* SECTIUNEA PRINCIPALĂ */}
          <div className="flex flex-col lg:flex-row justify-center items-start pt-6 flex-grow md:px-0 px-5">
            <div className="w-full max-w-[620px] flex flex-col gap-10 justify-center items-center py-4 mb-6 lg:mb-0">
              <div className="w-full max-w-[520px]">
@@ -355,7 +315,6 @@ export default function Checkout() {
                  </div>
                </div>
  
-               {/* INFORMAȚII SUPLIMENTARE */}
                <div className="w-full lg:w-1/3 md:p-4 pb-10 md:hidden block border-b">
                  <div className="md:py-5">
                    <h1 className="font-Heebo-14 mb-[5px] text-[#1E1E1E]">Keep in mind:</h1>
