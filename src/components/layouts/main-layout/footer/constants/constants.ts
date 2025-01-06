@@ -10,12 +10,12 @@ export const footerData: FooterInfo[] = [
     {
       title: 'Help',
       links: [
-        { name: 'Faq', href: '/faq' },
-        { name: 'Delivery Information', href: '/delivery' },
-        { name: 'Returns Policy', href: '/returns' },
-        { name: 'Make a Return', href: '/return' },
+        { name: 'Faq', href: '/policy' },
+        { name: 'Delivery Information', href: '/policy' },
+        { name: 'Returns Policy', href: '/policy' },
+        { name: 'Make a Return', href: '/policy' },
         { name: 'Orders', href: '/orders' },
-        { name: 'Submit a Fake', href: '/submit-fake' },
+        { name: 'Submit a Fake', href: '/policy' },
       ],
     },
     {

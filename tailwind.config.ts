@@ -61,8 +61,9 @@ const config = {
 				},
 			},
 			fontFamily: {
+				heebo: ['Heebo', 'sans-serif'],
+        		ekMukta: ['"Ek Mukta"', 'sans-serif'],
 				sans: ['var(--font-geist-sans)', 'sans-serif'],
-				heebo: ['var(--font-heebo)', 'sans-serif'], // Utilizează variabila din `next/font/google`
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

@@ -31,7 +31,7 @@ export const Footer = () => {
 
   return (
     <footer className="bg-[#F9F9F9] pb-14 md:py-10 md:mt-0 mt-5 md:px-0 px-5">
-      <div className="md:max-w-[1400px] w-full mx-auto bg-[#FFFFFF] rounded-[20px] md:p-10 px-5">
+      <div className="lg:max-w-[1400px] w-full mx-auto bg-[#FFFFFF] rounded-[20px] md:p-10 px-5">
         <div className="flex md:flex-nowrap flex-wrap md:justify-between justify-center items-start w-full ">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-20 footer-sections">
             {footerData.map((section) => (

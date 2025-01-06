@@ -162,7 +162,7 @@ export function CatalogProducts({ title, description, linkTitle, link, products 
         />
       </div>
         <div className="w-full mb-10">
-          <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-x-[10px] gap-y-10">
+          <div className="flex flex-wrap gap-x-5 gap-y-10">
             {filteredProducts.length ? (
               filteredProducts.map((product) => (
                 <ExplorerProducts 
