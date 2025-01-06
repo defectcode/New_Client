@@ -129,7 +129,6 @@ export default function ApplyPosition({ className = "" }: ApplyPositionProps) {
     return <ApplyPositionMobile/>
   }
 
-
   return (
     <div className={`w-full bg-[#FFFEFE] tracking-[0px] ${className}`}>
       <Header />
