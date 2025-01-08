@@ -5,7 +5,13 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
+      console.log('Request body:', req.body); // Adaugă acest log
+
       const { items, paymentMethod } = req.body;
+
+      if (!items || items.length === 0) {
+        throw new Error('No items provided for checkout');
+      }
 
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card', 'apple_pay', 'amazon_pay'],
@@ -20,15 +26,15 @@ export default async function handler(req, res) {
           quantity: item.quantity,
         })),
         mode: 'payment',
-        payment_intent_data: {
-          setup_future_usage: 'off_session',
-        },
         success_url: `${req.headers.origin}/success`,
         cancel_url: `${req.headers.origin}/cancel`,
       });
 
+      console.log('Session created:', session);
+
       res.status(200).json({ sessionId: session.id });
     } catch (err) {
+      console.error('Stripe error:', err);
       res.status(500).json({ error: err.message });
     }
   } else {
@@ -36,3 +42,4 @@ export default async function handler(req, res) {
     res.status(405).end('Method Not Allowed');
   }
 }
+

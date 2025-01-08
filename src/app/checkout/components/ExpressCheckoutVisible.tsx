@@ -28,29 +28,36 @@ export default function ExpressCheckoutVisible() {
 
     const handleStripeCheckout = async (paymentMethod: string) => {
         const stripe = await stripePromise;
-
+      
         if (!stripe) {
-            throw new Error('Stripe failed to initialize.');
+          throw new Error('Stripe failed to initialize.');
         }
-
+      
         const response = await fetch('/api/checkout', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                items: items.map(item => ({
-                    name: item.name,
-                    price: item.price,
-                    quantity: item.quantity,
-                })),
-                paymentMethod,
-            }),
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            items: items.map(item => ({
+              name: item.name,
+              price: item.price,
+              quantity: item.quantity,
+            })),
+            paymentMethod,
+          }),
         });
-
-        const { sessionId } = await response.json();
-        await stripe.redirectToCheckout({ sessionId });
-    };
+      
+        const data = await response.json();
+        console.log('Stripe Checkout Response:', data);
+      
+        if (!data.sessionId) {
+          throw new Error('No sessionId returned from Stripe API');
+        }
+      
+        await stripe.redirectToCheckout({ sessionId: data.sessionId });
+      };
+      
 
     return (
         <>
