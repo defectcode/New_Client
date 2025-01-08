@@ -1,8 +1,13 @@
+import { loadStripe, Stripe } from '@stripe/stripe-js';
 import PayPalButton from "@/components/layouts/main-layout/header/header-menu/header-cart/cart-item/PayPalButton";
 import { useState } from "react";
 import Modal from "./order/ModalPayPal";
 import Image from "next/image";
 import { useCart } from "@/hooks/useCart";
+
+const stripePromise: Promise<Stripe | null> = loadStripe(
+  'process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY'
+);
 
 export default function ExpressCheckoutVisible() {
     const { items } = useCart();
@@ -10,16 +15,42 @@ export default function ExpressCheckoutVisible() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     
     const handleOpenModal = () => {
-      setIsModalOpen(true);
+        setIsModalOpen(true);
     };
-    
+
     const handleCloseModal = () => {
-      setIsModalOpen(false);
+        setIsModalOpen(false);
     };
 
     const subtotal = items.reduce((acc, item) => acc + item.price * item.quantity, 0);
     const taxRate = 0.2; 
     const totalAmount = subtotal + subtotal * taxRate; 
+
+    const handleStripeCheckout = async (paymentMethod: string) => {
+        const stripe = await stripePromise;
+
+        if (!stripe) {
+            throw new Error('Stripe failed to initialize.');
+        }
+
+        const response = await fetch('/api/checkout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                items: items.map(item => ({
+                    name: item.name,
+                    price: item.price,
+                    quantity: item.quantity,
+                })),
+                paymentMethod,
+            }),
+        });
+
+        const { sessionId } = await response.json();
+        await stripe.redirectToCheckout({ sessionId });
+    };
 
     return (
         <>
@@ -53,7 +84,10 @@ export default function ExpressCheckoutVisible() {
                             </div>
 
                             <div className="w-full">
-                                <button className="w-full py-2 border rounded-[10px] bg-[#000000] flex items-center justify-center md:h-[56px] h-12">
+                                <button
+                                    className="w-full py-2 border rounded-[10px] bg-[#000000] flex items-center justify-center md:h-[56px] h-12"
+                                    onClick={() => handleStripeCheckout('apple_pay')}
+                                >
                                     <Image
                                         src='/images/applepay.svg'
                                         alt='Apple Pay'
@@ -65,7 +99,10 @@ export default function ExpressCheckoutVisible() {
                             </div>
 
                             <div className="w-full">
-                                <button className="w-full py-2 border rounded-[10px] bg-[#333E48] flex items-center justify-center md:h-[56px] h-12">
+                                <button
+                                    className="w-full py-2 border rounded-[10px] bg-[#333E48] flex items-center justify-center md:h-[56px] h-12"
+                                    onClick={() => handleStripeCheckout('amazon_pay')}
+                                >
                                     <Image
                                         src='/images/amazonpay.svg'
                                         alt='Amazon Pay'
