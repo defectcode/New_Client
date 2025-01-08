@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { contentData, ContentItem } from '../constants/contentData';
-import type { Content } from '../constants/contentData'; // Import doar pentru tip
+import type { Content } from '../constants/contentData';
 import Link from 'next/link';
 
 type ContentKeys = keyof typeof contentData;

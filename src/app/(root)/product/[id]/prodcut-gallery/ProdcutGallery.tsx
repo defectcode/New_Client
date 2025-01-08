@@ -88,12 +88,12 @@ export function ProductGallery({ product }: ProductGalleryProps) {
           {/* Left overlay */}
           <div
             onClick={handlePrevImage}
-            className="w-1/2 h-full bg-transparent cursor-pointer"
+            className="lg:w-1/2 w-full h-full bg-transparent cursor-pointer"
           ></div>
           {/* Right overlay */}
           <div
             onClick={handleNextImage}
-            className="w-1/2 h-full bg-transparent cursor-pointer"
+            className="lg:w-1/2 w-full h-full bg-transparent cursor-pointer"
           ></div>
         </div>
 

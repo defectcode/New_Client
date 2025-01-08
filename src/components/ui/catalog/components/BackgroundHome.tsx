@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { products } from "./constants/productsData";
-export default function BackgroundHome() {
-  
 
+
+export default function BackgroundHome() {
   return (
     <div className="flex flex-col lg:flex-row items-start justify-between lg:items-center gap-8 lg:gap-16 max-w-[1400px] mx-auto md:px-0 px-5 py-20">
       <div className="w-full lg:w-2/3">
@@ -36,7 +36,7 @@ export default function BackgroundHome() {
                 />
               </div>
 
-              <div className="space-y-1 leading-[1]">
+              <div className="leading-[1] space-y-4">
                 <p className="font-medium text-black">{product.title}</p>
                 <p className="text-gray-400 text-sm">{product.description}</p>
                 <p className="text-gray-800 font-semibold">{product.price}</p>

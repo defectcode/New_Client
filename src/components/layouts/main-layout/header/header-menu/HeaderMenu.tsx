@@ -13,7 +13,7 @@ export function HeaderMenu() {
 	return (
 		<div className="items-center gap-x-2 ml-auto lg:flex">
 			<div
-				className={`border-transparent h-[30px] flex items-center justify-around rounded-[10px] max-w-[103px] w-full md:block hidden ${
+				className={`border-transparent h-[30px] flex items-center justify-around rounded-[10px] max-w-[103px] w-full lg:block hidden ${
 					isActive(PUBLIC_URL.home()) ? 'bg-white' : 'bg-transparent'
 				} text-[#000000]`}
 			>

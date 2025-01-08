@@ -138,7 +138,7 @@ export const contentData: Record<string, ContentItem> = {
     },
 
     faq: {
-        title: "Privacy Policy",
+        title: "FAQ",
         lastUpdated: "Last updated: 12.03.2024",
         subtitle: `HAPPY LIFE GLOBAL S.R.L. ("we", "us", "our") operates the website paradiseproblems.com (the "Site"). This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Site and the choices you have associated with that data.`,
         contact: `
@@ -224,7 +224,7 @@ export const contentData: Record<string, ContentItem> = {
     },
 
     return: {
-        title: "Privacy Policy",
+        title: "Return",
         lastUpdated: "Last updated: 12.03.2024",
         subtitle: `HAPPY LIFE GLOBAL S.R.L. ("we", "us", "our") operates the website paradiseproblems.com (the "Site"). This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Site and the choices you have associated with that data.`,
         contact: `
@@ -311,7 +311,7 @@ export const contentData: Record<string, ContentItem> = {
 
 
     terms: {
-        title: "Privacy Policy",
+        title: "Terms",
         lastUpdated: "Last updated: 12.03.2024",
         subtitle: `HAPPY LIFE GLOBAL S.R.L. ("we", "us", "our") operates the website paradiseproblems.com (the "Site"). This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Site and the choices you have associated with that data.`,
         contact: `
