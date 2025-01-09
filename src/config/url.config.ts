@@ -21,7 +21,6 @@ export const DASHBOARD_URL = {
 
 	home: () => DASHBOARD_URL.root('/'),
 	favorites: () => DASHBOARD_URL.root('/favorites'),
-
 }
 
 export const STORE_URL = {
@@ -52,9 +51,7 @@ export const STORE_URL = {
         STORE_URL.root(`/${storeId}/sizes/${id}`),
 
     
-
     reviews: (storeId = '') => STORE_URL.root(`/${storeId}/reviews`),
-
     settings: (storeId = '') => STORE_URL.root(`/${storeId}/settings`)
 };
 

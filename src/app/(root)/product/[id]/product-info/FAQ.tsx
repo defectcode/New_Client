@@ -17,7 +17,6 @@ interface SectionListProps {
   };
 }
 
-
 export const SectionList: FC<SectionListProps> = ({ product }) => {
   const [selectedSection, setSelectedSection] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);

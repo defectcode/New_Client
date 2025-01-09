@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import { IProduct } from '@/shared/types/product.interface';
 import { cn } from '@/utils/clsx';
-
 import './ProductGallery.css';
 import { FavoriteButton } from '../product-info/FavoriteButton';
 
@@ -26,7 +25,6 @@ export function ProductGallery({ product }: ProductGalleryProps) {
     );
   };
 
-  // Swipeable handlers for mobile
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => handleNextImage(),
     onSwipedRight: () => handlePrevImage(),
@@ -36,7 +34,6 @@ export function ProductGallery({ product }: ProductGalleryProps) {
 
   return (
     <div className="flex flex-col lg:flex-row lg:space-x-4">
-      {/* Scrollable container for thumbnails (desktop) */}
       <div className="relative hidden lg:block" style={{ maxHeight: '758px' }}>
         <div
           className="flex flex-col gap-3 overflow-y-auto no-scrollbar custom-scrollbar"
@@ -83,21 +80,17 @@ export function ProductGallery({ product }: ProductGalleryProps) {
           <FavoriteButton product={product} />
         </div>
 
-        {/* Navigation overlays for mobile */}
         <div className="lg:hidden absolute inset-0 flex">
-          {/* Left overlay */}
           <div
             onClick={handlePrevImage}
             className="lg:w-1/2 w-full h-full bg-transparent cursor-pointer"
           ></div>
-          {/* Right overlay */}
           <div
             onClick={handleNextImage}
             className="lg:w-1/2 w-full h-full bg-transparent cursor-pointer"
           ></div>
         </div>
 
-        {/* Navigation arrows for desktop */}
         <div className="hidden lg:flex absolute bottom-5 right-10 space-x-[10px] items-center">
           <button
             onClick={handlePrevImage}
@@ -113,7 +106,6 @@ export function ProductGallery({ product }: ProductGalleryProps) {
           </button>
         </div>
 
-        {/* Dots indicator for mobile */}
         <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 lg:hidden flex space-x-2">
           {product.images.map((_, index) => (
             <button

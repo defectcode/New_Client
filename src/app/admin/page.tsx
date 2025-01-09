@@ -11,7 +11,6 @@ export default function PageAdmin() {
     return (
         <QueryClientProvider client={queryClient}>
             <Admin/>
-            {/* <Store/> */}
         </QueryClientProvider>
     );
 }

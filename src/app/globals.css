@@ -117,23 +117,18 @@ body {
 	line-height: 15px;
 }
 
-/* 🚫 Ascundere totală a scrollbar-ului în orice browser */
-
-/* Pentru toate browserele */
 .no-scrollbar {
-	overflow-x: scroll; /* Asigură scroll-ul orizontal funcțional */
-	-ms-overflow-style: none; /* IE și Edge */
-	scrollbar-width: none; /* Firefox */
+	overflow-x: scroll;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 }
 
-/* Chrome, Safari și Opera */
 .no-scrollbar::-webkit-scrollbar {
-	width: 0 !important; /* Lățime 0 */
-	height: 0 !important; /* Înălțime 0 */
-	display: none !important; /* Invizibil complet */
+	width: 0 !important;
+	height: 0 !important;
+	display: none !important;
 }
 
-/* Prevenire artefacte vizuale */
 .no-scrollbar::-webkit-scrollbar-thumb {
 	background: transparent !important;
 }

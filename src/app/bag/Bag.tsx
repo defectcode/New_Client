@@ -2,9 +2,9 @@
 
 'use client'
 
+import { Footer } from '@/components/layouts/main-layout/footer/Footer'
 import { Header } from '@/components/layouts/main-layout/header/Header'
 import { CatalogBag } from '@/components/ui/catalog/CatalogBag'
-import { CatalogCheckout } from '@/components/ui/catalog/CatalogChecout'
 
 import { useProfile } from '@/hooks/useProfile'
 
@@ -18,6 +18,7 @@ export function Bag() {
 				title='' 
 				products={user?.favorites || []} 
 			/>
+			<Footer/>
 		</div>
 	)
 }

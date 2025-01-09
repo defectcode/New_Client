@@ -3,6 +3,13 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+type Product = {
+  images: [];
+  title: string;
+  quantity: number;
+  price: number;
+};
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     const { email, firstName, lastName, products } = req.body;
@@ -10,14 +17,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
       console.log("Products:", products);
 
-      const productsList = products.map((product: any) => {
+      const productsList = products.map((product: Product) => {
         console.log("Product structure:", product);
 
         return `
           <div style="display: flex; align-items: center; background-color: #f9f9f9; border-radius: 8px; padding: 10px; margin-bottom: 15px; box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);">
-            <img src="${product.image}" alt="${product.title}" style="width: 60px; height: 60px; margin-right: 15px; border-radius: 5px; object-fit: cover;" />
+            <img src="${product.images}" alt="${product.title}" style="width: 60px; height: 60px; margin-right: 15px; border-radius: 5px; object-fit: cover;" />
             <div>
-              <p style="margin: 0; font-weight: bold; font-size: 16px;">${product.title}</p>
+              <p style="margin: 0; font-weight: bold; font-size: 16px;">${product}</p>
               <p style="margin: 0; color: #555;">Quantity: ${product.quantity}</p>
               <p style="margin: 0; color: #555;">Price: $${product.price.toFixed(2)}</p>
             </div>
@@ -49,12 +56,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       if (error) {
         return res.status(400).json({ error });
       }
-
+      console.log("Products:", products);
       res.status(200).json({ message: 'Email sent successfully!' });
     } catch (error) {
       res.status(500).json({ error: 'Failed to send email' });
     }
   } else {
+    
     res.setHeader('Allow', ['POST']);
     res.status(405).end(`Method ${req.method} Not Allowed`);
   }

@@ -24,11 +24,10 @@ export function Product({
     queryKey: ['product', initialProduct.id],
     queryFn: () => productService.getById(id),
     initialData: initialProduct,
-    enabled: !!id, // Rulează doar dacă `id` este definit
+    enabled: !!id, 
   });
 
   if (!product) {
-    // Afișăm un loader sau un mesaj de eroare dacă produsul nu este încărcat
     return <div>Loading product...</div>;
   }
 
@@ -39,7 +38,7 @@ export function Product({
           <div className="w-full lg:w-2/3">
             <ProductGallery product={product} />
             <div className="hidden lg:block mt-6">
-              <SectionList product={product} /> {/* Transmitem produsul ca prop */}
+              <SectionList product={product} />
             </div>
           </div>
           <div className="w-full lg:w-1/3 mt-6 lg:mt-0 md:px-0">

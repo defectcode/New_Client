@@ -1,9 +1,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
-import { PUBLIC_URL } from '@/config/url.config';
 import { IProduct } from '@/shared/types/product.interface';
 import { formatPrice } from '@/utils/string/format-price';
-import { AddToCartButton } from './AddToCartButton';
 import { FavoriteButton } from './FavoriteButton';
 import Image from 'next/image';
 import { CartWindow } from '@/components/layouts/main-layout/header/header-menu/header-cart/cart-item/components/CartWindow';
@@ -28,7 +26,6 @@ export function ProductInfo({ product }: ProductInfoProps) {
     color: string;
   } | null>(null);
 
-  // Lista de culori disponibile
   const [selectedColor, setSelectedColor] = useState(COLORS[0]);
 
   const handleCloseCartWindow = () => {

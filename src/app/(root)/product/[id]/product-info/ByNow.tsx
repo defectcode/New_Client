@@ -1,5 +1,4 @@
-'use client'; // Asigură-te că acest fișier este un component client
-
+'use client';
 import { PUBLIC_URL } from '@/config/url.config';
 import { useRouter } from 'next/navigation';
 import React from 'react';

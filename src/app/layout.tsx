@@ -1,5 +1,5 @@
 import { GeistSans } from 'geist/font/sans';
-import { Heebo } from 'next/font/google'; // Import Heebo din Google Fonts
+import { Heebo } from 'next/font/google';
 import type { Metadata } from 'next';
 
 import { SITE_DESCRIPTION, SITE_NAME } from '@/constants/seo.constants';
@@ -7,11 +7,10 @@ import { SITE_DESCRIPTION, SITE_NAME } from '@/constants/seo.constants';
 import './globals.scss';
 import { Providers } from './providers';
 
-// Configurarea fontului Heebo
 const heebo = Heebo({
 	subsets: ['latin'],
-	weight: ['400', '500', '700'], // Greutățile dorite
-	variable: '--font-heebo', // Variabila CSS pentru font
+	weight: ['400', '500', '700'], 
+	variable: '--font-heebo', 
 });
 
 export const metadata: Metadata = {
