@@ -2,15 +2,16 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { IProduct } from '@/shared/types/product.interface';
 import { formatPrice } from '@/utils/string/format-price';
+import { AddToCartButton } from './AddToCartButton';
 import { FavoriteButton } from './FavoriteButton';
 import Image from 'next/image';
 import { CartWindow } from '@/components/layouts/main-layout/header/header-menu/header-cart/cart-item/components/CartWindow';
-import { CartWindowDesktop } from '@/components/layouts/main-layout/header/header-menu/header-cart/cart-item/components/CartWindowDesktop';
 import { useIsDesktop } from '@/hooks/useIsDesktop';
 
 import './Production.css'
 import { COLORS } from './constants/Colors';
 import { AddToCartButtonProduct } from './AddToCartButtonProduct';
+import { CartWindowDesktop } from '@/components/layouts/main-layout/header/header-menu/header-cart/cart-item/components/CartWindowDesktop';
 
 interface ProductInfoProps {
   product: IProduct;

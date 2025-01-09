@@ -14,6 +14,7 @@ import { productService } from '@/services/product.service'
 import { Header } from '@/components/layouts/main-layout/header/Header'
 import '../(root)/hero/style/Hero.css'
 import { Color } from '@/components/ui/catalog/product-card/components/Color'
+import BackgroundHomeButton from '@/components/ui/catalog/components/BackgroundHomeButton'
 
 interface HomeProps {
 	products: IProduct[]
@@ -49,6 +50,7 @@ export function Home({ products }: HomeProps) {
 				link={PUBLIC_URL.explorer()}
 				products={products}
 			/>
+			<BackgroundHomeButton/>
 		</div>
 	)
 }

@@ -3,9 +3,9 @@ import { useCart } from "@/hooks/useCart";
 import { IProduct } from "@/shared/types/product.interface";
 import { useState } from "react";
 import { CartWindow } from "@/components/layouts/main-layout/header/header-menu/header-cart/cart-item/components/CartWindow";
-import { CartWindowDesktop } from "@/components/layouts/main-layout/header/header-menu/header-cart/cart-item/components/CartWindowDesktop";
 import "./style/CartSize.css";
 import Size from "@/components/ui/catalog/product-card/components/size/Size";
+import { CartWindowDesktop } from "@/components/layouts/main-layout/header/header-menu/header-cart/cart-item/components/CartWindowDesktop";
 
 interface AddToCartButtonProps {
   product: IProduct;

@@ -22,16 +22,11 @@ interface CartItemProps {
 export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
   const dispatch = useDispatch();
 
-  // Detectăm pagina curentă
   const isCheckoutPage = typeof window !== 'undefined' && window.location.pathname === '/checkout';
-
-  // State pentru color dropdown
   const [colorDropdownOpen, setColorDropdownOpen] = useState(false);
   const color = COLORS.find(c => c.name === item.product.color?.name) || COLORS[0];
 
   const [selectedColor, setSelectedColor] = useState<string>(color.name);
-
-  // Culori disponibile
   const availableColors = ['Light gray', 'Blue', 'Red', 'Black'];
 
   const handleRemoveItem = () => {
@@ -60,7 +55,7 @@ export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
       {/* Imaginea produsului */}
       <Link
         href={PUBLIC_URL.product(item.product.id)}
-        className="relative flex items-center justify-center w-[100px] h-[100px] bg-[#FFFFFF] border border-transparent"
+        className="relative flex items-center justify-center max-w-[100px] max-h-[100px] bg-[#FFFFFF] border border-transparent"
       >
         <div className="relative flex items-center justify-center max-w-[90px] max-h-[90px]">
           <Image
@@ -70,7 +65,6 @@ export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
             height={90}
             className="object-cover max-w-[90px] max-h-[90px]"
           />
-          {/* Cerc pentru cantitate */}
           {isCheckoutPage && (
             <div className="absolute -top-3 -right-2 bg-[#5D5D5D]/50 text-[#FFF4F4] text-[12px] w-5 h-5 flex items-center justify-center rounded-full font-bold">
               {item.quantity}
@@ -79,15 +73,12 @@ export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
         </div>
       </Link>
 
-      {/* Detalii produs */}
       <div className="flex flex-col ml-[10px] w-3/4 relative">
         <div className="flex items-center justify-between w-full">
           <h2 className="text-[15px] font-semibold truncate max-w-[300px]">{item.product.title}</h2>
-          {/* Ascunde FavoriteButton doar pe pagina checkout */}
           {!isCheckoutPage && <FavoriteButton product={item.product} />}
         </div>
 
-        {/* Selector de culori */}
         <div
           className={`flex items-center gap-1 mt-[2px] relative ${
             isCheckoutPage ? 'pointer-events-none opacity-50' : 'cursor-pointer'
@@ -95,7 +86,6 @@ export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
           onClick={toggleColorDropdown}
         >
           <p className="text-sm text-gray-500">{selectedColor}</p>
-          {/* Ascunde săgeata doar pe pagina checkout */}
           {!isCheckoutPage && (
             <Image
               src="/images/arr.svg"
@@ -107,13 +97,12 @@ export function CartItem({ item, isLastItem, isSingleItem }: CartItemProps) {
               }`}
             />
           )}
-          {/* Dropdown */}
           {colorDropdownOpen && !isCheckoutPage && (
             <div
               className="absolute bg-white shadow-lg border rounded-md z-10"
               style={{
-                top: 'calc(100% + 5px)', // Poziționare sub selector
-                left: 0, // Aliniere cu săgeata
+                top: 'calc(100% + 5px)', 
+                left: 0,
                 minWidth: '120px',
               }}
             >

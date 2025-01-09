@@ -18,7 +18,7 @@ export function Bag() {
 				title='' 
 				products={user?.favorites || []} 
 			/>
-			<Footer/>
+			{/* <Footer/> */}
 		</div>
 	)
 }

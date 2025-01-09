@@ -1,7 +1,6 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
-import { HeaderCart } from './header-menu/header-cart/HeaderCart'
 import { HeaderMenu } from './header-menu/HeaderMenu'
 import { Logo } from './logo/Logo'
 import { SearchInput } from './search-input/SearchInput'
@@ -9,20 +8,17 @@ import { Button } from '@/components/ui/Button'
 import Image from 'next/image'
 import { User } from './header-menu/header-cart/cart-item/user'
 import { CheckoutCartHome } from './header-menu/header-cart/CheckoutCartHome'
-import { PUBLIC_URL } from '@/config/url.config'
 
 
 export function Header() {
   const [isCartOpen, setIsCartOpen] = useState(false)
-  const [isBurgerOpen, setIsBurgerOpen] = useState(false)
-  const currentPath = window.location.pathname;
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen)
   }
 
   return (
-    <div className="md:py-2 p-0 max-w-[1400px] w-full md:h-full h-[60px] flex items-center justify-between bg-transparent mx-auto xl:px-0 px-5">
+    <div className="lg:py-2 p-0 max-w-[1400px] w-full md:h-full h-[60px] flex items-center justify-between bg-transparent mx-auto xl:px-0 px-5">
       
       {/* Desktop */}
       <div className="flex-1 lg:block hidden">
@@ -41,7 +37,7 @@ export function Header() {
       
 
       {/* Mobile */}
-      <div className="flex items-center justify-between w-full h-[70px] lg:hidden px-5">
+      <div className="flex items-center justify-between w-full h-[70px] lg:hidden">
         <div className='flex items-center gap-[10px]'>
           <Link href="/" className="">
             <Image src="/images/home.svg" alt="home" width={15} height={15} />
