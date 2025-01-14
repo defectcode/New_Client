@@ -1,0 +1,14 @@
+/* Fixare buton Share */
+.fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background-color: rgba(27, 27, 27, 0.95); /* Fundal semitransparent */
+}
+
+/* Stilul general al butonului */
+.share-button-container {
+    transition: all 0.3s ease-in-out;
+}

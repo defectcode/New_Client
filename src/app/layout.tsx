@@ -5,7 +5,11 @@ import type { Metadata } from 'next';
 import { SITE_DESCRIPTION, SITE_NAME } from '@/constants/seo.constants';
 
 import './globals.scss';
+import "./globals.css";
 import { Providers } from './providers';
+import { FacebookPixelEvents } from '@/components/pixel-events';
+import { TikTokPixel } from '@/components/tiktok-pixel';
+import { GoogleAnalytics } from '@/components/google-analytics';
 
 const heebo = Heebo({
 	subsets: ['latin'],
@@ -29,6 +33,9 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			<body className={`${GeistSans.variable} ${heebo.variable}`}>
+				<GoogleAnalytics />
+				<FacebookPixelEvents />
+				<TikTokPixel />
 				<Providers>{children}</Providers>
 			</body>
 		</html>

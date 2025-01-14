@@ -1,0 +1,70 @@
+/* CSS pentru a acoperi 100% ecranul pe toate dispozitivele */
+.header {
+    height: 100vh;
+    height: 100dvh; /* Utilizează dynamic viewport height pentru a acoperi variațiile */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  
+  .bg-image {
+    background-image: url('/imgs/Background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  /* Asigură poziționarea conținutului la 16px de jos */
+  .content-wrapper {
+    padding-bottom: 16px;
+    position: relative;
+    z-index: 10;
+  }
+  
+  /* Adaptează layout-ul pentru diferite dimensiuni de ecrane */
+  @media (max-width: 768px) {
+    .bg-image {
+      background-image: url('/imgs/mobile.svg');
+    }
+  }
+  
+  /* Adaptează pentru toate dispozitivele și browserele */
+  @supports (-webkit-touch-callout: none) {
+    /* Fix pentru Safari pe iOS */
+    .header {
+      height: calc(100vh - env(safe-area-inset-bottom));
+    }
+  }
+  
+  @supports not (-webkit-touch-callout: none) {
+    /* Fix pentru Chrome */
+    .header {
+      height: 100dvh;
+    }
+  }
+  
+  /* Alte media queries pentru dispozitive mai mici */
+  @media only screen and (max-width: 834px) {
+    .header {
+      height: 90vh; /* Ajustează proporțional pentru ecranele mai mici */
+    }
+  }
+  
+  @media only screen and (max-width: 430px) {
+    .header {
+      height: 93vh; 
+    }
+  }
+  
+
+  @media only screen and (max-width: 375px) {
+    .header {
+      height: 90vh; 
+    }
+  }

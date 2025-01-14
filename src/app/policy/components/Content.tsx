@@ -14,15 +14,15 @@ export default function ContentComponent({ activeButton }: ContentProps) {
     const currentContent: ContentItem = contentData[activeButton];
 
     return (
-        <div className="md:mt-5 p-5 border border-transparent w-full max-w-2xl bg-transparent text-[#1E1E1E] text-center font-heebo ">
-            <h1 className="text-4xl font-bold text-center mb-4 leading-[1]">{currentContent.title}</h1>
+        <div className="md:mt-5 p-5 border border-transparent w-full max-w-2xl bg-transparent text-[#1E1E1E] md:text-center text-start font-heebo ">
+            <h1 className="text-4xl font-bold md:text-center text-start mb-4 leading-[1]">{currentContent.title}</h1>
             {currentContent.lastUpdated && (
-                <p className="text-center text-[16px] text-[#575757] mb-6 leading-[1]">{currentContent.lastUpdated}</p>
+                <p className="md:text-center text-start text-[16px] text-[#575757] mb-6 leading-[1]">{currentContent.lastUpdated}</p>
             )}
 
 
             {currentContent.subtitle && (
-                <p className="text-center text-[16px] text-[#575757] mb-8 leading-[1]">
+                <p className="md:text-center text-start text-[16px] text-[#575757] mb-8 leading-[1]">
                     {currentContent.subtitle}
                 </p>
             )}
@@ -79,7 +79,7 @@ export default function ContentComponent({ activeButton }: ContentProps) {
             })}
 
             {currentContent.contactUs?.map((contact, index) => (
-                <div key={index} className="mt-8 text-center">
+                <div key={index} className="mt-8 md:text-center text-start">
                     <h2 className="md:text-[26px] text-[24px] font-semibold mb-5">{contact.title}</h2>
                     <p className="text-[16px] font-ekMukta mb-[10px]">{contact.content}</p>
                     <p className="text-[16px] font-ekMukta text-[#575757] mb-[10px]">{contact.companyName}</p>

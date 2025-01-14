@@ -59,7 +59,7 @@ export function AuthFields({
 					<FormItem>
 						<FormControl>
 							<Input
-								placeholder='john@examle.com'
+								placeholder='Enter your email address'
 								type='email'
 								disabled={isPending}
 								{...field}
@@ -83,7 +83,7 @@ export function AuthFields({
 					<FormItem>
 						<FormControl>
 							<Input
-								placeholder='******'
+								placeholder='Create you password'
 								type='password'
 								disabled={isPending}
 								{...field}

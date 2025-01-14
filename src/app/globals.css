@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ek+Mukta:wght@400;500;700&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 body {
 	font-family: 'Heebo', sans-serif;
 }
@@ -135,4 +140,427 @@ body {
 
 .no-scrollbar::-webkit-scrollbar-track {
 	background: transparent !important;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Ek+Mukta:wght@100;200;400;500;600;700;900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Ek+Mukta:wght@200;400;600;700;900&display=swap'); */
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('/fonts/Avenir-Roman.woff2') format('woff2'),
+       url('/fonts/Avenir-Roman.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('/fonts/Avenir-Heavy.woff2') format('woff2'),
+       url('/fonts/Avenir-Heavy.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Ek Mukta', sans-serif;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.background-fixed {
+  background-attachment: fixed;
+}
+
+@media (max-width: 767px) {
+  .background-fixed {
+    background-attachment: scroll;
+  }
+}
+
+@supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+  .ios-blur {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ios-blur {
+    background: rgba(0, 0, 0, 0.2); 
+  }
+}
+
+.custom-image-width {
+  width: 1536px;
+}
+
+.custom-bg-height-mobile {
+  height: 666px;
+}
+
+.custom-bg-height {
+  height: 740px;
+}
+
+.max-height {
+  height: 556px;
+} 
+
+.max-height-image {
+  height: 494px;
+}
+
+.max-width-image {
+  width: 494px;
+}
+
+@media (max-width: 834px) {
+  .text-auto-small {
+    font-size: 12px;
+  }
+}
+
+.bg-image {
+  background-image: url('/imgs/Background.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-attachment: fixed; 
+  top: 0;
+  left: 0;
+}
+
+@media (max-width: 768px) {
+  .bg-image {
+    background-image: url('/imgs/mobile.svg');
+  }
+}
+
+.header {
+  height: 100vh; 
+  position: relative;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%; 
+}
+
+.desktop-support-button {
+  display: none;
+}
+
+.mobile-support-button {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .desktop-support-button {
+    display: flex;
+  }
+}
+
+@media (max-width: 767px) {
+  .mobile-support-button {
+    display: flex;
+  }
+}
+
+@media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) {
+  .header {
+    height: 70vh;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .header {
+    height: 80vh; 
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .header {
+    height: 93vh; 
+  }
+}
+
+@media only screen and (max-width: 416px) {
+  .header {
+    height: 93vh; 
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .header {
+    height: 89vh; 
+  }
+}
+
+.header {
+  width: 100%; 
+}
+
+@media only screen and (min-width: 415px) and (max-width: 768px) {
+  .header {
+    height: 90vh;
+  }
+}
+
+@media only screen and (width: 428px) {
+  .header {
+    height: 88vh;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .header {
+    height: 100vh;
+  }
+}
+
+@keyframes fadeOutLeft {
+  0% {
+      opacity: 1;
+      transform: translateX(0);
+  }
+  100% {
+      opacity: 0;
+      transform: translateX(-20px);
+  }
+}
+
+.hover\\:animate-fadeOutLeft:hover {
+  animation: fadeOutLeft 1s forwards;
+}
+
+.font-roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+.font-ekMukta {
+  font-family: 'Ek Mukta', sans-serif;
+}
+
+.font-ekmukta {
+  font-family: 'Ek Mukta', sans-serif;
+}
+
+.font-ekmukta-medium {
+  font-family: 'Ek Mukta', sans-serif;
+  font-weight: 500; 
+}
+
+.font-ekmukta-semibold {
+  font-family: 'Ek Mukta', sans-serif;
+  font-weight: 700;
+}
+
+.font-ekmukta-extrabold {
+  font-family: 'Ek Mukta', sans-serif;
+  font-weight: 900;
+}
+
+
+.font-ekmukta-extralight {
+  font-family: 'Ek Mukta', sans-serif;
+  font-weight: 100;
+}
+
+.custom-image-width-laptop {
+  width: calc(100% + 400px);
+}
+
+
+.font-avenir {
+  font-family: 'Avenir', sans-serif;
+}
+
+.font-avenir-heavy {
+  font-family: 'Avenir Heavy', sans-serif;
+  font-weight: 700; 
+}
+
+
+.font-avenir-roman {
+  font-family: 'Avenir Roman', sans-serif;
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('/fonts/Avenir-Heavy.woff2') format('woff2'),
+       url('/fonts/Avenir-Heavy.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Ek Mukta', sans-serif;
+}
+
+.font-avenir-heavy {
+  font-family: 'Avenir', sans-serif;
+  font-weight: 700;
+}
+
+.goal-section {
+  position: sticky;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  transition: opacity 0.2s ease, z-index 0.2s ease;
+}
+
+.goal-section.hidden {
+  opacity: 0;
+  z-index: 0;
+}
+
+.goal-section.visible {
+  opacity: 1;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .goal-section + .goal-section {
+      margin-top: -540px; 
+  }
+}
+
+@media (max-width: 768px) {
+  .mt-200-mobile {
+      margin-top: 320px;
+  }
+}
+
+@layer utilities {
+  .bg-mobile {
+    background-image: url('/imgs/Crowdfunding/phone.png');
+  }
+  @media (min-width: 640px) {
+    .bg-desktop {
+      background-image: url('/imgs/Crowdfunding/background3.png');
+    }
+  }
+}
+
+@layer utilities {
+  .bg-mobileConcept {
+    background-image: url('/imgs/SeriesConcept/SeriesConceptMobile.png');
+  }
+  @media (min-width: 640px) {
+    .bg-desktopConcept {
+      background-image: url('/imgs/Crowdfunding/background.png');
+    }
+  }
+}
+
+.custom-scrollbar {
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  display: none;  
+}
+
+
+.fixedHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: white; 
+}
+
+.custom-padding {
+    padding: 20px;
+}
+
+.custom-margin {
+    margin-bottom: 20px;
+}
+
+.StaticNavbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  transition: transform 0.1s ease-out; 
+  z-index: 100; 
+}
+
+.StaticNavbar-hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+
+.StaticNavbarMobile {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  /* transition: transform 0.1s ease-out; */
+  z-index: 100; 
+}
+
+.rewardsContainer {
+  position: relative;
+  width: 100%;
+  height: 100vh; 
+  background-color: black; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .rewardsContainer {
+      height: 100vh; 
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.iconWrapper img {
+  width: 160px; 
+  height: 100px;
+  opacity: 0.7; 
+}
+
+.textWrapper h2 {
+  color: white;
+  font-size: 1.5rem; 
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .textWrapper h2 {
+      font-size: 1.2rem; 
+  }
+
+  .iconWrapper img {
+      width: 160px;
+      height: 100px;
+  }
 }

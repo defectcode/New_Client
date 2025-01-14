@@ -3,13 +3,11 @@ import type { Config } from 'tailwindcss';
 const config = {
 	darkMode: ['class'],
 	content: [
-		'./pages/**/*.{ts,tsx}',
-		'./components/**/*.{ts,tsx}',
-		'./app/**/*.{ts,tsx}',
-		'./src/**/*.{ts,tsx}',
-		'./public/**/*.{html,js}',
-	],
-	
+		'./pages/**/*.{js,jsx,ts,tsx}',
+		'./components/**/*.{js,jsx,ts,tsx}',
+		'./app/**/*.{js,jsx,ts,tsx}',
+		'./src/**/*.{js,jsx,ts,tsx}',
+	  ],	  
 	theme: {
 		container: {
 			center: true,
@@ -19,6 +17,7 @@ const config = {
 			},
 		},
 		extend: {
+			
 			boxShadow: {
 				custom: '0 -4px 8px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1)',
 			},
@@ -26,6 +25,7 @@ const config = {
 				'16': '16px',
 			},
 			colors: {
+				'muted-foreground': '#D1D1D1', // Definește culoarea dorită
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',

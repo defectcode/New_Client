@@ -24,6 +24,7 @@ export const footerData: FooterInfo[] = [
         { name: 'Login', href: '/auth' },
         { name: 'Register', href: '/register' },
         { name: 'My Progress', href: '/progress' },
+        { name: 'Crowdfunding', href: '/crowdfunding'},
       ],
     },
     {

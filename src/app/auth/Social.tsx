@@ -9,14 +9,14 @@ export function Social() {
 	const router = useRouter()
 
 	return (
-		<div className='space-y-3 w-full mt-5 flex justify-center items-center'>
+		<div className='w-full flex justify-center items-center'>
 			<Button
 				variant='outline'
 				onClick={() => router.push(`${SERVER_URL}/auth/google`)}
-				className='gap-1'
+				className='gap-[5px] h-[48px] max-w-lg w-full border-[#000000]/10 rounded-[10px] text-[#1E1E1E] font-semibold text-[16px]'
 			>
-				<FcGoogle />
-				Continue via Google
+				Continue with Google
+				<FcGoogle className='w-[16px] h-[16px]' />
 			</Button>
 		</div>
 	)
