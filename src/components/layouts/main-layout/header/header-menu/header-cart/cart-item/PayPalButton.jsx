@@ -1,21 +1,11 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import './PayPal.css';
 
-interface PayPalButtonProps {
-  totalAmount: number;
-}
-
-declare global {
-  interface Window {
-    paypal: any;
-  }
-}
-
-const PayPalButton: React.FC<PayPalButtonProps> = ({ totalAmount }) => {
+const PayPalButton = ({ totalAmount }) => {
   const [isScriptLoaded, setIsScriptLoaded] = useState(false);
   const [isButtonRendered, setIsButtonRendered] = useState(false);
 
-  const navigateTo = (url: string) => {
+  const navigateTo = (url) => {
     window.location.href = url;
   };
 
@@ -49,7 +39,7 @@ const PayPalButton: React.FC<PayPalButtonProps> = ({ totalAmount }) => {
     if (window.paypal && isScriptLoaded && !isButtonRendered) {
       try {
         window.paypal.Buttons({
-          createOrder: (data: any, actions: any) => {
+          createOrder: (data, actions) => {
             return actions.order.create({
               purchase_units: [
                 {
@@ -60,7 +50,7 @@ const PayPalButton: React.FC<PayPalButtonProps> = ({ totalAmount }) => {
               ],
             });
           },
-          onApprove: async (data: any, actions: any) => {
+          onApprove: async (data, actions) => {
             try {
               const order = await actions.order.capture();
               console.log('Payment approved:', order);
@@ -81,14 +71,13 @@ const PayPalButton: React.FC<PayPalButtonProps> = ({ totalAmount }) => {
               navigateTo('/error');
             }
           },
-          onError: (err: any) => {
+          onError: (err) => {
             console.error('Error with PayPal:', err);
             alert('Payment failed. Please contact support.');
             navigateTo('/error');
           },
           onCancel: () => {
             console.log('Payment cancelled by user.');
-            // alert('Payment was cancelled.');
             navigateTo('/cancel');
           },
         }).render('#paypal-button-container');

@@ -30,7 +30,7 @@
     "src/app/crowdfunding/components/mobile/Share/ShareButton.jsx",
     "src/app/crowdfunding/components/hooks/useSticky.jsx",
     "src/app/crowdfunding/components/hooks/useViewport.jsx",
-    "src/app/crowdfunding/page.tsx", "src/app/crowdfunding/HeaderCrowdfundingMobile.jsx",
+    "src/app/crowdfunding/page.tsx", "src/app/crowdfunding/HeaderCrowdfundingMobile.jsx", "src/components/layouts/main-layout/header/header-menu/header-cart/cart-item/PayPalButton.jsx", "src/components/layouts/main-layout/header/header-menu/header-cart/cart-item/PayPalButton.jsx",
   ],
   "exclude": ["node_modules"]
 }
