@@ -1,3 +1,4 @@
+// 'use client'
 import { GeistSans } from 'geist/font/sans';
 import { Heebo } from 'next/font/google';
 import type { Metadata } from 'next';
@@ -34,7 +35,7 @@ export default function RootLayout({
 		<html lang='en'>
 			<body className={`${GeistSans.variable} ${heebo.variable}`}>
 				<GoogleAnalytics />
-				<FacebookPixelEvents />
+				{/* <FacebookPixelEvents /> */}
 				<TikTokPixel />
 				<Providers>{children}</Providers>
 			</body>

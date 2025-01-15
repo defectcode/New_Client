@@ -2,7 +2,7 @@
 
 import { useMutation } from '@tanstack/react-query'
 import { LogOut } from 'lucide-react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams  } from 'next/navigation'
 import { useEffect } from 'react'
 
 import { Button } from '@/components/ui/Button'
