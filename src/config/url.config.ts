@@ -4,6 +4,7 @@ export const PUBLIC_URL = {
 	root: (url = '') => `${url ? url : ''}`,
 
 	home: () => PUBLIC_URL.root('/'),
+    crowdfunding: () => PUBLIC_URL.root('/crowdfunding'),
 	auth: () => PUBLIC_URL.root('/auth'),
 	explorer: (query = '') => PUBLIC_URL.root(`/explorer${query}`),
 

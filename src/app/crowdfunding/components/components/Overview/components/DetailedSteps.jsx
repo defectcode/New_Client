@@ -13,9 +13,9 @@ const DetailedSteps = () => {
 
     return (
         <div>
-            <div className="mt-10">
-                <h2 className="text-[26px] text-[#FFFFFF] font-ekMukta font-semibold">Detailed Steps</h2>
-                <div className="font-ekMukta text-[#CDCDCD] mt-4">
+            <div className="mt-10 font-heebo">
+                <h2 className="text-[26px] text-[#FFFFFF] font-semibold">Detailed Steps</h2>
+                <div className="text-[#CDCDCD] mt-4">
                     {stageDescription.detailedSteps.map((step, index) => (
                         <div key={index} className="mt-6">
                             <h3 className="text-xl text-[#E60716] font-semibold">
@@ -24,7 +24,7 @@ const DetailedSteps = () => {
                             <ul className="list-disc list-inside list-small ml-2 w-[484px]">
                                 {step.items.map((item, idx) => (
                                     <li key={idx}>
-                                        <span className="font-bold text-[#FFFFFF] text-[16px] font-ekMukta">{item.item}:</span> <span className="text-[#CDCDCD] text-[16px] font-ekMukta">{item.cost}</span>
+                                        <span className="font-bold text-[#FFFFFF] text-[16px]">{item.item}:</span> <span className="text-[#CDCDCD] text-[16px] font-ekMukta">{item.cost}</span>
                                     </li>
                                 ))}
                             </ul>
@@ -42,7 +42,7 @@ const DetailedSteps = () => {
                 </div>
             </div>
             <div className="my-10">
-                <h2 className="text-[#FFFFFF] font-ekMukta font-semibold text-[26px]">{stageDescription.helpTitle}</h2>
+                <h2 className="text-[#FFFFFF] font-semibold text-[26px]">{stageDescription.helpTitle}</h2>
                 <p className="text-[#CDCDCD] w-[764px] text-[16px]">{stageDescription.helpInfo}</p>
                 <img 
                     src={stageDescriptionData.imageUrl_8} 

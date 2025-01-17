@@ -10,28 +10,20 @@ const ModalNavBar = ({ isOpen, onClose, children }) => {
     const height = window.innerHeight;
 
     if (/iPhone/i.test(userAgent)) {
-      // Detect specific iPhone models based on screen size
       if (width === 430 && height === 932) {
-        // iPhone 14 Pro Max
         setMarginTop('mt-[900px]');
       } else if (width === 414 && height === 896) {
-        // iPhone 11 Pro Max
         setMarginTop('mt-[1000px]');
       } else if (width === 390 && height === 844) {
-        // iPhone 12, 13, 14
         setMarginTop('mt-[900px]');
       } else if (width === 375 && height === 812) {
-        // iPhone X, XS
         setMarginTop('mt-[900px]');
       } else if (width === 360 && height === 780) {
-        // iPhone 12 Mini, 13 Mini
         setMarginTop('mt-[900px]');
       } else {
-        // Default for other iPhone models
         setMarginTop('');
       }
     } else {
-      // Adjust for Android screen sizes
       if (width >= 720 && width < 1080) {
         setMarginTop('mt-[800px]');
       } else if (width >= 1080) {

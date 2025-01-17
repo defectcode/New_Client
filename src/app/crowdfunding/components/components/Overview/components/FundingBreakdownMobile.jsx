@@ -16,7 +16,7 @@ const costData = [
 // Function to generate a color gradient from red to white
 const generateColorGradient = (steps) => {
     const startColor = [255, 0, 0]; // Red in RGB
-    const endColor = [255, 255, 255]; // White in RGB
+    const endColor = [240, 240, 240]; // White in RGB
 
     const stepFactor = 1 / (steps - 1);
     const colorArray = [];
@@ -75,8 +75,8 @@ const FundingBreakdownMobile = () => {
     }, []);
 
     return (
-        <div className="bg-black h-[90%] sticky top-0 flex flex-col items-center text-white px-5 pb-10">
-            <h2 className="text-2xl font-semibold font-ekMukta mb-8 mt-10">Where Your Money Goes</h2>
+        <div className="bg-[#F9F9F9] h-[90%] sticky top-0 flex flex-col items-center text-[#1E1E1E] px-5 pb-10 font-heebo">
+            <h2 className="text-2xl font-semibold mb-8 mt-10">Where Your Money Goes</h2>
             <div className="relative">
                 <DoughnutChart data={costData} />
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -86,7 +86,7 @@ const FundingBreakdownMobile = () => {
             <div className="mt-8 w-full max-w-md">
                 <table className="w-full text-left">
                     <thead>
-                        <tr className='font-bold text-[14px] font-roboto text-[#F5F5F7]'>
+                        <tr className='font-bold text-[14px] font-roboto text-[#1E1E1E]'>
                             <th className="py-2">Category</th>
                             <th className="py-2 text-center">
                                 <div className="relative flex items-center justify-center gap-1">
@@ -128,12 +128,12 @@ const FundingBreakdownMobile = () => {
                                             />
                                         )}
                                     </div>
-                                    <span className="ml-3 text-[#C4C4C4] text-[14px] font-roboto align-middle">{item.category}</span>
+                                    <span className="ml-3 text-[#6F6F6F] text-[14px] font-roboto align-middle">{item.category}</span>
                                 </td>
-                                <td className={`${index < costData.length - 1 ? 'py-2' : 'pt-4'} text-[#C4C4C4] text-[14px] font-roboto font-semibold w-[100px] align-middle text-center`}>
+                                <td className={`${index < costData.length - 1 ? 'py-2' : 'pt-4'} text-[#6F6F6F] text-[14px] font-roboto font-semibold w-[100px] align-middle text-center`}>
                                     ${item.cost.toLocaleString()}
                                 </td>
-                                <td className={`${index < costData.length - 1 ? 'py-2' : 'pt-4'} text-[#C4C4C4] text-[14px] font-roboto font-semibold w-[60px] text-center align-middle`}>
+                                <td className={`${index < costData.length - 1 ? 'py-2' : 'pt-4'} text-[#6F6F6F] text-[14px] font-roboto font-semibold w-[60px] text-center align-middle`}>
                                     {item.week}
                                 </td>
                             </tr>

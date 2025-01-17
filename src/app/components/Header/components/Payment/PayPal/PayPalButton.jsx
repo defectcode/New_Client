@@ -30,7 +30,6 @@ const PayPalButton = ({ amount, onSuccess }) => {
               alert("Transaction completed by " + details.payer.name.given_name);
               onSuccess();
 
-              // Only log here as you're focusing on frontend
               console.log("Order ID to be sent to backend:", orderID);
             }).catch(error => {
               console.error('Error capturing order:', error);
@@ -44,7 +43,6 @@ const PayPalButton = ({ amount, onSuccess }) => {
         />
       </div>
 
-      {/* Add some custom CSS to target the PayPal button */}
       <style jsx>{`
         .paypal-buttons {
           border-radius: 1rem !important; /* Equivalent to rounded-lg */

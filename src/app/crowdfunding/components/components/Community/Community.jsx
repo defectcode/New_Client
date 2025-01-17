@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './style/Community.module.css'; // Importăm CSS-ul specific
+import styles from './style/Community.module.css';
 
 const Community = () => {
     return (

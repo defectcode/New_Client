@@ -2,7 +2,7 @@ export const stageDescriptionData = {
     stageTitle: "Stage Description",
     stageHistory: 'The concept of creating a costume atelier was developed to craft high-quality costumes for the "Paradise Problems" series. Additionally, we plan to design exclusive apparel for our fans, with options for international shipping and online orders.',
     stageHistory2: 'The idea for "Paradise Problems" is to show life in a perfect city without money, where people still face real human problems. We aim to demonstrate how love, loyalty, and kindness can solve these problems.',
-    fundingTitle: "Funding And Support",
+    fundingTitle: "Funding & Support",
     fundingProgress: " We have successfully rented a 370 sq.m. space for $5,000 per month, showcasing our commitment to this project.",
     requiredAmount: " We are seeking $227,000 to fully establish the atelier and begin production.",
     monthlyCostsTitle: "Monthly Costs:",
@@ -13,8 +13,8 @@ export const stageDescriptionData = {
         { item: "Utilities", cost: "$2,000" }
     ],
     totalMonthlyCosts: "$44,000",
-    imageUrl_1: "/imgs/Crowdfunding/Overview/Element1.webp",
-    imageUrl_2: "/imgs/Crowdfunding/Overview/Element2.webp",
+    imageUrl_1: "/imgs/Crowdfunding/Overview/Element1.png",
+    imageUrl_2: "/imgs/Crowdfunding/Overview/Element10.png",
     imageUrl_3: "/imgs/Crowdfunding/Overview/Element3.webp",
     imageUrl_4: "/imgs/Crowdfunding/Overview/Element4.webp",
     imageUrl_5: "/imgs/Crowdfunding/Overview/Element5.webp",
@@ -26,7 +26,7 @@ export const stageDescriptionData = {
 export const stageDescription = {
     stageTitle: "Stage Description",
     stageHistory: "Project History: The idea of creating an atelier arose to provide high-quality costumes for the \"Paradise Problems\" series. We also plan to create exclusive apparel for our fans and ensure international shipping and online orders.",
-    fundingTitle: "Funding And Support",
+    fundingTitle: "Funding & Support",
     fundingSubtitle: "Initially, we needed $790,700 to create the series concept, including marketing and research. Our team has already invested over $200,000 in this project, including building this website and presentation, showing our strong belief in its success.Our audience has actively helped us with surveys and marketing research, making the project better and cheaper. Their volunteer work has saved us significant funds while maintaining high quality. Thanks to this, we only need to raise $74,000 to complete the concept creation stage. Volunteers from our audience have made a substantial contribution, allowing us to significantly reduce the budget.",
     fundingProgress: "Current Progress: The team has rented a space of 370 sq.m. for $5,000 per month.",
     requiredAmount: "Required Amount: $227,000 to establish the atelier.",

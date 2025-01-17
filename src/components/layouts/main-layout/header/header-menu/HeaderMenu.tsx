@@ -1,7 +1,6 @@
 'use client'
-
 import Link from 'next/link'
-import { usePathname } from 'next/navigation' // Pentru a obține pathname în mod corect
+import { usePathname } from 'next/navigation' 
 import { Button } from '@/components/ui/Button'
 import { PUBLIC_URL } from '@/config/url.config'
 
@@ -11,37 +10,39 @@ export function HeaderMenu() {
 	const isActive = (path: string) => currentPath === path;
 
 	return (
-		<div className="items-center gap-x-2 ml-auto lg:flex">
+		<div className="items-center gap-x-2 ml-auto lg:flex font-heebo">
+			{/* Crowdfunding Button */}
 			<div
-				className={`border-transparent h-[30px] flex items-center justify-around rounded-[10px] max-w-[103px] w-full lg:block hidden ${
-					isActive(PUBLIC_URL.home()) ? 'bg-white' : 'bg-transparent'
+				className={`border-transparent h-[26px] flex items-center justify-around rounded-[10px] max-w-[149px] w-full lg:block hidden ${
+					isActive(PUBLIC_URL.crowdfunding()) ? 'bg-white' : 'bg-transparent'
 				} text-[#000000]`}
 			>
-				<Link href={PUBLIC_URL.home()}>
+				<Link href={PUBLIC_URL.crowdfunding()}>
 					<Button
 						variant="ghost"
-						className={`w-20 h-[30px] rounded-[10px] md:w-[103px] text-[#000000] ${
-							isActive(PUBLIC_URL.home()) ? 'bg-white' : 'bg-transparent'
+						className={`w-[149px] h-[26px] rounded-[10px] text-[#1E1E1E] text-[13px] ${
+							isActive(PUBLIC_URL.crowdfunding()) ? 'bg-white' : 'bg-transparent text-[#FFFFFF]'
 						} hover:bg-transparent`}
 					>
-						Home
+						Crowdfunding
 					</Button>
 				</Link>
 			</div>
 
+			{/* Pre-Order Button */}
 			<div
-				className={`border-transparent h-[30px] flex items-center justify-around rounded-[10px] max-w-[103px] w-full ${
+				className={`border-transparent h-[26px] flex items-center justify-around rounded-[10px] max-w-[103px] w-full ${
 					isActive(PUBLIC_URL.catalog()) ? 'bg-white' : 'bg-transparent'
 				} text-[#000000]`}
 			>
 				<Link href={PUBLIC_URL.catalog()}>
 					<Button
 						variant="ghost"
-						className={`w-20 h-[30px] rounded-[10px] md:w-[103px] text-[#000000] ${
-							isActive(PUBLIC_URL.catalog()) ? 'bg-white' : 'bg-transparent'
+						className={`w-[103px] h-[26px] rounded-[10px] text-[#1E1E1E] text-[13px] ${
+							isActive(PUBLIC_URL.catalog()) ? 'bg-white' : 'bg-transparent text-[#FFFFFF]'
 						} hover:bg-transparent`}
 					>
-						Shop
+						Pre-Order
 					</Button>
 				</Link>
 			</div>

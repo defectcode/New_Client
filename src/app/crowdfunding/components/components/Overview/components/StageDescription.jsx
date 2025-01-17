@@ -4,26 +4,26 @@ import DetailedSteps from "./DetailedSteps";
 
 const StageDescription = () => {
     return (
-        <div id="overview" className="bg-black w-full flex flex-col items-start">
+        <div id="overview" className="w-full flex flex-col items-start font-heebo">
             <div>
-                <h2 className="text-2xl text-[#FFFFFF] mt-10 mb-4 font-ekMukta font-semibold">
+                <h2 className="text-[24px] text-[#1E1E1E] font-semibold mt-10 mb-4">
                     {stageDescriptionData.stageTitle}
                 </h2>
-                <p className="text-[#CDCDCD] max-w-[764px] w-auto font-ekMukta">
+                <p className="text-[#6F6F6F] text-[16px] max-w-[764px] w-auto">
                     {stageDescriptionData.stageHistory}
                 </p>
                 <img 
                     src={stageDescriptionData.imageUrl_1} 
                     alt="Stage Description" 
-                    className="mt-10 ml-5" 
+                    className="mt-10" 
                     style={{ width: '624px', height: '624px', objectFit: 'cover' }}
                 />
             </div>
             <div className="mt-10">
-                <h2 className="text-3xl text-[#FFFFFF] font-ekMukta font-semibold">
+                <h2 className="text-[24px] text-[#1E1E1E] font-semibold">
                     {stageDescriptionData.fundingTitle}
                 </h2>
-                <div className="font-ekMukta text-[#CDCDCD]">
+                <div className="text-[#6F6F6F] text-[16px]">
                     <p className="mt-4">
                         {stageDescriptionData.fundingProgress}
                         <br />
@@ -47,7 +47,7 @@ const StageDescription = () => {
                     style={{ width: '624px', height: '624px', objectFit: 'cover' }}
                 />
             </div>
-            <DetailedSteps/>
+            {/* <DetailedSteps/> */}
             <style jsx>{`
                 ul.list-small li::marker {
                     font-size: 0.7em; /* Ajustează dimensiunea după cum este necesar */

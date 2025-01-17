@@ -29,7 +29,6 @@ export default function Header() {
       document.documentElement.style.setProperty('--viewport-height', `${viewportHeight}px`);
     };
 
-    // Setăm înălțimea doar o singură dată la încărcare
     updateHeight();
 
     return () => {

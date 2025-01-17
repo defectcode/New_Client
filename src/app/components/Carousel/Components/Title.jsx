@@ -5,7 +5,7 @@ const Title = ({ contentIndex = 0, isMobile, isTablet }) => {
   const content = images[contentIndex];
 
   if (!content) {
-    return null; // Or fallback UI
+    return null;
   }
 
   return (

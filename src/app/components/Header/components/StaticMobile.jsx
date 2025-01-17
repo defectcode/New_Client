@@ -1,8 +1,8 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState, useEffect, useRef } from 'react';
-import { AiOutlineUser, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import React, { useState, useRef } from 'react';
+import { AiOutlineUser, AiOutlineClose } from "react-icons/ai";
 import SupportForm from './Payment/SupportForm';
 import { Elements } from '@stripe/react-stripe-js';
 import ModalNavBar from './ModalNavBar';
@@ -13,32 +13,8 @@ const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 export default function Static({ openModal }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
 
   const navbarRef = useRef(null);
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const currentScrollY = window.pageYOffset;
-
-  //     // Bara de navigare se ascunde dacă derulezi în jos
-  //     if (currentScrollY > lastScrollY && currentScrollY > 50) {
-  //       navbarRef.current.style.transform = 'translateY(-100%)'; // Ascunde bara de navigare
-  //     } 
-  //     // Bara de navigare revine doar când ajungi aproape la începutul paginii
-  //     else if (currentScrollY <= 50) {
-  //       navbarRef.current.style.transform = 'translateY(0)'; // Afișează bara de navigare
-  //     }
-
-  //     setLastScrollY(currentScrollY);
-  //   };
-
-  //   window.addEventListener('scroll', handleScroll);
-
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll);
-  //   };
-  // }, [lastScrollY]);
 
   const closeMenu = () => {
     setIsOpen(false);
@@ -60,8 +36,8 @@ export default function Static({ openModal }) {
         className={`StaticNavbarMobile bg-transparent w-full h-11 max-md:h-[50px] font-avenirRoman backdrop-blur-lg ios-blur fixed`}
         style={{ transition: 'transform 0.3s ease-in-out' }}
       >
-  <div className="max-w-[1200px]  flex justify-between items-center h-full mx-5 lg:mx-auto relative z-50">
-  <div>
+    <div className="max-w-[1200px]  flex justify-between items-center h-full mx-5 lg:mx-auto relative z-50">
+    <div>
             <Link href="/"><Image src="/imgs/Plogo.svg" alt='logo' className='w-[98px] h-[24px] text-white' width={98} height={24} /></Link>
           </div>
           <div className="md:hidden flex items-center">

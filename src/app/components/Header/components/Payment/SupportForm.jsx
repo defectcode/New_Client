@@ -104,13 +104,13 @@ const SupportForm = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-[350px] h-auto w-full ">
+    <div className="flex flex-col justify-center items-center min-h-[350px] h-auto w-full">
       <div className='w-full max-w-md'>
-        <p className="mb-4 text-[#B7B7B7] text-[13px] font-inter ml-1">Select your support amount:</p>
+        <p className="mb-5 text-[#6F6F6F] text-[12px] font-light ml-1">Select your support amount:</p>
         <div className="flex justify-between gap-2 mb-5 text-sm">
           <button
             onClick={() => handleAmountChange(1)}
-            className={`flex items-center justify-center rounded-xl max-w-[80px] w-full max-sm:w-[75px] flex-grow h-[45px] ${amount === 1 && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d] flex flex-row gap-[1px] font-ekMukta'}`}
+            className={`flex items-center justify-center border-[#979797]/50 rounded-[10px] max-w-[80px] w-full max-sm:w-[75px] flex-grow h-[45px] ${amount === 1 && !isCustomAmount ? 'bg-[#1E1E1E] text-[#FFFFFF] font-bold' : 'bg-[#E8E8ED] text-[#979797] border-2 border-[#3e3d3d] flex flex-row gap-[1px] font-ekMukta'}`}
           >
             $
             <span style={{ fontWeight: amount === 1 && !isCustomAmount ? 700 : 400 }}>1</span>
@@ -118,7 +118,7 @@ const SupportForm = () => {
 
           <button
             onClick={() => handleAmountChange(50)}
-            className={`flex items-center justify-center rounded-xl max-w-[80px] w-full max-sm:w-[75px] flex-grow h-[45px] ${amount === 50 && !isCustomAmount ? 'bg-white text-black font-extrabold' : 'bg-[#252525] border-2 border-[#3e3d3d] flex flex-row gap-[1px] font-ekMukta'}`}
+            className={`flex items-center justify-center border-[#979797]/50 rounded-xl max-w-[80px] w-full max-sm:w-[75px] flex-grow h-[45px] ${amount === 50 && !isCustomAmount ? 'bg-[#1E1E1E] text-[#FFFFFF] font-bold' : 'bg-[#E8E8ED] text-[#979797] border-2 border-[#3e3d3d] flex flex-row gap-[1px] font-ekMukta'}`}
           >
             $
             <span style={{ fontFamily: 'Ek Mukta, sans-serif', fontWeight: amount === 50 && !isCustomAmount ? 700 : 400 }}>50</span>
@@ -126,30 +126,38 @@ const SupportForm = () => {
 
           <button
             onClick={() => handleAmountChange(500)}
-            className={`flex items-center justify-center rounded-xl max-w-[80px] w-full max-sm:w-[70px] flex-grow h-[45px] ${amount === 500 && !isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d] flex flex-row gap-[1px] font-ekMukta'}`}
+            className={`flex items-center justify-center border-[#979797]/50 rounded-xl max-w-[80px] w-full max-sm:w-[70px] flex-grow h-[45px] ${amount === 500 && !isCustomAmount ? 'bg-[#1E1E1E] text-[#FFFFFF] font-bold' : 'bg-[#E8E8ED] text-[#979797] border-2 border-[#3e3d3d] flex flex-row gap-[1px] font-ekMukta'}`}
           >
             $
             <span style={{ fontFamily: 'Ek Mukta, sans-serif', fontWeight: amount === 500 && !isCustomAmount ? 700 : 400 }}>500</span>
           </button>
 
-          <div className="relative flex items-center flex-grow">
-            <div className='absolute left-[12px] top-1/2 transform -translate-y-1/2 w-[7px] mb-[2px] font-ekMukta'>
+          <div className="relative flex items-center justify-center flex-grow">
+            <div
+              className={`absolute left-[12px] top-1/2 transform -translate-y-1/2 w-[7px] font-heebo ${
+                isCustomAmount ? 'text-[#FFFFFF]' : 'text-[#5B5B5B]'
+              }`}
+            >
               $
             </div>
             <input
               type="number"
               pattern="\d*"
               value={customAmount}
-              onClick={handleCustomAmountClick}
+              onClick={handleCustomAmountClick} 
               onChange={handleCustomAmountChange}
-              className={`pl-5 pr-2 py-[10px] rounded-xl font-normal max-w-[80px] w-full max-sm:w-[70px] flex-grow h-[45px] ${isCustomAmount ? 'bg-white text-black font-bold' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+              className={`pl-5 pr-2 py-[10px] border-[#979797]/50 rounded-xl font-normal max-w-[80px] w-full max-sm:w-[70px] flex-grow h-[45px] ${
+                isCustomAmount
+                  ? 'bg-[#1E1E1E] border-transparent' // Stiluri când este selectat
+                  : 'bg-[#E8E8ED] border-2' // Stiluri când NU este selectat
+              }`}
               placeholder="Other"
               style={{
                 appearance: 'textfield',
-                height: 'auto',
-                fontSize: '16px', // Adăugat pentru a preveni zoom-ul pe iOS
-                scrollbarWidth: 'none',
-                overflow: 'hidden',
+                fontSize: '16px',
+                '::placeholder': {
+                  color: isCustomAmount ? '#FFFFFF' : '#5B5B5B',
+                },
               }}
             />
             <style jsx>{`
@@ -162,46 +170,29 @@ const SupportForm = () => {
               input[type='number'] {
                 -moz-appearance: textfield;
               }
-
-              input::placeholder {
-                color: #5B5B5B;
-              }
-
-              @media screen and (max-width: 380px) {
-                input[type='number'] {
-                  padding-top: 7px;
-                  padding-bottom: 7px;
-                }
-              }
-
-              @media screen and (min-width: 381px) {
-                input[type='number'] {
-                  padding-top: 10px;
-                  padding-bottom: 10px;
-                }
-              }
             `}</style>
           </div>
+
         </div>
         <div className="my-5 mt-10 flex justify-between items-center w-full mx-auto">
-          <p className="text-white font-ek-mukta text-[14px]">Total:</p>
+          <p className="text-[#1E1E1E] font-ek-mukta text-[14px]">Total:</p>
           <div className="flex-grow border-t border-dotted border-gray-600 mx-6"></div>
-          <p className="text-white font-ek-mukta mr-1 flex gap-[3px] font-ekMukta">${amount}</p>
+          <p className="text-[#1E1E1E] font-ek-mukta mr-1 flex gap-[3px] font-ekMukta">${amount}</p>
         </div>
-        <p className="mt-10 mb-4 text-[#B7B7B7] text-[13px] font-inter flex justify-start ml-1">Select a Payment Method:</p>
+        <p className="mt-10 mb-4 text-[#6F6F6F] text-[12px] font-light flex justify-start ml-1">Select a Payment Method:</p>
         <div className="flex items-center justify-between mb-4 gap-4"> {/* Modificat gap la 4 (16px) */}
           {['stripe', 'paypal'].map((method) => (
             <button
               key={method}
               onClick={() => setPaymentMethod(method)}
-              className={`rounded-xl font-bold flex items-center justify-center flex-grow h-[45px] mb-5 ${paymentMethod === method ? 'bg-black text-white ' : 'bg-[#252525] border-2 border-[#3e3d3d]'}`}
+              className={`rounded-xl font-bold flex items-center justify-center flex-grow h-[45px] mb-5 ${paymentMethod === method ? 'bg-[#1E1E1E] text-white ' : 'bg-[#E8E8ED] text-[#979797] border-2 border-[#979797]'}`}
             >
               {method === 'paypal' ? (
                 <div className='flex items-center px-5 max-md:px-2'>
-                  <Image src="/icons/paypal.svg" width={48} height={1} alt="paypal" className="w-[48px]" />
+                  <Image src="/icons/paypal.svg" width={48} height={1} alt="paypal"/>
                 </div>
               ) : (
-                <div className="flex items-center justify-center gap-2 h-[45px]">
+                <div className="flex items-center justify-center gap-2 ">
                   <Image src="/icons/card.svg" width={64} height={1} alt="card"/>
                 </div>
               )}
@@ -215,7 +206,7 @@ const SupportForm = () => {
           </div>
         )}
         {paymentMethod === 'stripe' && (
-          <div className="flex justify-center items-end">
+          <div className="flex justify-center items-end h-[48px]">
             <CheckoutButton amount={amount} />
           </div>
         )}

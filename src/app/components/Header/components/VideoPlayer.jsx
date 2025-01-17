@@ -15,11 +15,11 @@ const VideoPlayer = ({ videoId, onClose, isMuted }) => {
         iframe.requestFullscreen().catch(err => {
           console.log("Error attempting to enable full-screen mode: ", err.message);
         });
-      } else if (iframe.mozRequestFullScreen) { /* Firefox */
+      } else if (iframe.mozRequestFullScreen) { 
         iframe.mozRequestFullScreen();
-      } else if (iframe.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+      } else if (iframe.webkitRequestFullscreen) { 
         iframe.webkitRequestFullscreen();
-      } else if (iframe.msRequestFullscreen) { /* IE/Edge */
+      } else if (iframe.msRequestFullscreen) { 
         iframe.msRequestFullscreen();
       }
     };
@@ -40,7 +40,7 @@ const VideoPlayer = ({ videoId, onClose, isMuted }) => {
 
     const handlePausePlay = (event) => {
       const playerState = event.data;
-      if (playerState === 1) { // Playing
+      if (playerState === 1) {
         setShowCloseButton(false);
       } else {
         setShowCloseButton(true);

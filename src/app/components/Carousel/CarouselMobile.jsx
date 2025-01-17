@@ -13,7 +13,7 @@ const Carousel = () => {
   const [spacing, setSpacing] = useState(0.4);
   const [perView, setPerView] = useState(1.25);
   const [currentIndex, setCurrentIndex] = useState(1);
-  const [isAnimating, setIsAnimating] = useState(false); // Adăugat pentru a preveni suprapunerea animațiilor
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const [sliderRef, slider] = useKeenSlider({
     loop: true,
@@ -28,10 +28,10 @@ const Carousel = () => {
       setCurrentIndex(s.track.details.rel);
     },
     dragStart: () => {
-      setIsAnimating(true); // Setăm animarea activă
+      setIsAnimating(true); 
     },
     dragEnd: () => {
-      setIsAnimating(false); // Oprim animarea după finalizare
+      setIsAnimating(false);
     },
     duration: 1500,
     easing: (t) => 1 - Math.pow(1 - t, 4),
@@ -76,7 +76,7 @@ const Carousel = () => {
   }, [spacing, perView, sliderRef]);
 
   const handleImageClick = (e, index) => {
-    if (isAnimating) return; // Evităm clicurile în timpul animațiilor
+    if (isAnimating) return;
 
     if (index === currentIndex) {
       window.location.href = images[index].link;
@@ -87,9 +87,9 @@ const Carousel = () => {
     const screenWidth = window.innerWidth;
 
     if (x > screenWidth / 2) {
-      handleNext(); // Navighează la următoarea imagine
+      handleNext(); 
     } else {
-      handlePrev(); // Navighează la imaginea anterioară
+      handlePrev(); 
     }
   };
 

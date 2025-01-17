@@ -4,8 +4,8 @@ import FundingBreakdown from './components/FundingBreakdown';
 
 const Overview = () => {
     return (
-        <div className="flex justify-center w-full bg-black py-8">
-            <div className="flex max-w-[1200px] w-full">
+        <div className="flex justify-center w-full bg-[#F9F9F9] py-8">
+            <div className="flex max-w-[1200px] w-full bg-[#F9F9F9]">
                 <div className="w-2/3">
                     <StageDescription />
                 </div>

@@ -26,25 +26,34 @@ const ButonShere: React.FC<ButonShereProps> = ({ isShareFixed }) => {
         setIsModalOpen(false);
     };
 
+    // Dezactivează scroll-ul când modalul este deschis
+    useEffect(() => {
+        if (isModalOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+
+        // Curățare pentru a evita efecte nedorite
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [isModalOpen]);
+
     return (
-        <div 
-            className={`flex items-center justify-center w-full h-[40px] bg-transparent z-50 ${
-                isShareFixed ? 'fixed bottom-0 left-0 right-0' : 'relative'
-            }`}
-            style={{ bottom: isShareFixed ? '0' : 'auto' }}
+        <div
+            className={`fixed bottom-0 left-0 right-0 z-50 flex items-center justify-center bg-[#E8E8ED] h-[68px]`}
+            style={{
+                padding: "10px",
+                boxShadow: isShareFixed ? "0 -2px 10px rgba(0, 0, 0, 0.1)" : "none",
+            }}
         >
-            {isShareFixed ? (
-                <div className="flex items-center justify-center w-[209px] h-[80px] bg-transparent mb-10">
-                    <SupportCenter onClick={openModal} />
+            <div className="flex items-center justify-between w-full px-5 gap-4">
+                <div className="flex-[2]">
+                    <Support onClick={openModal} />
                 </div>
-            ) : (
-                <div className="flex items-center justify-center w-full px-5 gap-4">
-                    <div className="flex-[2]">
-                        <Support onClick={openModal} />
-                    </div>
-                    {/* <ShareButton /> */}
-                </div>
-            )}
+                <ShareButton url={undefined} />
+            </div>
 
             <Modal isOpen={isModalOpen} onClose={closeModal}>
                 <Elements stripe={stripePromise}>

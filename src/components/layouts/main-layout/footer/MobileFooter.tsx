@@ -13,7 +13,7 @@ export default function MobileFooter() {
   };
 
   return (
-    <footer className="bg-[#F9F9F9] pb-14 md:py-10 md:mt-0 mt-5 md:px-0 px-5">
+    <footer className="bg-[#F9F9F9] pb-14 md:py-10 md:mt-0 md:px-0 px-5">
       <div className="md:max-w-[1400px] w-full mx-auto bg-[#FFFFFF] rounded-[20px] md:p-10 md:px-0 px-5">
         <div className="flex flex-col items-center text-center py-5">
           <Image src="/images/logoBlack.svg" width={95.5} height={24} alt="logo" />

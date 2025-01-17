@@ -8,7 +8,7 @@ const Icons = ({ isMuted, toggleMute }) => {
   const [isVideoVisible, setIsVideoVisible] = useState(false);
 
   const handleScreenClick = () => {
-    setIsVideoVisible(true);  // Arată videoul
+    setIsVideoVisible(true); 
     document.body.classList.add('overflow-hidden');
   };
 

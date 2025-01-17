@@ -21,7 +21,7 @@ export default function Order({ items }: PaymentProps) {
   const { subtotal, estimatedTax, total } = useOrderCalculations(items);
 
   const validateCardNumber = (card: string) => {
-    const cardNumber = card.replace(/\D/g, ''); // Remove non-digits
+    const cardNumber = card.replace(/\D/g, ''); 
     let sum = 0;
     let shouldDouble = false;
 

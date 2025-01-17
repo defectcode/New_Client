@@ -37,7 +37,7 @@ export function Header() {
       
 
       {/* Mobile */}
-      <div className="flex items-center justify-between w-full h-[70px] lg:hidden">
+      <div className="flex items-center justify-between w-full h-[60px] lg:hidden">
         <div className='flex items-center gap-[10px]'>
           <Link href="/" className="">
             <Image src="/images/home.svg" alt="home" width={15} height={15} />

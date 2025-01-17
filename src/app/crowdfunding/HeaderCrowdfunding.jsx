@@ -2,9 +2,11 @@
 import React, { useRef, useState } from "react";
 import FundraisingProgress from './components/Progres';
 import Title from "./components/Title";
-import VideoPlayer from './components/Video/VideoPlayer';  // Asigură-te că calea către VideoPlayer este corectă
-import Icons from './components/Video/Icons';  // Asigură-te că calea către Icons este corectă
+import VideoPlayer from './components/Video/VideoPlayer'; 
 import { images } from './constants/carouselData';
+import { Header } from "@/components/layouts/main-layout/header/Header";
+import ButonShere from "./components/mobile/ButonShere";
+
 
 const HeaderSeriesConcept = () => {
     const currentData = images[0];
@@ -23,16 +25,16 @@ const HeaderSeriesConcept = () => {
     };
 
     return (
-        <div ref={headerRef} className="relative min-h-screen">
+        <div ref={headerRef} className="relative min-h-screen font-heebo">
+            <Header />
             <div className="header relative bg-cover bg-center min-h-screen bg-no-repeat bg-mobileConcept sm:bg-desktop">
-                <div className="max-w-[1200px] absolute top-0 right-0 h-full w-full sm:w-[60%] bg-gradient-to-t from-black/95 via-black/95 to-transparent sm:bg-gradient-to-r sm:from-transparent sm:via-black/90 sm:to-black/90 flex items-end sm:items-center justify-center sm:justify-end p-4 sm:p-0 md:pl-[150px]">
-                    <div className="flex flex-col gap-4 sm:gap-20 mb-2 lg:mb-0 ">
+                <div className="max-w-[1200px] absolute top-0 right-0 h-full w-full md:w-[40%] bg-gradient-to-t from-black/95 via-black/95 to-transparent md:bg-gradient-to-r md:from-[transparent] md:via-[#F9F9F9]/40 md:to-[#F9F9F9]/20 flex items-end sm:items-center justify-center sm:justify-end p-4 sm:p-0 md:pl-[150px]">
+                    <div className="flex flex-col md:space-y-20 mb-2 lg:mb-0 ">
                         <Title title={currentData.title} description={currentData.description} />
                         <FundraisingProgress data={currentData} />
                     </div>
                 </div>
                 
-                {/* Buton de Play peste imaginea de fundal */}
                 <button 
                     onClick={handleScreenClick} 
                     className="absolute inset-0 flex items-center justify-center z-20 bg-transparent xl:mr-[550px] lg:mr-[450px] md:mr-[350px]"
@@ -41,7 +43,6 @@ const HeaderSeriesConcept = () => {
                 </button>
             </div>
 
-            {/* Afișare VideoPlayer dacă isVideoVisible este true */}
             {isVideoVisible && (
                 <VideoPlayer 
                     videoSrc="https://www.dropbox.com/scl/fi/93yq0hsq1ptdb6dlgico4/VideoAtelier.mp4?rlkey=c2zddkgjz05b05x3pi39rkenq&st=lauvesd1&raw=1"  // URL-ul videoclipului Dropbox
@@ -50,14 +51,7 @@ const HeaderSeriesConcept = () => {
                 />
             )}
 
-            {/* Icons pentru controlul sunetului */}
-            <Icons 
-                isMuted={isMuted} 
-                setIsMuted={setIsMuted} 
-                handleScreenClick={handleScreenClick}
-            />
 
-            {/* Stiluri CSS pentru gradient și responsive */}
             <style jsx>{`
                 @media (max-width: 640px) {
                     .bg-gradient-to-t {

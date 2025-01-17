@@ -1,43 +1,28 @@
 'use client'
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import HeaderCrowdfunding from './HeaderCrowdfunding';
 import HeaderCrowdfundingMobile from './HeaderCrowdfundingMobile';
-import ButonShere from './components/mobile/ButonShere';
 import Rewards from './components/components/Rewards/Rewards';
 import Community from './components/components/Community/Community';
 import Extras from './components/components/Extras/Extras';
 import Overview from './components/components/Overview/Overview';
-import OverviewMobile from "./components/components/Overview/OverviewMobile";
-import RewardsMobile from "./components/components/Rewards/RewardsMobile";
-import CommunityMobile from "./components/components/Community/CommunityMobile";
-import ExtrasMobile from "./components/components/Extras/ExtrasMobile";
-import Footer from '../components/Footer/Footer';
-import FooterMobile from '../components/Footer/FooterMobile';
-import NavBarCrowdfundingMobile from "@/app/crowdfunding/components/mobile/NavBarCrowdfundingMobile";
-import NavBarCrowdfunding from "@/app/crowdfunding/components/NavBarCrowdfunding";
-import useDeviceType from './components/hooks/useDeviceType';
+import OverviewMobile from './components/components/Overview/OverviewMobile';
+import RewardsMobile from './components/components/Rewards/RewardsMobile';
+import CommunityMobile from './components/components/Community/CommunityMobile';
+import ExtrasMobile from './components/components/Extras/ExtrasMobile';
+import NavBarCrowdfundingMobile from "./components/mobile/NavBarCrowdfundingMobile";
+import NavBarCrowdfundingMobileStatic from "./components/mobile/NavBarCrowdfundingMobileStatic";
+
+import NavBarCrowdfunding from "./components/NavBarCrowdfunding";
 import { Header } from "@/components/layouts/main-layout/header/Header";
+import { Footer } from "@/components/layouts/main-layout/footer/Footer";
+import useDeviceType from './components/hooks/useDeviceType';
 
-const Crowdfunding: React.FC = () => {
+export default function Crowdfunding() {
     const isMobile = useDeviceType();
-    const [activeSection, setActiveSection] = useState<string>('overview');
+    const [activeSection, setActiveSection] = useState('overview');
 
-    useEffect(() => {
-        if (window.location.hash) {
-            setActiveSection(window.location.hash.substring(1));
-        }
-
-        const handleHashChange = () => {
-            setActiveSection(window.location.hash.substring(1));
-        };
-
-        window.addEventListener('hashchange', handleHashChange);
-        return () => {
-            window.removeEventListener('hashchange', handleHashChange);
-        };
-    }, []);
-
-    const renderSection = (): JSX.Element => {
+    const renderSection = () => {
         switch (activeSection) {
             case 'overview':
                 return isMobile ? <OverviewMobile /> : <Overview />;
@@ -53,17 +38,28 @@ const Crowdfunding: React.FC = () => {
     };
 
     return (
-        <div className="mb-10 md:mb-0 bg-black h-auto">
-            <Header/>
+        <div className="mb-10 md:mb-0 bg-[#F9F9F9] h-auto">
             {isMobile ? <HeaderCrowdfundingMobile /> : <HeaderCrowdfunding />}
-            {isMobile ? <NavBarCrowdfundingMobile setActiveSection={setActiveSection} /> : <NavBarCrowdfunding setActiveSection={setActiveSection} />}
-            {/* {isMobile && <ButonShere />} */}
-            <div>
-                {renderSection()}
-            </div>
-            {isMobile ? <Footer /> : <Footer />}
+            {isMobile ? (
+                <div>
+                    <NavBarCrowdfundingMobile 
+                        setActiveSection={setActiveSection} 
+                        activeSection={activeSection} 
+                    />
+                    <NavBarCrowdfundingMobileStatic
+                        setActiveSection={setActiveSection}
+                        activeSection={activeSection}
+                    />
+
+                </div>
+            ) : (
+                <NavBarCrowdfunding 
+                    setActiveSection={setActiveSection} 
+                    activeSection={activeSection} 
+                />
+            )}
+            <div>{renderSection()}</div>
+            <Footer />
         </div>
     );
-};
-
-export default Crowdfunding;
+}

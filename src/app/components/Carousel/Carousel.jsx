@@ -6,7 +6,7 @@ import Title from './Components/Title';
 import FundraisingProgress from './Components/Progres';
 import Dots from './Components/Dots';
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
-import style from '../Carousel/Components/style/Progres.module.css'; // Verifică importul stilurilor
+import style from '../Carousel/Components/style/Progres.module.css'; 
 
 const Carousel = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -69,8 +69,8 @@ const Carousel = () => {
   useEffect(() => {
     if (slider.current) {
       setTimeout(() => {
-        slider.current.moveToIdx(1); // Set the starting index to 1 (second slide)
-      }, 0); // Delay execution to ensure slider is initialized
+        slider.current.moveToIdx(1); 
+      }, 0);
     }
   }, [slider]);
 
@@ -127,9 +127,7 @@ const Carousel = () => {
           {index !== currentIndex && (
             <div className={`absolute inset-0 ${isMobile ? 'mobile-overlay bg-[#363636]/40 rounded-lg max-h-[453px] mt-36' : 'h-[750px] max-md:max-h-[453px] max-md:w-[269px] rounded-lg bg-[#363636]/40 max-md:mt-36'}`}></div>
           )}
-          {/* bg-gradient-to-t from-black/80 via-black/40 to-transparent */}
           <div className={`absolute inset-0 ${isMobile ? 'w-full h-[453px]  mt-36 px-3 pt-3' : isTablet ? 'w-full h-full bg-gradient-to-r from-black/60 to-transparent p-3' : 'w-[55%] h-[750px] bg-gradient-to-r from-black/60 to-transparent px-10'} flex flex-col justify-around text-white ${currentIndex === index ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200`}>
-          {/* from-[#000000]/90 via-[#282828]/90 to-transparent */}
             {!isMobile && (
               <Title contentIndex={index} isMobile={isMobile} isTablet={isTablet} />
             )}

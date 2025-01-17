@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2';
-import Chart from 'chart.js/auto';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { Chart, ArcElement } from 'chart.js';
+
+Chart.register(ArcElement);
+
 
 const costData = [
-    { category: 'Research & Analysis:', cost: 12000, week: '6-8' },
-    { category: 'Creating Main Idea', cost: 10000, week: '3-4' },
-    { category: 'Describing the Series', cost: 10000, week: '5-6' },
-    { category: 'Developing Characters:', cost: 10000, week: '7-9' },
-    { category: 'Defining Thematic Aspects: ', cost: 8000, week: '3-4' },
-    { category: 'Coordinating Team Work:', cost: 12000, week: '2-5' },
-    { category: 'Consultations with ', cost: 12000, week: '1-2' },
+    { category: 'Research & Analysis:', cost: 75000, week: '6-8' },
+    { category: 'Creating Main Idea', cost: 65000, week: '3-4' },
+    { category: 'Describing the Series', cost: 17000, week: '5-6' },
+    { category: 'Developing Characters:', cost: 20000, week: '7-9' },
+    { category: 'Defining Thematic Aspects: ', cost: 50000, week: '3-4' },
 ];
 
 // Function to generate a color gradient from red to white
 const generateColorGradient = (steps) => {
     const startColor = [255, 0, 0]; // Roșu în RGB
-    const endColor = [255, 255, 255]; // Alb în RGB
+    const endColor = [239, 157, 162]; // Alb în RGB
 
     const stepFactor = 1 / (steps - 1);
     const colorArray = [];
@@ -75,18 +76,18 @@ const FundingBreakdown = () => {
     }, []);
 
     return (
-        <div className="bg-black h-screen sticky top-0 flex flex-col items-center text-white">
-            <h2 className="text-3xl font-semibold mb-8 mt-24">Where Your Money Goes</h2>
+        <div className="h-screen sticky top-0 flex flex-col items-center text-white">
+            <h2 className="text-[24px] font-semibold mb-8 mt-10 text-[#1E1E1E]">Where Your Money Goes</h2>
             <div className="relative">
                 <DoughnutChart data={costData} />
                 <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-xl font-semibold">${totalCost.toLocaleString()}</span>
+                    <span className="text-xl text-[#1E1E1E] font-medium">${totalCost.toLocaleString()}</span>
                 </div>
             </div>
             <div className="mt-8 w-full max-w-md">
                 <table className="w-full text-left">
                     <thead>
-                        <tr className='font-bold text-[14px] font-roboto text-[#F5F5F7]'>
+                        <tr className='font-bold text-[14px] font-roboto text-[#1E1E1E]'>
                             <th className="py-2">Category</th>
                             <th className="py-2">
                                 <div className="relative flex items-center gap-1">
@@ -128,10 +129,10 @@ const FundingBreakdown = () => {
                                             />
                                         )}
                                     </div>
-                                    <span className="ml-2 text-[#C4C4C4] text-[14px] font-roboto w-[80%] align-middle">{item.category}</span>
+                                    <span className="ml-2 text-[#6F6F6F] text-[14px] font-roboto w-[80%] align-middle">{item.category}</span>
                                 </td>
-                                <td className="py-2 text-[#C4C4C4] text-[14px] font-roboto font-semibold w-[100px] align-middle">${item.cost.toLocaleString()}</td>
-                                <td className="py-2 text-[#C4C4C4] text-[14px] font-roboto font-semibold w-[60px] text-center align-middle">{item.week}</td>
+                                <td className="py-2 text-[#6F6F6F] text-[14px] font-roboto font-semibold w-[100px] align-middle">${item.cost.toLocaleString()}</td>
+                                <td className="py-2 text-[#6F6F6F] text-[14px] font-roboto font-semibold w-[60px] text-center align-middle">{item.week}</td>
                             </tr>
                         ))}
                     </tbody>

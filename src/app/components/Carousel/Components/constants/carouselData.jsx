@@ -19,7 +19,7 @@ export const images = [
       supportersCount: '',
       description: 'Be part of every stage of our series production. View more details now',
       status: 'Process',
-      link: '/seriesconcept'  // Add link property here
+      link: '/seriesconcept'  
     },
     {
       src: {

@@ -6,15 +6,10 @@ import styles from './style/Progres.module.css';
 
 const FundraisingProgress = ({ raisedAmount, goalAmount, contentIndex = 0 }) => {
   const content = images[contentIndex];
-
-  // Asigură-te că valorile sunt string-uri înainte de curățare
   const cleanGoalAmount = parseFloat(content.goalAmount.toString().replace(/,/g, '').replace(/\./g, ''));
   const cleanRaisedAmount = parseFloat(content.raisedAmount.toString().replace(/,/g, '').replace(/\./g, ''));
-
-  // Calculul procentului după curățare
   const rawProgressPercent = (cleanRaisedAmount / cleanGoalAmount) * 100;
 
-  // Logică pentru rotunjirea procentului
   let progressPercent;
   if (rawProgressPercent > 1) {
     progressPercent = Math.round(rawProgressPercent);
@@ -101,7 +96,7 @@ const FundraisingProgress = ({ raisedAmount, goalAmount, contentIndex = 0 }) => 
       </div>
 
       {content.status === 'Process' ? (
-        <Button link={content.link} />  // Pass the link prop to the Button component
+        <Button link={content.link} /> 
       ) : (
         ""
       )}

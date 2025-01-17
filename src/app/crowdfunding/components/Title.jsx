@@ -9,14 +9,12 @@ const Title = ({ contentIndex = 0 }) => {
   }
 
   return (
-    <div className="space-y-2 w-full text-center lg:text-start">
-      <h1 className="text-white text-[36px] font-extrabold font-ekMukta max-md:text-2xl" style={{ lineHeight: '105%' }}>
+    <div className="w-full text-center lg:text-start font-heebo md:space-y-5 space-y-2 md:mb-0 mb-5">
+      <h1 className="text-white md:text-[36px] text-[24px] md:font-semibold font-extrabold max-md:text-2xl leading-[1]">
         {content.title}
       </h1>
       <p 
-      className="text-[#B7B7B7] lg:text-[#FFFFFF] text-[16px] font-ekmukta-extralight lg:font-ekmukta w-full lg:w-[71%] lg:px-0 md:px-1 "
-      style={{ lineHeight: '120%' }}
-      >
+      className="md:text-[#DBDBDB] text-[#FFFFFF] text-[16px] md:font-normal font-light w-full lg:w-[60%] lg:px-0 md:px-1 leading-[1.2]">
         {content.description}
       </p>
 
