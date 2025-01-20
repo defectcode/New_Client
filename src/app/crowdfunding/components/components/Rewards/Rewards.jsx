@@ -1,8 +1,23 @@
 import React, { useState } from 'react';
 import { rewards } from './constants/rewardsData';
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from '@stripe/stripe-js';
+import Modal from '@/app/components/Header/components/Modal';
+import SupportFormRewards from '@/app/components/Header/components/Payment/SupportFormRewards';
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
 const Rewards = () => {
   const [selectedReward, setSelectedReward] = useState(rewards[0]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+      setIsModalOpen(false);
+  };
 
   return (
     <div className="flex justify-center min-h-screen font-heebo">
@@ -44,22 +59,36 @@ const Rewards = () => {
                 <p className="text-[18px] text-[#6F6F6F] mb-4">{selectedReward.description}</p>
               </div>
               <span className="text-[14px] block font-normal text-[#6F6F6F]">{selectedReward.items}</span>
-              <button className="bg-[#F5F5F7] text-black py-2 px-6 rounded-[10px]">Select</button>
+              <button
+                onClick={openModal}
+                className="w-full bg-[#F5F5F7] text-[#0D0D0D] text-[16px] h-[48px] font-semibold py-2 px-4 rounded-md mt-5"
+              >
+                Select
+              </button>
             </div>
           </div>
 
           <div className="w-1/4 p-4">
-            <h4 className="text-white text-lg mb-4">Includes</h4>
-            <ul className="text-gray-400 list-disc list-inside">
+            <h4 className="text-[#6F6F6F] text-[18px] mb-[10px]">Includes</h4>
+            <ul className="text-[#1E1E1E] text-[16px] list-inside">
               {selectedReward.includes.map((item, index) => (
                 <li key={index} className="mb-2">
-                  {item}
+                  ✔ {item}
                 </li>
               ))}
             </ul>
           </div>
         </div>
       </div>
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <Elements stripe={stripePromise}>
+        <SupportFormRewards
+          initialAmount={Number(
+            selectedReward.price.replace('$', '').replace(/,/g, '')
+          ).toLocaleString('en-US')}
+        />
+        </Elements>
+      </Modal>
     </div>
   );
 };

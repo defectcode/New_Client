@@ -3,7 +3,7 @@ import Support from './Support';
 import { RiShare2Line } from "react-icons/ri";
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import Modal from "@/app/checkout/components/order/ModalPayPal";
+import Modal from "@/app/components/Header/components/Modal";
 import SupportForm from '../../components/Header/components/Payment/SupportForm';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "");

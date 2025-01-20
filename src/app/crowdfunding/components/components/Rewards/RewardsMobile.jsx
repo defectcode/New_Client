@@ -3,20 +3,18 @@ import { useSwipeable } from "react-swipeable";
 import { rewards } from "./constants/rewardsData";
 import Modal from "@/app/checkout/components/order/ModalPayPal";
 import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from '@stripe/stripe-js';
-import SupportForm from "@/app/components/Header/components/Payment/SupportForm";
-
+import { loadStripe } from "@stripe/stripe-js";
+import SupportFormRewards from "@/app/components/Header/components/Payment/SupportFormRewards";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
-
 
 const RewardsMobile = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  
+  const [selectedReward, setSelectedReward] = useState(null); // Starea pentru recompensa selectată
 
-  const cardWidth = 80; 
-  const gapWidth = 5; 
+  const cardWidth = 80;
+  const gapWidth = 5;
 
   const handleSwipeLeft = () => {
     if (currentIndex < rewards.length - 1) {
@@ -35,7 +33,7 @@ const RewardsMobile = () => {
   };
 
   const closeModal = () => {
-      setIsModalOpen(false);
+    setIsModalOpen(false);
   };
 
   const handlers = useSwipeable({
@@ -60,7 +58,7 @@ const RewardsMobile = () => {
             transform: `translateX(calc(-${currentIndex} * (${cardWidth}% + ${gapWidth}%) + ${
               (100 - cardWidth) / 2
             }%))`,
-            gap: `${gapWidth}%`, 
+            gap: `${gapWidth}%`,
           }}
         >
           {rewards.map((reward, index) => (
@@ -79,34 +77,31 @@ const RewardsMobile = () => {
               <p className="text-[#6F6F6F] text-[16px] mt-[5px]">Includes</p>
               <ul className="text-gray-500 text-[15px] mt-1">
                 {reward.includes.map((item, i) => (
-                    <li
-                        key={i}
-                        className={`flex items-center relative py-5 ${
-                            i !== reward.includes.length - 1 ? "after:border-gradient" : ""
-                        }`}
-                    >
+                  <li
+                    key={i}
+                    className={`flex items-center relative py-5 ${
+                      i !== reward.includes.length - 1 ? "after:border-gradient" : ""
+                    }`}
+                  >
                     <span className="w-4 h-4 text-[#6F6F6F] rounded-full flex items-center justify-center mr-2">
-                        ✔
+                      ✔
                     </span>
-                        {item}                
-                        {i !== reward.includes.length - 1 && (
-                            <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D]" />
-                        )}
-                    </li>
+                    {item}
+                    {i !== reward.includes.length - 1 && (
+                      <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-[#272727] to-[#8D8D8D]" />
+                    )}
+                  </li>
                 ))}
               </ul>
               <button
-                onClick={openModal}
+                onClick={() => {
+                  setSelectedReward(reward); // Setează recompensa curentă
+                  openModal(); // Deschide modalul
+                }}
                 className="w-full bg-[#F5F5F7] text-[#0D0D0D] text-[16px] h-[48px] font-semibold py-2 px-4 rounded-md mt-5"
               >
                 Select
               </button>
-
-              <Modal isOpen={isModalOpen} onClose={closeModal}>
-                  <Elements stripe={stripePromise}>
-                      <SupportForm />
-                  </Elements>
-              </Modal>
             </div>
           ))}
         </div>
@@ -114,6 +109,17 @@ const RewardsMobile = () => {
       <div className="w-full h-[40px] bg-[#E8E8ED] mt-5 flex items-center justify-center text-[#979797] text-[14px] font-ekMukta">
         20 rewards
       </div>
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <Elements stripe={stripePromise}>
+          {selectedReward && (
+            <SupportFormRewards
+              initialAmount={Number(
+                selectedReward.price.replace('$', '').replace(/,/g, '')
+              ).toLocaleString('en-US')}
+            />          
+          )}
+        </Elements>
+      </Modal>
     </div>
   );
 };

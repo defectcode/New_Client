@@ -13,8 +13,8 @@ const Modal = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center max-md:items-end justify-center bg-[black] bg-opacity-75 max-lg:p-[20px] w-auto">
-      <div className="relative bg-[#E8E8ED] rounded-lg min-h-[400px] h-auto max-w-[380px] w-full  text-white shadow-lg flex flex-col items-center justify-center p-5">
+    <div onClick={onClose} className="fixed inset-0 z-50 flex items-center max-md:items-end justify-center bg-[black] bg-opacity-75 max-lg:p-[20px] w-auto" >
+      <div onClick={(e) => e.stopPropagation()} className="relative bg-[#E8E8ED] rounded-lg min-h-[400px] h-auto max-w-[380px] w-full  text-white shadow-lg flex flex-col items-center justify-center p-5">
         <div className="flex justify-end items-center w-full">
           <h2 className="text-[20px] font-ek-mukta font-extrabold mb-5 flex items-center justify-center mr-[50px] text-[#1E1E1E]">Support Your Series</h2>
           <button onClick={onClose} className="text-[#1E1E1E] text-5xl">

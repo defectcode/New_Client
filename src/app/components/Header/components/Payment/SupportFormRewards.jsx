@@ -5,7 +5,7 @@ import Image from 'next/image';
 import CheckoutButton from "@/components/checkout";
 
 
-const SupportForm = () => {
+const SupportFormRewards = ({initialAmount}) => {
   const [amount, setAmount] = useState(initialAmount || 50);
   const [paymentMethod, setPaymentMethod] = useState('stripe');
   const [customAmount, setCustomAmount] = useState('');
@@ -124,13 +124,13 @@ const SupportForm = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-[350px] h-auto w-full font-heebo">
+    <div className="flex flex-col justify-center items-center min-h-[350px] h-auto w-full">
       <div className='w-full max-w-md'>
         <p className="mb-5 text-[#6F6F6F] text-[12px] font-light ml-1">Select your support amount:</p>
         <div className="flex justify-between gap-2 mb-5 text-sm">
           <button
             onClick={() => handleAmountChange(1)}
-            className={`flex items-center justify-center border-[#979797]/50 rounded-[10px] font-heebo max-w-[80px] w-full max-sm:w-[75px] flex-grow h-[45px] ${amount === 1 && !isCustomAmount ? 'bg-[#1E1E1E] text-[#FFFFFF] font-bold' : 'bg-[#E8E8ED] text-[#979797] border-2 border-[#3e3d3d] flex flex-row gap-[1px]'}`}
+            className={`flex items-center justify-center border-[#979797]/50 rounded-[10px] max-w-[80px] w-full max-sm:w-[75px] flex-grow h-[45px] ${amount === 1 && !isCustomAmount ? 'bg-[#1E1E1E] text-[#FFFFFF] font-bold' : 'bg-[#E8E8ED] text-[#979797] border-2 border-[#3e3d3d] flex flex-row gap-[1px]'}`}
           >
             $
             <span style={{ fontWeight: amount === 1 && !isCustomAmount ? 700 : 400 }}>1</span>
@@ -141,7 +141,7 @@ const SupportForm = () => {
             className={`flex items-center justify-center border-[#979797]/50 rounded-xl max-w-[80px] w-full max-sm:w-[75px] flex-grow h-[45px] ${amount === 50 && !isCustomAmount ? 'bg-[#1E1E1E] text-[#FFFFFF] font-bold' : 'bg-[#E8E8ED] text-[#979797] border-2 border-[#3e3d3d] flex flex-row gap-[1px]'}`}
           >
             $
-            <span style={{ fontFamily: 'Ek Mukta, sans-serif', fontWeight: amount === 50 && !isCustomAmount ? 700 : 400 }}>50</span>
+            <span style={{ fontWeight: amount === 50 && !isCustomAmount ? 700 : 400 }}>50</span>
           </button>
 
           <button
@@ -149,13 +149,13 @@ const SupportForm = () => {
             className={`flex items-center justify-center border-[#979797]/50 rounded-xl max-w-[80px] w-full max-sm:w-[70px] flex-grow h-[45px] ${amount === 500 && !isCustomAmount ? 'bg-[#1E1E1E] text-[#FFFFFF] font-bold' : 'bg-[#E8E8ED] text-[#979797] border-2 border-[#3e3d3d] flex flex-row gap-[1px]'}`}
           >
             $
-            <span style={{ fontFamily: 'Ek Mukta, sans-serif', fontWeight: amount === 500 && !isCustomAmount ? 700 : 400 }}>500</span>
+            <span style={{ fontWeight: amount === 500 && !isCustomAmount ? 700 : 400 }}>500</span>
           </button>
 
           <div className="relative flex items-center justify-center flex-grow">
             <div
               className={`absolute left-[12px] top-1/2 transform -translate-y-1/2 w-[7px] font-heebo ${
-                isCustomAmount ? 'text-[#FFFFFF]' : 'text-[#5B5B5B]'
+                isCustomAmount ? 'text-[#FFFFFF]' : 'text-[#979797]'
               }`}
             >
               $
@@ -166,7 +166,7 @@ const SupportForm = () => {
               value={customAmount}
               onClick={handleCustomAmountClick} 
               onChange={handleCustomAmountChange}
-              className={`pl-5 pr-2 py-[10px] border-[#979797]/50 rounded-xl font-normal max-w-[80px] w-full max-sm:w-[70px] flex-grow h-[45px] ${
+              className={`pl-5 pr-2 py-[10px] border-[#979797]/50 rounded-xl font-normal max-w-[80px] w-full font-heebo max-sm:w-[70px] flex-grow h-[45px] ${
                 isCustomAmount
                   ? 'bg-[#1E1E1E] border-transparent' 
                   : 'bg-[#E8E8ED] border-2' 
@@ -176,7 +176,7 @@ const SupportForm = () => {
                 appearance: 'textfield',
                 fontSize: '16px',
                 '::placeholder': {
-                  color: isCustomAmount ? '#FFFFFF' : '#5B5B5B',
+                  color: isCustomAmount ? '#FFFFFF' : '#979797',
                 },
               }}
             />
@@ -194,10 +194,10 @@ const SupportForm = () => {
           </div>
 
         </div>
-        <div className="my-5 mt-10 flex justify-between items-center w-full mx-auto">
+        <div className="my-5 mt-10 flex justify-between items-center w-full mx-auto font-heebo">
           <p className="text-[#1E1E1E] text-[14px]">Total:</p>
           <div className="flex-grow border-t border-dotted border-gray-600 mx-6"></div>
-          <p className="text-[#1E1E1E] mr-1 flex gap-[3px]">${amount}</p>
+          <p className="text-[#1E1E1E] mr-1 flex gap-[3px] ">${amount}</p>
         </div>
         <p className="mt-10 mb-4 text-[#6F6F6F] text-[12px] font-light flex justify-start ml-1">Select a Payment Method:</p>
         <div className="flex items-center justify-between mb-4 gap-5">
@@ -247,4 +247,4 @@ const SupportForm = () => {
   );
 };
 
-export default SupportForm;
+export default SupportFormRewards;

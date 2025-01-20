@@ -18,7 +18,7 @@ export function Header() {
   }
 
   return (
-    <div className="lg:py-2 p-0 max-w-[1400px] w-full md:h-full h-[60px] flex items-center justify-between bg-transparent mx-auto xl:px-0 px-5">
+    <div className="lg:py-2 p-0 max-w-[1400px] w-full md:h-full h-[60px] flex items-center justify-between mx-auto xl:px-0 px-5">
       
       {/* Desktop */}
       <div className="flex-1 lg:block hidden">

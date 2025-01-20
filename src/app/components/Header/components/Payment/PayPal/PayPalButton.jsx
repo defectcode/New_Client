@@ -24,18 +24,35 @@ const PayPalButton = ({ amount, onSuccess }) => {
             });
           }}
           onApprove={(data, actions) => {
-            return actions.order.capture().then(details => {
-              const orderID = data.orderID;
-              console.log('Order approved with ID:', orderID);
-              alert("Transaction completed by " + details.payer.name.given_name);
-              onSuccess();
+            return actions.order.capture().then(async (details) => {
+              const email = details.payer.email_address; // Emailul utilizatorului
+              const firstName = details.payer.name.given_name; // 
 
-              console.log("Order ID to be sent to backend:", orderID);
+              alert("Transaction completed by " + firstName);
+
+              try {
+                const response = await fetch('/api/send-emails', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({ email, firstName }),
+                });
+
+                if (!response.ok) {
+                  console.error('Failed to send thank-you email');
+                }
+              } catch (error) {
+                console.error('Error sending thank-you email:', error);
+              }
+
+              onSuccess(); 
             }).catch(error => {
               console.error('Error capturing order:', error);
               alert('Error capturing order. Please try again.');
             });
           }}
+
           onError={(err) => {
             console.error('Error in PayPal button:', err);
             alert('Error with PayPal transaction. Please try again.');

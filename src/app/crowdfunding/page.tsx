@@ -38,7 +38,7 @@ export default function Crowdfunding() {
     };
 
     return (
-        <div className="mb-10 md:mb-0 bg-[#F9F9F9] h-auto">
+        <div className="mb-10 md:mb-0 h-auto">
             {isMobile ? <HeaderCrowdfundingMobile /> : <HeaderCrowdfunding />}
             {isMobile ? (
                 <div>
