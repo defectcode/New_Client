@@ -6,7 +6,7 @@ import CheckoutButton from "@/components/checkout";
 
 
 const SupportForm = () => {
-  const [amount, setAmount] = useState(initialAmount || 50);
+  const [amount, setAmount] = useState(50);
   const [paymentMethod, setPaymentMethod] = useState('stripe');
   const [customAmount, setCustomAmount] = useState('');
   const [isCustomAmount, setIsCustomAmount] = useState(false);

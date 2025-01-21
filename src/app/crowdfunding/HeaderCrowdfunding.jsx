@@ -6,6 +6,7 @@ import VideoPlayer from './components/Video/VideoPlayer';
 import { images } from './constants/carouselData';
 import { Header } from "@/components/layouts/main-layout/header/Header";
 import ButonShere from "./components/mobile/ButonShere";
+import { HeaderTransparent } from "@/components/layouts/main-layout/header/HeaderTransparent";
 
 
 const HeaderSeriesConcept = () => {
@@ -16,7 +17,7 @@ const HeaderSeriesConcept = () => {
 
     const handleScreenClick = () => {
         setIsVideoVisible(true);
-        document.body.classList.add('overflow-hidden'); // Previne scroll-ul în timpul redării video
+        document.body.classList.add('overflow-hidden');
     };
 
     const handleClose = () => {
@@ -26,9 +27,7 @@ const HeaderSeriesConcept = () => {
 
     return (
         <div ref={headerRef} className="relative min-h-screen font-heebo">
-            <div className="bg-none">
-                <Header />
-            </div>
+            <HeaderTransparent />
             <div className="header relative bg-cover bg-center min-h-screen bg-no-repeat bg-mobileConcept sm:bg-desktop">
                 <div className="max-w-[1200px] absolute top-0 right-0 h-full w-full md:w-[40%] bg-gradient-to-t from-black/95 via-black/95 to-transparent md:bg-gradient-to-r md:from-[transparent] md:via-[#F9F9F9]/40 md:to-[#F9F9F9]/20 flex items-end sm:items-center justify-center sm:justify-end p-4 sm:p-0 md:pl-[150px]">
                     <div className="flex flex-col md:space-y-20 mb-2 lg:mb-0 ">
@@ -53,7 +52,6 @@ const HeaderSeriesConcept = () => {
                 />
             )}
 
-
             <style jsx>{`
                 @media (max-width: 640px) {
                     .bg-gradient-to-t {
@@ -68,8 +66,6 @@ const HeaderSeriesConcept = () => {
 }
 
 export default HeaderSeriesConcept;
-
-// VideoPlayer.jsx
 
 
 

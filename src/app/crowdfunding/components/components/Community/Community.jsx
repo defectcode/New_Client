@@ -7,7 +7,10 @@ const Community = () => {
             <div className={styles.overlay}></div>
             <div className={styles.content}>
                 <div className={styles.iconWrapper}>
-                    <img src="/imgs/Crowdfunding/Community/progress.svg" alt="Work In Progress Icon" />
+                    <img src="/imgs/Crowdfunding/Community/progressBlack.svg" alt="Work In Progress Icon" />
+                </div>
+                <div className={styles.textWrapper}>
+                    <h2>Work In Progress</h2>
                 </div>
             </div>
         </div>

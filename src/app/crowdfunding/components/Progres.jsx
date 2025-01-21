@@ -45,7 +45,7 @@ const FundraisingProgress = ({ data }) => {
     };
 
     return (
-        <div className="text-white md:px-0 px-5">
+        <div className="text-white">
             <div className="flex items-center justify-between mb-2 w-full lg:w-[346px]">
                 <span className="text-[20px] lg:text-2xl font-ekmukta font-bold text-[#FFFFFF]">${data.raisedAmount}</span>
                 <span className="text-md block font-avenir text-[16px] md:text-[#E8E8ED] text-[#FFFFFF]">

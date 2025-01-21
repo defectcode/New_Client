@@ -8,6 +8,7 @@ import styles from './style/Header.module.css';
 // import ButonShere from '../../app/Crowdfunding/components/mobile/ButonShere';
 import { Header } from "@/components/layouts/main-layout/header/Header";
 import ButonShere from "./components/mobile/ButonShere";
+import { HeaderTransparent } from "@/components/layouts/main-layout/header/HeaderTransparent";
 
 
 const HeaderCrowdfundingMobile = () => {
@@ -66,7 +67,7 @@ const HeaderCrowdfundingMobile = () => {
 
     return (
         <div>
-            {/* <Header/> */}
+            {/* <HeaderTransparent /> */}
             <div
             ref={containerRef}
             className={`${styles.header} relative w-auto text-white font-ekMukta overflow-hidden`}

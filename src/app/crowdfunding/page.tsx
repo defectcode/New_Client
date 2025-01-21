@@ -12,9 +12,7 @@ import CommunityMobile from './components/components/Community/CommunityMobile';
 import ExtrasMobile from './components/components/Extras/ExtrasMobile';
 import NavBarCrowdfundingMobile from "./components/mobile/NavBarCrowdfundingMobile";
 import NavBarCrowdfundingMobileStatic from "./components/mobile/NavBarCrowdfundingMobileStatic";
-
 import NavBarCrowdfunding from "./components/NavBarCrowdfunding";
-import { Header } from "@/components/layouts/main-layout/header/Header";
 import { Footer } from "@/components/layouts/main-layout/footer/Footer";
 import useDeviceType from './components/hooks/useDeviceType';
 
@@ -38,7 +36,7 @@ export default function Crowdfunding() {
     };
 
     return (
-        <div className="mb-10 md:mb-0 h-auto">
+        <div className="mb-10 md:mb-0 h-auto bg-transparent">
             {isMobile ? <HeaderCrowdfundingMobile /> : <HeaderCrowdfunding />}
             {isMobile ? (
                 <div>
