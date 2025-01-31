@@ -17,7 +17,7 @@ export function HeaderTransparent() {
   }
 
   return (
-    <div className="fixed top-0 left-0 w-full h-20 z-50 bg-transparent flex items-center justify-center px-5">
+    <div className="absolute top-0 left-0 w-full h-16 z-50 bg-transparent flex items-center justify-center px-5">
       {/* Conținut Centrat */}
       <div className="max-w-[1400px] w-full flex items-center justify-between">
         {/* Desktop */}

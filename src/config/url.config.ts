@@ -14,7 +14,8 @@ export const PUBLIC_URL = {
 
 	about: () => PUBLIC_URL.root('/about'),
 	shop: () => PUBLIC_URL.root('/shop'),
-    catalog: () => PUBLIC_URL.root('/explorer')
+    catalog: () => PUBLIC_URL.root('/explorer'),
+    preOrder: () => PUBLIC_URL.root('/pre-order')
 }
 
 export const DASHBOARD_URL = {

@@ -21,7 +21,7 @@ export function HeaderMenu() {
 					<Button
 						variant="ghost"
 						className={`w-[149px] h-[26px] rounded-[10px] text-[#1E1E1E] text-[13px] ${
-							isActive(PUBLIC_URL.crowdfunding()) ? 'bg-white' : 'bg-transparent text-[#FFFFFF]'
+							isActive(PUBLIC_URL.crowdfunding()) ? 'bg-white' : 'bg-transparent text-[#1E1E1E]'
 						} hover:bg-transparent`}
 					>
 						Crowdfunding
@@ -32,14 +32,14 @@ export function HeaderMenu() {
 			{/* Pre-Order Button */}
 			<div
 				className={`border-transparent h-[26px] flex items-center justify-around rounded-[10px] max-w-[103px] w-full ${
-					isActive(PUBLIC_URL.catalog()) ? 'bg-white' : 'bg-transparent'
+					isActive(PUBLIC_URL.preOrder()) ? 'bg-white' : 'bg-transparent'
 				} text-[#000000]`}
 			>
-				<Link href={PUBLIC_URL.catalog()}>
+				<Link href={PUBLIC_URL.preOrder()}>
 					<Button
 						variant="ghost"
 						className={`w-[103px] h-[26px] rounded-[10px] text-[#1E1E1E] text-[13px] ${
-							isActive(PUBLIC_URL.catalog()) ? 'bg-white' : 'bg-transparent text-[#FFFFFF]'
+							isActive(PUBLIC_URL.preOrder()) ? 'bg-white' : 'bg-transparent text-[#1E1E1E]'
 						} hover:bg-transparent`}
 					>
 						Pre-Order

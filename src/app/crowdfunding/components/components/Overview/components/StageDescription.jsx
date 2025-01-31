@@ -9,7 +9,7 @@ const StageDescription = () => {
                 <h2 className="text-[24px] text-[#1E1E1E] font-semibold mt-10 mb-4">
                     {stageDescriptionData.stageTitle}
                 </h2>
-                <p className="text-[#6F6F6F] text-[16px] max-w-[764px] w-auto">
+                <p className="text-[#6F6F6F] text-[16px] max-w-[664px] w-auto">
                     {stageDescriptionData.stageHistory}
                 </p>
                 <img 
@@ -24,7 +24,7 @@ const StageDescription = () => {
                     {stageDescriptionData.fundingTitle}
                 </h2>
                 <div className="text-[#6F6F6F] text-[16px]">
-                    <p className="mt-4">
+                    <p className="mt-4 w-[670px]">
                         {stageDescriptionData.fundingProgress}
                         <br />
                         {stageDescriptionData.requiredAmount}

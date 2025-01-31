@@ -5,15 +5,15 @@ import { useSearchParams } from 'next/navigation'
 import { productService } from '@/services/product.service'
 
 import { IProduct } from '@/shared/types/product.interface'
-import { CatalogProducts } from '@/components/ui/catalog/PreOrderCatalogProducts'
+import { PreOrderCatalogProducts } from '@/components/ui/catalog/PreOrderCatalogProducts'
 import { useEffect, useState } from 'react'
-import { CatalogMobile } from '@/components/ui/catalog/components/CatalogMobile'
+import { PreOrderCatalogMobile } from '@/components/ui/catalog/components/PreOrderCatalogMobile'
 
-interface ExplorerProps {
+interface PreOrderProps {
 	products: IProduct[]
 }
 
-export function Explorer({ products }: ExplorerProps) {
+export function PreOrder({ products }: PreOrderProps) {
 	const searchParams = useSearchParams();
 	const searchTerm = searchParams?.get('searchTerm');
 	const [isMobile, setIsMobile] = useState(false);
@@ -36,10 +36,10 @@ export function Explorer({ products }: ExplorerProps) {
 	});
   
 	return (
-	  <div className="max-w-[1400px] w-full mx-auto bg-[#FFFFFF]">
+	  <div className="max-w-[1400px] w-full mx-auto bg-[#F9F9F9]">
 
 		{isMobile ? (
-			<CatalogMobile 
+			<PreOrderCatalogMobile 
 				title={
 					searchTerm
 					? `Search by request "${searchTerm}"`
@@ -48,7 +48,7 @@ export function Explorer({ products }: ExplorerProps) {
 				products={data}
 			/>
 		) : (
-        <CatalogProducts
+        <PreOrderCatalogProducts
 		  title={
 			searchTerm
 			  ? `Search by request "${searchTerm}"`

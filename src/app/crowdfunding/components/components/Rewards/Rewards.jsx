@@ -3,7 +3,7 @@ import { rewards } from './constants/rewardsData';
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from '@stripe/stripe-js';
 import Modal from '@/app/components/Header/components/Modal';
-import SupportFormRewards from '@/app/components/Header/components/Payment/SupportFormRewards';
+import SupportFormCrowdfunding from '@/app/components/Header/components/Payment/SupportFormCrowdfunding';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
@@ -82,11 +82,14 @@ const Rewards = () => {
       </div>
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <Elements stripe={stripePromise}>
-        <SupportFormRewards
+        <SupportFormCrowdfunding
+          selectedRewardName={selectedReward.name}
+          selectedRewardPrice={selectedReward.price}
           initialAmount={Number(
-            selectedReward.price.replace('$', '').replace(/,/g, '')
+            selectedReward.price.replace('$ ', '').replace(/,/g, '')
           ).toLocaleString('en-US')}
         />
+
         </Elements>
       </Modal>
     </div>

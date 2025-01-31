@@ -4,8 +4,6 @@ import FundraisingProgress from './components/Progres';
 import Title from "./components/Title";
 import VideoPlayer from './components/Video/VideoPlayer'; 
 import { images } from './constants/carouselData';
-import { Header } from "@/components/layouts/main-layout/header/Header";
-import ButonShere from "./components/mobile/ButonShere";
 import { HeaderTransparent } from "@/components/layouts/main-layout/header/HeaderTransparent";
 
 
