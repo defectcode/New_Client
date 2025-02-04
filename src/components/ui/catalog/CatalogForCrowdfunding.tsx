@@ -4,11 +4,12 @@ import Link from 'next/link';
 import { ICatalog } from './catalog.interface';
 import { useRef, useState } from 'react';
 import Image from 'next/image';
-import styles from './components/style/CaralogProducts.module.css';
+import styles from './components/style/CatalogForCrowdfunding.module.css';
 import { HomeProducts } from '@/app/(root)/explorer/components/HomeProducts';
 import { COLORS } from '@/app/(root)/product/[id]/product-info/constants/Colors';
+import { CrowdfundingProducts } from '@/app/(root)/explorer/components/CrowdfundingProducts';
 
-export function CatalogForProduct({
+export function CatalogForCrowdfunding({
   title,
   description,
   linkTitle,
@@ -29,9 +30,6 @@ export function CatalogForProduct({
     }
   };
 
-
-
-  
 
   return (
     <div className={styles.productWrapper}>
@@ -56,9 +54,9 @@ export function CatalogForProduct({
       </div>
 
       <div className={styles.productContainer} ref={scrollContainer}>
-        {products.map((product) => (
+        {products.map((product, index) => (
           <div key={product.id} className={styles.productCard}>
-            <HomeProducts product={product} />
+            <CrowdfundingProducts product={product} index={index} />
           </div>
         ))}
       </div>
