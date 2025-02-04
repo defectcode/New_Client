@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation'
 import { productService } from '@/services/product.service'
 
 import { IProduct } from '@/shared/types/product.interface'
-import { CatalogProducts } from '@/components/ui/catalog/PreOrderCatalogProducts'
+import { CatalogProducts } from '@/components/ui/catalog/CatalogProducts'
 import { useEffect, useState } from 'react'
 import { CatalogMobile } from '@/components/ui/catalog/components/CatalogMobile'
 
