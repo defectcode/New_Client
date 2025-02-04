@@ -26,7 +26,7 @@ const nextConfig = {
 			},
 		];
 	},
-	staticPageGenerationTimeout: 120, // Crește limita la 120 de secunde pentru generarea paginilor statice
+	staticPageGenerationTimeout: 300,
 };
 
 // module.exports = nextConfig;
